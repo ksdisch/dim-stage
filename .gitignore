@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Env / secrets (none expected — local-only project — but never track them)
+.env
+
+# Fitted lens weights are large binary artifacts (~10-100MB per model);
+# artifact policy decided at M0 — until then, never tracked.
+*.pt
+*.safetensors
+
+# OS
+.DS_Store

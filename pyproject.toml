@@ -1,0 +1,20 @@
+[project]
+name = "dim-stage"
+version = "0.1.0"
+description = "Reproduce and measure: is the global workspace (Jacobian lens) readable in small local Qwen models?"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.4",
+    "transformers>=4.44",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    # reference jlens (anthropics/jacobian-lens) gets added here, pinned to a commit,
+    # when M0's cross-check is built — cross-check oracle only, never imported by
+    # harness code (the lossy-wall D1 pattern).
+]
+
+[tool.uv]
+package = false
