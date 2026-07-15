@@ -285,6 +285,32 @@ D3 convention (both truncate to `seq_len=128`, `n_valid=111`):
   the 32×-replicated retained graph appears to blow MPS unified-memory locality. The
   knob stays frozen at **`dim_batch=8`** for all fits on this hardware.
 
+## AGREE gate result (2026-07-15) — deliverables 3 + 4
+
+Run by `m0_agree_gate.py` on Qwen2.5-0.5B-Instruct (fp32, MPS; torch 2.13.0,
+transformers 5.13.1, reference jlens @ `581d398`, independent fitter `fitter.py`).
+Per D1: all three fits (independent, reference A, reference B) on the byte-identical
+first-16 WikiText prompts — loader byte-identity asserted over all 21 prompts used
+(D3 sanity, PASS). Readout confirmation on the 5 held-out prompts (WikiText records
+17–21), all 23 fitted layers, every 4th valid position (28 positions × 23 layers ×
+5 prompts = 3220 cells). Fit rate: independent 686 s / 16 prompts, reference
+686 s / 16 prompts — identical (42.9 s/prompt).
+
+| Check | Measured | Gate condition | Verdict |
+|---|---|---|---|
+| Reference run-to-run noise floor (max per-layer rel-Frobenius, refit vs refit) | **exactly 0** — MPS backward is fully deterministic; per-prompt diagnostics of the two refits match line-for-line | calibration input; pre-declared stand-in 1e-4 applies | — |
+| Matrix gate (max per-layer rel-Frobenius, independent vs reference) | **0.000e+00** — bitwise-identical `J_l` at every layer | ≤ 10× floor = 1e-3 | **PASS** |
+| Readout confirmation (top-1 token agreement, held-out cells) | 3220/3220 | Wilson 95% LB 0.9988 ≥ 0.95 | **PASS** |
+
+**VERDICT: AGREE.** The independent build computes the same mathematical object as
+the reference down to the last bit — stronger than the gate required (any nonzero
+distance below 1e-3 would also have passed). Two incidental observations worth
+keeping: (1) MPS fp32 backward is bitwise reproducible run-to-run, so the 1e-4
+stand-in floor did real work exactly as pre-declared; (2) the reference's own
+convergence diagnostic (`max_d_mean`, the relative shift in the running mean per
+added prompt) was still ≈ 7% at prompt 16 — supporting D3's choice to fit the
+production lens at N=100 rather than stopping at 16.
+
 ## Deviations table (starter — grows as M0 runs)
 
 | # | Paper / reference | Ours | Why | Status |
