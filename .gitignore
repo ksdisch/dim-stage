@@ -13,5 +13,9 @@ __pycache__/
 *.pt
 *.safetensors
 
+# Fetched reference material — the paper (Anthropic's content, never commit)
+# and the reference jlens clone (cross-check oracle, consumed as a dev-dep)
+refs/
+
 # OS
 .DS_Store
