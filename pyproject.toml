@@ -4,17 +4,24 @@ version = "0.1.0"
 description = "Reproduce and measure: is the global workspace (Jacobian lens) readable in small local Qwen models?"
 requires-python = ">=3.12"
 dependencies = [
+    "datasets>=5.0.0",
     "torch>=2.4",
     "transformers>=4.44",
 ]
 
 [dependency-groups]
+crosscheck = [
+    # Reference jlens (anthropics/jacobian-lens), pinned to a commit below —
+    # cross-check oracle + hardware probe only, never imported by measurement
+    # harness code (the lossy-wall D1 pattern).
+    "jlens",
+]
 dev = [
     "pytest>=8",
-    # reference jlens (anthropics/jacobian-lens) gets added here, pinned to a commit,
-    # when M0's cross-check is built — cross-check oracle only, never imported by
-    # harness code (the lossy-wall D1 pattern).
 ]
 
 [tool.uv]
 package = false
+
+[tool.uv.sources]
+jlens = { git = "https://github.com/anthropics/jacobian-lens", rev = "581d398613e5602a5af361e1c34d3a92ea82ba8e" }

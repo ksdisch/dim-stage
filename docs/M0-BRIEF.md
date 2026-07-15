@@ -267,6 +267,24 @@ what wall-clock rate?
   extrapolation blows the budget → stop, surface to Kyle; the ~$1 rented-GPU fallback is
   an owned deviation row (amended bar entry 2), never a silent move.
 
+### Result (2026-07-15) — PASS
+
+Measured by `m0_hour_one_gate.py` on Qwen2.5-0.5B-Instruct, fp32, MPS (torch 2.13.0,
+transformers 5.13.1, reference jlens @ `581d398`), first two WikiText prompts per the
+D3 convention (both truncate to `seq_len=128`, `n_valid=111`):
+
+| Config | prompt 0 | prompt 1 (warm) |
+|---|---|---|
+| `dim_batch=8` (112 backwards) | 44.1 s | 42.7 s |
+| `dim_batch=32` (28 backwards) | 1192.0 s | 931.0 s |
+
+- Extrapolated N=100 fit: 0.5B **1.19 h** (measured rate) + 1.5B **6.36 h** (FLOPs-ratio
+  extrapolation, 229 s/prompt) = **7.55 h ≤ 12 h → PASS.** MPS handles the full backward
+  graph without error; no rented-GPU fallback needed.
+- Surprise worth keeping: raising `dim_batch` is math-neutral but ~25× *slower* here —
+  the 32×-replicated retained graph appears to blow MPS unified-memory locality. The
+  knob stays frozen at **`dim_batch=8`** for all fits on this hardware.
+
 ## Deviations table (starter — grows as M0 runs)
 
 | # | Paper / reference | Ours | Why | Status |
