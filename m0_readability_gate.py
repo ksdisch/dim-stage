@@ -44,7 +44,14 @@ WILSON_FLOOR = 0.5
 MIN_N = 20
 NEED_DISTRIBUTIONS = 3
 #: Frozen D2 bands (M0-BRIEF): proportional 38–92% of depth.
-FROZEN_BANDS = {24: list(range(9, 22)), 28: list(range(11, 25))}
+#: 36-layer entry (Qwen2.5-3B-Instruct) pre-registered 2026-07-15, before the
+#: 3B fit or any 3B readout existed — the escalation trigger (both subjects
+#: NULL) fired and Kyle chose to escalate; see DECISIONS.md.
+FROZEN_BANDS = {
+    24: list(range(9, 22)),
+    28: list(range(11, 25)),
+    36: list(range(14, 33)),
+}
 
 
 def fail_invalid(reason: str) -> None:
