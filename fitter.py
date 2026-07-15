@@ -39,6 +39,7 @@ CLI (the N=100 production fit, D3 corpus convention):
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import os
 import time
@@ -386,6 +387,13 @@ def main() -> None:
     parser.add_argument("--n-prompts", type=int, default=100)
     parser.add_argument("--out", required=True, help="lens artifact path (*.pt, gitignored)")
     parser.add_argument("--dim-batch", type=int, default=8)
+    parser.add_argument(
+        "--prompts-file",
+        default=None,
+        help="JSON list[str] holding the D3 prompts (same records the WikiText "
+        "streaming loader yields); bypasses HuggingFace streaming, which can wedge "
+        "in rate-limit backoff on long days. Transport only — never a different corpus.",
+    )
     args = parser.parse_args()
 
     device = "mps" if torch.backends.mps.is_available() else "cpu"
@@ -397,7 +405,15 @@ def main() -> None:
     subject = SubjectModel(hf, tok)
     print(f"n_layers={subject.n_layers} d_model={subject.d_model}")
 
-    prompts = load_wikitext_prompts(args.n_prompts)
+    if args.prompts_file:
+        with open(args.prompts_file) as f:
+            prompts = json.load(f)
+        if len(prompts) != args.n_prompts:
+            raise ValueError(
+                f"{args.prompts_file} holds {len(prompts)} prompts, not {args.n_prompts}"
+            )
+    else:
+        prompts = load_wikitext_prompts(args.n_prompts)
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     jacobians = fit(
         subject, prompts, dim_batch=args.dim_batch, checkpoint_path=f"{args.out}.ckpt"
