@@ -88,3 +88,42 @@ dim_batch) → if still pressured, stop and surface the ~$1 rented-GPU
 fallback (amended bar entry 2) to Kyle before any spend. Overnight runs are
 wrapped in `caffeinate -ims` so the Mac cannot idle-sleep mid-fit; laptop
 stays plugged in.
+
+**Probe outcome — the ladder ran to its end (Claude, measured 2026-07-15
+evening).** Three findings, in order. (1) *HF streaming wedge:* both first
+launches stalled in `load_wikitext_prompts` — huggingface `datasets`
+streaming sat in rate-limit backoff (three TCP connections, 0 bytes moved in
+15 s, while fresh hub requests answered in 0.17 s). Fixed by prefetching the
+D3 prompts once via the non-streaming cached download + a `--prompts-file`
+flag on the fitter (PR #7; transport only, same bytes). Honesty note: the
+first dim_batch=8 "probe fail" reading was partly confounded by this wedge —
+though a call-stack sample did catch it genuinely grinding in MPS compute
+30+ min into prompt 1, so the kill stands on either reading. (2) *The cliff
+is real at both rungs:* with prompts local, prompt 1 exceeded 40 min of pure
+MPS compute at dim_batch=8 AND dim_batch=4 (~11 min healthy estimate; ~25×
+class; ~70 h/fit extrapolated; stack samples show `MPSStream` copy-syncs;
+no OS pressure alarm, no thermal warning, no checkpoint ever completed).
+Halving the graph didn't help because the constant term — 12.4 GB of fp32
+weights — sits at the Metal working-set edge by itself. Lesson for the
+memory file: **24 GB MPS tops out between 1.5B and 3B for fp32
+backward-pass work; probe before committing, and don't expect dim_batch to
+rescue a weights-bound cliff.** (3) *No local knob remains:* dim_batch=2
+shaves ~1.6 GB against a weights-dominated budget; fp16 would change the
+frozen fp32 numerics convention — a bigger deviation than changing device.
+
+## 2026-07-15 — 3B rescue
+
+**3B fit moves to a rented CUDA GPU (Kyle).** The pre-declared fallback,
+now invoked: fit on a rented single-GPU box (~$1–3 total), procedure
+byte-identical (same `fitter.py`, same frozen prompts file, `dim_batch=8`,
+fp32) — `remote-fit-3b.sh` is the one-shot script; the fitter now
+auto-selects CUDA. The readability gate still runs **locally on MPS**, like
+both other subjects, auto-queued on the lens file's arrival. *Planned
+deviation rows (into M0-BRIEF with the results):* (a) 3B lens fitted on
+CUDA fp32 vs MPS for 0.5B/1.5B — cross-device fp32 noise is ~1e-7 relative
+on a corpus-mean matrix, orders below any gate's sensitivity; the box's
+torch version is recorded in the fit log; (b) fit corpus delivered via
+`--prompts-file` (PR #7) rather than live streaming — same bytes by
+construction, and the run log's `seq_len`/`n_valid` signature per prompt
+must match the M0-recorded values (prompt 1: `seq_len=128 n_valid=111`;
+Qwen2.5 sizes share one tokenizer).
