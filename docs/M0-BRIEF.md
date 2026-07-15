@@ -311,15 +311,71 @@ convergence diagnostic (`max_d_mean`, the relative shift in the running mean per
 added prompt) was still ≈ 7% at prompt 16 — supporting D3's choice to fit the
 production lens at N=100 rather than stopping at 16.
 
+## Readability gate result (2026-07-15) — deliverables 5 + 6
+
+Official runs by `m0_readability_gate.py` (fp32, MPS, N=100 lenses, full-layer
+min-rank per D4; band-restricted and k ∈ {1,5,25} descriptive numbers in
+`results/readability-*.json`). The real-input wrong-arm dry-run (0.5B model +
+1.5B lens) exited INVALID before the official runs, as the guardrail requires.
+Runs were queued behind the 1.5B fit — even CPU-side work measurably slowed the
+MPS fit ~8%, so nothing shares the GPU with a measurement.
+
+**VERDICT: NULL on both subjects — 0/6 distributions reach J-lens pass@10
+Wilson 95% LB ≥ 0.5 on either.** The pre-declared kill-risk fired: at 0.5B/1.5B
+scale, no distribution's workspace content is readable at the frozen bar. This
+answers the paper's stated open question for the smallest scales, and per
+KICKOFF it re-scopes M1–M3 to descriptive and puts the 3B escalation decision
+on the table (Kyle's call — both subjects are null, the pre-registered trigger).
+
+### Qwen2.5-0.5B-Instruct — NULL (0/6)
+
+| Distribution | J-lens pass@10 | Wilson 95% | Logit-lens (J=I) | J−logit (Newcombe 95%) | Arm 2 |
+|---|---|---|---|---|---|
+| association | 0/99 | [.000, .037] | 0/99 | +.000 [−.037, +.037] | no gap |
+| multihop | 35/94 (37.2%) | [.281, .473] | 27/94 (28.7%) | +.085 [−.049, +.215] | no gap |
+| multilingual | 149/414 (36.0%) | [.315, .407] | 63/414 (15.2%) | **+.208 [+.149, +.265]** | **J-advantage** |
+| order-ops | 36/109 (33.0%) | [.249, .423] | 34/109 (31.2%) | +.018 [−.104, +.140] | no gap |
+| poetry | 0/98 | [.000, .038] | 0/98 | +.000 [−.038, +.038] | no gap |
+| typo | 47/96 (49.0%) | [.392, .588] | 6/96 (6.3%) | **+.427 [+.309, +.531]** | **J-advantage** |
+
+### Qwen2.5-1.5B-Instruct — NULL (0/6)
+
+| Distribution | J-lens pass@10 | Wilson 95% | Logit-lens (J=I) | J−logit (Newcombe 95%) | Arm 2 |
+|---|---|---|---|---|---|
+| association | 0/99 | [.000, .037] | 0/99 | +.000 [−.037, +.037] | no gap |
+| multihop | 51/94 (54.3%) | [.442, .640] | 41/94 (43.6%) | +.106 [−.036, +.243] | no gap |
+| multilingual | 155/414 (37.4%) | [.329, .422] | 130/414 (31.4%) | +.060 [−.004, +.124] | no gap |
+| order-ops | 39/109 (35.8%) | [.274, .451] | 48/109 (44.0%) | −.083 [−.208, +.047] | no gap |
+| poetry | 1/98 (1.0%) | [.002, .056] | 3/98 (3.1%) | −.020 [−.077, +.029] | no gap |
+| typo | 17/96 (17.7%) | [.114, .265] | 43/96 (44.8%) | **−.271 [−.389, −.141]** | **reversed** |
+
+### What the structure of the null says (descriptive, no gate claims)
+
+- **The two abstract-content distributions are hard zeros at both scales**
+  (association: the unnamed evoked concept; poetry: the planned rhyme word read
+  at the end of couplet line 1). Whatever these small models do on such prompts,
+  it is not readable as a rank-≤10 token at any layer under either lens.
+- **Surface-adjacent content is partially readable but below the bar** —
+  multihop climbs with scale (37% → 54%; the 1.5B point estimate crosses 0.5 but
+  its Wilson LB of .442 does not), multilingual and order-ops sit in the mid-30s.
+- **The J-advantage inverts with scale.** At 0.5B the Jacobian correction adds
+  large, CI-clean value on typo (+43pp) and multilingual (+21pp). At 1.5B the
+  logit lens improves dramatically (typo 6% → 45%, multilingual 15% → 31%,
+  order-ops 31% → 44%) while the J-lens does not follow — and on typo the J
+  transport is *significantly worse* than doing nothing (−27pp, CI excludes 0).
+  The average Jacobian at 1.5B appears to transport late-layer surface content
+  *out* of the unembedding's readable directions on that distribution.
+
 ## Deviations table (starter — grows as M0 runs)
 
 | # | Paper / reference | Ours | Why | Status |
 |---|---|---|---|---|
 | 1 | Subjects: Claude Sonnet/Haiku/Opus 4.5 (+ Qwen3.6-27B demo) | Qwen2.5 0.5B + 1.5B Instruct | The whole thesis: is the workspace readable at laptop scale? | Owned, by design |
-| 2 | Fit corpus: 1000 × 128-token seqs, pretraining-like web text | WikiText-103 via reference loader, N=100 (pending D3) | Wall-clock; §9.3 saturation evidence | Pending D3 |
-| 3 | Hardware: datacenter accelerators | MPS, fp32 | $0/trial constraint | Owned |
-| 4 | Band: derived from CKA + 4 diagnostics per model | Proportional transplant 38–92% + descriptive diagnostics (pending D2) | Forking-paths guard at small N | Pending D2 |
-| 5 | Stimuli: used as shipped | Single-token pre-filter under Qwen tokenizer | Rank-based grading needs single-token targets | Owned, mechanical |
+| 2 | Fit corpus: 1000 × 128-token seqs, pretraining-like web text | WikiText-103 via reference loader, N=100 (D3 frozen) | Wall-clock; §9.3 saturation evidence | Owned |
+| 3 | Hardware: datacenter accelerators | MPS, fp32 (fits *and* readability grading, both subjects — no mixed-device numerics) | $0/trial constraint | Owned |
+| 4 | Band: derived from CKA + 4 diagnostics per model | Proportional transplant 38–92% + descriptive diagnostics (D2 frozen) | Forking-paths guard at small N | Owned |
+| 5 | Stimuli: used as shipped | Single-token pre-filter under Qwen tokenizer (Qwen digit-splits multi-digit numbers, so e.g. `11` drops; 94–100% of intermediates survive per distribution, every cell N ≥ 94) | Rank-based grading needs single-token targets | Owned, mechanical |
+| 6 | Intermediate→token mapping unspecified in released material | Frozen in `readability.py` before any result: rank = min over the single-token forms of {`w`, `␣w`}; order-ops synonym table fixed in code (numbers → digit+word; operations → word+symbol+spoken form) | The paper's eval grading machinery doesn't ship with the reference; the convention had to be ours and pre-declared | Owned, pre-declared 2026-07-15 |
 
 ## What M0 does NOT decide
 
