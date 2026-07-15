@@ -31,14 +31,16 @@ protocols can still be run and measured, but their gates were premised on a
 readable workspace; verdicts become descriptive characterization rather than
 reproduction claims. Each still opens with its own start-of-stage brief.
 
-## Decision now on the table (Kyle's call — pre-registered trigger met)
+## 3B escalation — DECIDED 2026-07-15 (Kyle: option c) — fit in flight
 
-**3B escalation.** KICKOFF decision 2: "escalate to 3B only if BOTH subjects
-null on readability." Both are. Options at next session start: (a) escalate to
-Qwen2.5-3B-Instruct (fit ~12–14 h overnight at measured rates — bracket the
-emergence point); (b) proceed descriptive M1 on current subjects; (c) both.
+KICKOFF decision 2's trigger fired (both subjects null) and Kyle chose (c):
+fit **Qwen2.5-3B-Instruct** overnight while M1's start-of-stage brief is
+written in parallel. Band L14–L32 (proportional rule, 36 layers) frozen and
+merged **before** the run; readability gate queued behind the fit (~15.5 h at
+measured rates → verdict expected 2026-07-16 AM). If 3B READS, M1–M3 run
+measured on 3B; otherwise they stay descriptive on 0.5B/1.5B.
 
-## M1 — Verbal report — not started (re-scoped descriptive pending 3B call)
-## M2 — Two-hop swap — not started (re-scoped descriptive pending 3B call)
-## M3 — Directed modulation — not started (re-scoped descriptive pending 3B call)
+## M1 — Verbal report — brief in progress (scope resolves with the 3B verdict)
+## M2 — Two-hop swap — not started (scope resolves with the 3B verdict)
+## M3 — Directed modulation — not started (scope resolves with the 3B verdict)
 ## Stretch (gated behind v1 close) — generalization, selectivity

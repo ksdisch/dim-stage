@@ -145,6 +145,17 @@ def test_grade_item_min_over_candidate_tokens():
 def test_proportional_band_matches_frozen_table():
     assert readability.proportional_band(24) == list(range(9, 22))
     assert readability.proportional_band(28) == list(range(11, 25))
+    # 3B escalation, pre-registered 2026-07-15: 36 layers -> L14-L32.
+    assert readability.proportional_band(36) == list(range(14, 33))
+
+
+def test_frozen_bands_table_is_the_d2_rule():
+    # Every frozen entry must be exactly what the D2 rule computes — the table
+    # exists to catch drift, never to override the rule.
+    import m0_readability_gate
+
+    for n_layers, band in m0_readability_gate.FROZEN_BANDS.items():
+        assert band == readability.proportional_band(n_layers)
 
 
 def test_expected_counts_guard(tmp_path):

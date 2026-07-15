@@ -55,3 +55,36 @@ so measurements never share the GPU with a fit.
 deadline).** The 1.5B fit and all gate runs were queued strictly
 back-to-back: MPS interleaves rather than parallelizes, and memory pressure
 is the repo's documented 25× failure mode.
+
+## 2026-07-15 — 3B escalation (post-M0)
+
+**3B escalation (Kyle) — option (c): overnight 3B fit + M1 brief in
+parallel.** The pre-registered trigger (KICKOFF decision 2: escalate only if
+BOTH subjects null on readability) fired with M0's double NULL. Kyle chose
+(c) over (a) fit-only and (b) descriptive-M1-only. *Why:* a third scale point
+brackets the emergence question on Arm 1 and extends the J-advantage
+inversion trend on Arm 2 — informative even if NULL again; M1's protocol
+extraction is needed on every branch (the brief is written branch-proof:
+measured-on-3B if it READS, descriptive otherwise); the measured ~8% MPS
+slowdown from concurrent docs-only work is free overnight.
+
+**3B band frozen before the run (mechanical application of D2).**
+`proportional_band(36)` = L14–L32 added to `FROZEN_BANDS` (with a
+table-equals-rule test) and merged to main before the fit produced any
+readout — pre-registration, zero new degrees of freedom. Subject is
+**Qwen2.5-3B-Instruct** (the standing Instruct-variant assumption); D3
+corpus (N=100 WikiText), `dim_batch=8`, fp32-on-MPS, and the D4 two-arm gate
+all carry over frozen and unchanged.
+
+**Probe-as-production + sleep guard (Claude).** The machine has 24 GB
+unified memory; 3B fp32 is ~12.4 GB of weights plus the retained backward
+graph — edge-of-feasible, and the documented failure mode is the ~25×
+memory-pressure cliff. So the production fit doubles as the probe: the
+first two prompts' wall-clock is watched against the ~560 s/prompt
+extrapolation (measured 1.5B rate × params ratio × 256/192 backward-pass
+ratio; ≈15.5 h for N=100). Fallback ladder, pre-declared: kill → resume
+from checkpoint at `dim_batch=4` (math-neutral; the checkpoint stores no
+dim_batch) → if still pressured, stop and surface the ~$1 rented-GPU
+fallback (amended bar entry 2) to Kyle before any spend. Overnight runs are
+wrapped in `caffeinate -ims` so the Mac cannot idle-sleep mid-fit; laptop
+stays plugged in.
