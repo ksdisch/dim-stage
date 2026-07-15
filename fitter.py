@@ -396,8 +396,13 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    device = "mps" if torch.backends.mps.is_available() else "cpu"
-    print(f"loading {args.model_id} (fp32, {device})")
+    if torch.cuda.is_available():
+        device = "cuda"  # the rented-GPU fallback path (DECISIONS.md 2026-07-15)
+    elif torch.backends.mps.is_available():
+        device = "mps"
+    else:
+        device = "cpu"
+    print(f"loading {args.model_id} (fp32, {device}, torch {torch.__version__})")
     hf = transformers.AutoModelForCausalLM.from_pretrained(
         args.model_id, dtype=torch.float32
     ).to(device)

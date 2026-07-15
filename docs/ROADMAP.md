@@ -34,11 +34,15 @@ reproduction claims. Each still opens with its own start-of-stage brief.
 ## 3B escalation — DECIDED 2026-07-15 (Kyle: option c) — fit in flight
 
 KICKOFF decision 2's trigger fired (both subjects null) and Kyle chose (c):
-fit **Qwen2.5-3B-Instruct** overnight while M1's start-of-stage brief is
-written in parallel. Band L14–L32 (proportional rule, 36 layers) frozen and
-merged **before** the run; readability gate queued behind the fit (~15.5 h at
-measured rates → verdict expected 2026-07-16 AM). If 3B READS, M1–M3 run
-measured on 3B; otherwise they stay descriptive on 0.5B/1.5B.
+fit **Qwen2.5-3B-Instruct** while M1's start-of-stage brief is written in
+parallel. Band L14–L32 (proportional rule, 36 layers) frozen and merged
+**before** the run. Local MPS then proved infeasible for 3B fp32 (the ~25×
+working-set cliff at every dim_batch — probe story in `DECISIONS.md`), so
+per the pre-declared fallback the **fit runs on a rented CUDA box**
+(`remote-fit-3b.sh`, ~$1–3, Kyle's account); the readability gate is
+auto-queued locally and fires when the lens lands in `lenses/`. If 3B
+READS, M1–M3 run measured on 3B; otherwise they stay descriptive on
+0.5B/1.5B.
 
 ## M1 — Verbal report — start-of-stage brief on file (`M1-BRIEF.md`)
 
