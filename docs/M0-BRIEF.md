@@ -311,15 +311,29 @@ convergence diagnostic (`max_d_mean`, the relative shift in the running mean per
 added prompt) was still ≈ 7% at prompt 16 — supporting D3's choice to fit the
 production lens at N=100 rather than stopping at 16.
 
+## Readability gate result (deliverables 5 + 6) — RUNS QUEUED
+
+Machinery merged in PR #4; official runs queued behind the 1.5B lens fit (no MPS
+contention — even CPU-side work measurably slowed the fit ~8%). Chain: real-input
+wrong-arm dry-run (0.5B model + 1.5B lens must exit INVALID or everything aborts)
+→ official 0.5B gate → official 1.5B gate. This section gets the two verdict
+tables when they land; results JSONs are committed under `results/`.
+
+| Subject | Arm 1 (READS iff ≥3/6 distributions at Wilson LB ≥ 0.5, pass@10) | Arm 2 (J-advantage per distribution) |
+|---|---|---|
+| Qwen2.5-0.5B-Instruct | SLOT_05B_ARM1 | SLOT_05B_ARM2 |
+| Qwen2.5-1.5B-Instruct | SLOT_15B_ARM1 | SLOT_15B_ARM2 |
+
 ## Deviations table (starter — grows as M0 runs)
 
 | # | Paper / reference | Ours | Why | Status |
 |---|---|---|---|---|
 | 1 | Subjects: Claude Sonnet/Haiku/Opus 4.5 (+ Qwen3.6-27B demo) | Qwen2.5 0.5B + 1.5B Instruct | The whole thesis: is the workspace readable at laptop scale? | Owned, by design |
-| 2 | Fit corpus: 1000 × 128-token seqs, pretraining-like web text | WikiText-103 via reference loader, N=100 (pending D3) | Wall-clock; §9.3 saturation evidence | Pending D3 |
-| 3 | Hardware: datacenter accelerators | MPS, fp32 | $0/trial constraint | Owned |
-| 4 | Band: derived from CKA + 4 diagnostics per model | Proportional transplant 38–92% + descriptive diagnostics (pending D2) | Forking-paths guard at small N | Pending D2 |
-| 5 | Stimuli: used as shipped | Single-token pre-filter under Qwen tokenizer | Rank-based grading needs single-token targets | Owned, mechanical |
+| 2 | Fit corpus: 1000 × 128-token seqs, pretraining-like web text | WikiText-103 via reference loader, N=100 (D3 frozen) | Wall-clock; §9.3 saturation evidence | Owned |
+| 3 | Hardware: datacenter accelerators | MPS, fp32 (fits *and* readability grading, both subjects — no mixed-device numerics) | $0/trial constraint | Owned |
+| 4 | Band: derived from CKA + 4 diagnostics per model | Proportional transplant 38–92% + descriptive diagnostics (D2 frozen) | Forking-paths guard at small N | Owned |
+| 5 | Stimuli: used as shipped | Single-token pre-filter under Qwen tokenizer (Qwen digit-splits multi-digit numbers, so e.g. `11` drops; 94–100% of intermediates survive per distribution, every cell N ≥ 94) | Rank-based grading needs single-token targets | Owned, mechanical |
+| 6 | Intermediate→token mapping unspecified in released material | Frozen in `readability.py` before any result: rank = min over the single-token forms of {`w`, `␣w`}; order-ops synonym table fixed in code (numbers → digit+word; operations → word+symbol+spoken form) | The paper's eval grading machinery doesn't ship with the reference; the convention had to be ours and pre-declared | Owned, pre-declared 2026-07-15 |
 
 ## What M0 does NOT decide
 
