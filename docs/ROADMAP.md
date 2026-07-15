@@ -40,7 +40,13 @@ merged **before** the run; readability gate queued behind the fit (~15.5 h at
 measured rates → verdict expected 2026-07-16 AM). If 3B READS, M1–M3 run
 measured on 3B; otherwise they stay descriptive on 0.5B/1.5B.
 
-## M1 — Verbal report — brief in progress (scope resolves with the 3B verdict)
+## M1 — Verbal report — start-of-stage brief on file (`M1-BRIEF.md`)
+
+Decisions D5–D8 pending Kyle; the intervention build starts after they freeze.
+Measurement mode (measured-on-3B vs all-descriptive) resolves with the 3B
+verdict. Design extraction done 2026-07-15: swap + steering operators verbatim
+from the paper; **the reference ships no intervention code**, so M1's
+correctness gate is pre-committed invariants (D6), not an AGREE diff.
 ## M2 — Two-hop swap — not started (scope resolves with the 3B verdict)
 ## M3 — Directed modulation — not started (scope resolves with the 3B verdict)
 ## Stretch (gated behind v1 close) — generalization, selectivity
