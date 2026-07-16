@@ -153,3 +153,66 @@ discharged: trigger met (double null) → escalated → 3B fitted at the frozen
 band → **NULL**. Three scales (0.5B, 1.5B, 3B), pre-registered bar,
 deterministic oracle, structured null. No emergence point exists in the
 reachable range; M1–M3 are descriptive on all three subjects.
+
+## 2026-07-16 — M1
+
+**D5 (Kyle) — Trial-set and readout conventions.** The reference-faithful
+package: chat-template prompts (`apply_chat_template`, generation prompt
+appended); readout at the final prompt token (M0 precedent, the analog of
+the paper's `Assistant:` colon); swap-out = the greedy next token there;
+swap-in trials = first 10 listed candidates per category, skipping the
+spontaneous answer, graded only where the candidate's baseline rank ≥ 11
+(the anchor's exclusion); candidates must pass the M0 single-token filter;
+steering scale = per-layer mean L2 residual norm over the frozen D3 fit
+corpus. *Why:* every choice is cited or inherits an M0-frozen convention —
+like-for-like with the paper's 88% top-5 anchor; the trade-off (N shrinks
+below the maximal 140) is owned.
+
+**D6 (Kyle) — Correctness gate = pre-committed invariants.** No reference
+intervention code exists (verified 2026-07-15), so no AGREE diff is
+possible. The gate, merged before any real run (`test_intervention.py`):
+(1) rigged-subject analytic oracle — a tiny model with an exactly-known
+Jacobian where every post-patch logit is hand-computed and asserted with
+exact equality; (2) coordinate read-back — c′ = σ(c) and the component
+orthogonal to span{v_s, v_t} unchanged; (3) null-ops — α=0 steering and
+s=t swaps change nothing, exactly; plus a guard that the implementation
+equals the paper's literal V(σ(c)−c) form on random tensors. The
+measurement runner will repeat the read-back as a runtime self-check on
+real subjects. *Why:* machine-checkable and pre-committed; catches the
+sign/transpose/normalization bugs that would silently fake a null.
+
+**D7 (Kyle) — Two-arm verdict, wording frozen before any result.** Arm 1
+(would gate in measured mode): per eligible trial, hit iff the swapped-in
+candidate reaches **top-5** at the readout position; Wilson 95% LB ≥ 0.5
+pooled over eligible trials ⇒ "verbal report tracks the workspace". Arm 2
+(never gates): every swap repeated with raw unembedding rows (J = I) — the
+standing falsification arm; Newcombe 95% CI on the difference, testing
+whether M0's J-transport reversal holds for *writing*, not just reading.
+Rank-1 and top-10 reported descriptively. All three subjects are NULL on
+readability, so M1 runs entirely descriptive: identical numbers, the
+pre-declared characterization framing, no property claims either way.
+*Why:* mirrors D4; top-5 is the anchor's own grading.
+
+**D8 (Kyle) — Introspection arm in, descriptive-first.** Protocol 2 runs on
+every subject at strengths α ∈ {0, 0.5, 1, 2, 4, 8} (mean-residual-norm
+units; 0 = the README's control); `default` prefill primary, `word`
+descriptive; MRR-vs-strength and report rate with Wilson CIs; never gates
+M1's verdict. *Why:* the steering operator is required for M3 anyway —
+validating it under D6 now is free leverage; the strength grid is an owned
+convention (the paper sweeps but doesn't publish its grid).
+
+**v_t construction (Claude, pre-declared before any run).** `v_t = J_lᵀu_t`
+with `u_t` = the raw `lm_head.weight` row — the literal reading of the
+paper's "row of the unembedding matrix", consistent with the README's
+"transpose row" (a row of U·J_l). Qwen's final RMSNorm has an elementwise
+scale γ sitting between the residual and that matrix; it is NOT folded into
+u_t — folding it is an uncited variant. M1-BRIEF deviations row 7.
+
+**Swap implemented through the identity (c_t − c_s)(v_s − v_t) (Claude).**
+Algebraically equal to the paper's `V(σ(c) − c)` (σ(c) − c = (c_t − c_s)·
+[1, −1]) and asserted against the literal pseudoinverse form on random
+tensors in the D6 gate; it makes s = t an exact no-op (v_s − v_t is exactly
+zero) instead of a degenerate solve. Coordinates come from the closed-form
+2×2 normal equations — exact for two columns, and free of `torch.linalg`
+kernels MPS doesn't fully cover; (near-)parallel direction pairs are
+rejected loudly rather than solved badly.
