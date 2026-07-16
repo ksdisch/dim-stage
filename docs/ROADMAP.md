@@ -51,13 +51,17 @@ finding this project could produce (an emergence point) was searched for at
 the one extra scale we can reach, and it is not there. Full 3B table +
 three-scale structure in `M0-BRIEF.md`.
 
-## M1 — Verbal report — start-of-stage brief on file (`M1-BRIEF.md`)
+## M1 — Verbal report — IN PROGRESS (D5–D8 frozen 2026-07-16)
 
-Decisions D5–D8 pending Kyle; the intervention build starts after they freeze.
-Measurement mode is **resolved to all-descriptive** (3B null → no subject READS,
-so no measured-mode branch applies). Design extraction done 2026-07-15: swap +
-steering operators verbatim from the paper; **the reference ships no intervention
-code**, so M1's correctness gate is pre-committed invariants (D6), not an AGREE diff.
+D5–D8 frozen 2026-07-16 (Kyle — all four recommendations; `M1-BRIEF.md`
+"Frozen decisions" + `DECISIONS.md`). Measurement mode is **resolved to
+all-descriptive** (3B null → no subject READS, so no measured-mode branch
+applies). The intervention module (`intervention.py`: J-lens vectors, swap,
+steering, band-edit hooks) and the D6 invariant gate (`test_intervention.py`)
+are in — the gate replaces M0's AGREE diff because **the reference ships no
+intervention code** (design extraction 2026-07-15, operators verbatim from
+the paper). Next: the verbal-report runner (protocol 1), then the
+introspection runner (protocol 2, per D8).
 ## M2 — Two-hop swap — not started (descriptive, per the triple null)
 ## M3 — Directed modulation — not started (descriptive, per the triple null)
 ## Stretch (gated behind v1 close) — generalization, selectivity

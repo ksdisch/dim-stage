@@ -1,7 +1,9 @@
 # M1 start-of-stage brief — verbal report
 
-*2026-07-15 · status: options presented, decisions pending Kyle; measurement mode
-resolves with the 3B readability verdict (due 2026-07-16 AM)*
+*2026-07-15 · status: **D5–D8 frozen 2026-07-16** (Kyle — all four
+recommendations; see "Frozen decisions"). Mode resolved **all-descriptive**
+by the 3B NULL. Intervention module + D6 gate: `intervention.py` +
+`test_intervention.py`; measurement runners next.*
 *Sources: the paper (`refs/workspace-paper.md`, §"The J-space supports verbal report",
 §"Technical details of J-lens use cases") and the reference repo's experiment data
 (`refs/jacobian-lens/data/experiments/README.md`, `verbal-report.json`,
@@ -155,6 +157,8 @@ Wilson/Newcombe numbers, but the headline claim is *characterization*
 - **3B NULL** → all subjects descriptive; D7's gate text still freezes *now* so
   the descriptive/measured wording isn't chosen after seeing results.
 
+**Resolved 2026-07-16: 3B is NULL (0/6) — all subjects run descriptive.**
+
 ## Decisions to freeze (Kyle picks each)
 
 ### D5 — Trial-set and readout conventions (the unspecified parts, frozen before any run)
@@ -254,6 +258,7 @@ readout position. Costs nothing to change before coding starts.
 | 4 | (implicit) intervention code validated in-house | No reference oracle exists → D6 invariants instead of an AGREE gate | Reference ships data only | Owned, pre-declared |
 | 5 | Introspection n=100 concepts (figure) | 101 shipped concepts, minus tokenizer drops | Use the data as shipped | Owned, mechanical |
 | 6 | Mean-residual-norm corpus unspecified | Frozen D3 fit corpus (N=100 WikiText) | Deterministic, already frozen | Owned, pre-declared |
+| 7 | v_t: "row of the unembedding matrix" (norm details of Claude's stack unstated) | Raw `lm_head.weight` row; Qwen's final-RMSNorm scale γ not folded in | Literal formula reading; γ-folding is an uncited variant | Owned, pre-declared |
 
 ## Wall-clock plan (from measured M0 rates; forward passes only — no fitting)
 
@@ -273,5 +278,24 @@ Serial GPU discipline unchanged: no M1 run shares the machine with a fit.
 
 ## Frozen decisions
 
-*Pending Kyle. D5–D8 will be recorded here and in `DECISIONS.md` when picked;
-relitigating after that is a deviation row, not a conversation.*
+*Frozen 2026-07-16 (Kyle) — all four recommendations, recorded here and in
+`DECISIONS.md`. Relitigating after this is a deviation row, not a
+conversation.*
+
+- **D5 = A** — reference-faithful package: chat-template prompts;
+  final-prompt-token readout; greedy swap-out; first-10 candidates with
+  baseline rank ≥ 11 and the M0 single-token filter; steering scale from the
+  frozen D3 corpus.
+- **D6 = A** — pre-committed invariants, merged before any run
+  (`test_intervention.py`): rigged analytic oracle, coordinate read-back,
+  null-ops, literal-formula agreement.
+- **D7 = A** — two-arm verdict: Arm 1 top-5 (Wilson LB ≥ 0.5 wording frozen;
+  descriptive framing applies — triple NULL), Arm 2 J = I falsification
+  (Newcombe). Rank-1 / top-10 descriptive.
+- **D8 = A** — introspection in, descriptive-first: α ∈ {0, 0.5, 1, 2, 4, 8},
+  `default` prefill primary, never gates.
+
+Implementation conventions recorded alongside (DECISIONS.md 2026-07-16):
+v_t from the raw `lm_head.weight` row (deviations row 7); swap via the
+identity (c_t − c_s)(v_s − v_t) with s = t an exact no-op; closed-form 2×2
+coordinate solve, (near-)parallel pairs rejected.
