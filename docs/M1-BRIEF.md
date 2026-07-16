@@ -1,9 +1,9 @@
 # M1 start-of-stage brief — verbal report
 
-*2026-07-15 · status: **D5–D8 frozen 2026-07-16** (Kyle — all four
-recommendations; see "Frozen decisions"). Mode resolved **all-descriptive**
-by the 3B NULL. Intervention module + D6 gate: `intervention.py` +
-`test_intervention.py`; measurement runners next.*
+*2026-07-15 · status: **COMPLETE 2026-07-16** — D5–D8 frozen (Kyle, all four
+recommendations; see "Frozen decisions"), mode all-descriptive (3B NULL),
+both protocols measured on all three subjects. Results sections below;
+headline in `ROADMAP.md`; outcomes recorded in `DECISIONS.md`.*
 *Sources: the paper (`refs/workspace-paper.md`, §"The J-space supports verbal report",
 §"Technical details of J-lens use cases") and the reference repo's experiment data
 (`refs/jacobian-lens/data/experiments/README.md`, `verbal-report.json`,
@@ -301,6 +301,50 @@ Descriptive reading (no property claims — triple readability NULL, D7):
   `Be` at 3B) — the final-prompt-token readout (deviations row 2) meets
   small-model tokenization honestly: the swap-out is whatever token the model
   actually had ready.
+
+## Results — verbal introspection (protocol 2; all subjects, descriptive) — 2026-07-16
+
+Runner: `m1_introspection.py` (README steering convention at every band layer
+over the question turn; D8 grid; α = 0 control computed once per prefill).
+JSONs in `results/introspection-*.json`. Anchors: Claude reports the injected
+thought on a majority of trials at the best strength (**0.54** cited); MRR
+rises with strength then saturates (Figure 7, n = 100). All 101 concepts
+survive the single-token pre-filter on Qwen's tokenizer (dropped = 0).
+
+Report rate (rank-1 of the steered concept at the open quote; `default`
+prefill — `word` tracks it within a few hits everywhere):
+
+| α (mean-norm units) | 0.5B | 1.5B | 3B |
+|---|---|---|---|
+| 0 (control) | 0/101 | 0/101 | 0/101 |
+| 0.5 | 0/101 | 7/101 | 2/101 |
+| 1 | 0/101 | 16/101 | 2/101 |
+| 2 | 0/101 | 23/101 | 4/101 |
+| 4 | 0/101 | 26/101 | 4/101 |
+| 8 | 0/101 | **30/101 = .297 [.217, .392]** | 5/101 = .050 [.021, .111] |
+
+Descriptive reading (never gates — D8; no property claims — D7):
+
+- **The project's first dose–response curve.** At 1.5B the report rate rises
+  monotonically with strength, 0 → 30/101, the qualitative shape of the
+  paper's Figure 7 at roughly a third of Claude's best rate; at α = 8 the
+  *median* steered concept sits at rank 15 and 46/101 reach the top-10.
+- **The α = 0 control is exactly 0/101 on every subject** — no steered word is
+  ever the model's unprompted answer at the open quote, so the 1.5B curve
+  cannot be an artifact of the prompt begging for those words.
+- **Non-monotone in scale, again.** 0.5B is flat zero at every strength; 3B
+  rises to only 5/101. The 1.5B–3B gap at α = 8 is CI-clean
+  ([.217, .392] vs [.021, .111]) — the strongest descriptive contrast M1
+  produced, echoing M0's multihop peak-at-1.5B-then-regress.
+- **Steering moves ranks everywhere; only 1.5B converts movement into
+  reports.** Median rank, control → α = 8: 3747 → 1322 at 0.5B (~3×),
+  4430 → 15 at 1.5B (~300×), 3791 → 382 at 3B (~10×). The operator works on
+  every subject; what differs is whether the moved concept reaches the
+  model's actual report.
+- **The two protocols dissociate.** Same band, same J-lens vectors: swapping
+  the ready answer barely moves the report anywhere, while steering during
+  the question makes the concept reportable at 1.5B. "Interventions fail at
+  small scale" would be a false summary; the honest one is protocol-shaped.
 
 ## What M1 does NOT decide
 

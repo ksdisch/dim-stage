@@ -51,19 +51,24 @@ finding this project could produce (an emergence point) was searched for at
 the one extra scale we can reach, and it is not there. Full 3B table +
 three-scale structure in `M0-BRIEF.md`.
 
-## M1 — Verbal report — IN PROGRESS (D5–D8 frozen 2026-07-16)
+## M1 — Verbal report — **COMPLETE 2026-07-16** (descriptive; triple-null re-scope)
 
-D5–D8 frozen 2026-07-16 (Kyle — all four recommendations; `M1-BRIEF.md`
-"Frozen decisions" + `DECISIONS.md`). Measurement mode is **resolved to
-all-descriptive** (3B null → no subject READS, so no measured-mode branch
-applies). The intervention module (`intervention.py`: J-lens vectors, swap,
-steering, band-edit hooks) and the D6 invariant gate (`test_intervention.py`)
-are in — the gate replaces M0's AGREE diff because **the reference ships no
-intervention code** (design extraction 2026-07-15, operators verbatim from
-the paper). **Verbal report measured on all three subjects (descriptive,
-2026-07-16):** swap→report top-5 sits at .105–.175 everywhere (anchor: .88),
-J − I never CI-clean — table in `M1-BRIEF.md`. Next: the introspection
-runner (protocol 2, per D8), then stage close.
+All deliverables closed in three PRs (#10 operators + D6 gate + D5–D8 freeze,
+#11 verbal-report runner + results, #12 introspection + stage close):
+
+| Deliverable | Outcome |
+|---|---|
+| D5–D8 frozen | 2026-07-16, Kyle — all four recommendations (`DECISIONS.md`) |
+| Intervention module + D6 gate | `intervention.py` + pre-committed invariants (rigged analytic oracle, exact equality; the reference ships **no** intervention code, so invariants replace the AGREE diff); runtime read-back silent across every real swap |
+| Verbal report (swap), all subjects | Top-5 **.175 / .124 / .105** (0.5B/1.5B/3B) vs the paper's **.88** Claude anchor — the report does not follow the swap; Arm-2 J − I Newcombe CIs all straddle zero |
+| Verbal introspection (steer), all subjects | **The project's first dose–response curve:** 1.5B report rate rises 0 → **30/101 (.297 [.217, .392])** with strength, α = 0 control exactly 0/101 everywhere; 0.5B flat zero; 3B only 5/101 — the 1.5B–3B gap is CI-clean |
+
+**Headline:** writing the workspace mostly fails to move the spoken report at
+these scales — except that a *steered-in* thought becomes reportable at 1.5B
+specifically, with a clean control and a monotone strength curve. The
+J-transport adds no CI-clean value for writing anywhere (M0's Arm-2 story,
+repeated). Non-monotone scale structure again: 1.5B, not 3B, is where the
+phenomenon lives. All framing descriptive per the pre-registered re-scope.
 ## M2 — Two-hop swap — not started (descriptive, per the triple null)
 ## M3 — Directed modulation — not started (descriptive, per the triple null)
 ## Stretch (gated behind v1 close) — generalization, selectivity
