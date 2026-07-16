@@ -107,10 +107,17 @@ with no mention-priming and no white-bear effect (nothing enters the
 workspace uninstructed to suppress) — and at 3B the phenomenon is read
 *better without* the Jacobian transport. All framing descriptive.
 
-## v1 core-three status
+## v1 — CLOSED 2026-07-16
 
-**All three properties measured on all three subjects (2026-07-16).** The
-KICKOFF "v1 done" list now lacks only the README honesty contract (the
-final write-up pass); stretch items (generalization, selectivity) remain
-gated behind that close.
+**All three properties measured on all three subjects (2026-07-16)**, and the
+final KICKOFF "v1 done" item — the README honesty contract — shipped as the
+top-level `README.md` (the synthesis of all four milestone verdicts under the
+standing frame; Kyle signed off on framing before merge). Every "v1 done means"
+line in `KICKOFF.md` is now discharged.
+
 ## Stretch (gated behind v1 close) — generalization, selectivity
+
+v1 is closed, so the gate is open — but stretch work is a **new scope decision
+for Kyle, not a default**: generalization (needs N≈200/arm — free but slow),
+selectivity, and/or any follow-up on the 1.5B introspection dose–response.
+Nothing is scheduled until he picks.
