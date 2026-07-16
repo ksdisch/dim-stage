@@ -86,5 +86,15 @@ answer at these scales — but where it works at all (3B), it works *only
 through the Jacobian transport*: raw unembedding rows flip nothing. The swap
 disturbs chains (~40% displaced) far more often than it redirects them.
 All framing descriptive per the pre-registered re-scope.
-## M3 — Directed modulation — not started (descriptive, per the triple null)
+## M3 — Directed modulation — start-of-stage brief on file (`M3-BRIEF.md`)
+
+Decisions D12–D14 pending Kyle; the runner build starts after they freeze.
+Design extraction done 2026-07-16: a **reading** milestone (the modulation is
+the instruction; the lens only reads — M1-D8's "steering required for M3"
+rationale was wrong and is owned in the brief). Two shipped families
+(category-instance, math-expression), four instruction groups collapsing to
+focus/control/suppress + a constructed no-instruction baseline; grading =
+target reaches J-lens top-1 at any (layer, position); anchor = baseline ≈ 0
+(KICKOFF row; Figure 10 rates are figure-only). Line-width family unshipped.
+Descriptive, per the triple null.
 ## Stretch (gated behind v1 close) — generalization, selectivity
