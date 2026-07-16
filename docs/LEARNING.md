@@ -240,3 +240,60 @@ time, the entire effect.
 12. The answer-swap arm flips twice the intermediate rate at 0.5B but equals
     it at 3B. Which confound was that arm built to probe, and why is our
     single-band version weaker evidence than the paper's layer-range sweep?
+
+## M3 — directed modulation (2026-07-16)
+
+### The one-paragraph story
+
+M3 asked whether the model can steer its own workspace **on command**: told
+to think about citrus fruits (or to ignore them) while copying an unrelated
+sentence, does *orange* surface in the lens over text that gives it no
+reason to appear? This is a **reading** milestone — the modulation is the
+instruction; no activations are edited — which also meant owning a
+correction: M1-D8's claim that M3 needed the steering operator was wrong.
+The frozen verdict came back "does not modulate" on all three subjects
+(math content never surfaces, and the gate needs both families), but the
+inside of that verdict is the most paper-shaped structure the project has
+produced: on concrete category content the signal is **ordered exactly as
+the paper describes** (focus ≫ mention ≈ suppress ≈ baseline ≈ 0), CI-clean
+at 1.5B and 3B, growing CI-cleanly with scale — and, at 3B, read almost
+twice as well by the *plain logit lens* as by the J-lens.
+
+### What was learned
+
+18. **A frozen gate can say "no" while the data says "something."** The
+    both-families wording was frozen before any run; math's hard zero makes
+    the verdict "does not modulate" even though the category family shows
+    the paper's exact ordering with CI-clean contrasts. Both facts get
+    reported — the gate verdict AND the structure inside it — and neither
+    edits the other after the fact. That is what pre-registration buys: the
+    interesting cell can't quietly become the gate.
+19. **An effect can reproduce while its instrument choice inverts.** The
+    modulation ordering reproduces qualitatively; but at 3B the J-lens is
+    the *worse* reader of it (9/110 vs the logit lens's 19/110, CI-clean).
+    The paper's claim is about the J-space specifically; at our scales the
+    instructed content sits somewhere the raw unembedding reads more
+    directly. Keeping the J = I arm on every reading experiment is what
+    made this visible at all.
+20. **Some phenomena have preconditions, and small models can fail the
+    precondition rather than the phenomenon.** The white-bear effect needs
+    thoughts that intrude uninstructed — but our baselines and suppress
+    cells are all ≈ 0: nothing enters the workspace on its own, so there is
+    nothing for suppression to visibly fail at. "No white-bear effect" here
+    means the *setup* for it doesn't arise, not that the effect was tested
+    and absent. Distinguishing those two readings is the difference between
+    a null and a non-test.
+
+### Recall questions (answers in this repo's docs)
+
+13. M3's would-gate says "does not modulate" on every subject, yet the brief
+    calls the category-family result "the most paper-shaped structure the
+    project has produced." How are both statements true at once, and which
+    frozen decision keeps them from contradicting?
+14. At 3B the logit lens reads the focused concept on 19/110 trials against
+    the J-lens's 9/110, with the difference CI-clean. Why does this
+    *strengthen* rather than undermine the case for keeping a J = I arm on
+    every experiment — and what does it say about where instructed content
+    lives at these scales?
+15. Why is "no white-bear effect" at these scales a non-test rather than a
+    null result — what precondition of the effect never arises?
