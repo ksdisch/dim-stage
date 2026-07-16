@@ -268,6 +268,40 @@ introspection ~101 × 6 strengths + control ≈ ~700 forwards. Even at 3B this i
 minutes-to-an-hour per subject on MPS — nothing here needs an overnight slot.
 Serial GPU discipline unchanged: no M1 run shares the machine with a fit.
 
+## Results — verbal report (protocol 1; all subjects, descriptive) — 2026-07-16
+
+Runner: `m1_verbal_report.py` (D5 trial rules; D6 runtime read-back verified on
+every swap application; both D7 arms). JSONs in `results/verbal-report-*.json`.
+The anchor: Claude Sonnet 4.5 reaches **88%** top-5 (Figure 8).
+
+| Subject | n eligible | J-lens top-5 (Wilson 95%) | J = I top-5 | J − I diff (Newcombe 95%) | rank-1 J / I | top-10 J / I |
+|---|---|---|---|---|---|---|
+| 0.5B | 97 | 17/97 = **.175** [.112, .263] | 13/97 = .134 | +.041 [−.062, +.144] | 3 / 7 | 21 / 15 |
+| 1.5B | 89 | 11/89 = **.124** [.070, .208] | 8/89 = .090 | +.034 [−.060, +.129] | 4 / 5 | 17 / 12 |
+| 3B | 86 | 9/86 = **.105** [.056, .187] | 10/86 = .116 | −.012 [−.109, +.086] | 6 / 9 | 16 / 17 |
+
+Descriptive reading (no property claims — triple readability NULL, D7):
+
+- **The report does not follow the swap at these scales.** Every Wilson upper
+  bound sits below .27 — a fifth of the anchor. Point estimates decline with
+  scale (.175 → .124 → .105) but the CIs overlap heavily, so no scale trend
+  is claimed.
+- **J-transport adds no measurable value for writing.** No Newcombe CI
+  excludes zero, and at 3B the point estimate goes negative — M0's Arm-2
+  story (J ≈ I at best, by 1.5B) repeats for interventions. At rank-1 the raw
+  unembedding rows beat the J-lens vectors at all three scales (7/5/9 vs
+  3/4/6) — descriptive only.
+- **Exclusion texture** (of the 140 maximal trials): `no_single_token` = 15 at
+  every scale (one shared tokenizer); spontaneous-answer skips 7–9;
+  `baseline_top10` exclusions grow with scale (21 → 28 → 30) — bigger models
+  spread more probability onto the listed candidates, shrinking the eligible
+  set the paper's rank-≥-11 rule leaves behind.
+- **Small-model answers are often word fragments.** Several greedy swap-outs
+  are the first token of a multi-token word (`App`, `Basket` at 0.5B; `Arch`,
+  `Be` at 3B) — the final-prompt-token readout (deviations row 2) meets
+  small-model tokenization honestly: the swap-out is whatever token the model
+  actually had ready.
+
 ## What M1 does NOT decide
 
 - M2 (probe-swap) / M3 (directed-modulation) protocol details — own briefs;

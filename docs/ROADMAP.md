@@ -60,8 +60,10 @@ applies). The intervention module (`intervention.py`: J-lens vectors, swap,
 steering, band-edit hooks) and the D6 invariant gate (`test_intervention.py`)
 are in — the gate replaces M0's AGREE diff because **the reference ships no
 intervention code** (design extraction 2026-07-15, operators verbatim from
-the paper). Next: the verbal-report runner (protocol 1), then the
-introspection runner (protocol 2, per D8).
+the paper). **Verbal report measured on all three subjects (descriptive,
+2026-07-16):** swap→report top-5 sits at .105–.175 everywhere (anchor: .88),
+J − I never CI-clean — table in `M1-BRIEF.md`. Next: the introspection
+runner (protocol 2, per D8), then stage close.
 ## M2 — Two-hop swap — not started (descriptive, per the triple null)
 ## M3 — Directed modulation — not started (descriptive, per the triple null)
 ## Stretch (gated behind v1 close) — generalization, selectivity
