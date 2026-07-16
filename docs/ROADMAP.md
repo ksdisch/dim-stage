@@ -69,6 +69,14 @@ specifically, with a clean control and a monotone strength curve. The
 J-transport adds no CI-clean value for writing anywhere (M0's Arm-2 story,
 repeated). Non-monotone scale structure again: 1.5B, not 3B, is where the
 phenomenon lives. All framing descriptive per the pre-registered re-scope.
-## M2 — Two-hop swap — not started (descriptive, per the triple null)
+## M2 — Two-hop swap — start-of-stage brief on file (`M2-BRIEF.md`)
+
+Decisions D9–D11 pending Kyle; the runner build starts after they freeze.
+Design extraction done 2026-07-16: the shipped 90-item probe-swap set is the
+Figure 16 experiment; M2 = the **raw J-lens token-vector swap** (anchors:
+54–70% top-1 on 50 prompts across Claude tiers; **60%** on the shipped n=90,
+Sonnet) — the probe decomposition is unshipped and out of KICKOFF scope. No
+new operator code: M1's swap + D6 invariants carry over. Descriptive, per
+the triple null.
 ## M3 — Directed modulation — not started (descriptive, per the triple null)
 ## Stretch (gated behind v1 close) — generalization, selectivity
