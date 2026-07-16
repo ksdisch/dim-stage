@@ -1,0 +1,2869 @@
+{
+ "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+ "lens": "lenses/qwen2.5-0.5b-instruct-n100.pt",
+ "lens_n_prompts": 100,
+ "band": [
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21
+ ],
+ "mode": "descriptive",
+ "protocol": {
+  "grading": "top-1 flip (anchor's grading, D10)",
+  "primary_cell": "baseline-correct items (D9)",
+  "wilson_floor_frozen_wording": 0.5,
+  "min_n": 20
+ },
+ "dropped_single_token_prefilter": [
+  {
+   "name": "bird-color-swan",
+   "missing": [
+    "intermediate"
+   ]
+  },
+  {
+   "name": "bird-country-eagle",
+   "missing": [
+    "swap_to"
+   ]
+  },
+  {
+   "name": "chem-bones-Z",
+   "missing": [
+    "answer",
+    "swap_answer"
+   ]
+  },
+  {
+   "name": "ex-city-currency-Toronto-Mumbai",
+   "missing": [
+    "swap_answer"
+   ]
+  },
+  {
+   "name": "gem-source-pearl",
+   "missing": [
+    "answer"
+   ]
+  },
+  {
+   "name": "organ-location-brain",
+   "missing": [
+    "swap_answer"
+   ]
+  },
+  {
+   "name": "osu-rival-mascot",
+   "missing": [
+    "answer",
+    "swap_answer"
+   ]
+  },
+  {
+   "name": "person-century-lincoln",
+   "missing": [
+    "swap_answer"
+   ]
+  },
+  {
+   "name": "tree-product-oak",
+   "missing": [
+    "answer"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "name": "amazon-language",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "animal-cover-turtle",
+   "category": "animal-cover",
+   "baseline_correct": false,
+   "baseline_greedy": " sc",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 38,
+     "greedy": " ch"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 43,
+     "greedy": " ch"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " sc"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": " sc"
+    }
+   }
+  },
+  {
+   "name": "animal-legs-buffalo2",
+   "category": "animal-legs",
+   "baseline_correct": false,
+   "baseline_greedy": " ",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 39,
+     "greedy": " "
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 35,
+     "greedy": " "
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 38,
+     "greedy": " unknown"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 43,
+     "greedy": " "
+    }
+   }
+  },
+  {
+   "name": "animal-nose-elephant",
+   "category": "animal-nose",
+   "baseline_correct": false,
+   "baseline_greedy": " leg",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 25,
+     "greedy": " leg"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": " leg"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 18,
+     "greedy": " leg"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 11,
+     "greedy": " leg"
+    }
+   }
+  },
+  {
+   "name": "atomic-80-state",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "ionic",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 114,
+     "greedy": "ionic"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 55,
+     "greedy": "ionic"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 40,
+     "greedy": "ionic"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 40,
+     "greedy": "ionic"
+    }
+   }
+  },
+  {
+   "name": "basketball-players",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 9,
+     "greedy": "5"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 9,
+     "greedy": "5"
+    }
+   }
+  },
+  {
+   "name": "beverage-source-wine",
+   "category": "beverage-source",
+   "baseline_correct": true,
+   "baseline_greedy": " grape",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 81,
+     "greedy": " grape"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 119,
+     "greedy": " grape"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": " fruit"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 221,
+     "greedy": " grape"
+    }
+   }
+  },
+  {
+   "name": "bird-time-owl",
+   "category": "bird-time",
+   "baseline_correct": false,
+   "baseline_greedy": " the",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 114,
+     "greedy": " when"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 98,
+     "greedy": " "
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 44,
+     "greedy": " the"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 44,
+     "greedy": " the"
+    }
+   }
+  },
+  {
+   "name": "birthstone-emerald-month",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "3",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": "3"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": "3"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "3"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "3"
+    }
+   }
+  },
+  {
+   "name": "chem-atmosphere-Z",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "8",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "8"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "8"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "8"
+    }
+   }
+  },
+  {
+   "name": "chem-organic-Z",
+   "category": "multihop",
+   "baseline_correct": true,
+   "baseline_greedy": "6",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 5,
+     "greedy": "6"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 5,
+     "greedy": "6"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "8"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": "7"
+    }
+   }
+  },
+  {
+   "name": "chem-photosynthesis-Z",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": "5"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "christmas-season",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 41,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 72,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 56,
+     "greedy": "4"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 52,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "city-state-Philadelphia",
+   "category": "city-state",
+   "baseline_correct": false,
+   "baseline_greedy": " called",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 10,
+     "greedy": " called"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 13,
+     "greedy": " called"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Washington"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " called"
+    }
+   }
+  },
+  {
+   "name": "colosseum-currency",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 20,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 41,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 152,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 1252,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "element-color-gold2",
+   "category": "element-color",
+   "baseline_correct": false,
+   "baseline_greedy": " gold",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 68,
+     "greedy": " gold"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 61,
+     "greedy": " silver"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": " gold"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 10,
+     "greedy": " silver"
+    }
+   }
+  },
+  {
+   "name": "etym-frigg-position",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 6,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "etym-saturn-position",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "etym-wargod-month",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 6,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 6,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "ex-city-capital-Barcelona-Toronto",
+   "category": "city-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Madrid",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 37,
+     "greedy": " Barcelona"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 20,
+     "greedy": " Madrid"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Ottawa"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": " Barcelona"
+    }
+   }
+  },
+  {
+   "name": "ex-city-capital-Lyon-Naples",
+   "category": "city-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Paris",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " Lyon"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 12,
+     "greedy": " Paris"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": " Lyon"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " Paris"
+    }
+   }
+  },
+  {
+   "name": "ex-city-capital-Naples-Barcelona",
+   "category": "city-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Rome",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Madrid"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 3,
+     "greedy": " Rome"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " Naples"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Madrid"
+    }
+   }
+  },
+  {
+   "name": "ex-city-capital-Toronto-Lyon",
+   "category": "city-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Ottawa",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Paris"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 8,
+     "greedy": " Ottawa"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Paris"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Paris"
+    }
+   }
+  },
+  {
+   "name": "ex-city-continent-Toronto-Lyon",
+   "category": "city-continent",
+   "baseline_correct": false,
+   "baseline_greedy": " Canada",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " Canada"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": " Canada"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 27,
+     "greedy": " Canada"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 120,
+     "greedy": " North"
+    }
+   }
+  },
+  {
+   "name": "ex-city-currency-Toronto-Beijing",
+   "category": "city-currency",
+   "baseline_correct": true,
+   "baseline_greedy": " Canadian",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 13,
+     "greedy": " Chinese"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 15,
+     "greedy": " Chinese"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " yuan"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 8,
+     "greedy": " Canadian"
+    }
+   }
+  },
+  {
+   "name": "ex-city-language-Lyon-Naples",
+   "category": "city-language",
+   "baseline_correct": true,
+   "baseline_greedy": " French",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " French"
+    },
+    "intermediate_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Italian"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Italian"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " French"
+    }
+   }
+  },
+  {
+   "name": "ex-element-state-26-8",
+   "category": "element-state",
+   "baseline_correct": false,
+   "baseline_greedy": " a",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 71,
+     "greedy": " iron"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 18,
+     "greedy": " a"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 14,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 20,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "ex-element-state-26-80",
+   "category": "element-state",
+   "baseline_correct": false,
+   "baseline_greedy": " a",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 15,
+     "greedy": " a"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " carbon"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 13,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "ex-element-state-8-26",
+   "category": "element-state",
+   "baseline_correct": false,
+   "baseline_greedy": " a",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": " iron"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 10,
+     "greedy": " a"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "ex-element-state-8-80",
+   "category": "element-state",
+   "baseline_correct": false,
+   "baseline_greedy": " a",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " a"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " a"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "ex-element-state-80-8",
+   "category": "element-state",
+   "baseline_correct": false,
+   "baseline_greedy": " a",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": " a"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": " a"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 20,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 13,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "ex-element-symbol-11-26",
+   "category": "element-symbol",
+   "baseline_correct": true,
+   "baseline_greedy": " Na",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " Iron"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": " H"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Fe"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Fe"
+    }
+   }
+  },
+  {
+   "name": "ex-element-symbol-26-79",
+   "category": "element-symbol",
+   "baseline_correct": false,
+   "baseline_greedy": " H",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 53,
+     "greedy": " Ca"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 38,
+     "greedy": " H"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 328,
+     "greedy": " Fe"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 364,
+     "greedy": " Fe"
+    }
+   }
+  },
+  {
+   "name": "ex-planet-color-third-fourth",
+   "category": "planet-color",
+   "baseline_correct": true,
+   "baseline_greedy": " blue",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 3,
+     "greedy": " blue"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " blue"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " red"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " red"
+    }
+   }
+  },
+  {
+   "name": "ex2-city-capital-Munich",
+   "category": "city-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Berlin",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Tokyo"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": " the"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " Munich"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 10,
+     "greedy": " Munich"
+    }
+   }
+  },
+  {
+   "name": "ex2-city-capital-Osaka",
+   "category": "city-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Tokyo",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 7,
+     "greedy": " Tokyo"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 35,
+     "greedy": " Tokyo"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Berlin"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Berlin"
+    }
+   }
+  },
+  {
+   "name": "ex2-city-continent-Lima",
+   "category": "city-continent",
+   "baseline_correct": false,
+   "baseline_greedy": " located",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " Egypt"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 24,
+     "greedy": " the"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 61,
+     "greedy": " South"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 999,
+     "greedy": " located"
+    }
+   }
+  },
+  {
+   "name": "ex2-city-continent-Sydney",
+   "category": "city-continent",
+   "baseline_correct": true,
+   "baseline_greedy": " Australia",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 9,
+     "greedy": " Australia"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 10,
+     "greedy": " Australia"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 4,
+     "greedy": " Australia"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " South"
+    }
+   }
+  },
+  {
+   "name": "ex2-city-language-Cairo",
+   "category": "city-language",
+   "baseline_correct": true,
+   "baseline_greedy": " Arabic",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Russian"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 11,
+     "greedy": " Arabic"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Russian"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Russian"
+    }
+   }
+  },
+  {
+   "name": "ex2-city-language-Moscow",
+   "category": "city-language",
+   "baseline_correct": true,
+   "baseline_greedy": " Russian",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 8,
+     "greedy": " Russian"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 16,
+     "greedy": " Russian"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 18,
+     "greedy": " Russian"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 10,
+     "greedy": " Russian"
+    }
+   }
+  },
+  {
+   "name": "ex2-language-capital-Greek",
+   "category": "language-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Athens",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Stockholm"
+    },
+    "intermediate_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Stockholm"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Stockholm"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Stockholm"
+    }
+   }
+  },
+  {
+   "name": "ex2-language-capital-Hungarian",
+   "category": "language-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Budapest",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 6,
+     "greedy": " Budapest"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 11,
+     "greedy": " Budapest"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Warsaw"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Warsaw"
+    }
+   }
+  },
+  {
+   "name": "ex2-language-capital-Polish",
+   "category": "language-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Warsaw",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 6,
+     "greedy": " Rome"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 176,
+     "greedy": " Warsaw"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 20,
+     "greedy": " Rome"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " Krak"
+    }
+   }
+  },
+  {
+   "name": "ex2-language-capital-Swedish",
+   "category": "language-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " Stockholm",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 5,
+     "greedy": " Stockholm"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 5,
+     "greedy": " Stockholm"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Budapest"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Budapest"
+    }
+   }
+  },
+  {
+   "name": "ex2-river-capital-Thames",
+   "category": "river-capital",
+   "baseline_correct": true,
+   "baseline_greedy": " London",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 5,
+     "greedy": " London"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 56,
+     "greedy": " London"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " London"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Berlin"
+    }
+   }
+  },
+  {
+   "name": "food-animal-butter",
+   "category": "food-animal",
+   "baseline_correct": true,
+   "baseline_greedy": " cow",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " bee"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " cow"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " cow"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": " cow"
+    }
+   }
+  },
+  {
+   "name": "food-animal-honey",
+   "category": "food-animal",
+   "baseline_correct": true,
+   "baseline_greedy": " bee",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 548,
+     "greedy": " bee"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 558,
+     "greedy": " butter"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 19,
+     "greedy": " honey"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 217,
+     "greedy": " honey"
+    }
+   }
+  },
+  {
+   "name": "fruit-grows-grape",
+   "category": "fruit-grows",
+   "baseline_correct": true,
+   "baseline_greedy": " vine",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " tree"
+    },
+    "intermediate_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " tree"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " tree"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 4,
+     "greedy": " vine"
+    }
+   }
+  },
+  {
+   "name": "func-filters-count",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "func-pumps-chambers",
+   "category": "multihop",
+   "baseline_correct": true,
+   "baseline_greedy": "4",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 3,
+     "greedy": "4"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 3,
+     "greedy": "4"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "2"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "2"
+    }
+   }
+  },
+  {
+   "name": "gem-color-ruby",
+   "category": "gem-color",
+   "baseline_correct": false,
+   "baseline_greedy": " blue",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 18,
+     "greedy": " green"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 17,
+     "greedy": " blue"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 24,
+     "greedy": " green"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 124,
+     "greedy": " red"
+    }
+   }
+  },
+  {
+   "name": "greatwall-ocean",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 23,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 48,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 115,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 205,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "holiday-month-christmas2",
+   "category": "holiday-month",
+   "baseline_correct": false,
+   "baseline_greedy": " Christmas",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 12,
+     "greedy": " Christmas"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 6,
+     "greedy": " Easter"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " April"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " April"
+    }
+   }
+  },
+  {
+   "name": "instr-body-trumpet",
+   "category": "instr-played",
+   "baseline_correct": false,
+   "baseline_greedy": " thumb",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 93,
+     "greedy": " thumb"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 59,
+     "greedy": " drums"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 91,
+     "greedy": " thumb"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 104,
+     "greedy": " thumb"
+    }
+   }
+  },
+  {
+   "name": "instr-hit-drums",
+   "category": "instr-played",
+   "baseline_correct": false,
+   "baseline_greedy": " a",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 125,
+     "greedy": " a"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 97,
+     "greedy": " a"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 46,
+     "greedy": " a"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 96,
+     "greedy": " a"
+    }
+   }
+  },
+  {
+   "name": "mars-color",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 10,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 11,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 34,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 121,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "month-3-godof",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 221,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 128,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3069,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 1948,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "organ-acid-stomach",
+   "category": "organ-function",
+   "baseline_correct": false,
+   "baseline_greedy": " saliva",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " saliva"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 13,
+     "greedy": " saliva"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 29,
+     "greedy": " saliva"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 116,
+     "greedy": " saliva"
+    }
+   }
+  },
+  {
+   "name": "organ-count-kidney2",
+   "category": "organ-count",
+   "baseline_correct": false,
+   "baseline_greedy": " ",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": " "
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": " "
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": " "
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": " "
+    }
+   }
+  },
+  {
+   "name": "organ-location-heart",
+   "category": "organ-location",
+   "baseline_correct": false,
+   "baseline_greedy": " heart",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 22,
+     "greedy": " heart"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 28,
+     "greedy": " heart"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 18,
+     "greedy": " heart"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " heart"
+    }
+   }
+  },
+  {
+   "name": "paper-continent",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 19,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 19,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 69,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 384,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "person-country-napoleon",
+   "category": "person-country",
+   "baseline_correct": true,
+   "baseline_greedy": " France",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 91,
+     "greedy": " France"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 86,
+     "greedy": " Germany"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " the"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " Germany"
+    }
+   }
+  },
+  {
+   "name": "person-country-shakespeare",
+   "category": "person-country",
+   "baseline_correct": false,
+   "baseline_greedy": " Scotland",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 14,
+     "greedy": " called"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 18,
+     "greedy": " called"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 2,
+     "greedy": " in"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 14,
+     "greedy": " in"
+    }
+   }
+  },
+  {
+   "name": "person-firstname-darwin",
+   "category": "person-firstname",
+   "baseline_correct": false,
+   "baseline_greedy": " Darwin",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " Alfred"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": " Alfred"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 18,
+     "greedy": " Darwin"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " Darwin"
+    }
+   }
+  },
+  {
+   "name": "person-firstname-einstein",
+   "category": "person-firstname",
+   "baseline_correct": true,
+   "baseline_greedy": " Albert",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Isaac"
+    },
+    "intermediate_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Isaac"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Isaac"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Isaac"
+    }
+   }
+  },
+  {
+   "name": "person-firstname-mozart",
+   "category": "person-firstname",
+   "baseline_correct": false,
+   "baseline_greedy": " Mozart",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 28,
+     "greedy": " Johann"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 27,
+     "greedy": " Franz"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 11,
+     "greedy": " William"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": " Mozart"
+    }
+   }
+  },
+  {
+   "name": "person-firstname-newton",
+   "category": "person-firstname",
+   "baseline_correct": true,
+   "baseline_greedy": " Isaac",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 18,
+     "greedy": " Isaac"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 56,
+     "greedy": " \""
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": " John"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " \""
+    }
+   }
+  },
+  {
+   "name": "person-firstname-shakespeare",
+   "category": "person-firstname",
+   "baseline_correct": false,
+   "baseline_greedy": " Romeo",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " Gi"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 216,
+     "greedy": " Romeo"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 22,
+     "greedy": " Romeo"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 99,
+     "greedy": " Romeo"
+    }
+   }
+  },
+  {
+   "name": "planet-3-moons",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "7",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 4,
+     "greedy": "7"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": "7"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 2,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 5,
+     "greedy": "7"
+    }
+   }
+  },
+  {
+   "name": "planet-rings-saturn2",
+   "category": "planet-feature",
+   "baseline_correct": false,
+   "baseline_greedy": " moon",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 89,
+     "greedy": " moon"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 74,
+     "greedy": " moon"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 84,
+     "greedy": " moon"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 118,
+     "greedy": " moon"
+    }
+   }
+  },
+  {
+   "name": "rhyme-chair-flag",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 150,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 145,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 362,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 207,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "rhyme-rain-neighbor",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 15,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 16,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 15,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 34,
+     "greedy": "1"
+    }
+   }
+  },
+  {
+   "name": "rhyme-spoon-orbit",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "4",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 15,
+     "greedy": "4"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 24,
+     "greedy": "4"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": "4"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 12,
+     "greedy": "5"
+    }
+   }
+  },
+  {
+   "name": "season-next-winter",
+   "category": "season-next",
+   "baseline_correct": false,
+   "baseline_greedy": " the",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 36,
+     "greedy": " called"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 39,
+     "greedy": " called"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 316,
+     "greedy": " called"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 486,
+     "greedy": " the"
+    }
+   }
+  },
+  {
+   "name": "spaceneedle-border",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "3",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 23,
+     "greedy": "3"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 37,
+     "greedy": "3"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": "3"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 11,
+     "greedy": "3"
+    }
+   }
+  },
+  {
+   "name": "spider-legs",
+   "category": "multihop",
+   "baseline_correct": true,
+   "baseline_greedy": "8",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "4"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "4"
+    },
+    "answer_jlens": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "6"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": "6"
+    }
+   }
+  },
+  {
+   "name": "sport-equip-tennis",
+   "category": "sport-equip",
+   "baseline_correct": false,
+   "baseline_greedy": " rac",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 6,
+     "greedy": " golf"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " rac"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 9,
+     "greedy": " rac"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 20,
+     "greedy": " rac"
+    }
+   }
+  },
+  {
+   "name": "super-populous-capital",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "0",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": false,
+     "swap_answer_rank": 276,
+     "greedy": " Beijing"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 297,
+     "greedy": "0"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 54,
+     "greedy": "0"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 108,
+     "greedy": "0"
+    }
+   }
+  },
+  {
+   "name": "super-smallest-continent",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": " ____",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": " Africa"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 8,
+     "greedy": " ____"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 3,
+     "greedy": " ____"
+    },
+    "answer_identity": {
+     "success": true,
+     "displaced": true,
+     "swap_answer_rank": 1,
+     "greedy": " Asia"
+    }
+   }
+  },
+  {
+   "name": "vehicle-power-bicycle",
+   "category": "vehicle-power",
+   "baseline_correct": false,
+   "baseline_greedy": " own",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 19,
+     "greedy": " own"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 34,
+     "greedy": " own"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 22,
+     "greedy": " own"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 15,
+     "greedy": " own"
+    }
+   }
+  },
+  {
+   "name": "violin-strings",
+   "category": "multihop",
+   "baseline_correct": false,
+   "baseline_greedy": "1",
+   "swaps": {
+    "intermediate_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "intermediate_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "answer_jlens": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    },
+    "answer_identity": {
+     "success": false,
+     "displaced": true,
+     "swap_answer_rank": 7,
+     "greedy": "1"
+    }
+   }
+  }
+ ],
+ "per_category_primary_jlens": {
+  "beverage-source": {
+   "n": 1,
+   "hits": 0
+  },
+  "multihop": {
+   "n": 3,
+   "hits": 0
+  },
+  "city-capital": {
+   "n": 6,
+   "hits": 3
+  },
+  "city-currency": {
+   "n": 1,
+   "hits": 0
+  },
+  "city-language": {
+   "n": 3,
+   "hits": 1
+  },
+  "element-symbol": {
+   "n": 1,
+   "hits": 0
+  },
+  "planet-color": {
+   "n": 1,
+   "hits": 0
+  },
+  "city-continent": {
+   "n": 1,
+   "hits": 0
+  },
+  "language-capital": {
+   "n": 4,
+   "hits": 1
+  },
+  "river-capital": {
+   "n": 1,
+   "hits": 0
+  },
+  "food-animal": {
+   "n": 2,
+   "hits": 1
+  },
+  "fruit-grows": {
+   "n": 1,
+   "hits": 1
+  },
+  "person-country": {
+   "n": 1,
+   "hits": 0
+  },
+  "person-firstname": {
+   "n": 2,
+   "hits": 1
+  }
+ },
+ "pooled": {
+  "baseline_accuracy": {
+   "n": 81,
+   "correct": 28,
+   "wilson_95": [
+    0.2512249524256235,
+    0.4541082803281198
+   ]
+  },
+  "primary": {
+   "intermediate_jlens": {
+    "n": 28,
+    "successes": 8,
+    "rate": 0.2857142857142857,
+    "wilson_95": [
+     0.15253815848329969,
+     0.470596357370175
+    ],
+    "displaced": 14,
+    "top_k": {
+     "5": 15,
+     "10": 22
+    }
+   },
+   "intermediate_identity": {
+    "n": 28,
+    "successes": 4,
+    "rate": 0.14285714285714285,
+    "wilson_95": [
+     0.056989129307017855,
+     0.31490173044877334
+    ],
+    "displaced": 11,
+    "top_k": {
+     "5": 12,
+     "10": 15
+    }
+   },
+   "answer_jlens": {
+    "n": 28,
+    "successes": 16,
+    "rate": 0.5714285714285714,
+    "wilson_95": [
+     0.390704789856154,
+     0.7349170381926877
+    ],
+    "displaced": 24,
+    "top_k": {
+     "5": 24,
+     "10": 25
+    }
+   },
+   "answer_identity": {
+    "n": 28,
+    "successes": 14,
+    "rate": 0.5,
+    "wilson_95": [
+     0.3263284683244634,
+     0.6736715316755366
+    ],
+    "displaced": 21,
+    "top_k": {
+     "5": 22,
+     "10": 26
+    }
+   }
+  },
+  "unconditioned": {
+   "intermediate_jlens": {
+    "n": 81,
+    "successes": 9,
+    "rate": 0.1111111111111111,
+    "wilson_95": [
+     0.059566890075051324,
+     0.19787285646438213
+    ],
+    "displaced": 66,
+    "top_k": {
+     "5": 23,
+     "10": 44
+    }
+   },
+   "intermediate_identity": {
+    "n": 81,
+    "successes": 6,
+    "rate": 0.07407407407407407,
+    "wilson_95": [
+     0.03438916189352609,
+     0.15233056050680582
+    ],
+    "displaced": 64,
+    "top_k": {
+     "5": 19,
+     "10": 33
+    }
+   },
+   "answer_jlens": {
+    "n": 81,
+    "successes": 20,
+    "rate": 0.24691358024691357,
+    "wilson_95": [
+     0.16590187380267346,
+     0.35084462791346566
+    ],
+    "displaced": 73,
+    "top_k": {
+     "5": 38,
+     "10": 49
+    }
+   },
+   "answer_identity": {
+    "n": 81,
+    "successes": 18,
+    "rate": 0.2222222222222222,
+    "wilson_95": [
+     0.1454449167155174,
+     0.32415490224122073
+    ],
+    "displaced": 70,
+    "top_k": {
+     "5": 35,
+     "10": 48
+    }
+   }
+  },
+  "underpowered": false,
+  "newcombe_intermediate_j_minus_identity": [
+   0.14285714285714285,
+   -0.07470944691209996,
+   0.346706832998722
+  ]
+ }
+}

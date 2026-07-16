@@ -69,14 +69,22 @@ specifically, with a clean control and a monotone strength curve. The
 J-transport adds no CI-clean value for writing anywhere (M0's Arm-2 story,
 repeated). Non-monotone scale structure again: 1.5B, not 3B, is where the
 phenomenon lives. All framing descriptive per the pre-registered re-scope.
-## M2 — Two-hop swap — start-of-stage brief on file (`M2-BRIEF.md`)
+## M2 — Two-hop swap — **COMPLETE 2026-07-16** (descriptive; triple-null re-scope)
 
-Decisions D9–D11 pending Kyle; the runner build starts after they freeze.
-Design extraction done 2026-07-16: the shipped 90-item probe-swap set is the
-Figure 16 experiment; M2 = the **raw J-lens token-vector swap** (anchors:
-54–70% top-1 on 50 prompts across Claude tiers; **60%** on the shipped n=90,
-Sonnet) — the probe decomposition is unshipped and out of KICKOFF scope. No
-new operator code: M1's swap + D6 invariants carry over. Descriptive, per
-the triple null.
+Closed in two PRs (#13 brief, #14 D9–D11 freeze + runner + results + close):
+
+| Deliverable | Outcome |
+|---|---|
+| D9–D11 frozen | 2026-07-16, Kyle — all three recommendations (`DECISIONS.md`) |
+| Design extraction | Shipped 90-item set = the Figure 16 experiment; M2 = the raw J-lens token-vector swap (anchors: 60% n=90 Sonnet; 54–70% tiers); probe decomposition unshipped + out of scope; Fig 13's "clamped" wording owned as a deviation |
+| Two-hop swap, all subjects | Primary flips **.286 / .073 / .116** (0.5B/1.5B/3B, baseline-conditioned) vs the .60 anchor; baselines .346/.506/.531 of 81 gradable items |
+| Arm 2 (J = I) | Identity rows flip **0/41 and 0/43** at 1.5B/3B; at 3B the J − I difference is **CI-clean (+.116 [+.011, +.245])** — the project's first clean J-transport advantage for *writing* |
+| Answer-swap arm (D11) | 2× the intermediate rate at 0.5B, equal by 3B (6 vs 5) — no answer-smuggling signature at 3B |
+
+**Headline:** redirecting the unspoken bridge mostly fails to redirect the
+answer at these scales — but where it works at all (3B), it works *only
+through the Jacobian transport*: raw unembedding rows flip nothing. The swap
+disturbs chains (~40% displaced) far more often than it redirects them.
+All framing descriptive per the pre-registered re-scope.
 ## M3 — Directed modulation — not started (descriptive, per the triple null)
 ## Stretch (gated behind v1 close) — generalization, selectivity

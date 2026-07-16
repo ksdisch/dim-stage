@@ -243,3 +243,44 @@ is CI-clean, the strongest descriptive contrast in the project; median
 steered rank moves 3747→1322 / 4430→15 / 3791→382 (control → α = 8). The D6
 runtime read-back stayed silent across every swap application; every
 wrong-arm dry-run exited INVALID as designed. M1 closed.
+
+## 2026-07-16 — M2
+
+**D9 (Kyle) — Baseline-conditioned primary cell.** All 90 shipped items,
+raw-text encoding (M0's lens-eval treatment), readout at the final prompt
+token; baseline passes iff the unswapped greedy token is among the `answer`'s
+single-token forms — strict {`w`, `␣w`} of the shipped string, **no synonym
+table** (the README's "greedy next-token == answer", verbatim; pre-declared
+before any run since every synonym would monotonically raise rates). Primary
+swap cell = baseline-passing items; baseline accuracy and unconditioned
+rates reported alongside; n < 20 pre-declared UNDERPOWERED. *Why:* a "flip"
+needs a working chain to redirect; Claude's near-perfect baseline made the
+two readings coincide for the paper — ours diverge.
+
+**D10 (Kyle) — Top-1 flip verdict, two arms, wording frozen.** Success = the
+swapped greedy token is among `swap_answer`'s forms (the anchor's own
+grading); Wilson 95% on the primary cell, would-gate wording LB ≥ 0.5,
+descriptive framing throughout. Descriptive extras: swap_answer top-5/10,
+displaced-original rate, per-category breakdown. Arm 2 = raw rows (J = I),
+Newcombe — the standing falsification arm. *Why:* like-for-like with the
+60%/54–70% anchors, which are top-1 fractions.
+
+**D11 (Kyle) — Answer-swap comparison arm, descriptive-only.** Every trial
+repeated swapping `answer → swap_answer` instead of the intermediates, both
+arms, same frozen band (~2 extra forwards/item). *Why:* the paper's named
+smuggling confound, addressed at our scale without its out-of-scope depth
+sweep (M2-BRIEF deviations row 4).
+
+**M2 outcomes (record, 2026-07-16).** 9/90 items dropped by the four-field
+single-token pre-filter (same 9 on every subject — shared tokenizer); no
+primary cell below N = 20. Baselines 28/81, 41/81, 43/81. Intermediate-swap
+flips (primary): **8/28 = .286 [.153, .471] / 3/41 = .073 [.025, .194] /
+5/43 = .116 [.051, .245]** vs the .60 anchor. Identity arm: 4/28, **0/41,
+0/43** — at 3B the J − I Newcombe CI **excludes zero (+.116 [+.011, +.245])**,
+the project's first CI-clean J-transport advantage for writing (Arm 2 never
+gates; descriptive contrast). Answer-swap (D11): 16/28, 9/41, 6/43 — double
+the intermediate rate at 0.5B, equal at 3B; with the raw-row zeros, no
+answer-smuggling signature at 3B. Displaced-original ~40% everywhere (14/28,
+12/41, 18/43); swap_answer reaches top-5 on about half of primary trials.
+The D6 read-back stayed silent; wrong-arm dry-run exited INVALID. M2 closed
+same-day: brief → freeze → runner → three subjects → spine.

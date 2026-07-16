@@ -192,3 +192,51 @@ same curve is flat at 0.5B and barely rises at 3B.
 9. M1's correctness gate is invariant tests instead of M0's AGREE diff. What
    made the AGREE pattern impossible here, and which class of bug do the
    invariants provably catch — and which class can they *not*?
+
+## M2 — two-hop swap (2026-07-16)
+
+### The one-paragraph story
+
+M2 aimed the M1 swap one hop upstream: not the answer the model is about to
+say, but the **bridge entity** it silently computes on the way ("the country
+where the Amazon River ends" → *Brazil* → *Portuguese*). Swap Brazil for
+Mexico mid-reasoning and ask: does the model now say *Spanish*? On the
+paper's own 90 prompts Claude flips 60% of the time. Our subjects mostly
+don't — flip rates run 7–29% on the chains that worked unswapped — but the
+milestone still produced the project's most surprising cell: at 3B, swaps
+along **raw unembedding rows flip nothing at all (0/43)** while J-lens
+vectors flip 5/43, a CI-clean difference. Everywhere before this, the
+Jacobian transport had looked useless or harmful; here it is, for the first
+time, the entire effect.
+
+### What was learned
+
+15. **A standing falsification arm cuts both ways.** The J = I arm existed to
+    *falsify* J-lens claims (and did, at M0's typo cell). At M2's 3B cell it
+    did the opposite: raw rows 0/43, J-lens 5/43, Newcombe +.116
+    [+.011, +.245] excluding zero — the first evidence in this project that
+    the transport itself carries causal freight for writing. Keeping the
+    boring control in every run is what made the interesting cell credible.
+16. **Condition on capability or conflate two failures.** Baseline two-hop
+    accuracy is .35 / .51 / .53 (Claude: ~1.0). The 0.5B flip rate *looks*
+    highest (.286) — but only 28 flimsy chains existed to flip. D9's
+    baseline conditioning is what keeps "the swap redirects reasoning" from
+    being polluted by "there was no reasoning to redirect."
+17. **Name the confound, then spend 180 forwards on it.** The paper worried
+    intermediate swaps might work by smuggling in answer components. Our
+    cheap version of their check — swap the answers directly and compare —
+    came out clean at 3B (6 vs 5 of 43, and a smuggled answer would survive
+    J = I, which flips nothing). Not the paper's depth sweep; owned as a
+    deviation, but the confound didn't go unexamined.
+
+### Recall questions (answers in this repo's docs)
+
+10. The 3B J − identity CI (+.116 [+.011, +.245]) is the project's first
+    clean J-transport advantage for writing. Arm 2 never gates — so what
+    exactly may we say about this cell, and in which framing?
+11. Why does M2's primary cell only count items the model answered correctly
+    before the swap — and what does the 0.5B flip rate (the "highest" of the
+    three) illustrate about the unconditioned alternative?
+12. The answer-swap arm flips twice the intermediate rate at 0.5B but equals
+    it at 3B. Which confound was that arm built to probe, and why is our
+    single-band version weaker evidence than the paper's layer-range sweep?

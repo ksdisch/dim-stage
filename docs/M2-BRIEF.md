@@ -1,6 +1,9 @@
 # M2 start-of-stage brief — two-hop swap
 
-*2026-07-16 · status: options presented, decisions D9–D11 pending Kyle*
+*2026-07-16 · status: **COMPLETE** — D9–D11 frozen (Kyle, all three
+recommendations; see "Frozen decisions"), measured on all three subjects the
+same day. Results below; headline in `ROADMAP.md`; outcomes in
+`DECISIONS.md`.*
 *Sources: the paper (`refs/workspace-paper.md`, §Lens-coordinate swaps redirect
 internal reasoning / Figures 13–16) and the reference repo's experiment data
 (`refs/jacobian-lens/data/experiments/README.md` §probe-swap,
@@ -183,6 +186,52 @@ Per subject: 90 baselines + 90 × 2 swap arms (+ 90 × 2 answer-swap if D11 = A)
 ≈ 270–450 short raw-text forwards — about a minute at 0.5B, a few minutes at
 3B on MPS. Serial GPU discipline unchanged.
 
+## Results — two-hop swap (all subjects, descriptive) — 2026-07-16
+
+Runner: `m2_two_hop.py` (D9 baseline conditioning; D10 top-1 grading, both
+arms; D11 answer-swap comparison; D6 runtime read-back on every application).
+JSONs in `results/two-hop-*.json`. Anchor: **60%** top-1 flips on these 90
+prompts (Sonnet 4.5); 54–70% across Claude tiers. 9 of 90 items dropped by
+the four-field single-token pre-filter (shared tokenizer, same 9 everywhere);
+no primary cell fell below N = 20.
+
+Primary cells (baseline-correct items only; flips = swapped greedy token ∈
+`swap_answer`'s forms):
+
+| Subject | Baseline | Intermediate flips, J-lens (Wilson 95%) | J = I | J − I (Newcombe 95%) | Answer-swap J / I (D11) | Displaced | swap_answer top-5 |
+|---|---|---|---|---|---|---|---|
+| 0.5B | 28/81 = .346 | 8/28 = **.286** [.153, .471] | 4/28 | +.143 [−.075, +.347] | 16/28 / 14/28 | 14/28 | 15/28 |
+| 1.5B | 41/81 = .506 | 3/41 = **.073** [.025, .194] | 0/41 | +.073 [−.025, +.194] | 9/41 / 7/41 | 12/41 | 22/41 |
+| 3B | 43/81 = .531 | 5/43 = **.116** [.051, .245] | 0/43 | **+.116 [+.011, +.245]** | 6/43 / 3/43 | 18/43 | 23/43 |
+
+Descriptive reading (no property claims — triple readability NULL):
+
+- **The chain mostly does not follow the bridge swap at these scales.** Flip
+  rates sit at .07–.29 against the .60 anchor. The 0.5B "high" comes with its
+  own caveat: only 28 chains worked to begin with, and flimsy chains flip
+  easily — exactly the conflation D9's conditioning exists to expose.
+- **The project's first CI-clean J-transport advantage for writing.** At 3B,
+  raw unembedding rows flip **0/43** while J-lens vectors flip 5/43 —
+  Newcombe +.116 [+.011, +.245] excludes zero. At 1.5B the identity arm is
+  also 0-for-41 (diff not CI-clean). After M0's reading reversal and M1's
+  nothing, this is the first cell where the Jacobian transport is the
+  difference between some effect and none. Arm 2 never gates; this is a
+  descriptive contrast.
+- **The smuggling confound comes out clean at 3B** (D11): direct answer swaps
+  flip 2× the intermediate rate at 0.5B (16 vs 8), but by 3B they are equal
+  (6 vs 5) — the intermediate swap is not just riding a smuggled answer
+  component there, and the raw-row zeros corroborate (a smuggled answer
+  would survive J = I). Single-band comparison only; the paper's depth sweep
+  is out of scope (deviations row 4).
+- **The swap disturbs chains far more often than it redirects them.** The
+  original answer is displaced on ~40% of primary trials (14/28, 12/41,
+  18/43), and the redirected answer reaches top-5 about half the time
+  (15/28, 22/41, 23/43) — the intervention lands, but rarely lands *on
+  target* at these scales.
+- **Two-hop capability itself is the bottleneck at 0.5B** (baseline .346) and
+  only reaches ~.53 by 3B — Claude answers essentially all 90; our subjects
+  answer half. Both facts are cells in the JSONs.
+
 ## What M2 does NOT decide
 
 - M3 (directed modulation) — its own brief; it reuses steering + D6.
@@ -191,5 +240,17 @@ Per subject: 90 baselines + 90 × 2 swap arms (+ 90 × 2 answer-swap if D11 = A)
 
 ## Frozen decisions
 
-*Pending Kyle. D9–D11 will be recorded here and in `DECISIONS.md` when picked;
-relitigating after that is a deviation row, not a conversation.*
+*Frozen 2026-07-16 (Kyle) — all three recommendations, recorded here and in
+`DECISIONS.md`. Relitigating after this is a deviation row, not a
+conversation.*
+
+- **D9 = A** — baseline-conditioned primary cell (raw-text encoding,
+  final-prompt-token readout, strict {`w`, `␣w`} forms of the shipped
+  strings, no synonym table); baseline accuracy + unconditioned rates
+  reported alongside.
+- **D10 = A** — top-1 flip grading (the anchor's), Wilson on the primary
+  cell, frozen would-gate wording LB ≥ 0.5 (descriptive framing applies);
+  J = I falsification arm with Newcombe; top-5/top-10, displaced rate,
+  per-category breakdown descriptive.
+- **D11 = A** — answer-swap comparison arm (both arms, same band),
+  descriptive-only.
