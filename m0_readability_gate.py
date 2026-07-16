@@ -172,6 +172,14 @@ def main() -> None:
         arm1_pass = (not underpowered) and lb >= WILSON_FLOOR
         arm1_passes += arm1_pass
         j_advantage = excludes_zero(dlo, dhi) and diff > 0
+        # A CI-clean *negative* difference is a J-transport reversal — a finding
+        # in its own right (the J-lens reads worse than J=I). Distinguish it in
+        # the console so a significant reversal isn't printed as "no clear gap".
+        arm2_label = (
+            "J-ADVANTAGE" if j_advantage
+            else "J-REVERSAL" if excludes_zero(dlo, dhi)
+            else "no clear gap"
+        )
 
         results["distributions"][slug] = {
             "n_trials": n,
@@ -194,7 +202,7 @@ def main() -> None:
             f"J-lens pass@10={k_j}/{n} Wilson[{lb:.3f},{ub:.3f}] "
             f"{'READS' if arm1_pass else ('UNDERPOWERED' if underpowered else 'below floor')}"
             f"  |  logit-lens {k_l}/{n}, J−logit diff={diff:+.3f} "
-            f"CI[{dlo:+.3f},{dhi:+.3f}] {'J-ADVANTAGE' if j_advantage else 'no clear gap'}"
+            f"CI[{dlo:+.3f},{dhi:+.3f}] {arm2_label}"
             f"  ({time.perf_counter() - start:.0f}s)"
         )
 

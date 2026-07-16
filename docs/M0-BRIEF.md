@@ -320,12 +320,15 @@ min-rank per D4; band-restricted and k ∈ {1,5,25} descriptive numbers in
 Runs were queued behind the 1.5B fit — even CPU-side work measurably slowed the
 MPS fit ~8%, so nothing shares the GPU with a measurement.
 
-**VERDICT: NULL on both subjects — 0/6 distributions reach J-lens pass@10
-Wilson 95% LB ≥ 0.5 on either.** The pre-declared kill-risk fired: at 0.5B/1.5B
-scale, no distribution's workspace content is readable at the frozen bar. This
-answers the paper's stated open question for the smallest scales, and per
-KICKOFF it re-scopes M1–M3 to descriptive and puts the 3B escalation decision
-on the table (Kyle's call — both subjects are null, the pre-registered trigger).
+**VERDICT: NULL on all three subjects — 0/6 distributions reach J-lens
+pass@10 Wilson 95% LB ≥ 0.5 on any of 0.5B, 1.5B, 3B.** The pre-declared
+kill-risk fired and held under escalation: the double null (0.5B/1.5B) met
+KICKOFF decision 2's trigger, Kyle escalated to 3B, and 3B is null too — no
+distribution's workspace content is readable at the frozen bar at any scale we
+can reach. This answers the paper's stated open question for Qwen2.5 0.5B–3B
+with a clean, three-scale, pre-registered *no*, and re-scopes M1–M3 to
+descriptive. The 3B fit ran on a rented CUDA GPU (the pre-declared fallback,
+deviations rows 7–8); its gate ran locally on MPS like the other two.
 
 ### Qwen2.5-0.5B-Instruct — NULL (0/6)
 
@@ -349,33 +352,65 @@ on the table (Kyle's call — both subjects are null, the pre-registered trigger
 | poetry | 1/98 (1.0%) | [.002, .056] | 3/98 (3.1%) | −.020 [−.077, +.029] | no gap |
 | typo | 17/96 (17.7%) | [.114, .265] | 43/96 (44.8%) | **−.271 [−.389, −.141]** | **reversed** |
 
-### What the structure of the null says (descriptive, no gate claims)
+### Qwen2.5-3B-Instruct — NULL (0/6) — escalation subject, added 2026-07-15
 
-- **The two abstract-content distributions are hard zeros at both scales**
+Fitted on a rented CUDA GPU (the pre-declared fallback; deviations rows 7–8),
+graded locally on MPS like the other two subjects. Band L14–L32 (proportional
+rule, 36 layers) frozen and merged before the fit produced any readout.
+
+| Distribution | J-lens pass@10 | Wilson 95% | Logit-lens (J=I) | J−logit (Newcombe 95%) | Arm 2 |
+|---|---|---|---|---|---|
+| association | 0/99 | [.000, .037] | 1/99 (1.0%) | −.010 [−.055, +.028] | no gap |
+| multihop | 37/94 (39.4%) | [.301, .495] | 31/94 (33.0%) | +.064 [−.073, +.197] | no gap |
+| multilingual | 148/414 (35.7%) | [.313, .405] | 142/414 (34.3%) | +.014 [−.050, +.079] | no gap |
+| order-ops | 50/109 (45.9%) | [.368, .552] | 32/109 (29.4%) | **+.165 [+.037, +.286]** | **J-advantage** |
+| poetry | 0/98 | [.000, .038] | 2/98 (2.0%) | −.020 [−.071, +.020] | no gap |
+| typo | 20/96 (20.8%) | [.139, .300] | 51/96 (53.1%) | **−.323 [−.442, −.188]** | **reversed** |
+
+**No emergence.** The closest any (distribution × scale) cell has come to the
+bar is order-ops at 3B — 45.9%, Wilson upper bound .552 crosses 0.5 but the
+lower bound .368 does not, so it does not READ. Adding scale 0.5B→1.5B→3B lifts
+no distribution's J-lens readout over the pre-registered floor. The paper's open
+question ("is the workspace readable at small scale?") gets a clean,
+three-scale, pre-registered **no** for Qwen2.5 0.5B–3B.
+
+### What the structure of the null says (descriptive, no gate claims — three scales)
+
+- **The two abstract-content distributions are hard zeros at all three scales**
   (association: the unnamed evoked concept; poetry: the planned rhyme word read
-  at the end of couplet line 1). Whatever these small models do on such prompts,
-  it is not readable as a rank-≤10 token at any layer under either lens.
-- **Surface-adjacent content is partially readable but below the bar** —
-  multihop climbs with scale (37% → 54%; the 1.5B point estimate crosses 0.5 but
-  its Wilson LB of .442 does not), multilingual and order-ops sit in the mid-30s.
-- **The J-advantage inverts with scale.** At 0.5B the Jacobian correction adds
-  large, CI-clean value on typo (+43pp) and multilingual (+21pp). At 1.5B the
-  logit lens improves dramatically (typo 6% → 45%, multilingual 15% → 31%,
-  order-ops 31% → 44%) while the J-lens does not follow — and on typo the J
-  transport is *significantly worse* than doing nothing (−27pp, CI excludes 0).
-  The average Jacobian at 1.5B appears to transport late-layer surface content
-  *out* of the unembedding's readable directions on that distribution.
+  at the end of couplet line 1). Across 0.5B, 1.5B, and 3B, neither is readable
+  as a rank-≤10 token at any layer under either lens — the most robust part of
+  the null, and precisely the most "workspace-like" (abstract, not-yet-verbalized)
+  content.
+- **Surface-adjacent content is partially readable but stays below the bar, and
+  does not climb monotonically.** multihop looked promising at 1.5B (54.3%, the
+  high-water mark) but *regressed* at 3B to 39.4% (same N=94) — the apparent
+  scale climb broke. multilingual is flat across all three (36.0% → 37.4% →
+  35.7%). order-ops is the one distribution improving into 3B (33.0% → 35.8% →
+  45.9%).
+- **The J-advantage story splits by distribution rather than tracking scale
+  uniformly.** On **typo** the J-transport reversal deepens monotonically —
+  0.5B **+42.7pp** (J helps) → 1.5B **−27.1pp** → 3B **−32.3pp** (J hurts,
+  CI-clean) — while the plain logit lens climbs 6.3% → 44.8% → 53.1%: the average
+  Jacobian increasingly transports readable surface-form content *out* of the
+  unembedding's readable directions, and J=I does strictly better. On **order-ops**
+  the opposite — the J-advantage that was absent/slightly-negative at 0.5B/1.5B
+  *returns* at 3B (**+16.5pp**, CI-clean). multilingual's early 0.5B advantage
+  (+20.8pp) vanishes by 1.5B and stays gone. So "does the Jacobian correction add
+  value" is content-dependent and non-monotone in scale — not a single trend.
 
 ## Deviations table (starter — grows as M0 runs)
 
 | # | Paper / reference | Ours | Why | Status |
 |---|---|---|---|---|
-| 1 | Subjects: Claude Sonnet/Haiku/Opus 4.5 (+ Qwen3.6-27B demo) | Qwen2.5 0.5B + 1.5B Instruct | The whole thesis: is the workspace readable at laptop scale? | Owned, by design |
+| 1 | Subjects: Claude Sonnet/Haiku/Opus 4.5 (+ Qwen3.6-27B demo) | Qwen2.5 0.5B + 1.5B + 3B Instruct | The whole thesis: is the workspace readable at laptop scale? 3B added on the escalation trigger (both smaller null) | Owned, by design |
 | 2 | Fit corpus: 1000 × 128-token seqs, pretraining-like web text | WikiText-103 via reference loader, N=100 (D3 frozen) | Wall-clock; §9.3 saturation evidence | Owned |
-| 3 | Hardware: datacenter accelerators | MPS, fp32 (fits *and* readability grading, both subjects — no mixed-device numerics) | $0/trial constraint | Owned |
-| 4 | Band: derived from CKA + 4 diagnostics per model | Proportional transplant 38–92% + descriptive diagnostics (D2 frozen) | Forking-paths guard at small N | Owned |
+| 3 | Hardware: datacenter accelerators | MPS fp32 for 0.5B/1.5B fits + all three readability gates; CUDA fp32 for the 3B fit only (row 7) | $0/trial constraint on the two feasible fits; 3B exceeds the 24 GB MPS ceiling | Owned |
+| 4 | Band: derived from CKA + 4 diagnostics per model | Proportional transplant 38–92% + descriptive diagnostics (D2 frozen); 3B band L14–L32 pre-registered before the fit | Forking-paths guard at small N | Owned |
 | 5 | Stimuli: used as shipped | Single-token pre-filter under Qwen tokenizer (Qwen digit-splits multi-digit numbers, so e.g. `11` drops; 94–100% of intermediates survive per distribution, every cell N ≥ 94) | Rank-based grading needs single-token targets | Owned, mechanical |
 | 6 | Intermediate→token mapping unspecified in released material | Frozen in `readability.py` before any result: rank = min over the single-token forms of {`w`, `␣w`}; order-ops synonym table fixed in code (numbers → digit+word; operations → word+symbol+spoken form) | The paper's eval grading machinery doesn't ship with the reference; the convention had to be ours and pre-declared | Owned, pre-declared 2026-07-15 |
+| 7 | 3B fit hardware: same as everything else | 3B lens fitted on a rented RTX 4090 (CUDA fp32, torch 2.8.0+cu128, transformers 5.14.0) vs MPS (torch 2.13.0, transformers 5.13.1) for the two smaller fits and all grading | 3B fp32 backward exceeds the 24 GB MPS working-set ceiling (~25× cliff at every dim_batch; ~70 h/fit locally). Cross-device fp32 on a corpus-mean matrix is ~1e-7 relative — orders below any gate's sensitivity; the fit is byte-identical procedure (same `fitter.py`, prompts, `dim_batch=8`) | Owned, ~$0.83 |
+| 8 | Fit corpus delivered by live HuggingFace streaming | 3B (and any `--prompts-file`) fit reads the D3 prompts from a local JSON dump | HF streaming wedged in rate-limit backoff twice; the dump is the byte-identical corpus (first 100 WikiText-103 records ≥600 chars, in order) — the fit log's `seq_len=128 n_valid=111` per-prompt signature matches the MPS fits, confirming identity | Owned, mechanical |
 
 ## What M0 does NOT decide
 

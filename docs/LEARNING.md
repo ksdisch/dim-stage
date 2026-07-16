@@ -77,3 +77,63 @@ might happen, and it now reshapes the rest of the project.
    gated finding? (Hint: which arm was the gate pre-registered on?)
 3. Why does the readability verdict use the Wilson lower bound rather than
    the raw pass@10 percentage — what failure mode does that choose to avoid?
+
+## M0 — 3B escalation (2026-07-15 evening)
+
+### The one-paragraph story
+
+Both small models came back null, which was the *pre-registered trigger* to try
+one bigger model (3B) — the only way to ask "does the workspace become readable
+if we add scale?" We froze the 3B analysis band **before** fitting (so we
+couldn't move the goalposts after seeing results), discovered the laptop
+physically can't fit a 3B model in full precision, rented a cloud GPU for **83
+cents** to do just the fit, then graded locally exactly like the other two. The
+answer: **still null.** No distribution's readout clears the bar at 0.5B, 1.5B,
+or 3B. That's the strongest honest version of this project's headline — a
+clean, three-scale, pre-registered *no* to the paper's open question, at the
+scales a hobbyist can reach.
+
+### What was learned
+
+7. **A memory ceiling is a hardware fact you measure, not guess.** The Mac's
+   24 GB of unified memory (shared by CPU and GPU) holds a 1.5B model's
+   full-precision weights (6.2 GB) with room for the backward pass, but a 3B
+   model's weights (12.4 GB) sit right at the edge — and the backward pass tips
+   it over a "working-set cliff" where the GPU thrashes and runs ~25× slower.
+   Halving the batch didn't help because the *weights themselves*, not the
+   batch, are what overflow. Lesson: **fp32 fitting on this machine tops out
+   between 1.5B and 3B** — a boundary now written into memory, so no future
+   session re-discovers it by burning an evening.
+8. **Rent, don't fight, when the tool is wrong for the job.** A datacenter GPU
+   (CUDA, no such cliff) fit the 3B lens in ~57 minutes at 34.5 s/prompt — the
+   same prompt the Mac couldn't finish in 40. The whole detour was ~$0.83 and an
+   *owned deviation row*, not a silent move: cross-device numeric noise on a
+   corpus-averaged matrix is ~1e-7, orders below any gate's sensitivity, and the
+   fit was byte-identical procedure (same code, same prompts). We verified the
+   returned file by checksum before trusting it.
+9. **A null that survives escalation is stronger than the null that triggered
+   it.** The double null was a headline; the triple null *closes the question* —
+   it says the emergence point, if one exists, is above 3B, outside the reachable
+   range. And the structure sharpened: association and poetry (the abstract,
+   not-yet-spoken content — the most workspace-like) are hard zeros at *all
+   three* scales, while the Jacobian correction's value turned out **content-
+   dependent, not a scale trend** (typo's reversal deepens with scale; order-ops
+   *regains* a J-advantage at 3B).
+10. **Make the oracle's own output honest.** The gate's console line printed "no
+    clear gap" for a statistically-clean *reversal* (the J-lens reading
+    significantly *worse* than the plain baseline). We added a distinct
+    `J-REVERSAL` label — a finding hidden by a lazy print is still a hidden
+    finding, and in a project whose whole worth is faithful measurement, the
+    console should never under-report what the data shows.
+
+### Recall questions (answers in this repo's docs)
+
+4. Why did we freeze the 3B band (L14–L32) and merge it *before* the fit ran,
+   rather than after we had the lens in hand? What would have been wrong with
+   waiting?
+5. The 3B fit ran on a rented CUDA GPU while the grading ran on the local Mac.
+   Why is that split defensible — what makes the device change a *small* owned
+   deviation rather than a result-invalidating one?
+6. "association" and "poetry" are hard zeros at 0.5B, 1.5B, *and* 3B. Why is
+   that the most interesting part of the null, given what those two
+   distributions are asking the lens to read?
