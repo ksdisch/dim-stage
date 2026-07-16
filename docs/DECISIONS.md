@@ -216,3 +216,30 @@ zero) instead of a degenerate solve. Coordinates come from the closed-form
 2×2 normal equations — exact for two columns, and free of `torch.linalg`
 kernels MPS doesn't fully cover; (near-)parallel direction pairs are
 rejected loudly rather than solved badly.
+
+**Protocol conventions frozen in code before their runs (Claude).** Verbal
+report: swap token = the candidate's bare single-token form (the shape an
+answer takes right after the chat template's trailing newline); grading =
+min over both {`w`, `␣w`} forms (M0's convention); "skipping the answer
+itself" = skip a first-10 candidate iff the greedy answer token is among its
+forms. Introspection: steering scale = per-layer mean L2 residual norm over
+the D3 corpus **at the fit's own valid positions** (skip_first=16, final
+excluded); question-turn positions = the third `intro_prompt` message's
+whole templated block, located via the template's tokenized-prefix property
+(asserted at runtime, INVALID otherwise); α = 0 control computed once per
+prefill (steering by zero is a D6-tested exact no-op).
+
+**M1 outcomes (record, 2026-07-16).** Both protocols ran on all three
+subjects, descriptive throughout (triple readability NULL). *Verbal report
+(swap):* pooled top-5 **.175 [.112, .263] / .124 [.070, .208] /
+.105 [.056, .187]** at 0.5B/1.5B/3B vs the paper's .88 Claude anchor — the
+report does not follow the swap; Arm-2 J − I Newcombe CIs all straddle zero
+(writing mirrors M0's reading: no measurable J-transport advantage; at
+rank-1 the raw rows beat the J-lens vectors on every subject). *Verbal
+introspection (steer):* report rate at α = 8 (default prefill) **0/101,
+30/101 [.217, .392], 5/101 [.021, .111]** — a monotone dose–response at
+1.5B with the α = 0 control exactly 0/101 on every subject; the 1.5B–3B gap
+is CI-clean, the strongest descriptive contrast in the project; median
+steered rank moves 3747→1322 / 4430→15 / 3791→382 (control → α = 8). The D6
+runtime read-back stayed silent across every swap application; every
+wrong-arm dry-run exited INVALID as designed. M1 closed.

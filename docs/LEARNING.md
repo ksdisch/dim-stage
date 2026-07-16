@@ -137,3 +137,58 @@ scales a hobbyist can reach.
 6. "association" and "poetry" are hard zeros at 0.5B, 1.5B, *and* 3B. Why is
    that the most interesting part of the null, given what those two
    distributions are asking the lens to read?
+
+## M1 — verbal report + introspection (2026-07-16)
+
+### The one-paragraph story
+
+M1 moved from *reading* the workspace to *writing* it. We built the paper's
+two intervention operators — the **swap** (exchange one concept's coordinates
+for another inside an activation, touching nothing orthogonal to the pair)
+and **steering** (add a scaled concept direction) — and, because Anthropic
+shipped no intervention code, gated them with **pre-committed invariant
+tests** instead of a reference diff: a rigged tiny model whose Jacobian is
+known exactly, with numbers chosen so every post-patch logit is asserted *to
+the bit*. Then both protocols ran on all three subjects, descriptive per the
+triple null. Swapping the model's ready answer mid-forward barely moves its
+spoken report (top-5 rates 10–18% against the paper's 88% anchor). But
+*steering a thought in and asking the model to name it* produced the
+project's first dose–response curve: at 1.5B the report rate climbs 0 → 30%
+with strength while the zero-strength control stays exactly 0/101 — and the
+same curve is flat at 0.5B and barely rises at 3B.
+
+### What was learned
+
+11. **When there is no oracle, invariants are the gate.** The AGREE pattern
+    needs a reference to diff against; none exists for interventions. The
+    replacement discipline: hand-build a model where the *true* answer is
+    analytic (dyadic numbers → exact equality, no tolerances to hide a sign
+    or transpose bug), and re-verify the core property (coordinates exchange)
+    on every *real* application at runtime. The runtime check stayed silent
+    across ~550 swaps — that silence is now evidence, not hope.
+12. **An intervention can "work" and still miss the headline.** Steering
+    moved the median concept's rank ~3× at 0.5B, ~300× at 1.5B, ~10× at 3B —
+    directionally right on every subject. Only 1.5B converts movement into
+    rank-1 reports. "Did the needle move" and "did it arrive" are different
+    questions; report both or the summary lies.
+13. **A control earns its keep in one number.** α = 0 giving exactly 0/101 on
+    every subject kills the best alternative story ("the prompt begs for
+    concept words at an open quote") for free. Every strength cell above it
+    inherits that interpretability.
+14. **Scale structure keeps refusing to be monotone.** M0's multihop peaked
+    at 1.5B and regressed at 3B; the introspection curve does the same, with
+    the 1.5B–3B gap CI-clean. At hobby scale, "bigger model" is not a
+    monotone knob — and the interesting subject in this repo is repeatedly
+    the middle one.
+
+### Recall questions (answers in this repo's docs)
+
+7. The 1.5B introspection curve is the most striking result in the project so
+   far — yet it can never gate M1's verdict. Which frozen decision made that
+   so, and what forking-paths discipline does it protect?
+8. The α = 0 control came back exactly 0/101 on all three subjects. Which
+   alternative explanation of the 1.5B curve does that single number
+   eliminate?
+9. M1's correctness gate is invariant tests instead of M0's AGREE diff. What
+   made the AGREE pattern impossible here, and which class of bug do the
+   invariants provably catch — and which class can they *not*?
