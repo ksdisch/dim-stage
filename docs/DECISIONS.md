@@ -341,3 +341,45 @@ everywhere, vs the paper's mention ≈ focus) and no measurable white-bear
 (suppress ≈ baseline ≈ 0: nothing enters uninstructed, so suppression has
 nothing to fail at). M3 closed same-day: brief → freeze → runner → three
 subjects → spine. **v1 core-three measurement is complete.**
+
+## 2026-07-16 — S1 (stretch: introspection dose–response follow-up)
+
+*First stretch stage, opened after v1 close (Kyle's pick). Deepens M1's
+flagship finding — the 1.5B injected-thought dose–response (0→30/101, clean
+α=0 control). Full options + design extraction in `docs/S1-BRIEF.md`. No new
+model, fit, band, or intervention operator: reuses M0/M1 artifacts. Framing
+stays descriptive (triple readability NULL holds).*
+
+**D15 (Kyle) — Bundle 2 ("localize it").** Scope = axis A (saturation) +
+axis B (`J=I` falsification arm) + axis C (layer localization). A+B on all
+three subjects; C on 1.5B only (0.5B has no signal to localize, 3B's 5/101
+too thin). *Why:* B is the one falsification arm the strongest finding never
+got; A is nearly free; C is where a novel internals result and the deep-dive
+learning live. Bundle 1 (A+B only) was the honest defensibility floor;
+Bundle 3 (+ position + selectivity) deferred as diminishing returns.
+
+**D16 (Kyle) — `J = I` falsification convention.** Steer along the
+unit-normalized **raw unembedding row** `u_t` (the logit-lens direction, no
+Jacobian transport), scaled by the same per-layer mean residual norm × α, at
+the same band layers and question-turn positions; Newcombe 95% CI on
+(J-lens − J=I) report rate at each α. *Why:* identical Arm-2 substitution as
+M1/M2/M3 — like-for-like across the project; reuses the operator unchanged.
+Owned deviation from the paper's orthogonal non-J-space *component* contrast
+(deviations row 2).
+
+**D17 (Kyle) — Extended α grid + degeneracy guard.** Keep the frozen D8 grid
+`{0, 0.5, 1, 2, 4, 8}` and append `{12, 16, 24}` (~3× headroom past the
+current top, where the 1.5B curve was still rising). Degeneracy guard: flag
+the first α at which a subject's reply degenerates (the steered token
+dominating regardless of concept), so saturation isn't confused with
+model collapse. *Why:* enough headroom to see the Figure-7 rise-then-saturate
+shape without unbounded compute; the grid past 8 is an owned convention (the
+paper sweeps but publishes no grid — same footing as D8).
+
+**D18 (Kyle) — Sub-band-thirds localization.** Steer three contiguous
+sub-bands of L11–L24 separately — **early L11–15, middle L16–20, late
+L21–24** — at the best-reporting α (and its `J=I` arm), 101 concepts each,
+1.5B only. *Why:* directly tests the paper's "middle block" workspace claim
+at hobby scale; 3 configs is cheap and legible (a clean bar chart). Full
+single-layer resolution deferred unless a sub-band clearly dominates and the
+exact layer matters.

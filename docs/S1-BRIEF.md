@@ -223,5 +223,19 @@ discipline unchanged: no S1 run shares the machine with anything else.
 
 ## Frozen decisions
 
-*PENDING KYLE — D15–D18 above. Once picked, recorded here and appended to
-`DECISIONS.md`; relitigating after freeze is a deviation row, not a conversation.*
+*Frozen 2026-07-16 (Kyle) — Bundle 2 with all three convention defaults accepted;
+recorded here and in `DECISIONS.md`. Relitigating after this is a deviation row, not a
+conversation.*
+
+- **D15 = Bundle 2** — "localize it": axes A (saturation) + B (`J=I` falsification arm) +
+  C (layer localization). A+B on all three subjects; C on 1.5B only.
+- **D16 = A** — `J = I` falsification arm: steer along the unit-normalized raw
+  unembedding row `u_t`, same per-layer mean-norm × α scaling, same band layers and
+  question-turn positions; Newcombe 95% CI on (J-lens − J=I) at each α. Project-consistent
+  Arm-2 convention (owned deviation from the paper's orthogonal-component contrast).
+- **D17 = A** — extended α grid: `{0, 0.5, 1, 2, 4, 8}` (frozen D8) + appended
+  `{12, 16, 24}`. Degeneracy guard: flag the first α at which a subject's reply
+  degenerates (steered token dominating regardless of concept).
+- **D18 = A** — localization granularity: three contiguous sub-bands of L11–L24 steered
+  separately — **early L11–15, middle L16–20, late L21–24** — at the best-reporting α (and
+  its `J=I` arm), 101 concepts each, 1.5B only.
