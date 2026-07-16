@@ -1,0 +1,1209 @@
+{
+ "model_id": "Qwen/Qwen2.5-3B-Instruct",
+ "lens": "lenses/qwen2.5-3b-instruct-n100.pt",
+ "lens_n_prompts": 100,
+ "band": [
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32
+ ],
+ "mode": "descriptive",
+ "protocol": {
+  "prompt_template": "Think of a {category}. Answer in one word.",
+  "n_candidates": 10,
+  "min_baseline_rank": 11,
+  "gate_k": 5,
+  "wilson_floor_frozen_wording": 0.5,
+  "min_n": 20
+ },
+ "categories": {
+  "country": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 48752,
+    "text": "Japan"
+   },
+   "trials": [
+    {
+     "word": "Japan",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "France",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 7
+    },
+    {
+     "word": "Brazil",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 10
+    },
+    {
+     "word": "China",
+     "status": "eligible",
+     "token": 22282,
+     "baseline_rank": 11,
+     "jlens_rank": 1,
+     "identity_rank": 1
+    },
+    {
+     "word": "India",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 5
+    },
+    {
+     "word": "Spain",
+     "status": "eligible",
+     "token": 74320,
+     "baseline_rank": 13,
+     "jlens_rank": 1,
+     "identity_rank": 1
+    },
+    {
+     "word": "Italy",
+     "status": "eligible",
+     "token": 70503,
+     "baseline_rank": 14,
+     "jlens_rank": 1,
+     "identity_rank": 1
+    },
+    {
+     "word": "Germany",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 4
+    },
+    {
+     "word": "Canada",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 3
+    },
+    {
+     "word": "Mexico",
+     "status": "eligible",
+     "token": 68831,
+     "baseline_rank": 17,
+     "jlens_rank": 1,
+     "identity_rank": 1
+    }
+   ]
+  },
+  "color": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 10331,
+    "text": "Blue"
+   },
+   "trials": [
+    {
+     "word": "Blue",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Red",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 2
+    },
+    {
+     "word": "Green",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 4
+    },
+    {
+     "word": "Yellow",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 9
+    },
+    {
+     "word": "Black",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 10
+    },
+    {
+     "word": "White",
+     "status": "eligible",
+     "token": 14075,
+     "baseline_rank": 21,
+     "jlens_rank": 1,
+     "identity_rank": 1
+    },
+    {
+     "word": "Orange",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 7
+    },
+    {
+     "word": "Purple",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 3
+    },
+    {
+     "word": "Pink",
+     "status": "eligible",
+     "token": 71352,
+     "baseline_rank": 11,
+     "jlens_rank": 4,
+     "identity_rank": 1
+    },
+    {
+     "word": "Brown",
+     "status": "eligible",
+     "token": 48388,
+     "baseline_rank": 16,
+     "jlens_rank": 1,
+     "identity_rank": 1
+    }
+   ]
+  },
+  "fruit": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 26567,
+    "text": "Apple"
+   },
+   "trials": [
+    {
+     "word": "Apple",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Orange",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 4
+    },
+    {
+     "word": "Banana",
+     "status": "eligible",
+     "token": 75824,
+     "baseline_rank": 19,
+     "jlens_rank": 10,
+     "identity_rank": 15
+    },
+    {
+     "word": "Grape",
+     "status": "eligible",
+     "token": 79529,
+     "baseline_rank": 45,
+     "jlens_rank": 6,
+     "identity_rank": 9
+    },
+    {
+     "word": "Mango",
+     "status": "eligible",
+     "token": 90863,
+     "baseline_rank": 14,
+     "jlens_rank": 15,
+     "identity_rank": 10
+    },
+    {
+     "word": "Cherry",
+     "status": "eligible",
+     "token": 44705,
+     "baseline_rank": 100,
+     "jlens_rank": 14,
+     "identity_rank": 15
+    },
+    {
+     "word": "Peach",
+     "status": "eligible",
+     "token": 63595,
+     "baseline_rank": 31,
+     "jlens_rank": 7,
+     "identity_rank": 11
+    },
+    {
+     "word": "Lemon",
+     "status": "eligible",
+     "token": 51210,
+     "baseline_rank": 86,
+     "jlens_rank": 16,
+     "identity_rank": 17
+    },
+    {
+     "word": "Lime",
+     "status": "eligible",
+     "token": 70496,
+     "baseline_rank": 108,
+     "jlens_rank": 12,
+     "identity_rank": 10
+    },
+    {
+     "word": "Plum",
+     "status": "eligible",
+     "token": 83309,
+     "baseline_rank": 48,
+     "jlens_rank": 10,
+     "identity_rank": 10
+    }
+   ]
+  },
+  "sport": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 86323,
+    "text": "Football"
+   },
+   "trials": [
+    {
+     "word": "Basketball",
+     "status": "eligible",
+     "token": 46489,
+     "baseline_rank": 49,
+     "jlens_rank": 60,
+     "identity_rank": 101
+    },
+    {
+     "word": "Soccer",
+     "status": "eligible",
+     "token": 37533,
+     "baseline_rank": 48,
+     "jlens_rank": 88,
+     "identity_rank": 82
+    },
+    {
+     "word": "Tennis",
+     "status": "eligible",
+     "token": 57151,
+     "baseline_rank": 216,
+     "jlens_rank": 221,
+     "identity_rank": 310
+    },
+    {
+     "word": "Football",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Baseball",
+     "status": "eligible",
+     "token": 37158,
+     "baseline_rank": 245,
+     "jlens_rank": 112,
+     "identity_rank": 281
+    },
+    {
+     "word": "Golf",
+     "status": "eligible",
+     "token": 27033,
+     "baseline_rank": 115,
+     "jlens_rank": 34,
+     "identity_rank": 61
+    },
+    {
+     "word": "Hockey",
+     "status": "eligible",
+     "token": 40242,
+     "baseline_rank": 104,
+     "jlens_rank": 17,
+     "identity_rank": 61
+    },
+    {
+     "word": "Rugby",
+     "status": "eligible",
+     "token": 50902,
+     "baseline_rank": 67,
+     "jlens_rank": 53,
+     "identity_rank": 105
+    },
+    {
+     "word": "Cricket",
+     "status": "eligible",
+     "token": 57919,
+     "baseline_rank": 169,
+     "jlens_rank": 36,
+     "identity_rank": 68
+    },
+    {
+     "word": "Chess",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 7
+    }
+   ]
+  },
+  "instrument": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 47,
+    "text": "P"
+   },
+   "trials": [
+    {
+     "word": "Piano",
+     "status": "eligible",
+     "token": 55391,
+     "baseline_rank": 38,
+     "jlens_rank": 394,
+     "identity_rank": 29
+    },
+    {
+     "word": "Guitar",
+     "status": "eligible",
+     "token": 46659,
+     "baseline_rank": 126,
+     "jlens_rank": 1883,
+     "identity_rank": 79
+    },
+    {
+     "word": "Violin",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Drum",
+     "status": "eligible",
+     "token": 45406,
+     "baseline_rank": 100,
+     "jlens_rank": 856,
+     "identity_rank": 72
+    },
+    {
+     "word": "Flute",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Cello",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Trumpet",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Bass",
+     "status": "eligible",
+     "token": 35953,
+     "baseline_rank": 901,
+     "jlens_rank": 2419,
+     "identity_rank": 156
+    },
+    {
+     "word": "Organ",
+     "status": "eligible",
+     "token": 23227,
+     "baseline_rank": 62,
+     "jlens_rank": 158,
+     "identity_rank": 14
+    },
+    {
+     "word": "Banjo",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    }
+   ]
+  },
+  "planet": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 43824,
+    "text": "Earth"
+   },
+   "trials": [
+    {
+     "word": "Neptune",
+     "status": "eligible",
+     "token": 79624,
+     "baseline_rank": 368,
+     "jlens_rank": 512,
+     "identity_rank": 377
+    },
+    {
+     "word": "Saturn",
+     "status": "eligible",
+     "token": 49153,
+     "baseline_rank": 151,
+     "jlens_rank": 147,
+     "identity_rank": 109
+    },
+    {
+     "word": "Jupiter",
+     "status": "eligible",
+     "token": 49689,
+     "baseline_rank": 294,
+     "jlens_rank": 455,
+     "identity_rank": 359
+    },
+    {
+     "word": "Mars",
+     "status": "eligible",
+     "token": 21048,
+     "baseline_rank": 334,
+     "jlens_rank": 476,
+     "identity_rank": 648
+    },
+    {
+     "word": "Venus",
+     "status": "eligible",
+     "token": 48976,
+     "baseline_rank": 160,
+     "jlens_rank": 388,
+     "identity_rank": 327
+    },
+    {
+     "word": "Mercury",
+     "status": "eligible",
+     "token": 43562,
+     "baseline_rank": 306,
+     "jlens_rank": 511,
+     "identity_rank": 809
+    },
+    {
+     "word": "Earth",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Uranus",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Pluto",
+     "status": "eligible",
+     "token": 77581,
+     "baseline_rank": 621,
+     "jlens_rank": 324,
+     "identity_rank": 237
+    },
+    {
+     "word": "Moon",
+     "status": "eligible",
+     "token": 76019,
+     "baseline_rank": 99,
+     "jlens_rank": 26,
+     "identity_rank": 18
+    }
+   ]
+  },
+  "tree": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 33,
+    "text": "B"
+   },
+   "trials": [
+    {
+     "word": "Oak",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 2
+    },
+    {
+     "word": "Pine",
+     "status": "eligible",
+     "token": 41509,
+     "baseline_rank": 1464,
+     "jlens_rank": 2905,
+     "identity_rank": 420
+    },
+    {
+     "word": "Maple",
+     "status": "eligible",
+     "token": 43470,
+     "baseline_rank": 2430,
+     "jlens_rank": 7251,
+     "identity_rank": 426
+    },
+    {
+     "word": "Birch",
+     "status": "eligible",
+     "token": 86988,
+     "baseline_rank": 326,
+     "jlens_rank": 1829,
+     "identity_rank": 478
+    },
+    {
+     "word": "Cedar",
+     "status": "eligible",
+     "token": 56648,
+     "baseline_rank": 517,
+     "jlens_rank": 1359,
+     "identity_rank": 277
+    },
+    {
+     "word": "Elm",
+     "status": "eligible",
+     "token": 64229,
+     "baseline_rank": 3127,
+     "jlens_rank": 7923,
+     "identity_rank": 2212
+    },
+    {
+     "word": "Willow",
+     "status": "eligible",
+     "token": 64349,
+     "baseline_rank": 2187,
+     "jlens_rank": 4091,
+     "identity_rank": 625
+    },
+    {
+     "word": "Cherry",
+     "status": "eligible",
+     "token": 44705,
+     "baseline_rank": 6204,
+     "jlens_rank": 9037,
+     "identity_rank": 1787
+    },
+    {
+     "word": "Palm",
+     "status": "eligible",
+     "token": 32478,
+     "baseline_rank": 1957,
+     "jlens_rank": 4062,
+     "identity_rank": 657
+    },
+    {
+     "word": "Ash",
+     "status": "eligible",
+     "token": 52756,
+     "baseline_rank": 133,
+     "jlens_rank": 145,
+     "identity_rank": 34
+    }
+   ]
+  },
+  "bird": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 36,
+    "text": "E"
+   },
+   "trials": [
+    {
+     "word": "Robin",
+     "status": "eligible",
+     "token": 76671,
+     "baseline_rank": 24,
+     "jlens_rank": 100,
+     "identity_rank": 56
+    },
+    {
+     "word": "Eagle",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 8
+    },
+    {
+     "word": "Crow",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 4
+    },
+    {
+     "word": "Owl",
+     "status": "eligible",
+     "token": 73695,
+     "baseline_rank": 58,
+     "jlens_rank": 957,
+     "identity_rank": 191
+    },
+    {
+     "word": "Hawk",
+     "status": "eligible",
+     "token": 55323,
+     "baseline_rank": 64,
+     "jlens_rank": 915,
+     "identity_rank": 304
+    },
+    {
+     "word": "Dove",
+     "status": "eligible",
+     "token": 88984,
+     "baseline_rank": 36,
+     "jlens_rank": 366,
+     "identity_rank": 97
+    },
+    {
+     "word": "Sparrow",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Cardinal",
+     "status": "eligible",
+     "token": 45914,
+     "baseline_rank": 1382,
+     "jlens_rank": 1013,
+     "identity_rank": 260
+    },
+    {
+     "word": "Falcon",
+     "status": "eligible",
+     "token": 42861,
+     "baseline_rank": 56,
+     "jlens_rank": 596,
+     "identity_rank": 107
+    },
+    {
+     "word": "Swan",
+     "status": "eligible",
+     "token": 43401,
+     "baseline_rank": 51,
+     "jlens_rank": 350,
+     "identity_rank": 43
+    }
+   ]
+  },
+  "language": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 44923,
+    "text": "Chinese"
+   },
+   "trials": [
+    {
+     "word": "Japanese",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 3
+    },
+    {
+     "word": "Spanish",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 6
+    },
+    {
+     "word": "French",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 2
+    },
+    {
+     "word": "English",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 7
+    },
+    {
+     "word": "German",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 9
+    },
+    {
+     "word": "Chinese",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Russian",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 8
+    },
+    {
+     "word": "Arabic",
+     "status": "eligible",
+     "token": 34117,
+     "baseline_rank": 58,
+     "jlens_rank": 73,
+     "identity_rank": 112
+    },
+    {
+     "word": "Korean",
+     "status": "eligible",
+     "token": 16134,
+     "baseline_rank": 211,
+     "jlens_rank": 114,
+     "identity_rank": 138
+    },
+    {
+     "word": "Italian",
+     "status": "eligible",
+     "token": 69111,
+     "baseline_rank": 35,
+     "jlens_rank": 10,
+     "identity_rank": 10
+    }
+   ]
+  },
+  "profession": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 18727,
+    "text": "Arch"
+   },
+   "trials": [
+    {
+     "word": "Teacher",
+     "status": "eligible",
+     "token": 45065,
+     "baseline_rank": 16,
+     "jlens_rank": 51,
+     "identity_rank": 4
+    },
+    {
+     "word": "Doctor",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 4
+    },
+    {
+     "word": "Engineer",
+     "status": "eligible",
+     "token": 28383,
+     "baseline_rank": 34,
+     "jlens_rank": 348,
+     "identity_rank": 92
+    },
+    {
+     "word": "Lawyer",
+     "status": "eligible",
+     "token": 70214,
+     "baseline_rank": 172,
+     "jlens_rank": 424,
+     "identity_rank": 30
+    },
+    {
+     "word": "Nurse",
+     "status": "eligible",
+     "token": 48776,
+     "baseline_rank": 875,
+     "jlens_rank": 1046,
+     "identity_rank": 228
+    },
+    {
+     "word": "Chef",
+     "status": "eligible",
+     "token": 93903,
+     "baseline_rank": 19,
+     "jlens_rank": 51,
+     "identity_rank": 1
+    },
+    {
+     "word": "Pilot",
+     "status": "eligible",
+     "token": 44499,
+     "baseline_rank": 132,
+     "jlens_rank": 176,
+     "identity_rank": 29
+    },
+    {
+     "word": "Artist",
+     "status": "eligible",
+     "token": 40309,
+     "baseline_rank": 15,
+     "jlens_rank": 68,
+     "identity_rank": 1
+    },
+    {
+     "word": "Writer",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 3
+    },
+    {
+     "word": "Farmer",
+     "status": "eligible",
+     "token": 67464,
+     "baseline_rank": 3358,
+     "jlens_rank": 1178,
+     "identity_rank": 17
+    }
+   ]
+  },
+  "beverage": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 82280,
+    "text": "Coffee"
+   },
+   "trials": [
+    {
+     "word": "Coffee",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Tea",
+     "status": "eligible",
+     "token": 30025,
+     "baseline_rank": 20,
+     "jlens_rank": 40,
+     "identity_rank": 26
+    },
+    {
+     "word": "Water",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 3
+    },
+    {
+     "word": "Wine",
+     "status": "eligible",
+     "token": 31826,
+     "baseline_rank": 441,
+     "jlens_rank": 66,
+     "identity_rank": 49
+    },
+    {
+     "word": "Beer",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 9
+    },
+    {
+     "word": "Juice",
+     "status": "eligible",
+     "token": 65751,
+     "baseline_rank": 34,
+     "jlens_rank": 7,
+     "identity_rank": 12
+    },
+    {
+     "word": "Milk",
+     "status": "eligible",
+     "token": 43825,
+     "baseline_rank": 61,
+     "jlens_rank": 5,
+     "identity_rank": 17
+    },
+    {
+     "word": "Soda",
+     "status": "eligible",
+     "token": 96072,
+     "baseline_rank": 202,
+     "jlens_rank": 18,
+     "identity_rank": 27
+    },
+    {
+     "word": "Whiskey",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Vodka",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    }
+   ]
+  },
+  "organ": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 82895,
+    "text": "Liver"
+   },
+   "trials": [
+    {
+     "word": "Heart",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 2
+    },
+    {
+     "word": "Brain",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 5
+    },
+    {
+     "word": "Liver",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Lung",
+     "status": "eligible",
+     "token": 77236,
+     "baseline_rank": 47,
+     "jlens_rank": 28,
+     "identity_rank": 47
+    },
+    {
+     "word": "Kidney",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Stomach",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Skin",
+     "status": "eligible",
+     "token": 37186,
+     "baseline_rank": 22,
+     "jlens_rank": 6,
+     "identity_rank": 7
+    },
+    {
+     "word": "Eye",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 6
+    },
+    {
+     "word": "Ear",
+     "status": "eligible",
+     "token": 17813,
+     "baseline_rank": 38,
+     "jlens_rank": 3,
+     "identity_rank": 8
+    },
+    {
+     "word": "Spleen",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    }
+   ]
+  },
+  "city": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 3430,
+    "text": "Be"
+   },
+   "trials": [
+    {
+     "word": "Tokyo",
+     "status": "eligible",
+     "token": 26194,
+     "baseline_rank": 78,
+     "jlens_rank": 583,
+     "identity_rank": 134
+    },
+    {
+     "word": "Paris",
+     "status": "baseline_top10",
+     "token": null,
+     "baseline_rank": 4
+    },
+    {
+     "word": "London",
+     "status": "eligible",
+     "token": 39572,
+     "baseline_rank": 59,
+     "jlens_rank": 377,
+     "identity_rank": 35
+    },
+    {
+     "word": "Rome",
+     "status": "eligible",
+     "token": 21718,
+     "baseline_rank": 1847,
+     "jlens_rank": 1996,
+     "identity_rank": 705
+    },
+    {
+     "word": "Berlin",
+     "status": "eligible",
+     "token": 94409,
+     "baseline_rank": 16,
+     "jlens_rank": 240,
+     "identity_rank": 13
+    },
+    {
+     "word": "Madrid",
+     "status": "eligible",
+     "token": 24081,
+     "baseline_rank": 4119,
+     "jlens_rank": 8839,
+     "identity_rank": 1981
+    },
+    {
+     "word": "Moscow",
+     "status": "eligible",
+     "token": 22415,
+     "baseline_rank": 4976,
+     "jlens_rank": 12008,
+     "identity_rank": 2676
+    },
+    {
+     "word": "Beijing",
+     "status": "eligible",
+     "token": 26549,
+     "baseline_rank": 127,
+     "jlens_rank": 4011,
+     "identity_rank": 315
+    },
+    {
+     "word": "Cairo",
+     "status": "eligible",
+     "token": 52550,
+     "baseline_rank": 1334,
+     "jlens_rank": 4644,
+     "identity_rank": 1424
+    },
+    {
+     "word": "Sydney",
+     "status": "eligible",
+     "token": 21273,
+     "baseline_rank": 1217,
+     "jlens_rank": 4304,
+     "identity_rank": 1994
+    }
+   ]
+  },
+  "river": {
+   "prompt_tokens": 39,
+   "answer": {
+    "token": 25863,
+    "text": "Amazon"
+   },
+   "trials": [
+    {
+     "word": "Amazon",
+     "status": "spontaneous",
+     "token": null,
+     "baseline_rank": 1
+    },
+    {
+     "word": "Nile",
+     "status": "eligible",
+     "token": 76190,
+     "baseline_rank": 293,
+     "jlens_rank": 64,
+     "identity_rank": 246
+    },
+    {
+     "word": "Thames",
+     "status": "eligible",
+     "token": 81188,
+     "baseline_rank": 478,
+     "jlens_rank": 80,
+     "identity_rank": 172
+    },
+    {
+     "word": "Seine",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Congo",
+     "status": "eligible",
+     "token": 53832,
+     "baseline_rank": 2799,
+     "jlens_rank": 250,
+     "identity_rank": 1779
+    },
+    {
+     "word": "Rhine",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    },
+    {
+     "word": "Jordan",
+     "status": "eligible",
+     "token": 70424,
+     "baseline_rank": 264,
+     "jlens_rank": 53,
+     "identity_rank": 274
+    },
+    {
+     "word": "Ohio",
+     "status": "eligible",
+     "token": 65117,
+     "baseline_rank": 407,
+     "jlens_rank": 20,
+     "identity_rank": 54
+    },
+    {
+     "word": "Mississippi",
+     "status": "eligible",
+     "token": 28438,
+     "baseline_rank": 725,
+     "jlens_rank": 107,
+     "identity_rank": 984
+    },
+    {
+     "word": "Ganges",
+     "status": "no_single_token",
+     "token": null,
+     "baseline_rank": null
+    }
+   ]
+  }
+ },
+ "pooled": {
+  "n_eligible": 86,
+  "excluded": {
+   "no_single_token": 15,
+   "spontaneous": 9,
+   "baseline_top10": 30
+  },
+  "jlens": {
+   "hits": {
+    "5": 9,
+    "1": 6,
+    "10": 16
+   },
+   "top5_rate": 0.10465116279069768,
+   "wilson_95": [
+    0.05604026272483177,
+    0.18707205940656396
+   ]
+  },
+  "identity": {
+   "hits": {
+    "5": 10,
+    "1": 9,
+    "10": 17
+   },
+   "top5_rate": 0.11627906976744186
+  },
+  "newcombe_top5_j_minus_identity": [
+   -0.011627906976744179,
+   -0.10928160095876917,
+   0.0857613453460173
+  ],
+  "underpowered": false
+ }
+}
