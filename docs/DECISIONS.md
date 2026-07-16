@@ -127,3 +127,29 @@ torch version is recorded in the fit log; (b) fit corpus delivered via
 construction, and the run log's `seq_len`/`n_valid` signature per prompt
 must match the M0-recorded values (prompt 1: `seq_len=128 n_valid=111`;
 Qwen2.5 sizes share one tokenizer).
+
+**3B rescue — executed and closed (Claude, 2026-07-15 evening).** Rented an
+RTX 4090 (RunPod, CUDA fp32, torch 2.8.0+cu128, transformers 5.14.0). Fit:
+~57 min at **34.5 s/prompt** — the same prompt the Mac could not finish in
+40 min, a ~70× speedup that makes the Metal cliff a measured fact. Both
+planned deviation checks passed: the fit log's per-prompt `seq_len=128
+n_valid=111` matched the MPS runs (corpus identity), and the lens transferred
+sha256-identical (verified before the atomic move into `lenses/`). Gate ran
+locally on MPS → **NULL (0/6)**. Total spend ~$0.83; pod terminated and its
+50 GB network volume deleted (the one lingering-charge risk, closed). Both
+deviation rows landed as M0-BRIEF rows 7–8.
+
+**Console label fix — J-REVERSAL made visible (Claude).** The gate's Arm-2
+console line printed "no clear gap" for a CI-clean *negative* difference,
+conflating a genuine no-gap with a J-transport reversal (e.g. 3B typo
+−.323 [−.442, −.188]). Added a three-way label (`J-ADVANTAGE` / `J-REVERSAL`
+/ `no clear gap`) so the deterministic oracle's own output is faithful. The
+`j_advantage` boolean and the stored JSON are unchanged (Arm 2 never gates,
+and the hand-authored M0-BRIEF tables already distinguished "reversed"); this
+only corrects what the console prints. Console-only; no re-run needed.
+
+**Verdict on the escalation (record).** KICKOFF decision 2 is fully
+discharged: trigger met (double null) → escalated → 3B fitted at the frozen
+band → **NULL**. Three scales (0.5B, 1.5B, 3B), pre-registered bar,
+deterministic oracle, structured null. No emergence point exists in the
+reachable range; M1–M3 are descriptive on all three subjects.

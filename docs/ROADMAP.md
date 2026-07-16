@@ -14,43 +14,50 @@ All six deliverables closed in three PRs (#2 hour-one gate, #3 fitter + AGREE,
 | Design extraction (estimator, band, corpus, grading) | In `M0-BRIEF.md`; conventions frozen before results |
 | Decisions D1–D4 frozen | See `DECISIONS.md` |
 | Independent build → AGREE gate | **AGREE** — bitwise-identical `J_l` at all layers (rel-Frobenius 0.0 vs 1e-3 tolerance); readout 3220/3220, Wilson LB .9988 |
-| Readability gate, both subjects | **NULL / NULL** — 0/6 distributions at Wilson LB ≥ 0.5 (pass@10) on either subject; full tables in `M0-BRIEF.md`, JSONs in `results/` |
+| Readability gate, all three subjects | **NULL / NULL / NULL** — 0/6 distributions at Wilson LB ≥ 0.5 (pass@10) on 0.5B, 1.5B, or 3B; full tables in `M0-BRIEF.md`, JSONs in `results/` |
 | Single-token stimulus pre-filter | Built into `readability.py`; 94–100% of intermediates survive; every cell N ≥ 94 |
 
-**Headline:** the pre-declared kill-risk fired. At 0.5B/1.5B the workspace is
-not readable at the frozen bar — the paper's open question, answered for the
-smallest scales, with structure: abstract-content distributions (association,
-poetry) are hard zeros; surface-adjacent ones sit at 33–54%; the J-advantage
-that exists at 0.5B (typo +43pp, multilingual +21pp) vanishes or reverses at
-1.5B (typo −27pp, CI-clean) as the plain logit lens catches up.
+**Headline:** the pre-declared kill-risk fired and held under escalation. Across
+0.5B, 1.5B, and 3B the workspace is not readable at the frozen bar — the paper's
+open question, answered for Qwen2.5 0.5B–3B with a clean, three-scale,
+pre-registered *no*. Structure: the abstract-content distributions (association,
+poetry) are hard zeros at all three scales; surface-adjacent content is partially
+readable but sub-bar and non-monotone (multihop peaks at 1.5B 54% then regresses
+to 39% at 3B; order-ops is the closest cell anywhere at 3B 46%, Wilson LB .368);
+the J-advantage is content-dependent, not a scale trend — typo's J-transport
+reversal deepens monotonically (+43pp → −27pp → −32pp) while order-ops *regains* a
+CI-clean J-advantage at 3B (+16pp).
 
 ## Consequences for M1–M3 (pre-declared in KICKOFF, risk #1)
 
-The double null **re-scopes M1–M3 to descriptive**: swap/report/modulation
+The triple null **re-scopes M1–M3 to descriptive**: swap/report/modulation
 protocols can still be run and measured, but their gates were premised on a
 readable workspace; verdicts become descriptive characterization rather than
 reproduction claims. Each still opens with its own start-of-stage brief.
 
-## 3B escalation — DECIDED 2026-07-15 (Kyle: option c) — fit in flight
+## 3B escalation — CLOSED 2026-07-15 (Kyle: option c) — executed, NULL
 
 KICKOFF decision 2's trigger fired (both subjects null) and Kyle chose (c):
-fit **Qwen2.5-3B-Instruct** while M1's start-of-stage brief is written in
+fit **Qwen2.5-3B-Instruct** while M1's start-of-stage brief was written in
 parallel. Band L14–L32 (proportional rule, 36 layers) frozen and merged
-**before** the run. Local MPS then proved infeasible for 3B fp32 (the ~25×
+**before** the run. Local MPS proved infeasible for 3B fp32 (the ~25×
 working-set cliff at every dim_batch — probe story in `DECISIONS.md`), so
-per the pre-declared fallback the **fit runs on a rented CUDA box**
-(`remote-fit-3b.sh`, ~$1–3, Kyle's account); the readability gate is
-auto-queued locally and fires when the lens lands in `lenses/`. If 3B
-READS, M1–M3 run measured on 3B; otherwise they stay descriptive on
-0.5B/1.5B.
+per the pre-declared fallback the fit ran on a **rented RTX 4090** (CUDA
+fp32, ~57 min at 34.5 s/prompt, ~$0.83 total; `remote-fit-3b.sh`); the
+readability gate ran locally on MPS on the returned lens. **Verdict: NULL
+(0/6)** — 3B does not READ either, so M1–M3 stay descriptive on all three
+subjects. The escalation is closed: the trigger was honoured, the strongest
+finding this project could produce (an emergence point) was searched for at
+the one extra scale we can reach, and it is not there. Full 3B table +
+three-scale structure in `M0-BRIEF.md`.
 
 ## M1 — Verbal report — start-of-stage brief on file (`M1-BRIEF.md`)
 
 Decisions D5–D8 pending Kyle; the intervention build starts after they freeze.
-Measurement mode (measured-on-3B vs all-descriptive) resolves with the 3B
-verdict. Design extraction done 2026-07-15: swap + steering operators verbatim
-from the paper; **the reference ships no intervention code**, so M1's
-correctness gate is pre-committed invariants (D6), not an AGREE diff.
-## M2 — Two-hop swap — not started (scope resolves with the 3B verdict)
-## M3 — Directed modulation — not started (scope resolves with the 3B verdict)
+Measurement mode is **resolved to all-descriptive** (3B null → no subject READS,
+so no measured-mode branch applies). Design extraction done 2026-07-15: swap +
+steering operators verbatim from the paper; **the reference ships no intervention
+code**, so M1's correctness gate is pre-committed invariants (D6), not an AGREE diff.
+## M2 — Two-hop swap — not started (descriptive, per the triple null)
+## M3 — Directed modulation — not started (descriptive, per the triple null)
 ## Stretch (gated behind v1 close) — generalization, selectivity

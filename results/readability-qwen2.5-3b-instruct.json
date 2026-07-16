@@ -1,0 +1,429 @@
+{
+ "model_id": "Qwen/Qwen2.5-3B-Instruct",
+ "lens": "lenses/qwen2.5-3b-instruct-n100.pt",
+ "lens_n_prompts": 100,
+ "band": [
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32
+ ],
+ "gate": {
+  "k": 10,
+  "wilson_floor": 0.5,
+  "min_n": 20,
+  "need_distributions": 3
+ },
+ "distributions": {
+  "association": {
+   "n_trials": 99,
+   "dropped_single_token_prefilter": [
+    "\u00e9glise",
+    "p\u00e8re",
+    "r\u00edo"
+   ],
+   "cells": {
+    "jlens_all": {
+     "n": 99,
+     "hits": {
+      "10": 0,
+      "1": 0,
+      "5": 0,
+      "25": 1
+     }
+    },
+    "jlens_band": {
+     "n": 99,
+     "hits": {
+      "10": 0,
+      "1": 0,
+      "5": 0,
+      "25": 1
+     }
+    },
+    "logitlens_all": {
+     "n": 99,
+     "hits": {
+      "10": 1,
+      "1": 0,
+      "5": 1,
+      "25": 1
+     }
+    },
+    "logitlens_band": {
+     "n": 99,
+     "hits": {
+      "10": 1,
+      "1": 0,
+      "5": 1,
+      "25": 1
+     }
+    }
+   },
+   "arm1": {
+    "pass_at_10": 0.0,
+    "wilson_95": [
+     3.469446951953614e-18,
+     0.03735453357396229
+    ],
+    "underpowered": false,
+    "reads": false
+   },
+   "arm2": {
+    "logitlens_pass_at_10": 0.010101010101010102,
+    "newcombe_diff": [
+     -0.010101010101010102,
+     -0.05501665541403223,
+     0.028167944108848854
+    ],
+    "j_advantage": false
+   }
+  },
+  "multihop": {
+   "n_trials": 94,
+   "dropped_single_token_prefilter": [
+    "26",
+    "14",
+    "11",
+    "16",
+    "13",
+    "12",
+    "52",
+    "50",
+    "12"
+   ],
+   "cells": {
+    "jlens_all": {
+     "n": 94,
+     "hits": {
+      "10": 37,
+      "1": 14,
+      "5": 27,
+      "25": 52
+     }
+    },
+    "jlens_band": {
+     "n": 94,
+     "hits": {
+      "10": 31,
+      "1": 10,
+      "5": 23,
+      "25": 40
+     }
+    },
+    "logitlens_all": {
+     "n": 94,
+     "hits": {
+      "10": 31,
+      "1": 11,
+      "5": 25,
+      "25": 43
+     }
+    },
+    "logitlens_band": {
+     "n": 94,
+     "hits": {
+      "10": 22,
+      "1": 9,
+      "5": 19,
+      "25": 34
+     }
+    }
+   },
+   "arm1": {
+    "pass_at_10": 0.39361702127659576,
+    "wilson_95": [
+     0.3008973662970317,
+     0.4946906044638717
+    ],
+    "underpowered": false,
+    "reads": false
+   },
+   "arm2": {
+    "logitlens_pass_at_10": 0.32978723404255317,
+    "newcombe_diff": [
+     0.06382978723404259,
+     -0.07259946828335462,
+     0.19700312683406856
+    ],
+    "j_advantage": false
+   }
+  },
+  "multilingual": {
+   "n_trials": 414,
+   "dropped_single_token_prefilter": [
+    "Estonian",
+    "Bengali",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas",
+    "portugu\u00eas"
+   ],
+   "cells": {
+    "jlens_all": {
+     "n": 414,
+     "hits": {
+      "10": 148,
+      "1": 74,
+      "5": 121,
+      "25": 184
+     }
+    },
+    "jlens_band": {
+     "n": 414,
+     "hits": {
+      "10": 131,
+      "1": 60,
+      "5": 107,
+      "25": 172
+     }
+    },
+    "logitlens_all": {
+     "n": 414,
+     "hits": {
+      "10": 142,
+      "1": 55,
+      "5": 108,
+      "25": 179
+     }
+    },
+    "logitlens_band": {
+     "n": 414,
+     "hits": {
+      "10": 134,
+      "1": 46,
+      "5": 102,
+      "25": 167
+     }
+    }
+   },
+   "arm1": {
+    "pass_at_10": 0.357487922705314,
+    "wilson_95": [
+     0.3128256767509523,
+     0.40477065640496124
+    ],
+    "underpowered": false,
+    "reads": false
+   },
+   "arm2": {
+    "logitlens_pass_at_10": 0.34299516908212563,
+    "newcombe_diff": [
+     0.01449275362318836,
+     -0.050331636568855004,
+     0.07914717356050133
+    ],
+    "j_advantage": false
+   }
+  },
+  "order-ops": {
+   "n_trials": 109,
+   "dropped_single_token_prefilter": [
+    "24"
+   ],
+   "cells": {
+    "jlens_all": {
+     "n": 109,
+     "hits": {
+      "10": 50,
+      "1": 20,
+      "5": 37,
+      "25": 69
+     }
+    },
+    "jlens_band": {
+     "n": 109,
+     "hits": {
+      "10": 20,
+      "1": 11,
+      "5": 17,
+      "25": 30
+     }
+    },
+    "logitlens_all": {
+     "n": 109,
+     "hits": {
+      "10": 32,
+      "1": 4,
+      "5": 18,
+      "25": 43
+     }
+    },
+    "logitlens_band": {
+     "n": 109,
+     "hits": {
+      "10": 6,
+      "1": 0,
+      "5": 6,
+      "25": 9
+     }
+    }
+   },
+   "arm1": {
+    "pass_at_10": 0.45871559633027525,
+    "wilson_95": [
+     0.3681700378293714,
+     0.5520721423594952
+    ],
+    "underpowered": false,
+    "reads": false
+   },
+   "arm2": {
+    "logitlens_pass_at_10": 0.29357798165137616,
+    "newcombe_diff": [
+     0.1651376146788991,
+     0.03651880670353763,
+     0.28633798145146666
+    ],
+    "j_advantage": true
+   }
+  },
+  "poetry": {
+   "n_trials": 98,
+   "dropped_single_token_prefilter": [],
+   "cells": {
+    "jlens_all": {
+     "n": 98,
+     "hits": {
+      "10": 0,
+      "1": 0,
+      "5": 0,
+      "25": 3
+     }
+    },
+    "jlens_band": {
+     "n": 98,
+     "hits": {
+      "10": 0,
+      "1": 0,
+      "5": 0,
+      "25": 3
+     }
+    },
+    "logitlens_all": {
+     "n": 98,
+     "hits": {
+      "10": 2,
+      "1": 1,
+      "5": 2,
+      "25": 2
+     }
+    },
+    "logitlens_band": {
+     "n": 98,
+     "hits": {
+      "10": 1,
+      "1": 0,
+      "5": 1,
+      "25": 1
+     }
+    }
+   },
+   "arm1": {
+    "pass_at_10": 0.0,
+    "wilson_95": [
+     0.0,
+     0.037721324095458045
+    ],
+    "underpowered": false,
+    "reads": false
+   },
+   "arm2": {
+    "logitlens_pass_at_10": 0.02040816326530612,
+    "newcombe_diff": [
+     -0.02040816326530612,
+     -0.07138350826885075,
+     0.020110361739860836
+    ],
+    "j_advantage": false
+   }
+  },
+  "typo": {
+   "n_trials": 96,
+   "dropped_single_token_prefilter": [],
+   "cells": {
+    "jlens_all": {
+     "n": 96,
+     "hits": {
+      "10": 20,
+      "1": 5,
+      "5": 14,
+      "25": 24
+     }
+    },
+    "jlens_band": {
+     "n": 96,
+     "hits": {
+      "10": 20,
+      "1": 5,
+      "5": 14,
+      "25": 24
+     }
+    },
+    "logitlens_all": {
+     "n": 96,
+     "hits": {
+      "10": 51,
+      "1": 11,
+      "5": 38,
+      "25": 61
+     }
+    },
+    "logitlens_band": {
+     "n": 96,
+     "hits": {
+      "10": 24,
+      "1": 5,
+      "5": 15,
+      "25": 35
+     }
+    }
+   },
+   "arm1": {
+    "pass_at_10": 0.20833333333333334,
+    "wilson_95": [
+     0.139107236574245,
+     0.300004316125231
+    ],
+    "underpowered": false,
+    "reads": false
+   },
+   "arm2": {
+    "logitlens_pass_at_10": 0.53125,
+    "newcombe_diff": [
+     -0.32291666666666663,
+     -0.44183424706879015,
+     -0.18792208458441687
+    ],
+    "j_advantage": false
+   }
+  }
+ },
+ "verdict": {
+  "arm1_distributions_passing": 0,
+  "subject_reads": false
+ }
+}
