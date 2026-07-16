@@ -1,6 +1,9 @@
 # M3 start-of-stage brief — directed modulation
 
-*2026-07-16 · status: options presented, decisions D12–D14 pending Kyle*
+*2026-07-16 · status: **COMPLETE** — D12–D14 frozen (Kyle, all three
+recommendations; see "Frozen decisions"), measured on all three subjects the
+same day. Results below; headline in `ROADMAP.md`; outcomes in
+`DECISIONS.md`.*
 *Sources: the paper (`refs/workspace-paper.md`, §The J-space is subject to
 directed modulation; Figure 10; appendix Figure 65) and the reference repo's
 experiment data (`refs/jacobian-lens/data/experiments/README.md`
@@ -177,6 +180,59 @@ lens readout over a ~10-token span — comparable per-forward cost to M1's
 introspection run. Minutes at 0.5B, ~15–20 min at 3B on MPS. Serial GPU
 discipline unchanged.
 
+## Results — directed modulation (all subjects, descriptive) — 2026-07-16
+
+Runner: `m3_directed_modulation.py` (D13 grid: 1,104 trials + 46 baselines
+per subject; both lens arms from each forward). JSONs in
+`results/directed-modulation-*.json`. No targets dropped (all 46 have
+single-token tracked forms). The frozen would-gate reads **"does not
+modulate" on all three subjects** — the math family is a hard zero
+everywhere, and the gate needs both families. The structure inside that
+verdict is the story.
+
+**Category family, J-lens arm** (hits = tracked token top-1 at any layer ×
+position over the carrier span):
+
+| Subject | focus | control (mention) | suppress | pooled baseline | focus − suppress (Newcombe 95%) | focus − control |
+|---|---|---|---|---|---|---|
+| 0.5B | 2/110 | 0/132 | 1/286 | 0/46 (UB .077, CLEAN) | +.015 [−.006, +.060] | +.018 [−.013, +.064] |
+| 1.5B | 6/110 | 0/132 | 0/286 | 0/46 CLEAN | **+.055 [+.022, +.114]** | **+.055 [+.014, +.114]** |
+| 3B | 9/110 | 0/132 | 0/286 | 0/46 CLEAN | **+.082 [+.041, +.148]** | **+.082 [+.034, +.148]** |
+
+**Category family, logit-lens (J = I) arm:** 0.5B focus 0/110; 1.5B focus
+8/110, control 1/132; 3B focus **19/110**, control 4/132, suppress 0/286,
+baseline 0/46. **Math family: zero under both arms at every scale** (focus
+0/120 everywhere).
+
+Descriptive reading (no property claims — triple readability NULL):
+
+- **The KICKOFF-cited anchor reproduces.** The no-instruction baseline is
+  ≈ 0 on every subject, both arms (pooled 0/46, Wilson UB .077 — under the
+  pre-declared .10 bar). The prompt context alone never puts the target in
+  the lens.
+- **A real, ordered, scale-growing modulation signal on the category
+  family.** Focus ≫ control ≈ suppress ≈ baseline ≈ 0 — the paper's
+  qualitative ordering — with CI-clean focus − suppress and focus − control
+  at 1.5B and 3B, and CI-clean growth across scale (J-lens focus, 3B vs
+  0.5B: +.064 [+.004, +.131]). Magnitudes are ~an order below Claude's
+  ("substantial fraction"; ours peak at .173 under the logit lens at 3B).
+- **A CI-clean J-transport reversal at 3B.** The plain logit lens reads the
+  focused concept nearly twice as often as the J-lens (19/110 vs 9/110;
+  J − logit −.091 [−.181, −.002]) — and that logit-lens signal is itself
+  contrast-clean (control 4/132, suppress 0/286, baseline 0/46). Directed
+  modulation *exists* at 3B; it is just read better **without** the
+  Jacobian transport — M0's typo reversal, now on instructed content.
+- **Mention does not prime at these scales.** The paper's Figure 65 finds a
+  bare mention primes almost as strongly as focus; here control is 0–4
+  hits of 132 everywhere. Only an explicit focus instruction moves anything.
+- **No white-bear effect is measurable** — suppression can't visibly fail
+  when nothing enters the workspace uninstructed: suppress ≈ baseline ≈ 0
+  (dismissal 1-then-0 of 132; negated-think 0/154 at every scale). The
+  effect's precondition (spontaneous intrusion) is absent at these scales.
+- **Math is a hard zero under both lenses at every scale** — computed
+  content (the expression's answer) never surfaces over the carrier span,
+  mirroring M0's abstract-content hard zeros (association, poetry).
+
 ## What M3 does NOT decide
 
 - Nothing here is harness code; the brief precedes the build. The runner
@@ -185,5 +241,19 @@ discipline unchanged.
 
 ## Frozen decisions
 
-*Pending Kyle. D12–D14 will be recorded here and in `DECISIONS.md` when
-picked; relitigating after that is a deviation row, not a conversation.*
+*Frozen 2026-07-16 (Kyle) — all three recommendations, recorded here and in
+`DECISIONS.md`. Relitigating after this is a deviation row, not a
+conversation.*
+
+- **D12 = A** — the two shipped families + constructed baseline; line-width
+  out (deviations row 3).
+- **D13 = A** — deterministic full grid (1,104 trials + 46 baselines,
+  carrier rotation `(i + j) mod 20`), owned copy frame, teacher-forced
+  carrier as the readout span, Figure 10's top-1-anywhere grading, {`w`,
+  `␣w`} tracked forms.
+- **D14 = A** — contrast-first two-arm verdict: focus − suppress Newcombe
+  must exclude 0 on both families AND the **pooled** no-instruction baseline
+  must be clean (Wilson UB ≤ .10; pooled n = 46, because a zero-hit
+  per-family cell of n = 22–24 cannot get its UB under .10 — per-family
+  baselines reported alongside). White-bear, focus − control, Figure 65
+  split, and J − logit all reported. Descriptive framing throughout.

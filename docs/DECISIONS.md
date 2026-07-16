@@ -284,3 +284,60 @@ answer-smuggling signature at 3B. Displaced-original ~40% everywhere (14/28,
 12/41, 18/43); swap_answer reaches top-5 on about half of primary trials.
 The D6 read-back stayed silent; wrong-arm dry-run exited INVALID. M2 closed
 same-day: brief → freeze → runner → three subjects → spine.
+
+## 2026-07-16 — M3
+
+**Correction on the record (Claude).** M1-D8's rationale claimed the steering
+operator was "required for M3." Wrong: M3 is a **reading** milestone — the
+modulation is the instruction in the prompt; the lens only reads. D8's other
+merits stand (KICKOFF scoped verbal-introspection in; it produced the 1.5B
+dose–response), but that rationale line is retracted. Owned in M3-BRIEF.
+
+**D12 (Kyle) — Two shipped families.** Category-instance + math-expression
+verbatim from `directed-modulation.json`, plus the constructed
+no-instruction baseline; the line-width family is out (stimuli unshipped,
+different metric, would need an owned RNG — KICKOFF's shipped-stimuli scope).
+*Why:* reproduce what ships; own what doesn't as a deviation row, not a
+reconstruction.
+
+**D13 (Kyle) — Deterministic full grid + owned prompt frame.** Every
+phrasing × every target (1,104 trials), carrier rotated
+`carriers[(i + j) mod 20]`; baseline = every target × `carriers[j mod 20]`
+(46). User turn = filled phrasing + a space + `Copy this sentence exactly:
+"<carrier>"` (the reference ships no frame — owned); assistant teacher-forced
+to the carrier verbatim; readout span = the carrier's tokens; hit = a tracked
+token is the J-lens **top-1 at any (layer, position)** (Figure 10, verbatim);
+tracked tokens = single-token {`w`, `␣w`} forms, zero-form targets dropped
+and counted. No RNG anywhere. *Why:* trials are wall-clock-free at this
+size; determinism beats sampling conventions.
+
+**D14 (Kyle) — Contrast-first two-arm verdict, wording frozen.** Cells per
+family × condition (focus/control/suppress/baseline) × arm (J-lens /
+logit-lens J = I), Wilson 95%. Would-gate: "modulates" iff focus − suppress
+Newcombe excludes 0 (positive) on BOTH families AND the pooled baseline is
+clean — Wilson UB ≤ 0.10, **pooled across families (n = 46)**: a zero-hit
+n = 22–24 cell mathematically cannot get its UB under .10, so the per-family
+bar would be unreachable; per-family baselines are reported alongside
+(implementation note, pre-declared before any run). Also reported:
+suppress − baseline (the white-bear check), focus − control (instruction vs
+mere mention), the dismissal vs negated-think split (Figure 65), and
+J − logit per condition (the standing falsification arm). Descriptive
+framing throughout (triple readability NULL). *Why:* the phenomenon is the
+contrast; no numeric absolute anchor exists in the paper's text.
+
+**M3 outcomes (record, 2026-07-16).** 1,150 trials per subject, no targets
+dropped. The would-gate reads **"does not modulate" on all three subjects**
+(math is a hard zero everywhere; the gate needs both families). The
+KICKOFF-cited anchor reproduces: pooled no-instruction baseline 0/46
+(UB .077 ≤ .10) on every subject, both arms. Category family, J-lens focus:
+2/110 → 6/110 → 9/110 with control ≈ suppress ≈ 0 — focus − suppress and
+focus − control both CI-clean at 1.5B (+.055) and 3B (+.082), and the
+scale growth 0.5B → 3B is CI-clean (+.064 [+.004, +.131]). Logit-lens arm:
+3B focus **19/110** (control 4/132, suppress 0/286) → **J − logit −.091
+[−.181, −.002], a CI-clean J-transport reversal** — directed modulation
+exists at 3B and is read better *without* the transport (M0's typo
+reversal, now on instructed content). No mention-priming (control 0–4/132
+everywhere, vs the paper's mention ≈ focus) and no measurable white-bear
+(suppress ≈ baseline ≈ 0: nothing enters uninstructed, so suppression has
+nothing to fail at). M3 closed same-day: brief → freeze → runner → three
+subjects → spine. **v1 core-three measurement is complete.**

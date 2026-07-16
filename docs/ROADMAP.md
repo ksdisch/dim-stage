@@ -86,15 +86,31 @@ answer at these scales — but where it works at all (3B), it works *only
 through the Jacobian transport*: raw unembedding rows flip nothing. The swap
 disturbs chains (~40% displaced) far more often than it redirects them.
 All framing descriptive per the pre-registered re-scope.
-## M3 — Directed modulation — start-of-stage brief on file (`M3-BRIEF.md`)
+## M3 — Directed modulation — **COMPLETE 2026-07-16** (descriptive; triple-null re-scope)
 
-Decisions D12–D14 pending Kyle; the runner build starts after they freeze.
-Design extraction done 2026-07-16: a **reading** milestone (the modulation is
-the instruction; the lens only reads — M1-D8's "steering required for M3"
-rationale was wrong and is owned in the brief). Two shipped families
-(category-instance, math-expression), four instruction groups collapsing to
-focus/control/suppress + a constructed no-instruction baseline; grading =
-target reaches J-lens top-1 at any (layer, position); anchor = baseline ≈ 0
-(KICKOFF row; Figure 10 rates are figure-only). Line-width family unshipped.
-Descriptive, per the triple null.
+Closed in two PRs (#15 brief, #16 D12–D14 freeze + runner + results + close).
+A **reading** milestone (the modulation is the instruction; M1-D8's "steering
+required for M3" rationale was wrong — owned in the brief and DECISIONS):
+
+| Deliverable | Outcome |
+|---|---|
+| D12–D14 frozen | 2026-07-16, Kyle — all three recommendations (`DECISIONS.md`) |
+| Anchor check | The KICKOFF-cited anchor **reproduces**: no-instruction baseline ≈ 0 on every subject, both arms (pooled 0/46, UB .077 < the pre-declared .10) |
+| Would-gate wording | **"Does not modulate" on all three subjects** — the math family is a hard zero everywhere and the frozen gate needs both families |
+| The structure inside | Category-family focus signal is real, **ordered as the paper describes** (focus ≫ control ≈ suppress ≈ baseline ≈ 0), CI-clean at 1.5B and 3B, and **grows CI-cleanly with scale** (J-lens focus 3B vs 0.5B +.064 [+.004, +.131]) |
+| Falsification arm | **CI-clean J-transport reversal at 3B**: the plain logit lens reads the focused concept ~2× the J-lens (19/110 vs 9/110; J − logit −.091 [−.181, −.002]), itself contrast-clean |
+
+**Headline:** small Qwen models show a genuine, dose-ordered, scale-growing
+trace of top-down workspace control on concrete category content — but an
+order of magnitude below Claude, absent entirely for computed math content,
+with no mention-priming and no white-bear effect (nothing enters the
+workspace uninstructed to suppress) — and at 3B the phenomenon is read
+*better without* the Jacobian transport. All framing descriptive.
+
+## v1 core-three status
+
+**All three properties measured on all three subjects (2026-07-16).** The
+KICKOFF "v1 done" list now lacks only the README honesty contract (the
+final write-up pass); stretch items (generalization, selectivity) remain
+gated behind that close.
 ## Stretch (gated behind v1 close) — generalization, selectivity
