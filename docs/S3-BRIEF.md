@@ -207,6 +207,8 @@ Frozen before any real run; dry-run with rigged inputs must exit INVALID first.
 | Two-hop set stands in for the battery's multihop | paper Fig 22/24 | In-project baselines exist (M2); like-for-like deltas |
 | Invariants replace AGREE for the ablation operator | lineage bar | Reference ships no ablation code (M1-D6 precedent) |
 | Repo's 2-condition language contrast vs paper's 4 | paper Fig 20 | Verbatim shipped item set (D19 precedent) |
+| Linecount target set = number-words only (30 ids) | repo README | Qwen tokenizes multi-digit numbers digit-by-digit — the "two-digit token" half is empty on this tokenizer; single digits excluded (would swamp the readout) |
+| Per-position clean-top-10 exclusion | paper §ablation | The paper's "top-10 tokens of a clean forward pass" read per position — the reading that scales to teacher-forced scoring |
 
 ## Wall-clock plan (forward passes only — no new fits, models, or bands)
 
@@ -216,6 +218,46 @@ Ablation: 81 two-hop items × (3 tiers + 1 random control + 1 clean re-check) ×
 subjects, plus ~100 wikitext prompts × (3 tiers + control + clean) × 3 subjects —
 comfortably an evening on MPS at M2/S2 per-forward rates, 3B included (local
 forwards were fine throughout M2–S2; only *fitting* 3B needed the rented GPU).
+
+## Frozen decisions (2026-07-17, Kyle — all recommendations)
+
+- **D23** — both bundles: targeted reading contrasts + the ablation arms.
+- **D24** — k=10 + clean-top-10 exclusion verbatim (per-position reading,
+  owned); ablation = span-projection removal; start-anchored tiers (light =
+  first third of the frozen band, medium = first two-thirds, heavy = full);
+  random-direction control at medium, frozen seed 20260717. Selection per band
+  layer × position by M0's lens-readout logits; directions by M1's raw-row
+  convention.
+- **D25** — flexible task = M2's two-hop items verbatim (81 gradable, plan-
+  checked at startup); automatic task = fresh WikiText records 101–200 under
+  the D3 rule, with a startup proof that the streamed first 100 still equal
+  the recorded fit corpus (disjointness is checked, not assumed).
+- **D26** — targeted cells verbatim + pre-declared UNDERPOWERED; presence =
+  target token in lens top-10 at any band layer; only ablation cells carry
+  CI-gated statements, per the three-leg would-gate above.
+
+Full rationale in `DECISIONS.md`. Implementation: `intervention.ablate` +
+`s3_selectivity.py`; pre-committed gates in `test_selectivity.py` (16 checks:
+analytic-oracle projection invariants, exclusion honoring, rigged-operator
+read-back INVALID, wrong-arm lens INVALID).
+
+### Build-phase discoveries (before any result — owned in the table below)
+
+- **Real lens direction sets defeated two textbook projections.** The top-10
+  lens tokens at a (layer, position) can include near-duplicate and untrained
+  reserved vocab tokens whose J-lens directions are numerically identical: a
+  least-squares projection exploded (the runtime read-back caught it — its
+  first catch), and LAPACK's iterative SVD then refused to converge outright.
+  The shipped operator uses modified Gram-Schmidt with re-orthogonalization,
+  which cannot fail either way; the read-back stayed on for every real run.
+- **A silent MPS transfer bug.** `tensor.to("cpu", torch.float64)` in one
+  step silently corrupts values coming off MPS (measured ~5 abs error on
+  unit-scale data, no exception). Fixed as move-then-cast; recorded in
+  project memory for every future stage.
+- **Qwen digit tokenization empties half the linecount target set.** The
+  README's "any two-digit token" half is vacuous on Qwen (multi-digit numbers
+  tokenize digit-by-digit); the tracked set is number-words only (30 ids).
+  Answer texture for the direct condition falls back to first-sub-token rank.
 
 ## What S3 does NOT decide
 
