@@ -186,3 +186,36 @@ claim, an *early* workspace copy used to deliberately suppress the concept,
 does not appear: where small models can do the exclusion task at all, they do
 it without that machinery. Descriptive throughout; the gate said NOT shown
 and that is the reported verdict.
+
+## S4b — late-tier specificity control (follow-up; brief before code)
+
+S4 left one loose end, owned in its results: the late-band hard switch
+(primed late-third k = 1 ablation → naming 0/n, concept mass ≈ .000 on every
+subject) has **no matched control cell**, because D28 scoped the specificity
+control to the early tier. Until a same-category control runs at the late
+tier, "removing the concept's late direction silences that word" cannot be
+told apart from "removing *any* single direction at the late tier breaks
+output." S4b adds exactly that cell.
+
+### Design (mechanical extension of the frozen S4 protocol)
+
+Two new conditions in the same runner, everything else unchanged:
+**control_middle** and **control_late** — the same-category alternative's
+lens direction ablated at the middle and late thirds, both instructions.
+All three subjects re-run in full (deterministic greedy readouts: the
+original cells must reproduce bit-for-bit, a free consistency check; new
+JSONs supersede the S4 ones).
+
+### D31 — the one decision (Kyle freezes; recommendation flagged)
+
+- **Conditions:** control_late only (the essential cell) vs **control_late +
+  control_middle (recommended** — the middle tier showed partial primed
+  suppression at 0.5B/1.5B, and the extra cell is free**)**.
+- **Pre-committed gate wording:** the late switch is **concept-specific**
+  iff, per subject on the gated cell, naming success under `control_late` is
+  CI-cleanly above naming success under `primed_late` (Newcombe excludes 0).
+  Failing it is the headline against: "any-direction output damage at the
+  late tier, not a per-concept switch." Standing UNDERPOWERED tags apply
+  (0.5B n = 5, 3B n = 8; 1.5B n = 22 is the powered subject). Avoidance
+  cells under the new conditions are recorded as texture. D30's original
+  legs are re-reported unchanged.
