@@ -633,3 +633,14 @@ checked at close). Pre-committed wording: the late switch is
 output damage at the late tier"). Standing UNDERPOWERED tags (n = 5 / 22 / 8);
 avoidance cells under the new conditions are texture; D30's legs re-reported
 unchanged.
+
+**S4b outcomes (record, 2026-07-17).** Determinism check passed: every shared
+cell bit-identical to the S4 run (0 mismatches; gates 5/22/8 unchanged).
+**D31 gate:** 0.5B not shown (+.200 [−.264, +.624], n=5 UNDERPOWERED); 1.5B
+**concept-SPECIFIC, CI-clean** (0/22 → 16/22, +.727 [+.471, +.868]); 3B
+concept-SPECIFIC (0/8 → 8/8, +1.000 [+.541, +1.000], UNDERPOWERED-tagged).
+Specificity emerges with scale: at 0.5B any late-tier single-direction
+removal wrecks output (control mass .204 vs clean .661); at 3B the control is
+untouched (.924 ≈ clean .886). Middle-tier cells benign for both vectors on
+every subject. The S4 late-switch texture is now a gated, controlled claim on
+the powered subject.

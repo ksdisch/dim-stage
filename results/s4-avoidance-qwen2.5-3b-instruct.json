@@ -61,7 +61,9 @@
    "primed_early",
    "primed_middle",
    "primed_late",
-   "control_early"
+   "control_early",
+   "control_middle",
+   "control_late"
   ],
   "gate": "greedy-based (D29); verbatim P .85/.15 reported alongside",
   "readback_tol": 0.0001,
@@ -108,6 +110,16 @@
       "produced": true,
       "greedy": "France",
       "concept_mass": 0.9996991753578186
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.999274492263794
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9782337546348572
      }
     },
     "avoidance": {
@@ -135,6 +147,16 @@
       "produced": true,
       "greedy": "France",
       "concept_mass": 0.9413723349571228
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9663355946540833
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.7156749367713928
      }
     }
    },
@@ -172,6 +194,16 @@
       "produced": true,
       "greedy": "France",
       "concept_mass": 0.9999926686286926
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.999991774559021
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.999871551990509
      }
     },
     "avoidance": {
@@ -199,6 +231,16 @@
       "produced": false,
       "greedy": "United",
       "concept_mass": 0.006018155254423618
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Egypt",
+      "concept_mass": 0.021637674421072006
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "This",
+      "concept_mass": 6.829661288065836e-06
      }
     }
    },
@@ -236,6 +278,16 @@
       "produced": true,
       "greedy": "France",
       "concept_mass": 0.9999992251396179
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.999998927116394
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9999940395355225
      }
     },
     "avoidance": {
@@ -263,6 +315,16 @@
       "produced": true,
       "greedy": "France",
       "concept_mass": 0.9929736852645874
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9809334874153137
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.6500028967857361
      }
     }
    },
@@ -300,6 +362,16 @@
       "produced": true,
       "greedy": "China",
       "concept_mass": 0.9999862313270569
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9996858835220337
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9976983666419983
      }
     },
     "avoidance": {
@@ -327,6 +399,16 @@
       "produced": false,
       "greedy": "Australia",
       "concept_mass": 0.04022705927491188
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Australia",
+      "concept_mass": 0.008812782354652882
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Australia",
+      "concept_mass": 0.004593163728713989
      }
     }
    },
@@ -364,6 +446,16 @@
       "produced": true,
       "greedy": "China",
       "concept_mass": 0.9999464154243469
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9979016184806824
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9875924587249756
      }
     },
     "avoidance": {
@@ -391,6 +483,16 @@
       "produced": false,
       "greedy": "India",
       "concept_mass": 0.09024254977703094
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.042435843497514725
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.003799855476245284
      }
     }
    },
@@ -428,6 +530,16 @@
       "produced": true,
       "greedy": "China",
       "concept_mass": 0.9999345541000366
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.998709499835968
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9970940947532654
      }
     },
     "avoidance": {
@@ -455,6 +567,16 @@
       "produced": false,
       "greedy": "United",
       "concept_mass": 0.0006129943649284542
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 0.0001985417475225404
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 0.00010188249143538997
      }
     }
    },
@@ -492,6 +614,16 @@
       "produced": true,
       "greedy": "Egypt",
       "concept_mass": 0.9998958706855774
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9997826218605042
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9991905689239502
      }
     },
     "avoidance": {
@@ -519,6 +651,16 @@
       "produced": true,
       "greedy": "Egypt",
       "concept_mass": 0.747180163860321
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.507330060005188
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.33202797174453735
      }
     }
    },
@@ -556,6 +698,16 @@
       "produced": true,
       "greedy": "Egypt",
       "concept_mass": 0.9995474219322205
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9989761710166931
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9983986020088196
      }
     },
     "avoidance": {
@@ -583,6 +735,16 @@
       "produced": true,
       "greedy": "Egypt",
       "concept_mass": 0.5869078040122986
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "S",
+      "concept_mass": 0.19335192441940308
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "S",
+      "concept_mass": 0.1283046305179596
      }
     }
    },
@@ -620,6 +782,16 @@
       "produced": true,
       "greedy": "Egypt",
       "concept_mass": 0.999951183795929
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9999085068702698
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9997190833091736
      }
     },
     "avoidance": {
@@ -647,6 +819,16 @@
       "produced": true,
       "greedy": "Egypt",
       "concept_mass": 0.9607732892036438
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9099483489990234
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9411410689353943
      }
     }
    },
@@ -684,6 +866,16 @@
       "produced": true,
       "greedy": "Canada",
       "concept_mass": 0.9998811483383179
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9998414516448975
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9990978837013245
      }
     },
     "avoidance": {
@@ -711,6 +903,16 @@
       "produced": true,
       "greedy": "Canada",
       "concept_mass": 0.9348304271697998
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9611517190933228
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9294628500938416
      }
     }
    },
@@ -748,6 +950,16 @@
       "produced": true,
       "greedy": "Canada",
       "concept_mass": 0.9999350309371948
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.999888002872467
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9995810985565186
      }
     },
     "avoidance": {
@@ -775,6 +987,16 @@
       "produced": true,
       "greedy": "Canada",
       "concept_mass": 0.644481897354126
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.7390523552894592
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.7396709322929382
      }
     }
    },
@@ -812,6 +1034,16 @@
       "produced": true,
       "greedy": "Canada",
       "concept_mass": 0.9767735004425049
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9654857516288757
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.8958019614219666
      }
     },
     "avoidance": {
@@ -839,6 +1071,16 @@
       "produced": true,
       "greedy": "Canada",
       "concept_mass": 0.9464858174324036
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.887861967086792
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.8259416818618774
      }
     }
    },
@@ -876,6 +1118,16 @@
       "produced": true,
       "greedy": "February",
       "concept_mass": 0.999475359916687
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9993833303451538
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9953644871711731
      }
     },
     "avoidance": {
@@ -903,6 +1155,16 @@
       "produced": true,
       "greedy": "February",
       "concept_mass": 0.9998800754547119
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9998918175697327
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9989169836044312
      }
     }
    },
@@ -940,6 +1202,16 @@
       "produced": true,
       "greedy": "February",
       "concept_mass": 0.9996024370193481
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9995639324188232
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9997977018356323
      }
     },
     "avoidance": {
@@ -967,6 +1239,16 @@
       "produced": true,
       "greedy": "February",
       "concept_mass": 0.9868156909942627
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9787238836288452
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9726541638374329
      }
     }
    },
@@ -1004,6 +1286,16 @@
       "produced": true,
       "greedy": "February",
       "concept_mass": 0.9998294711112976
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9997371435165405
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9505696296691895
      }
     },
     "avoidance": {
@@ -1031,6 +1323,16 @@
       "produced": true,
       "greedy": "February",
       "concept_mass": 0.9999681711196899
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9999597668647766
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9999424815177917
      }
     }
    },
@@ -1068,6 +1370,16 @@
       "produced": true,
       "greedy": "July",
       "concept_mass": 0.9999968409538269
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9999917149543762
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9999867677688599
      }
     },
     "avoidance": {
@@ -1095,6 +1407,16 @@
       "produced": false,
       "greedy": "February",
       "concept_mass": 3.1084855436347425e-06
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 4.42763348473818e-06
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 8.956148121797014e-06
      }
     }
    },
@@ -1132,6 +1454,16 @@
       "produced": false,
       "greedy": "January",
       "concept_mass": 0.2773978114128113
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.3364655375480652
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.08519531041383743
      }
     },
     "avoidance": {
@@ -1159,6 +1491,16 @@
       "produced": false,
       "greedy": "February",
       "concept_mass": 1.624354990781285e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 4.452729262993671e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 7.806698704371229e-05
      }
     }
    },
@@ -1196,6 +1538,16 @@
       "produced": true,
       "greedy": "July",
       "concept_mass": 0.6044197082519531
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.6680904030799866
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9816028475761414
      }
     },
     "avoidance": {
@@ -1223,6 +1575,16 @@
       "produced": false,
       "greedy": "February",
       "concept_mass": 0.0005674866843037307
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.0011299594771116972
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.004282153677195311
      }
     }
    },
@@ -1260,6 +1622,16 @@
       "produced": true,
       "greedy": "October",
       "concept_mass": 0.9751088619232178
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9778427481651306
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9400079250335693
      }
     },
     "avoidance": {
@@ -1287,6 +1659,16 @@
       "produced": false,
       "greedy": "February",
       "concept_mass": 2.3503924239776097e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 4.251809878041968e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00020030631276313215
      }
     }
    },
@@ -1324,6 +1706,16 @@
       "produced": false,
       "greedy": "December",
       "concept_mass": 0.006919419392943382
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.01073821634054184
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.032130107283592224
      }
     },
     "avoidance": {
@@ -1351,6 +1743,16 @@
       "produced": false,
       "greedy": "December",
       "concept_mass": 0.0002304054651176557
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00018439885752741247
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.0001091914891730994
      }
     }
    },
@@ -1388,6 +1790,16 @@
       "produced": true,
       "greedy": "October",
       "concept_mass": 0.9999814629554749
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9999721646308899
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9991559982299805
      }
     },
     "avoidance": {
@@ -1415,6 +1827,16 @@
       "produced": true,
       "greedy": "October",
       "concept_mass": 0.9887986779212952
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9911461472511292
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.99436354637146
      }
     }
    },
@@ -1452,6 +1874,16 @@
       "produced": false,
       "greedy": "May",
       "concept_mass": 5.202389365877025e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 6.259785732254386e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 6.63968285152805e-06
      }
     },
     "avoidance": {
@@ -1479,6 +1911,16 @@
       "produced": false,
       "greedy": "May",
       "concept_mass": 0.025256678462028503
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 0.024980459362268448
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 0.008362527005374432
      }
     }
    },
@@ -1516,6 +1958,16 @@
       "produced": false,
       "greedy": "February",
       "concept_mass": 0.00012295359920244664
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 8.504179277224466e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 3.660413858597167e-05
      }
     },
     "avoidance": {
@@ -1543,6 +1995,16 @@
       "produced": false,
       "greedy": "February",
       "concept_mass": 0.000863809313159436
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.0015255905454978347
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.0003717919171322137
      }
     }
    },
@@ -1580,6 +2042,16 @@
       "produced": true,
       "greedy": "April",
       "concept_mass": 0.9999991059303284
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9999986886978149
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9999985694885254
      }
     },
     "avoidance": {
@@ -1607,6 +2079,16 @@
       "produced": true,
       "greedy": "April",
       "concept_mass": 0.9962892532348633
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9971198439598083
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9971510171890259
      }
     }
    },
@@ -1644,6 +2126,16 @@
       "produced": false,
       "greedy": "L",
       "concept_mass": 0.2683321237564087
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.3790402412414551
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.25489065051078796
      }
     },
     "avoidance": {
@@ -1671,6 +2163,16 @@
       "produced": false,
       "greedy": "L",
       "concept_mass": 0.17543457448482513
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.2465878278017044
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.13515107333660126
      }
     }
    },
@@ -1708,6 +2210,16 @@
       "produced": true,
       "greedy": "lion",
       "concept_mass": 0.5537332892417908
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": "lion",
+      "concept_mass": 0.558174729347229
+     },
+     "control_late": {
+      "produced": true,
+      "greedy": "lion",
+      "concept_mass": 0.49098336696624756
      }
     },
     "avoidance": {
@@ -1735,6 +2247,16 @@
       "produced": false,
       "greedy": "L",
       "concept_mass": 0.10974178463220596
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.1405787318944931
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Ele",
+      "concept_mass": 0.08718616515398026
      }
     }
    },
@@ -1772,6 +2294,16 @@
       "produced": false,
       "greedy": "L",
       "concept_mass": 0.041627462953329086
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.04963763430714607
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.04685578867793083
      }
     },
     "avoidance": {
@@ -1799,6 +2331,16 @@
       "produced": false,
       "greedy": "L",
       "concept_mass": 0.026115145534276962
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.03561147674918175
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.009015838615596294
      }
     }
    },
@@ -1836,6 +2378,16 @@
       "produced": false,
       "greedy": "E",
       "concept_mass": 0.008824313059449196
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "E",
+      "concept_mass": 0.005660868249833584
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "E",
+      "concept_mass": 0.008633354678750038
      }
     },
     "avoidance": {
@@ -1863,6 +2415,16 @@
       "produced": false,
       "greedy": "Wh",
       "concept_mass": 4.338651706348173e-06
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 1.5077587704581674e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 4.686071406467818e-06
      }
     }
    },
@@ -1900,6 +2462,16 @@
       "produced": false,
       "greedy": "Bird",
       "concept_mass": 0.0047087413258850574
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 0.0023802805226296186
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 0.0016739051789045334
      }
     },
     "avoidance": {
@@ -1927,6 +2499,16 @@
       "produced": false,
       "greedy": "Snake",
       "concept_mass": 0.0007223851862363517
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0008929793257266283
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0007004247163422406
      }
     }
    },
@@ -1964,6 +2546,16 @@
       "produced": false,
       "greedy": "Bird",
       "concept_mass": 0.0003343932912684977
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 0.000393629539757967
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 0.00030135540873743594
      }
     },
     "avoidance": {
@@ -1991,6 +2583,16 @@
       "produced": false,
       "greedy": "E",
       "concept_mass": 0.00014433836622629315
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "E",
+      "concept_mass": 0.00012171328125987202
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "E",
+      "concept_mass": 0.00020211409719195217
      }
     }
    },
@@ -2028,6 +2630,16 @@
       "produced": false,
       "greedy": "Sh",
       "concept_mass": 0.00037949273246340454
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Sh",
+      "concept_mass": 0.0012271052692085505
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Sh",
+      "concept_mass": 0.0006120509933680296
      }
     },
     "avoidance": {
@@ -2055,6 +2667,16 @@
       "produced": false,
       "greedy": "Wh",
       "concept_mass": 0.006118007004261017
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 0.009475640021264553
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 0.001984409522265196
      }
     }
    },
@@ -2092,6 +2714,16 @@
       "produced": false,
       "greedy": "Sh",
       "concept_mass": 0.000608896603807807
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Sh",
+      "concept_mass": 0.0013960523065179586
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Sh",
+      "concept_mass": 0.000729329651221633
      }
     },
     "avoidance": {
@@ -2119,6 +2751,16 @@
       "produced": false,
       "greedy": "Cro",
       "concept_mass": 0.0028719091787934303
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 0.0028315435629338026
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 0.0007669886690564454
      }
     }
    },
@@ -2156,6 +2798,16 @@
       "produced": false,
       "greedy": "Fish",
       "concept_mass": 0.0029554928187280893
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 0.008148567751049995
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 0.003241812577471137
      }
     },
     "avoidance": {
@@ -2183,6 +2835,16 @@
       "produced": false,
       "greedy": "Sh",
       "concept_mass": 0.0012550849933177233
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Sh",
+      "concept_mass": 0.00261878059245646
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Wh",
+      "concept_mass": 0.0005668853991664946
      }
     }
    },
@@ -2220,6 +2882,16 @@
       "produced": false,
       "greedy": "Spider",
       "concept_mass": 0.0005980378482490778
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.00046800231211818755
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.0004867695097345859
      }
     },
     "avoidance": {
@@ -2247,6 +2919,16 @@
       "produced": false,
       "greedy": "Spider",
       "concept_mass": 0.011022983118891716
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.010343868285417557
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.005334094632416964
      }
     }
    },
@@ -2284,6 +2966,16 @@
       "produced": false,
       "greedy": "v",
       "concept_mass": 7.517152880609501e-06
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "v",
+      "concept_mass": 1.671979953243863e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "V",
+      "concept_mass": 2.027636037382763e-05
      }
     },
     "avoidance": {
@@ -2311,6 +3003,16 @@
       "produced": false,
       "greedy": "Tar",
       "concept_mass": 1.975435679923976e-06
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Tar",
+      "concept_mass": 2.673019253052189e-06
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Tar",
+      "concept_mass": 1.4970785287005128e-06
      }
     }
    },
@@ -2348,6 +3050,16 @@
       "produced": false,
       "greedy": "Spider",
       "concept_mass": 0.0003859807620756328
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.0004067261179443449
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.0003063907497562468
      }
     },
     "avoidance": {
@@ -2375,6 +3087,16 @@
       "produced": false,
       "greedy": "Spider",
       "concept_mass": 0.0034752897918224335
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.006112669128924608
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.001902517513372004
      }
     }
    },
@@ -2412,6 +3134,16 @@
       "produced": false,
       "greedy": "M",
       "concept_mass": 2.041210791503545e-06
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 7.602612868140568e-07
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 1.644565782044083e-05
      }
     },
     "avoidance": {
@@ -2439,6 +3171,16 @@
       "produced": false,
       "greedy": "M",
       "concept_mass": 8.354670717380941e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 6.081988976802677e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0036006076261401176
      }
     }
    },
@@ -2476,6 +3218,16 @@
       "produced": false,
       "greedy": "M",
       "concept_mass": 1.315182089456357e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 2.4903340545279207e-06
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 1.0500624739506748e-05
      }
     },
     "avoidance": {
@@ -2503,6 +3255,16 @@
       "produced": false,
       "greedy": "Mer",
       "concept_mass": 0.0001506634143879637
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 8.600934961577877e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 0.0005667044897563756
      }
     }
    },
@@ -2540,6 +3302,16 @@
       "produced": false,
       "greedy": "M",
       "concept_mass": 1.1276790701231221e-07
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 1.0408787431970268e-07
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 7.225125955301337e-07
      }
     },
     "avoidance": {
@@ -2567,6 +3339,16 @@
       "produced": false,
       "greedy": "M",
       "concept_mass": 0.00019354136020410806
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0001724926842143759
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0007198321400210261
      }
     }
    },
@@ -2604,6 +3386,16 @@
       "produced": false,
       "greedy": "Sat",
       "concept_mass": 0.0037143253721296787
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 0.003627669531852007
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 0.01256316527724266
      }
     },
     "avoidance": {
@@ -2631,6 +3423,16 @@
       "produced": false,
       "greedy": "Sat",
       "concept_mass": 0.00033780577359721065
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 0.0002047323068836704
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 0.0030350585002452135
      }
     }
    },
@@ -2668,6 +3470,16 @@
       "produced": false,
       "greedy": "Sat",
       "concept_mass": 0.002197901951149106
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 0.0019058497855439782
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 0.008318386971950531
      }
     },
     "avoidance": {
@@ -2695,6 +3507,16 @@
       "produced": false,
       "greedy": "Mer",
       "concept_mass": 5.408109245763626e-06
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 7.629715582879726e-06
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 1.2034393876092508e-05
      }
     }
    },
@@ -2732,6 +3554,16 @@
       "produced": false,
       "greedy": "J",
       "concept_mass": 9.185162343783304e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 1.7838023268268444e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gas",
+      "concept_mass": 0.00024776847567409277
      }
     },
     "avoidance": {
@@ -2759,6 +3591,16 @@
       "produced": false,
       "greedy": "Earth",
       "concept_mass": 0.0001712271332507953
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 0.0007149167940951884
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 0.0003019344003405422
      }
     }
    },
@@ -2796,6 +3638,16 @@
       "produced": false,
       "greedy": "P",
       "concept_mass": 0.0069975960068404675
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.010793181136250496
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Keyboard",
+      "concept_mass": 0.016489293426275253
      }
     },
     "avoidance": {
@@ -2823,6 +3675,16 @@
       "produced": false,
       "greedy": "P",
       "concept_mass": 0.00021171635307837278
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.000638206722214818
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0020358150359243155
      }
     }
    },
@@ -2860,6 +3722,16 @@
       "produced": false,
       "greedy": "P",
       "concept_mass": 0.0005246655782684684
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0016200428362935781
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.005133286118507385
      }
     },
     "avoidance": {
@@ -2887,6 +3759,16 @@
       "produced": false,
       "greedy": "P",
       "concept_mass": 0.004864438436925411
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0076796142384409904
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.012137551791965961
      }
     }
    },
@@ -2924,6 +3806,16 @@
       "produced": false,
       "greedy": "Grand",
       "concept_mass": 0.00014980437117628753
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Cele",
+      "concept_mass": 0.0003197698388248682
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Pipe",
+      "concept_mass": 2.1328736693249084e-05
      }
     },
     "avoidance": {
@@ -2951,6 +3843,16 @@
       "produced": false,
       "greedy": "P",
       "concept_mass": 0.0010983474785462022
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0009511618409305811
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0006345974397845566
      }
     }
    },
@@ -2988,6 +3890,16 @@
       "produced": false,
       "greedy": "G",
       "concept_mass": 0.00014028960140421987
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 9.981022594729438e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 3.7464324122993276e-05
      }
     },
     "avoidance": {
@@ -3015,6 +3927,16 @@
       "produced": false,
       "greedy": "Ban",
       "concept_mass": 0.0005262527265585959
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Ban",
+      "concept_mass": 0.0007888319087214768
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "S",
+      "concept_mass": 2.6414640160510316e-05
      }
     }
    },
@@ -3052,6 +3974,16 @@
       "produced": false,
       "greedy": "G",
       "concept_mass": 0.1588345766067505
+     },
+     "control_middle": {
+      "produced": true,
+      "greedy": " guitar",
+      "concept_mass": 0.4026038944721222
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Electric",
+      "concept_mass": 0.2284395694732666
      }
     },
     "avoidance": {
@@ -3079,6 +4011,16 @@
       "produced": false,
       "greedy": "G",
       "concept_mass": 0.003324720775708556
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Did",
+      "concept_mass": 0.00707850931212306
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.001134741585701704
      }
     }
    },
@@ -3116,6 +4058,16 @@
       "produced": false,
       "greedy": "Ban",
       "concept_mass": 0.0033777884673327208
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Ban",
+      "concept_mass": 0.004196814727038145
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Str",
+      "concept_mass": 0.0008606110932305455
      }
     },
     "avoidance": {
@@ -3143,6 +4095,16 @@
       "produced": false,
       "greedy": "Did",
       "concept_mass": 0.0005199334700591862
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Did",
+      "concept_mass": 0.0004031236167065799
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Dr",
+      "concept_mass": 9.297887118009385e-06
      }
     }
    },
@@ -3180,6 +4142,16 @@
       "produced": false,
       "greedy": "Diamond",
       "concept_mass": 0.011714430525898933
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.006044153124094009
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.0021196764428168535
      }
     },
     "avoidance": {
@@ -3207,6 +4179,16 @@
       "produced": false,
       "greedy": "Diamond",
       "concept_mass": 0.005687258206307888
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.00308551755733788
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.0004883477813564241
      }
     }
    },
@@ -3244,6 +4226,16 @@
       "produced": false,
       "greedy": "Diamond",
       "concept_mass": 0.040657538920640945
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.02567112445831299
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.0041856830939650536
      }
     },
     "avoidance": {
@@ -3271,6 +4263,16 @@
       "produced": false,
       "greedy": "Diamond",
       "concept_mass": 0.00938459113240242
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.005655507557094097
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.0007186215952970088
      }
     }
    },
@@ -3308,6 +4310,16 @@
       "produced": false,
       "greedy": "Pear",
       "concept_mass": 0.028442610055208206
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Pear",
+      "concept_mass": 0.03082209825515747
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Am",
+      "concept_mass": 0.001554757123813033
      }
     },
     "avoidance": {
@@ -3335,6 +4347,16 @@
       "produced": false,
       "greedy": "Am",
       "concept_mass": 0.0005379593931138515
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Am",
+      "concept_mass": 0.0009656439069658518
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Am",
+      "concept_mass": 5.2691128075821325e-05
      }
     }
    },
@@ -3372,6 +4394,16 @@
       "produced": false,
       "greedy": "Gold",
       "concept_mass": 0.00015708622231613845
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.00018457055557519197
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 9.959273484128062e-06
      }
     },
     "avoidance": {
@@ -3399,6 +4431,16 @@
       "produced": false,
       "greedy": "Gold",
       "concept_mass": 0.011323603801429272
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.01648544892668724
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.00010948590352199972
      }
     }
    },
@@ -3436,6 +4478,16 @@
       "produced": false,
       "greedy": "Gold",
       "concept_mass": 0.0042469557374715805
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.002461782656610012
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.00011170636571478099
      }
     },
     "avoidance": {
@@ -3463,6 +4515,16 @@
       "produced": false,
       "greedy": "Gold",
       "concept_mass": 0.004343552514910698
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.004415375180542469
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.0004226023447699845
      }
     }
    },
@@ -3500,6 +4562,16 @@
       "produced": false,
       "greedy": "Gold",
       "concept_mass": 2.2664675270789303e-05
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 2.1674404706573114e-05
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 5.78951949137263e-06
      }
     },
     "avoidance": {
@@ -3527,6 +4599,16 @@
       "produced": false,
       "greedy": "Gold",
       "concept_mass": 0.01646614633500576
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.02606368251144886
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.00037555466406047344
      }
     }
    },
@@ -3564,6 +4646,16 @@
       "produced": false,
       "greedy": "Cow",
       "concept_mass": 0.006670800037682056
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.021688641980290413
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.0034298717509955168
      }
     },
     "avoidance": {
@@ -3591,6 +4683,16 @@
       "produced": false,
       "greedy": "Chicken",
       "concept_mass": 6.178892135721981e-07
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Chicken",
+      "concept_mass": 4.117752268939512e-06
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Chicken",
+      "concept_mass": 1.4316994167984376e-07
      }
     }
    },
@@ -3628,6 +4730,16 @@
       "produced": false,
       "greedy": "Cow",
       "concept_mass": 0.003077862784266472
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.019643621519207954
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.002279283246025443
      }
     },
     "avoidance": {
@@ -3655,6 +4767,16 @@
       "produced": false,
       "greedy": "Cow",
       "concept_mass": 0.013402373529970646
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.046358153223991394
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.003897594753652811
      }
     }
    },
@@ -3692,6 +4814,16 @@
       "produced": false,
       "greedy": "Cow",
       "concept_mass": 0.007172261364758015
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.024578090757131577
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Cow",
+      "concept_mass": 0.0032524566631764174
      }
     },
     "avoidance": {
@@ -3719,6 +4851,16 @@
       "produced": false,
       "greedy": "Chicken",
       "concept_mass": 0.00032898655626922846
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "She",
+      "concept_mass": 0.00254484498873353
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Chicken",
+      "concept_mass": 9.447277261642739e-05
      }
     }
    },
@@ -3756,6 +4898,16 @@
       "produced": false,
       "greedy": "Strip",
       "concept_mass": 0.0018773428164422512
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Strip",
+      "concept_mass": 0.0037269142922014
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Strip",
+      "concept_mass": 0.010316661559045315
      }
     },
     "avoidance": {
@@ -3783,6 +4935,16 @@
       "produced": false,
       "greedy": "But",
       "concept_mass": 0.002384018152952194
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.0034561350475996733
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "W",
+      "concept_mass": 0.013393282890319824
      }
     }
    },
@@ -3820,6 +4982,16 @@
       "produced": false,
       "greedy": "B",
       "concept_mass": 0.0009336078073829412
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "D",
+      "concept_mass": 0.0009370208135806024
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "D",
+      "concept_mass": 0.0012164864456281066
      }
     },
     "avoidance": {
@@ -3847,6 +5019,16 @@
       "produced": false,
       "greedy": "Ant",
       "concept_mass": 0.009803839959204197
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.008950798772275448
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.04821248725056648
      }
     }
    },
@@ -3884,6 +5066,16 @@
       "produced": false,
       "greedy": "Be",
       "concept_mass": 0.00892343744635582
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.017972566187381744
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.06751187145709991
      }
     },
     "avoidance": {
@@ -3911,6 +5103,16 @@
       "produced": false,
       "greedy": "Ant",
       "concept_mass": 0.09103129804134369
+     },
+     "control_middle": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.06983005255460739
+     },
+     "control_late": {
+      "produced": false,
+      "greedy": "W",
+      "concept_mass": 0.3047542870044708
      }
     }
    },
@@ -3960,6 +5162,26 @@
    "underpowered": true
   },
   "control_early": {
+   "hits": 8,
+   "n": 8,
+   "rate": 1.0,
+   "wilson_95": [
+    0.6755843804891231,
+    1.0
+   ],
+   "underpowered": true
+  },
+  "control_middle": {
+   "hits": 8,
+   "n": 8,
+   "rate": 1.0,
+   "wilson_95": [
+    0.6755843804891231,
+    1.0
+   ],
+   "underpowered": true
+  },
+  "control_late": {
    "hits": 8,
    "n": 8,
    "rate": 1.0,
@@ -4020,6 +5242,26 @@
     0.32441561951087694
    ],
    "underpowered": true
+  },
+  "control_middle": {
+   "hits": 0,
+   "n": 8,
+   "rate": 0.0,
+   "wilson_95": [
+    0.0,
+    0.32441561951087694
+   ],
+   "underpowered": true
+  },
+  "control_late": {
+   "hits": 0,
+   "n": 8,
+   "rate": 0.0,
+   "wilson_95": [
+    0.0,
+    0.32441561951087694
+   ],
+   "underpowered": true
   }
  },
  "mean_concept_mass_gated": {
@@ -4028,14 +5270,18 @@
    "primed_early": 0.8724932000041008,
    "primed_middle": 0.8223558068275452,
    "primed_late": 0.00020916474123144901,
-   "control_early": 0.8916398212313652
+   "control_early": 0.8916398212313652,
+   "control_middle": 0.9000485464930534,
+   "control_late": 0.9243546724319458
   },
   "avoidance": {
    "clean": 0.024532572163820987,
    "primed_early": 0.06972721585364638,
    "primed_middle": 0.013940632290783128,
    "primed_late": 7.932783190143372e-07,
-   "control_early": 0.0309295802996985
+   "control_early": 0.0309295802996985,
+   "control_middle": 0.026855059890579014,
+   "control_late": 0.012522414081217903
   }
  },
  "would_gate": {
@@ -4068,6 +5314,15 @@
   "underpowered": true,
   "avoidance_dissociation_consistent": false
  },
+ "late_switch_specificity": {
+  "newcombe_control_minus_primed_late_naming": [
+   1.0,
+   0.5412070310420481,
+   1.0
+  ],
+  "holds": true,
+  "underpowered": true
+ },
  "degeneracy_guard": {
   "naming_clean": {
    "attractor_token": "February",
@@ -4090,6 +5345,16 @@
    "collapsed": false
   },
   "naming_control_early": {
+   "attractor_token": "February",
+   "share": 0.06666666666666667,
+   "collapsed": false
+  },
+  "naming_control_middle": {
+   "attractor_token": "February",
+   "share": 0.06666666666666667,
+   "collapsed": false
+  },
+  "naming_control_late": {
    "attractor_token": "February",
    "share": 0.06666666666666667,
    "collapsed": false
@@ -4117,6 +5382,16 @@
   "avoidance_control_early": {
    "attractor_token": "February",
    "share": 0.13333333333333333,
+   "collapsed": false
+  },
+  "avoidance_control_middle": {
+   "attractor_token": "February",
+   "share": 0.13333333333333333,
+   "collapsed": false
+  },
+  "avoidance_control_late": {
+   "attractor_token": "February",
+   "share": 0.1,
    "collapsed": false
   }
  }

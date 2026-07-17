@@ -219,3 +219,30 @@ JSONs supersede the S4 ones).
   (0.5B n = 5, 3B n = 8; 1.5B n = 22 is the powered subject). Avoidance
   cells under the new conditions are recorded as texture. D30's original
   legs are re-reported unchanged.
+
+### S4b results (all subjects, descriptive) — 2026-07-17
+
+Full re-run with the two D31 control cells; **every shared cell reproduced
+bit-for-bit** (0 mismatches over all items × instructions × conditions; gates
+5 / 22 / 8 unchanged) — the determinism check passed. JSONs superseded in
+place; S4b logs `s4b-avoidance-*.log`.
+
+| Naming success (gated cell) | 0.5B (n=5) | 1.5B (n=22) | 3B (n=8) |
+|---|---|---|---|
+| primed_late | 0 | 0 | 0 |
+| **control_late** | **1** | **16** | **8** |
+| primed_middle / control_middle | 3 / 5 | 17 / 18 | 8 / 8 |
+| mean concept mass, control_late vs primed_late | .204 vs .000 | .658 vs .003 | .924 vs .000 |
+
+**D31 gate (control − primed late naming):** 0.5B +.200 [−.264, +.624] →
+**not shown** (UNDERPOWERED); 1.5B **+.727 [+.471, +.868] → concept-SPECIFIC**
+(the powered subject); 3B +1.000 [+.541, +1.000] → concept-SPECIFIC
+(CI-clean; UNDERPOWERED-tagged per the standing n < 20 rule).
+
+**Synthesis:** the late-band off-switch is promoted from texture to a gated,
+controlled claim on 1.5B — and the specificity *emerges with scale*. At 0.5B,
+deleting any single late-tier direction wrecks output (even the control
+survives only 1/5, mass .204); at 1.5B the switch is mostly per-concept (16/22
+controls unharmed); at 3B it is perfectly clean (8/8, control mass .924 ≈
+clean). Middle-tier removals are benign for both vectors everywhere — the
+switch lives specifically in the late third. All framing descriptive.
