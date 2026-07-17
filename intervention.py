@@ -74,10 +74,18 @@ def lens_coordinates(
     return torch.stack((c_s, c_t), dim=-1)
 
 
-def swap(h: torch.Tensor, v_s: torch.Tensor, v_t: torch.Tensor) -> torch.Tensor:
-    """h + V(σ(c) − c): exchange h's lens coordinates along v_s and v_t, leaving
+def swap(
+    h: torch.Tensor, v_s: torch.Tensor, v_t: torch.Tensor, alpha: float = 1.0
+) -> torch.Tensor:
+    """h + α·V(σ(c) − c): exchange h's lens coordinates along v_s and v_t, leaving
     the component orthogonal to span{v_s, v_t} untouched. h is [..., d_model];
     the swap applies independently at every leading position.
+
+    α scales the correction term (S2's frozen D21 reading of the paper's
+    "double strength" swap): the exchange is an involution — applying it twice
+    restores the original — so α = 2 can only mean twice the correction, never
+    apply-twice. α = 1 is the exact exchange, bit-identical to the pre-S2
+    operator; α = 0 is an exact no-op (the correction is exactly zero).
 
     s = t short-circuits to h unchanged — the exact value of the formula there
     (σ swaps two equal coordinates), reached before the degenerate solve.
@@ -86,7 +94,7 @@ def swap(h: torch.Tensor, v_s: torch.Tensor, v_t: torch.Tensor) -> torch.Tensor:
         return h
     c = lens_coordinates(h, v_s, v_t)
     delta = (c[..., 1] - c[..., 0]).unsqueeze(-1)
-    return h + delta * (v_s - v_t)
+    return h + alpha * delta * (v_s - v_t)
 
 
 def steer(h: torch.Tensor, direction: torch.Tensor, alpha: float) -> torch.Tensor:
@@ -157,10 +165,12 @@ def swap_edits(
     u_t: torch.Tensor,
     *,
     positions: Sequence[int] | None = None,
+    alpha: float = 1.0,
 ) -> dict[int, Edit]:
     """Per-layer swap edits for `edit_residuals`: each listed layer exchanges
     the u_s ↔ u_t lens coordinates using its own J_l (protocol 1 applies this
-    at every band layer and, by default, every token position)."""
+    at every band layer and, by default, every token position). α scales the
+    correction (see `swap`); the default reproduces the pre-S2 operator."""
     edits: dict[int, Edit] = {}
     for layer in at:
         v_s = jlens_vector(jacobians[layer], u_s)
@@ -171,6 +181,7 @@ def swap_edits(
                 h,
                 v_s.to(device=h.device, dtype=h.dtype),
                 v_t.to(device=h.device, dtype=h.dtype),
+                alpha,
             )
 
         edits[layer] = positional(edit, positions)

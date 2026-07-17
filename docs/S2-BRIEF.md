@@ -226,6 +226,24 @@ swap forwards ≈ **1,500 forwards** at the full D20-A × D21-A grid. S1 measure
 **≲ 5/10/20 min** for 0.5B/1.5B/3B, well under an hour serial, **$0**, no fit,
 no rented GPU. Serial-GPU discipline unchanged.
 
+## Frozen decisions
+
+*Frozen 2026-07-16 (Kyle) — all four recommendations accepted; recorded here and in
+`DECISIONS.md`. Relitigating after this is a deviation row, not a conversation.*
+
+- **D19 = A** — verbatim reference item set + the standing single-token pre-filter:
+  180/192 trials gradable (countries 48, months 48, animals 36, numbers 48), the 12
+  filtered trials counted and reported beside the 192-trial anchor.
+- **D20 = A** — two arms every trial, every α: J-lens swap + `J = I` falsification
+  (raw unembedding rows through the same exchange); Newcombe 95% CI on (J − I) per α.
+- **D21 = A** — α ∈ {1, 2, 4, 8}; degeneracy guard flags any α × arm cell where one
+  token is top-1 on ≥ half the trials. {4, 8} are owned convention rows.
+- **D22 = A** — three readouts: unconditional (anchor frame), baseline-conditioned
+  (source prompt + target diagonal both correct unswapped), and per-argument workspace
+  loading vs swap success (Fig-19-right shape check).
+- **Convention note (pre-committed before any run):** would-gate wording reuses M2's
+  floor — "routes" iff α=2 pooled J-lens Wilson LB ≥ 0.5 — descriptive mode applies.
+
 ## What S2 does NOT decide
 
 - Selectivity (the last stretch property) — separate scope, still gated on Kyle.
