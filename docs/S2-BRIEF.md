@@ -213,7 +213,7 @@ as rarely swapping.
 |---|---|---|
 | 1 | Qwen2.5 0.5B/1.5B/3B vs the paper's Sonnet-scale subject | standing (M0) |
 | 2 | Single-token filter: 180/192 trials, 60/64 baselines (4 animal answers unencodable) | this brief, measured |
-| 3 | Swap rows use prompt-position token forms (M2 used bare) | this brief, assumption |
+| 3 | Swap rows use prompt-position token forms (M2 used bare) — measured: 6 trials (all `animals/group`, whose template pluralizes to `{arg}s`) never contain the argument's own token and take M2's bare-preferred fallback rows, counted in `plan.fallbacks` | this brief, assumption + measured at dry-run |
 | 4 | Fit corpus n=100 vs paper-grade ~1000 | standing (M0) |
 | 5 | α ∈ {4, 8} beyond the paper's published {1, 2} (if D21-A) | this brief |
 | 6 | MPS fp32 vs CUDA | standing (M0) |
@@ -254,3 +254,64 @@ no rented GPU. Serial-GPU discipline unchanged.
   reproduction claim).
 - Nothing in this PR is harness code; the brief precedes the build
   (per-stage rhythm).
+
+## Results — S2 (all subjects, descriptive) — 2026-07-16
+
+*Full JSONs in `results/s2-generalization-*.json`; per-trial records included.
+Plan ran exactly as frozen: 180 gradable / 12 filtered / 6 fallbacks (all
+`animals/group` — pluralized template, argument token absent; M2 bare-preferred
+fallback rows). D6 read-back silent everywhere; degeneracy guard silent
+everywhere except its one real catch (3B α=8 — see below).*
+
+### The anchor comparison (unconditional, pooled 180)
+
+| Cell | 0.5B | 1.5B | 3B | Paper (192) |
+|---|---|---|---|---|
+| α=1 J-lens | **17** [.060, .146] | **16** [.055, .140] | **18** [.064, .153] | 76 (.396) |
+| α=2 J-lens | 1 | 0 | 1 | 101 (.526) |
+| α=1 identity | 3 | 5 | 4 | — |
+| J−I @ α=1 (Newcombe) | **+.078 [+.031, +.131]** | **+.061 [+.012, +.114]** | **+.078 [+.029, +.132]** | — |
+| Would-gate (α=2 LB ≥ .5) | does not route | does not route | does not route | (anchor .526) |
+
+### The α cliff
+
+Every subject's curve is a **spike at α=1, dead from α=2** (J-lens hits:
+0.5B 17→1→1→1, 1.5B 16→0→1→1, 3B 18→1→0→0 across α = 1/2/4/8). The failure
+mode is measured, not guessed: at α=2 the greedy token becomes the swapped-in
+**argument** (" France", " China") instead of the function's answer, and the
+target answer's median rank over the α=1 hits crashes 1 → ~274 → ~546 (0.5B)
+and 1 → ~151,845 (1.5B, the vocab floor). The paper's "double strength rescues
+near-misses" reading inverts at these scales: overdose converts an
+argument-to-compute-with into an output-to-say.
+
+Two regimes past the cliff, cleanly separated by the guard: the α=2 blurting
+is **behavioral** (outputs are real words; guard silent), while **3B α=8 is
+true junk collapse** — both arms greedy `!` on 180/180 trials (attractor share
+1.00, the guard's first fire), with the logits saturating into mass rank-1
+ties (why success is graded on greedy membership, never rank; rank texture is
+meaningless inside a collapse).
+
+### Structure inside (category order, loading, conditioning)
+
+- 1.5B α=1 order matches the paper exactly: countries 10/48 > months 4/48 >
+  animals 2/36 > numbers 0/48 (0.5B: countries 12/48 top, numbers 0/48 floor,
+  months/animals swapped; 3B: countries 14/48 dominate, months/animals 2 each,
+  numbers 0/48). Countries top and numbers floor on every subject.
+- Workspace loading (Fig-19-right check): **numbers lowest on every subject**
+  (0.5B .095, 1.5B .075, 3B .044 — always its subject's floor) — the paper's
+  own worst-category prediction reproduces; and the predictor sharpens with
+  scale: at 0.5B/1.5B the top end doesn't transfer (animals loads highest,
+  routes poorly), at 3B it aligns (countries load highest, .125, and route
+  best).
+- Conditioned frame (both facts provably known): α=1 J-lens **13/42 (0.5B),
+  12/62 (1.5B), 16/56 (3B)** — roughly 3–4× the unconditional rate. The
+  numbers zero is a knowledge/pragmatics confound: 0/16 numbers diagonals on
+  every subject (greedy continuation of "Two times {arg} equals" is " what",
+  or bare whitespace at 3B).
+
+### One-line synthesis
+
+A real, transport-specific broadcast trace exists at small scale — CI-clean
+J−I at α=1 with the paper's category shape — but it is an order of magnitude
+below anchor, extinguished by the paper's own α=2 dose (blurting, not
+routing), and bounded by what the model knew in the first place.

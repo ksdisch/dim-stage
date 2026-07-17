@@ -455,3 +455,26 @@ prompt-position token form (the argument appears *in* these prompts, unlike
 M2's latent intermediates; owned departure from M2's bare-form default,
 deviations row 3). Per-template cells (N = 12) are pre-declared UNDERPOWERED
 texture.
+
+**S2 outcomes (record, 2026-07-16).** Plan exactly as frozen: 180 gradable /
+12 filtered; 6 variant fallbacks, all `animals/group` (the template pluralizes
+`{arg}s`, so the argument token never appears — falls back to M2's
+bare-preferred rows; owned in S2-BRIEF deviations row 3). The generalized D6
+read-back silent on every subject at every α; the degeneracy guard silent
+everywhere except **3B α=8**, where both arms collapse to a `!` attractor at
+share 1.00 (its first real catch — true junk collapse, with logits saturating
+into mass rank-1 ties; success grading is greedy-membership and unaffected).
+**Would-gate: "does not route" on all three subjects** (α=2 J-lens LB vs the
+frozen .5 floor: all ≈ 0). The structure inside: **a CI-clean J-transport
+routing signal at α=1 on all three subjects** (0.5B +.078 [+.031, +.131],
+1.5B +.061 [+.012, +.114], 3B +.078 [+.029, +.132]), extinguished from α=2
+on — the anchor's dose direction (76/192 → 101/192) **inverts** at our scales
+(17→1, 16→0, 18→1 of 180): at α=2 the greedy output becomes the swapped-in
+argument itself and the target answer falls out of the top ranks (vocab floor
+at 1.5B). 1.5B reproduces the paper's category order exactly; workspace
+loading reproduces the "numbers load lowest" tail at every scale and its top
+end comes into alignment at 3B (countries load highest and route best).
+Conditioned α=1 routing: 13/42 / 12/62 / 16/56 (~3–4× unconditional) — the
+numbers-category zero is a knowledge confound (0/16 diagonals on every
+subject; the models continue "Two times three equals" with " what", or bare
+whitespace at 3B).

@@ -143,3 +143,36 @@ phenomenon. All descriptive per the standing re-scope.
 The introspection follow-up is done. Generalization (needs N≈200/arm — free but
 slow) and selectivity remain **new scope decisions for Kyle, not defaults**.
 Nothing is scheduled until he picks.
+
+## S2 — flexible generalization (stretch) — **COMPLETE 2026-07-16** (descriptive)
+
+Second stretch stage (Kyle's pick over selectivity and wrap-up). The paper's
+**broadcast** test: sixteen function templates, one identical lens-coordinate
+swap clamped at every prompt position, graded on whether each function's greedy
+answer becomes the swapped-in argument's answer. Verbatim item set from the
+reference repo (192 trials; 180 gradable under the standing single-token
+filter). Closed in two PRs (#20 brief, #21 D19–D22 freeze + α operator +
+runner + results + close). No new model, fit, or band; one operator extension
+(α on the swap), invariant-gated.
+
+| Deliverable | Outcome |
+|---|---|
+| D19–D22 frozen | 2026-07-16, Kyle — all four recommendations (`DECISIONS.md`) |
+| Anchor cells (would-gate) | **"Does not route" on all three subjects** — α=1 J-lens **17/16/18 of 180** vs the paper's 76/192; α=2 **1/0/1** vs 101/192 |
+| The α=1 routing signal | **J−I CI-clean at α=1 on all three subjects**: 0.5B **+.078 [+.031, +.131]**, 1.5B **+.061 [+.012, +.114]**, 3B **+.078 [+.029, +.132]** — a transport-specific routing effect exists, an order of magnitude below anchor (identity rows: 3–5/180) |
+| The α cliff (vs the paper's dose direction) | The paper's α=2 *rescue* inverts: hits collapse to ~0 from α=2 on every subject; at α=2 the greedy output becomes the swapped-in **argument itself** and the target answer falls out of the top ranks (to the vocab floor at 1.5B, median ~151,844/151,936) — overdose turns a routed argument into a verbalization impulse. D6 read-back silent throughout; the degeneracy guard silent through the cliff (blurted outputs are real words) and fired exactly once — 3B α=8, both arms, `!` attractor at share 1.00 (true junk collapse, a separate regime) |
+| Category structure + loading | 1.5B matches the paper's order **exactly** (countries 10/48 > months 4/48 > animals 2/36 > numbers 0/48; 3B: countries 14/48 dominate, numbers 0); workspace loading puts **numbers lowest at every scale** (the paper's own worst-category prediction), and the predictor sharpens with scale — at 3B the top end aligns too (countries load highest and route best) |
+| Conditioned frame (D22) | Where both facts are provably known, α=1 routing is **13/42 (0.5B), 12/62 (1.5B), 16/56 (3B)** — ~3–4× the unconditional rate — and the numbers zero is a knowledge/pragmatics confound (0/16 baselines everywhere; models continue "Two times three equals" with " what", or bare whitespace at 3B) |
+
+**Headline:** the broadcast property has a real, falsification-surviving trace
+at small scale — a J-transport-specific routing signal at α=1, with the paper's
+own category ordering and loading prediction — but it is narrow: an order of
+magnitude below the anchor, extinguished (not amplified) by the paper's own
+double-strength dose, and gated by whether the model knew the facts at all.
+All framing descriptive per the standing re-scope.
+
+## Remaining stretch (gated, un-scheduled) — selectivity
+
+Generalization is done. Selectivity (J-space ablation, flexible-vs-automatic
+contrast; no paper anchor, needs a new projection operator) remains a **new
+scope decision for Kyle, not a default**. Nothing is scheduled until he picks.

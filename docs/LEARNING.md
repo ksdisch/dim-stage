@@ -363,3 +363,86 @@ paper's mid-layer "middle block," found at hobby scale.
     AND that token differs from the α=0 control token. Why is the second
     condition essential — what would go wrong if the guard used the 50%
     share alone?
+
+## S2 — flexible generalization (stretch) (2026-07-16)
+
+### The one-paragraph story
+
+The workspace story's boldest property is **broadcast**: one representation,
+written once, consumable by *many* downstream circuits. The paper's test is
+elegant — sixteen different one-line questions ("the capital of {arg}", "most
+people in {arg} speak", …), one identical swap of the argument's lens
+coordinates clamped everywhere, and the question is whether *every* circuit
+now computes on the swapped-in concept (76/192 at α=1 for Sonnet, 101/192
+when the swap is doubled to α=2). At our scales the answer has a sharp and
+unexpected shape. There **is** a routing signal, and it is CI-cleanly
+**J-transport-specific** (J−I: 0.5B +.078, 1.5B +.061, 3B +.078 — the raw
+unembedding rows manage only 3–5/180) — but it lives *only at α=1*, an order
+of magnitude below the anchor (17/16/18 of 180 across 0.5B/1.5B/3B). At α=2 —
+the dose that *rescues* the paper's near-misses — our subjects don't improve,
+they **blurt**: the greedy output becomes the swapped-in argument itself
+(" France", " China") instead of the function's answer, and the true target
+answer falls out of the top ranks (at 1.5B all the way to the vocabulary
+floor). Category structure reproduces where it can
+(1.5B matches the paper's order exactly: countries > months > animals >
+numbers; the numbers category loads weakest in the lens at every scale,
+just as the paper predicts) — and the conditioned frame shows the zeros are
+often about *knowledge*, not routing (no subject can even answer "Two times
+three equals" unswapped — they all continue "… what").
+
+### What was learned
+
+25. **An anchor's dose direction is itself a scale-dependent claim.** The paper
+    reads its α=1 failures as "moved the right way, not far enough," and α=2 as
+    the fix (76 → 101). Our subjects run the same protocol and *invert* it
+    (17 → 1, 16 → 0, 18 → 1). The per-trial records say why: at α=2 the model
+    stops computing *with* the injected concept and starts *saying* it — the
+    argument token becomes the greedy output and the function's answer is
+    anti-ranked to the vocab floor (median rank ~151,844 of 151,936 at 1.5B).
+    "Double strength" presupposes headroom; a small model's routing window is
+    narrower, not a scaled-down copy of the same curve.
+26. **A conditioned frame turns a null into a diagnosis.** Unconditionally,
+    numbers is 0/48 at every scale — but the diagonals show *zero* subjects
+    answer the unswapped numbers prompts at all (they continue "Two times three
+    equals" with " what", or bare whitespace at 3B: a pragmatics failure of raw
+    completion, not arithmetic). Where both facts are demonstrably known,
+    routing at α=1 is 13/42 (0.5B), 12/62 (1.5B), and 16/56 (3B) — roughly
+    3–4× the unconditional rate. Without D22's conditioning
+    (M2's lesson, now standing equipment), "can't route" and "never knew" would
+    have been one indistinguishable zero.
+27. **A mechanism's cheap correlate can reproduce even when its headline
+    doesn't.** Workspace loading — the paper's own predictor — puts numbers
+    lowest at every scale (matching its worst-category prediction exactly), and
+    it *sharpens with scale*: at 0.5B/1.5B the top end doesn't transfer (animals
+    loads highest but routes poorly), while at 3B even the top aligns (countries
+    load highest and route best, .125 over .04–.11). Partial reproduction is
+    signal, not failure: "absent from the lens ⇒ can't be routed" appears
+    scale-stable, while "present ⇒ will be consumed" only becomes true as the
+    subject grows.
+28. **A guard that mostly stays silent is what makes both its silences and its
+    one catch meaningful.** The generalized D6 read-back ((1−α)·c + α·σ(c))
+    stayed silent at every α on every subject — the operator always did exactly
+    what the algebra says. The degeneracy guard stayed silent through the α=2
+    cliff (the blurted outputs are *real words*: behavioral failure, not
+    numerical) and fired exactly once, at 3B α=8, where both arms collapse to a
+    `!` attractor at share 1.00 and the logits saturate into mass rank-1 ties —
+    which is also why success is graded on greedy membership, never on rank;
+    rank texture is meaningless inside a collapse. Three regimes, cleanly
+    instrumented: routed (α=1), blurted (α=2, guard silent), junk (3B α=8,
+    guard fires).
+
+### Recall questions (answers in this repo's docs)
+
+19. S2 found J − identity CI-clean at α=1 on all three subjects
+    (+.078/+.061/+.078). M2 found identity rows flip *nothing* at 3B. Why does
+    running the identity arm still matter here even though it "already lost" in
+    M2 — what specifically would an identity-arm *win* at α=1 have said about
+    the 17/180?
+20. The paper's α=2 rescues near-misses; ours destroys hits. Describe the
+    measured failure mode at α=2 in one sentence, and name the two pieces of
+    evidence (greedy identity, target-answer rank) that distinguish "blurting
+    the argument" from "generic model collapse."
+21. The numbers category scored 0/48 unconditionally at every scale. Why is
+    that *not* evidence that small Qwen models can't route number concepts —
+    and which two S2 readouts (one from the diagonals, one from the paper's
+    own predictor) tell the fuller story?
