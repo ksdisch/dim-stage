@@ -558,3 +558,49 @@ demand (explicit 7/8, 8/8, 8/8 vs automatic 0/8, 2/8,
 trails under automatic linewrap at every scale. Qwen's digit-by-digit number
 tokenization emptied the README's two-digit target half — number-words only,
 owned in the brief's deviations table.
+
+## S4 — naming vs avoiding (stretch): D27–D30 frozen 2026-07-17 (Kyle)
+
+*All recommendations accepted (S4-BRIEF menu; D27 = option c). Scope: the
+paper's Figure-69 inclusion/exclusion experiment — single-concept (k = 1)
+J-lens ablation at sub-band depths, naming vs avoidance instructions. No new
+model, fit, band, or operator (S3's `ablate` unchanged). Framing descriptive.*
+
+**D27 (Kyle) — Constrained item construction.** The reference ships no item
+set (checked 2026-07-17), so items are constructed — the project's first —
+under frozen rules: concepts only from measured vocabularies (S2 args:
+countries/months/animals, numbers excluded per the S2 knowledge confound; M3
+topic_categories: planets, instruments, gemstones, metals, farm animals,
+insects), controls from the same shipped list, 20 concepts × 3 clues = 60
+items, no clue contains its concept/control word or a derivative (test-
+guarded). Frozen in `s4-avoidance-items.json` before any run. *Why:* the
+paper's own items were constructed too; its competence gate, not authorship,
+is what filters items honestly — and measured vocabularies mean we already
+know what each subject knows.
+
+**D28 (Kyle) — Ablation depths + control.** k = 1 (the implied concept's own
+J-lens vector, M1 direction convention, bare-form token), applied at every
+prompt position across the S1 sub-band thirds of the frozen band — early /
+middle / late (paper contrasts early vs late; middle is free texture).
+Specificity control: the same-category alternative's vector through the
+identical operator, early tier. S3's runtime read-back and degeneracy guard
+carry over unchanged.
+
+**D29 (Kyle) — Readout + competence gate.** One user turn through the chat
+template (M1-D5). Primary binary per trial: the concept's single-token form
+is the greedy next token (produced / not). Concept softmax probability mass
+recorded as paper-comparable texture. Competence gate: **greedy-based** —
+unablated naming produces the concept AND unablated avoidance does not — with
+the paper's verbatim P ≥ .85 / P ≤ .15 pass-rate reported alongside. Gated
+set = primary cell; n < 20 ⇒ pre-declared UNDERPOWERED. Items whose concept
+or control lacks a single-token form are dropped and counted (standing M0
+filter).
+
+**D30 (Kyle) — Would-gate wording (pre-committed).**
+**"Avoidance-dissociation-consistent"** iff, per subject, on the gated cell:
+(1) avoidance failure under early primed ablation CI-cleanly above unablated
+(Newcombe excludes 0); (2) naming success under early primed ablation shows
+NO CI-clean drop vs unablated — a pre-declared null leg; (3) early primed
+ablation raises avoidance failure CI-cleanly more than the early control
+ablation. Late-layer suppression is descriptive texture, not gated. INVALID
+on wrong-arm inputs; `--dry-run` validates and stops; `--limit` is smoke.
