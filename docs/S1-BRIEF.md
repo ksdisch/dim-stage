@@ -1,8 +1,9 @@
 # S1 start-of-stage brief — introspection dose–response follow-up (stretch)
 
-*Start of stage · status: **decisions pending Kyle** (D15–D18 below). First stretch
-stage, opened after v1 close (2026-07-16, ROADMAP). Per-stage rhythm: this brief +
-options land before any code.*
+*Status: **COMPLETE 2026-07-16** — D15–D18 frozen (Kyle, Bundle 2 + defaults;
+"Frozen decisions" below), runner + three-subject results shipped, spine closed. All
+three fronts landed favorably; results at the end. First stretch stage, opened after
+v1 close (2026-07-16, ROADMAP).*
 *Sources: the paper (`refs/workspace-paper.md`, §"The J-space is available for
 verbal report" / Figure 7 and its specificity control, §"Comparing J-space across
 layers"); the reference repo (`refs/jacobian-lens/data/experiments/verbal-introspection.json`).
@@ -202,6 +203,7 @@ floor and can stand alone.*
 | 2 | Specificity = J-space vs non-J-space *component* | `J = I` raw-unembedding falsification arm | The project's consistent cross-milestone Arm-2 convention | Owned, pre-declared (D16) |
 | 3 | Figure 7 grid unpublished | Frozen `{0,0.5,1,2,4,8}` + appended `{12,16,24}` | Bounded headroom to see saturation/collapse | Owned, pre-declared (D17) |
 | 4 | Localization via CKA block structure over all layers | Contiguous sub-band thirds of L11–L24, steered separately | Legible, hobby-scale localization of the *report* (not the geometry) | Owned, pre-declared (D18) |
+| 5 | M1 ran both `default` and `word` prefills | `default` prefill only | M1 showed `word` tracks `default` within a few hits; keeps the S1 sweep legible and halves compute | Owned, mechanical |
 
 ## Wall-clock plan (from M1's measured introspection rates; forward passes only)
 
@@ -223,5 +225,98 @@ discipline unchanged: no S1 run shares the machine with anything else.
 
 ## Frozen decisions
 
-*PENDING KYLE — D15–D18 above. Once picked, recorded here and appended to
-`DECISIONS.md`; relitigating after freeze is a deviation row, not a conversation.*
+*Frozen 2026-07-16 (Kyle) — Bundle 2 with all three convention defaults accepted;
+recorded here and in `DECISIONS.md`. Relitigating after this is a deviation row, not a
+conversation.*
+
+- **D15 = Bundle 2** — "localize it": axes A (saturation) + B (`J=I` falsification arm) +
+  C (layer localization). A+B on all three subjects; C on 1.5B only.
+- **D16 = A** — `J = I` falsification arm: steer along the unit-normalized raw
+  unembedding row `u_t`, same per-layer mean-norm × α scaling, same band layers and
+  question-turn positions; Newcombe 95% CI on (J-lens − J=I) at each α. Project-consistent
+  Arm-2 convention (owned deviation from the paper's orthogonal-component contrast).
+- **D17 = A** — extended α grid: `{0, 0.5, 1, 2, 4, 8}` (frozen D8) + appended
+  `{12, 16, 24}`. Degeneracy guard: flag the first α at which a subject's reply
+  degenerates (steered token dominating regardless of concept).
+- **D18 = A** — localization granularity: three contiguous sub-bands of L11–L24 steered
+  separately — **early L11–15, middle L16–20, late L21–24** — at the best-reporting α (and
+  its `J=I` arm), 101 concepts each, 1.5B only.
+
+## Results — S1 (all subjects, descriptive) — 2026-07-16
+
+Runner `s1_introspection_localize.py`; `default` prefill; α grid
+`{0, 0.5, 1, 2, 4, 8, 12, 16, 24}`; both arms; JSONs in `results/s1-introspection-*.json`.
+All 101 concepts single-token-valid (0 dropped). **No subject collapsed at any α** — the
+degeneracy guard never fired, so the extended grid broke no model. Wall-clock: ~2 min
+(0.5B) / ~7 min (1.5B + localization) / ~12 min (3B) on MPS, $0.
+
+### A + B — saturation and the `J = I` falsification arm (1.5B, the flagship curve)
+
+Report rate = rank-1 of the steered concept at the open quote:
+
+| α | J-lens | J = I | J-lens − J=I (Newcombe 95%) |
+|---|---|---|---|
+| 0 (control) | 0/101 | 0/101 | +.000 [−.037, +.037] |
+| 0.5 | 7/101 | 3/101 | +.040 [−.025, +.109] |
+| 1 | 16/101 | 5/101 | +.109 [+.024, +.197] |
+| 2 | 23/101 | 10/101 | +.129 [+.026, +.230] |
+| 4 | 26/101 | 12/101 | +.139 [+.031, +.244] |
+| 8 | 30/101 | 12/101 | **+.178 [+.067, +.286]** |
+| 12 | 30/101 | 14/101 | +.158 [+.045, +.268] |
+| 16 | 29/101 | 14/101 | +.149 [+.035, +.258] |
+| 24 | 31/101 | 14/101 | +.168 [+.054, +.278] |
+
+- **The flagship finding survives its first falsification arm — and strengthens.** From
+  α = 1 up, the J-lens report rate CI-cleanly exceeds the `J = I` (raw-unembedding, no
+  transport) rate; the transport roughly *doubles* reporting at the plateau (30–31 vs
+  12–14). So the 1.5B dose–response is a genuine **J-transport / workspace** effect, not
+  an artifact of steering along any token-derived direction — matching the paper's
+  specificity control (the J-space component drives the report, the non-J-space component
+  produces few even at larger strength). The introspection curve was the *only* headline
+  finding without this arm; it now has it, in the favorable direction — **the project's
+  first CI-clean J-transport advantage for *reading/report*.**
+- **The curve saturates (Figure-7 shape), cleanly.** The J-lens rank-1 rate plateaus at
+  ~30/101 from α = 8 (30, 30, 29, 31 across 8→24) while MRR keeps climbing (.067 → .125) —
+  ranks still tightening after the rank-1 rate tops out: the paper's rise-then-saturate. The
+  extended grid (D17) earned its keep by showing the curve levels off rather than running
+  away.
+- **No collapse anywhere.** The guard (attractor share ≥ .5 with a *new* fixed point ≠ the
+  control token) never fired. At 1.5B the attractor share stays .16–.20 (diverse
+  per-concept reports) — genuine saturation, not model breakage. At 0.5B the J-lens
+  attractor stays 1.00 (the model says its default word for every concept regardless of
+  steering — immovable, 0/101), so 0.5B is **null on both arms** (identity ~2/101; J−I CI
+  overlaps 0).
+- **Cross-scale bonus — 3B reporting is *purely* J-transport.** The extended grid past
+  M1's α = 8 revealed a 3B J-lens rise to **9/101** (α = 16–24) with the identity arm
+  essentially dead (0–1/101); J−I is CI-clean from α = 8 (+.050 [+.003, +.111]) up to
+  +.089 [+.034, +.161]. What little introspective reporting 3B has is entirely
+  transport-specific.
+
+### C — layer localization (1.5B, best non-collapsed α = 24)
+
+| Sub-band | J-lens | J = I | J-lens − J=I (Newcombe 95%) |
+|---|---|---|---|
+| L11–15 (early) | 17/101 | 13/101 | +.040 [−.060, +.139] |
+| **L16–20 (middle)** | **29/101** | 16/101 | **+.129 [+.014, +.240]** |
+| L21–24 (late) | 18/101 | 5/101 | **+.129 [+.041, +.219]** |
+| full band L11–24 | 31/101 | 14/101 | (+.168, above) |
+
+- **The middle third *is* the workspace.** Steering only L16–20 (five layers) recovers
+  **29/101** — statistically indistinguishable from the full 14-layer band's 31/101
+  (full − mid +.020 [−.105, +.144], overlaps 0). The 1.5B introspective reportability is
+  concentrated in the middle of the band — exactly the paper's mid-layer "middle block,"
+  now shown at hobby scale for the introspection phenomenon.
+- **The J-transport advantage lives mid-and-late.** CI-clean in the middle (+.129) and
+  late (+.129) sub-bands, CI-overlapping early (+.040). The late sub-band is the sharpest
+  transport-specificity in the localization: the raw-unembedding arm nearly vanishes there
+  (5/101) while the J-lens holds (18/101).
+
+### One-line synthesis
+
+S1 set out to harden the project's strongest finding and did, on every front: the 1.5B
+injected-thought dose–response is CI-cleanly a **J-transport** effect (not any-direction
+steering), it **saturates** as the paper's Figure 7 does without the model breaking, and
+it **localizes to the middle of the workspace band** (L16–20 alone ≈ the whole effect) —
+with the extended grid additionally exposing that 3B's smaller reporting signal is
+*entirely* transport-specific. All descriptive (triple readability NULL holds); no gate,
+no reproduction claim — a characterization of where and how the one live phenomenon lives.

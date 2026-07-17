@@ -115,9 +115,31 @@ top-level `README.md` (the synthesis of all four milestone verdicts under the
 standing frame; Kyle signed off on framing before merge). Every "v1 done means"
 line in `KICKOFF.md` is now discharged.
 
-## Stretch (gated behind v1 close) — generalization, selectivity
+## S1 — Introspection dose–response follow-up (stretch) — **COMPLETE 2026-07-16**
 
-v1 is closed, so the gate is open — but stretch work is a **new scope decision
-for Kyle, not a default**: generalization (needs N≈200/arm — free but slow),
-selectivity, and/or any follow-up on the 1.5B introspection dose–response.
+First stretch stage (Kyle's post-v1 pick: deepen the strongest finding).
+Bundle 2 — harden + localize the 1.5B injected-thought dose–response. Closed in
+two PRs (#18 brief, build PR D15–D18 freeze + runner + results + close). No new
+model, fit, band, or intervention operator — reuses M0/M1 artifacts. Descriptive
+framing holds (triple readability NULL).
+
+| Deliverable | Outcome |
+|---|---|
+| D15–D18 frozen | 2026-07-16, Kyle — Bundle 2 + all three convention defaults (`DECISIONS.md`) |
+| B — `J = I` falsification arm (the arm the flagship finding never had) | **J-transport advantage CI-clean from α=1**, peak +.178 [+.067, +.286] at α=8; J-lens ~2× the raw-unembedding arm (30–31 vs 12–14). The 1.5B dose–response is a genuine workspace effect, matching the paper's specificity control — the project's first CI-clean J-transport advantage for *report* |
+| A — saturation (extended α grid) | Plateaus ~30/101 from α=8 (30/30/29/31 across 8→24), MRR still tightening (.067→.125) — the paper's Figure-7 rise-then-saturate. **No subject collapsed** at any α (degeneracy guard silent) |
+| C — layer localization (1.5B) | **The middle third L16–20 alone recovers 29/101 ≈ the full band's 31** (full−mid +.020 [−.105, +.144], overlaps 0) — the paper's mid-layer "middle block." J-transport advantage CI-clean mid (+.129) and late (+.129) |
+| Cross-scale bonus | The extended grid exposed **3B reporting as *purely* J-transport**: identity arm dead (0–1/101), J-lens →9/101, J−I CI-clean from α=8. 0.5B null both arms |
+
+**Headline:** the project's strongest finding, hardened on every front — the 1.5B
+injected-thought dose–response is CI-cleanly a **J-transport** effect (not
+any-direction steering), it **saturates** as the paper does without breaking the
+model, and it **localizes to the middle of the workspace band**. A stretch stage
+that turned one curve into a characterized, falsification-survived, layer-localized
+phenomenon. All descriptive per the standing re-scope.
+
+## Remaining stretch (gated, un-scheduled) — generalization, selectivity
+
+The introspection follow-up is done. Generalization (needs N≈200/arm — free but
+slow) and selectivity remain **new scope decisions for Kyle, not defaults**.
 Nothing is scheduled until he picks.

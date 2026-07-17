@@ -297,3 +297,69 @@ twice as well by the *plain logit lens* as by the J-lens.
     lives at these scales?
 15. Why is "no white-bear effect" at these scales a non-test rather than a
     null result — what precondition of the effect never arises?
+
+## S1 — introspection dose–response follow-up (stretch) (2026-07-16)
+
+### The one-paragraph story
+
+M1 left the project with one live, positive result: at 1.5B a steered-in
+thought becomes reportable, 0 → 30/101 as we push harder. But it was the
+*only* headline finding with no **falsification arm** — nothing tested whether
+that curve was really about the Jacobian transport (the "workspace"), or just
+about steering along *any* direction built from the token. S1 (the first
+stretch stage) closed that hole and two more. It re-ran the whole 1.5B curve a
+second way — **`J = I`**, steering along the raw unembedding row with the
+transport removed (the plain logit lens) — and the J-lens beat it CI-cleanly
+from α=1, roughly *doubling* the report rate: the dose–response is a genuine
+transport effect, exactly the paper's specificity claim. It **extended the
+strength grid** past M1's still-rising α=8 and watched the curve *saturate*
+(~30/101, the paper's Figure-7 shape) without the model ever breaking — a
+deterministic **collapse guard** confirmed the plateau was real reporting, not
+garbage. And it **localized** the effect: steering only the middle five layers
+(L16–20) recovered essentially the whole thing (29 of the full band's 31) — the
+paper's mid-layer "middle block," found at hobby scale.
+
+### What was learned
+
+21. **A single strong result isn't defensible until it survives its own
+    falsification arm.** The 1.5B dose–response *looked* like a workspace effect
+    for a whole milestone, but nothing ruled out "steering along any
+    token-direction does this." Re-running it with the transport removed
+    (`J = I`) and getting a CI-clean gap (J-lens ~2× the raw arm) is what turns
+    "a curve" into "a *J-transport* curve." The lesson generalizes: the arm that
+    could have killed the finding is the one that certifies it.
+22. **Extending a grid is cheap and can pay twice.** M1 stopped at α=8 with the
+    curve still rising, so "does it saturate?" was simply unanswered. Adding
+    {12, 16, 24} cost minutes and (a) showed 1.5B *plateaus* — the paper's shape,
+    not a runaway — and (b) revealed something M1 never saw: 3B's small reporting
+    signal keeps climbing to 9/101 and is *entirely* transport-specific (its
+    raw-unembedding arm is dead). A convention frozen too tight (α≤8) had hidden a
+    real cross-scale result.
+23. **"Where" is a different question from "how much," and it has a cleaner
+    answer.** Steering all 14 band layers at once told us the effect's *size*;
+    steering thirds separately told us its *location* — and the middle five layers
+    alone reproduced it. A rate became an internals claim ("the reportability lives
+    in the middle of the band, matching the paper's block structure") without any
+    new model or fit — just by restricting *where* the same operator applies.
+24. **A good degeneracy guard needs the token's identity, not just its
+    frequency.** "One token wins for most concepts" means opposite things at low α
+    (the model ignoring a weak steer, still saying its default word) and high α
+    (collapse to a junk fixed point). The guard only flags collapse by also
+    checking the winning token is *new* (≠ the α=0 control token) — so weak
+    steering and broken steering don't get confused. It never fired here, which is
+    itself the finding: the extended grid broke nothing.
+
+### Recall questions (answers in this repo's docs)
+
+16. The 1.5B injected-thought curve was already the project's strongest result
+    after M1. What specifically did S1's `J = I` arm add that M1's version
+    couldn't claim — and why does a *doubling* over the raw-unembedding arm
+    matter more than the raw 30/101 number?
+17. Steering only layers L16–20 recovered 29/101, and the full 14-layer band
+    only 31/101, with the difference's CI overlapping zero. What does that let
+    you say about *where* the 1.5B workspace lives — and which paper claim does
+    it echo?
+18. S1's collapse guard flags an α only when one token wins ≥50% of concepts
+    AND that token differs from the α=0 control token. Why is the second
+    condition essential — what would go wrong if the guard used the 50%
+    share alone?
