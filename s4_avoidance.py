@@ -66,7 +66,11 @@ AVOIDANCE_Q = (
     "Name a {noun} that the sentence is NOT describing. Answer with just the name."
 )
 INSTRUCTIONS = (("naming", NAMING_Q), ("avoidance", AVOIDANCE_Q))
-CONDITIONS = ("clean", "primed_early", "primed_middle", "primed_late", "control_early")
+CONDITIONS = (  # D28 cells + the D31 control tiers (S4b)
+    "clean",
+    "primed_early", "primed_middle", "primed_late",
+    "control_early", "control_middle", "control_late",
+)
 P_NAME_FLOOR = 0.85  # paper's verbatim competence thresholds — reported, not gating
 P_AVOID_CEIL = 0.15
 MIN_N = 20
@@ -250,15 +254,10 @@ def main() -> None:
             for condition in CONDITIONS:
                 if condition == "clean":
                     edits = None
-                elif condition == "control_early":
-                    edits = concept_ablation_edits(
-                        jacobians, thirds["early"], u_control
-                    )
                 else:
-                    tier = condition.split("_")[1]
-                    edits = concept_ablation_edits(
-                        jacobians, thirds[tier], u_concept
-                    )
+                    kind, tier = condition.split("_")
+                    u_row = u_control if kind == "control" else u_concept
+                    edits = concept_ablation_edits(jacobians, thirds[tier], u_row)
                 logits = output_logits(subject, input_ids, edits)
                 greedy = int(logits.argmax())
                 cells[condition] = {
@@ -317,6 +316,16 @@ def main() -> None:
         },
     }
     consistent = all(leg["holds"] for leg in legs.values()) and n >= MIN_N
+
+    # D31 (S4b): is the late-tier switch concept-specific?
+    k_primed_late = naming_success["primed_late"]["hits"]
+    k_ctrl_late = naming_success["control_late"]["hits"]
+    s4b = newcombe_diff(k_primed_late, n, k_ctrl_late, n) if n else (0.0, -1.0, 1.0)
+    late_switch = {
+        "newcombe_control_minus_primed_late_naming": list(s4b),
+        "holds": excludes_zero(s4b[1], s4b[2]) and s4b[0] > 0,
+        "underpowered": n < MIN_N,
+    }
 
     guard = {}
     for inst_name, _ in INSTRUCTIONS:
@@ -379,6 +388,7 @@ def main() -> None:
             "underpowered": n < MIN_N,
             "avoidance_dissociation_consistent": consistent,
         },
+        "late_switch_specificity": late_switch,  # D31 (S4b)
         "degeneracy_guard": guard,
     }
 
@@ -397,7 +407,11 @@ def main() -> None:
         f"2={'HOLDS' if legs['2_early_spares_naming_null_leg']['holds'] else 'fails'} "
         f"3={'HOLDS' if legs['3_primed_beats_control']['holds'] else 'fails'} → "
         f"{'avoidance-dissociation-consistent' if consistent else 'NOT shown'} "
-        f"(descriptive) | degeneracy: "
+        f"(descriptive) | D31 late-switch naming primed→ctrl: "
+        f"{k_primed_late}/{n} → {k_ctrl_late}/{n}, "
+        f"{s4b[0]:+.3f} [{s4b[1]:+.3f},{s4b[2]:+.3f}] → "
+        f"{'concept-SPECIFIC' if late_switch['holds'] else 'not shown'}"
+        f"{' UNDERPOWERED' if late_switch['underpowered'] else ''} | degeneracy: "
         f"{', '.join(collapsed) if collapsed else 'none'} | no property claim "
         f"(triple readability NULL; descriptive mode)"
     )

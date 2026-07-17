@@ -75,6 +75,17 @@ def test_concept_ablation_readback_fires_invalid_on_a_rigged_operator(monkeypatc
     assert exc.value.code == 2
 
 
+def test_conditions_carry_the_d31_control_tiers():
+    assert s4.CONDITIONS == (
+        "clean",
+        "primed_early", "primed_middle", "primed_late",
+        "control_early", "control_middle", "control_late",
+    )
+    for c in s4.CONDITIONS[1:]:
+        kind, tier = c.split("_")
+        assert kind in ("primed", "control") and tier in ("early", "middle", "late")
+
+
 def test_concept_mass_sums_softmax_over_forms():
     logits = torch.log(torch.tensor([0.5, 0.25, 0.125, 0.125]))
     assert s4.concept_mass(logits, [1, 2]) == pytest.approx(0.375, abs=1e-6)
