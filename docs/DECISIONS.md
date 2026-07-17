@@ -619,3 +619,17 @@ scoped the control to early; owned texture, not a claim). Sub-threshold mass
 rise under early ablation at 0.5B/3B (texture). Greedy-first-token naming
 grading undercounts prefixed answers ("The …") — owned readout caveat on the
 competence numbers.
+
+## S4b — late-tier specificity control: D31 frozen 2026-07-17 (Kyle)
+
+**D31 (Kyle) — Both control tiers + the specificity gate.** Add
+`control_middle` and `control_late` (same-category alternative's direction,
+identical operator) to the frozen S4 protocol; full three-subject re-run with
+the original cells required to reproduce bit-for-bit (deterministic greedy —
+checked at close). Pre-committed wording: the late switch is
+**concept-specific** iff, per subject on the gated cell, naming success under
+`control_late` is CI-cleanly above naming success under `primed_late`
+(Newcombe excludes 0). Failing it is the headline against ("any-direction
+output damage at the late tier"). Standing UNDERPOWERED tags (n = 5 / 22 / 8);
+avoidance cells under the new conditions are texture; D30's legs re-reported
+unchanged.
