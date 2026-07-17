@@ -478,3 +478,60 @@ Conditioned α=1 routing: 13/42 / 12/62 / 16/56 (~3–4× unconditional) — the
 numbers-category zero is a knowledge confound (0/16 diagonals on every
 subject; the models continue "Two times three equals" with " what", or bare
 whitespace at 3B).
+
+## S3 — selectivity (stretch): D23–D26 frozen 2026-07-17 (Kyle)
+
+*All recommendations accepted (S3-BRIEF menu, "across the board"). Scope: the
+paper's selectivity property — targeted flexible-vs-automatic reading contrasts
+plus the J-space ablation. One new operator (projection removal), invariant-gated
+per the M1-D6 precedent (the reference ships no ablation code, so invariants
+replace the AGREE diff). No new model, fit, or band. Framing stays descriptive
+(triple readability NULL holds).*
+
+**D23 (Kyle) — Scope: both bundles.** The two shipped targeted item sets
+(`selectivity-language.json`, 8 passages × explicit/automatic;
+`selectivity-linecount.json`, 11 passages × 4 conditions) as reading contrasts,
+plus the ablation arms. *Why:* the targeted sets are nearly free forward-only
+texture that frames the ablation result; the ablation probes causation, where
+every real finding of this project has lived.
+
+**D24 (Kyle) — Ablation conventions.** k = 10 and the clean-top-10 exclusion
+rule verbatim from the paper (never ablate a token in the clean forward pass's
+top-10 next-token predictions at that position — our per-position reading,
+owned). Ablation = zero the residual's projection onto the span of the selected
+lens directions (the unique minimal edit that leaves every selected direction's
+lens coordinate at exactly zero — "zero out the projection onto each" achieved
+simultaneously; sequential one-at-a-time zeroing of non-orthogonal directions
+would leave residues, S3-BRIEF assumptions). Strength tiers start-anchored on
+the frozen band: light = first third of band layers, medium = first two-thirds,
+heavy = full band (len//3 and 2·len//3 prefixes), so S1's mid-band finding is
+tested by the design rather than baked into it. Random-direction control:
+matched count (10 per layer × position), medium tier, frozen seed. Selection is
+per band layer × position by lens logit (the layer's own J_l), the operational
+reading of "most strongly activated" — owned.
+
+**D25 (Kyle) — Ablation eval sets.** Flexible task: M2's shipped two-hop items
+and grading verbatim (greedy top-1 vs the answer's single-token forms; primary
+cell = baseline-correct items) — our own unablated baselines exist, so ablation
+deltas are like-for-like within-project. Automatic task: fresh WikiText-103
+records, the D3 selection rule (first qualifying ≥600-char records, streamed in
+order) but taking the records *after* the first 100 — provably disjoint from
+every fit corpus. Metric: per-position top-1 match between ablated and clean
+next-token predictions (per-position primary, per-prompt as robustness view).
+
+**D26 (Kyle) — Readout frame + underpowering.** Targeted item sets run verbatim
+and every targeted cell is pre-declared UNDERPOWERED (8 and 11 passages vs the
+standing N ≥ 20 rule) — texture, not CI-gated claims. Lens-presence convention
+for the targeted arms: a position scores a hit if any target-set token is in the
+lens top-10 at any band layer (top-10 matches M0's pass@10 and the ablation's
+k; top-5 reported as texture). Only the ablation cells carry CI-gated
+statements, per the pre-committed wording: **"selectivity-consistent"** iff, per
+subject, (i) heavy J-ablation drops two-hop accuracy on the primary cell
+CI-cleanly below the unablated baseline (Newcombe excludes 0), (ii) wikitext
+top-1 match under heavy J-ablation stays CI-cleanly above the two-hop retention
+rate, and (iii) the random control disrupts two-hop CI-cleanly less than
+J-ablation at the medium tier. Failing (iii) is the headline *against*
+("any-direction damage, not workspace selectivity"). Degeneracy guard (S1/S2's
+COLLAPSE_SHARE = 0.5) on every ablated two-hop cell; D6-style runtime read-back
+(post-ablation lens coordinates on the selected directions must be ~0) on every
+applied edit, INVALID on failure.
