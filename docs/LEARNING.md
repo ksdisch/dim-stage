@@ -583,3 +583,24 @@ NOT shown, and NOT shown is the verdict.
     by a different mechanism" — and which auxiliary readout (recorded in the
     results JSON) gives the sub-threshold hint that something early still
     moves?
+
+### S4b addendum (2026-07-17) — the control cell that changed the sentence
+
+36. **A follow-up control can promote texture to claim — and reveal a scale
+    story on the way.** S4's late-band off-switch was uncontrolled texture;
+    S4b added the matched same-category control at the middle and late tiers
+    (D31, one decision, one afternoon cell). Result: on the powered subject
+    (1.5B) the switch is **concept-specific, CI-clean** (primed 0/22 vs
+    control 16/22, +.727 [+.471, +.868]) — and the specificity *emerges with
+    scale*: 0.5B's late tier breaks under any single-direction removal
+    (control survives 1/5), 3B's is perfectly clean (8/8, control mass ≈
+    clean). Bonus discipline: the full re-run reproduced every shared cell
+    bit-for-bit — deterministic greedy readouts make "did anything drift?" a
+    free, exact check rather than a worry.
+
+### Recall question (S4b)
+
+28. Before S4b, why could "removing the concept's late direction silences the
+    word" not be distinguished from "any late-tier removal breaks output" —
+    and after S4b, at which scale is each of those two descriptions actually
+    the correct one?

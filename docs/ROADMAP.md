@@ -213,6 +213,16 @@ clean output off-switch, but the paper's early-band *suppression copy* does
 not appear — where small models can do the exclusion task at all, they do it
 without that machinery. A pre-registered NOT-shown, reported as such.
 
+**S4b — late-tier specificity control — COMPLETE 2026-07-17.** D31 (Kyle)
+added the matched same-category control at the middle + late tiers; the full
+re-run reproduced every shared cell bit-for-bit. **The off-switch is
+concept-specific on the powered subject** (1.5B: primed 0/22 vs control
+16/22, +.727 [+.471, +.868] CI-clean; 3B: 0/8 vs 8/8, CI-clean but
+UNDERPOWERED-tagged) — and the specificity emerges with scale (0.5B's late
+tier breaks under any single-direction removal; 3B's control is untouched,
+mass .924 ≈ clean). Middle-tier cells benign everywhere. Closed in PR #27
+(brief) + the S4b build PR.
+
 ## Remaining stretch — none scheduled
 
 All in-scope paper properties are measured: readability (M0), report (M1),

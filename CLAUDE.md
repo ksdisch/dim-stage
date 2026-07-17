@@ -54,10 +54,13 @@ backward pass at 0.5B/1.5B but not 3B (rented RTX 4090 fallback — owned deviat
   concept direction is a hard output off-switch at every scale, but the paper's
   early-band suppression copy is absent; only 1.5B can even do the exclusion task
   (gate 22/60 vs 5 and 8). First constructed item set, frozen pre-run.
+- **S4b (follow-up)** — the off-switch is **concept-specific on 1.5B, CI-clean**
+  (primed 0/22 vs control 16/22, +.727) with specificity emerging by scale
+  (0.5B: any-direction damage; 3B: perfectly clean control). Shared cells
+  reproduced bit-for-bit on the re-run.
 
-**Open decision (Kyle's, not a default):** wrap the project (/seed-hunt) or a
-targeted follow-up (e.g. a late-tier specificity control for S4's switch
-texture). Nothing is scheduled until he picks.
+**Open decision (Kyle's, not a default):** wrap the project (/seed-hunt) or
+further work he names. Nothing is scheduled until he picks.
 
 ## How to run
 

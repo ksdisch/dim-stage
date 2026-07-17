@@ -619,3 +619,28 @@ scoped the control to early; owned texture, not a claim). Sub-threshold mass
 rise under early ablation at 0.5B/3B (texture). Greedy-first-token naming
 grading undercounts prefixed answers ("The …") — owned readout caveat on the
 competence numbers.
+
+## S4b — late-tier specificity control: D31 frozen 2026-07-17 (Kyle)
+
+**D31 (Kyle) — Both control tiers + the specificity gate.** Add
+`control_middle` and `control_late` (same-category alternative's direction,
+identical operator) to the frozen S4 protocol; full three-subject re-run with
+the original cells required to reproduce bit-for-bit (deterministic greedy —
+checked at close). Pre-committed wording: the late switch is
+**concept-specific** iff, per subject on the gated cell, naming success under
+`control_late` is CI-cleanly above naming success under `primed_late`
+(Newcombe excludes 0). Failing it is the headline against ("any-direction
+output damage at the late tier"). Standing UNDERPOWERED tags (n = 5 / 22 / 8);
+avoidance cells under the new conditions are texture; D30's legs re-reported
+unchanged.
+
+**S4b outcomes (record, 2026-07-17).** Determinism check passed: every shared
+cell bit-identical to the S4 run (0 mismatches; gates 5/22/8 unchanged).
+**D31 gate:** 0.5B not shown (+.200 [−.264, +.624], n=5 UNDERPOWERED); 1.5B
+**concept-SPECIFIC, CI-clean** (0/22 → 16/22, +.727 [+.471, +.868]); 3B
+concept-SPECIFIC (0/8 → 8/8, +1.000 [+.541, +1.000], UNDERPOWERED-tagged).
+Specificity emerges with scale: at 0.5B any late-tier single-direction
+removal wrecks output (control mass .204 vs clean .661); at 3B the control is
+untouched (.924 ≈ clean .886). Middle-tier cells benign for both vectors on
+every subject. The S4 late-switch texture is now a gated, controlled claim on
+the powered subject.
