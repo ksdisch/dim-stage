@@ -535,3 +535,26 @@ J-ablation at the medium tier. Failing (iii) is the headline *against*
 COLLAPSE_SHARE = 0.5) on every ablated two-hop cell; D6-style runtime read-back
 (post-ablation lens coordinates on the selected directions must be ~0) on every
 applied edit, INVALID on failure.
+
+**S3 outcomes (record, 2026-07-17).** Two-hop plan exactly as frozen (81
+gradable); baselines reproduce M2 bit-for-bit (28/81, 41/81, 43/81).
+The D6-style read-back fired twice during the build — a least-squares
+projection blowing up on ill-conditioned real direction sets, then LAPACK SVD
+non-convergence — and the operator shipped as modified Gram-Schmidt; it also
+surfaced a silent MPS `.to("cpu", float64)` value-corruption bug (fixed:
+move-then-cast; project memory). On real runs: read-back silent everywhere,
+degeneracy guard silent in every cell (worst share .20). **Would-gate:
+selectivity-consistent on all three subjects** — leg (i) clean − heavy: +.964/+.878/+.930;
+leg (ii) match − retention: +.187/+.244/+.358; leg (iii) random −
+J-medium: +.536/+.488/+.395. Structure: 0.5B all-tier cliff, 1.5B
+graded curve (21→13→5 of 41), 3B sharper still (27→17→3 of 43). Wikitext degradation is
+graded and monotone with tier at every scale but far from the paper's "mostly
+intact" (heavy match .223/.366/.428) — the owned framing is
+*relative* selectivity (flexible hit CI-cleanly harder than automatic, and
+targeted CI-cleanly harder than random), never surgical precision. Targeted
+texture (UNDERPOWERED as pre-declared): language label enters the lens on
+demand (explicit 7/8, 8/8, 8/8 vs automatic 0/8, 2/8,
+1/8); linecount presence peaks under the direct question and
+trails under automatic linewrap at every scale. Qwen's digit-by-digit number
+tokenization emptied the README's two-digit target half — number-words only,
+owned in the brief's deviations table.

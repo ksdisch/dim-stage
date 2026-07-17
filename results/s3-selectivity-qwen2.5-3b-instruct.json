@@ -1,0 +1,3427 @@
+{
+ "model_id": "Qwen/Qwen2.5-3B-Instruct",
+ "lens": "lenses/qwen2.5-3b-instruct-n100.pt",
+ "lens_n_prompts": 100,
+ "band": [
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32
+ ],
+ "tiers": {
+  "light": [
+   14,
+   15,
+   16,
+   17,
+   18,
+   19
+  ],
+  "medium": [
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25
+  ],
+  "heavy": [
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32
+  ]
+ },
+ "mode": "descriptive",
+ "protocol": {
+  "ablation_k": 10,
+  "clean_exclude_k": 10,
+  "lens_hit_k": 10,
+  "random_seed": 20260717,
+  "readback_tol": 0.0001,
+  "wikitext": {
+   "skip": 100,
+   "n": 100,
+   "max_tokens": 128,
+   "scored_positions": "valid_position_mask (fit convention)"
+  },
+  "min_n": 20,
+  "collapse_share": 0.5,
+  "note": "targeted cells pre-declared UNDERPOWERED (D26); pooled position CIs are texture \u2014 positions within a passage are not independent trials",
+  "linecount_target_deviation": "Qwen tokenizes multi-digit numbers digit-by-digit, so the README's two-digit half of the target set is empty on this tokenizer; tracked set = number-words only (30 ids). Owned deviation."
+ },
+ "two_hop": {
+  "baseline_accuracy": {
+   "hits": 43,
+   "n": 81,
+   "rate": 0.5308641975308642,
+   "wilson_95": [
+    0.42326527260622987,
+    0.6356680808430215
+   ],
+   "underpowered": false
+  },
+  "primary": {
+   "jlens_light": {
+    "hits": 27,
+    "n": 43,
+    "rate": 0.627906976744186,
+    "wilson_95": [
+     0.4785953826527316,
+     0.7562386110622568
+    ],
+    "underpowered": false
+   },
+   "jlens_medium": {
+    "hits": 17,
+    "n": 43,
+    "rate": 0.3953488372093023,
+    "wilson_95": [
+     0.263651061984564,
+     0.5442120340668091
+    ],
+    "underpowered": false
+   },
+   "jlens_heavy": {
+    "hits": 3,
+    "n": 43,
+    "rate": 0.06976744186046512,
+    "wilson_95": [
+     0.02401115379196249,
+     0.1860926855303493
+    ],
+    "underpowered": false
+   },
+   "random_medium": {
+    "hits": 34,
+    "n": 43,
+    "rate": 0.7906976744186046,
+    "wilson_95": [
+     0.6479406820576336,
+     0.8857729400218853
+    ],
+    "underpowered": false
+   }
+  },
+  "unconditioned": {
+   "jlens_light": {
+    "hits": 33,
+    "n": 81,
+    "rate": 0.4074074074074074,
+    "wilson_95": [
+     0.30696108658374566,
+     0.5162388530685003
+    ],
+    "underpowered": false
+   },
+   "jlens_medium": {
+    "hits": 22,
+    "n": 81,
+    "rate": 0.2716049382716049,
+    "wilson_95": [
+     0.1867368992369412,
+     0.37715628523859895
+    ],
+    "underpowered": false
+   },
+   "jlens_heavy": {
+    "hits": 4,
+    "n": 81,
+    "rate": 0.04938271604938271,
+    "wilson_95": [
+     0.019368992101681116,
+     0.12020404753924974
+    ],
+    "underpowered": false
+   },
+   "random_medium": {
+    "hits": 38,
+    "n": 81,
+    "rate": 0.4691358024691358,
+    "wilson_95": [
+     0.3643319191569785,
+     0.5767347273937701
+    ],
+    "underpowered": false
+   }
+  },
+  "dropped_single_token_prefilter": [
+   {
+    "name": "bird-color-swan",
+    "missing": [
+     "intermediate"
+    ]
+   },
+   {
+    "name": "bird-country-eagle",
+    "missing": [
+     "swap_to"
+    ]
+   },
+   {
+    "name": "chem-bones-Z",
+    "missing": [
+     "answer",
+     "swap_answer"
+    ]
+   },
+   {
+    "name": "ex-city-currency-Toronto-Mumbai",
+    "missing": [
+     "swap_answer"
+    ]
+   },
+   {
+    "name": "gem-source-pearl",
+    "missing": [
+     "answer"
+    ]
+   },
+   {
+    "name": "organ-location-brain",
+    "missing": [
+     "swap_answer"
+    ]
+   },
+   {
+    "name": "osu-rival-mascot",
+    "missing": [
+     "answer",
+     "swap_answer"
+    ]
+   },
+   {
+    "name": "person-century-lincoln",
+    "missing": [
+     "swap_answer"
+    ]
+   },
+   {
+    "name": "tree-product-oak",
+    "missing": [
+     "answer"
+    ]
+   }
+  ],
+  "items": [
+   {
+    "name": "amazon-language",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": " Spanish",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 53,
+      "greedy": " quot"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 39,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 1630,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " Spanish"
+     }
+    }
+   },
+   {
+    "name": "animal-cover-turtle",
+    "category": "animal-cover",
+    "baseline_correct": false,
+    "baseline_greedy": " sc",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 83,
+      "greedy": " sc"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 31,
+      "greedy": " shield"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 6722,
+      "greedy": " ro"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 26,
+      "greedy": " sc"
+     }
+    }
+   },
+   {
+    "name": "animal-legs-buffalo2",
+    "category": "animal-legs",
+    "baseline_correct": true,
+    "baseline_greedy": " four",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " "
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": " "
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 17,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": " "
+     }
+    }
+   },
+   {
+    "name": "animal-nose-elephant",
+    "category": "animal-nose",
+    "baseline_correct": true,
+    "baseline_greedy": " trunk",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": " pre"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": " prob"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " r"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": " tail"
+     }
+    }
+   },
+   {
+    "name": "atomic-80-state",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "ionic",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 10,
+      "greedy": "ionic"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 10,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 266,
+      "greedy": "\u0131"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": " solid"
+     }
+    }
+   },
+   {
+    "name": "basketball-players",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": "6"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": "4"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": "2"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "beverage-source-wine",
+    "category": "beverage-source",
+    "baseline_correct": false,
+    "baseline_greedy": " fruit",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": " fruit"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " fruit"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 53,
+      "greedy": " winter"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " fruit"
+     }
+    }
+   },
+   {
+    "name": "bird-time-owl",
+    "category": "bird-time",
+    "baseline_correct": false,
+    "baseline_greedy": " nighttime",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " night"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " dusk"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 511,
+      "greedy": " when"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " night"
+     }
+    }
+   },
+   {
+    "name": "birthstone-emerald-month",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": "5",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 8,
+      "greedy": "8"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "5"
+     }
+    }
+   },
+   {
+    "name": "chem-atmosphere-Z",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "7"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 9,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "chem-organic-Z",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": "6",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "6"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "6"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "6"
+     }
+    }
+   },
+   {
+    "name": "chem-photosynthesis-Z",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "8"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "7"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "christmas-season",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": " winter",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 15,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 795,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "city-state-Philadelphia",
+    "category": "city-state",
+    "baseline_correct": true,
+    "baseline_greedy": " Pennsylvania",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 37,
+      "greedy": " the"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 33,
+      "greedy": " the"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 217,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Pennsylvania"
+     }
+    }
+   },
+   {
+    "name": "colosseum-currency",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 53,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 218,
+      "greedy": " pound"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 8768,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "element-color-gold2",
+    "category": "element-color",
+    "baseline_correct": true,
+    "baseline_greedy": " yellow",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " white"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " white"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 20,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " yellow"
+     }
+    }
+   },
+   {
+    "name": "etym-frigg-position",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "etym-saturn-position",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": "6",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "6"
+     }
+    }
+   },
+   {
+    "name": "etym-wargod-month",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "5",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": "5"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": "2"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": "5"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "5"
+     }
+    }
+   },
+   {
+    "name": "ex-city-capital-Barcelona-Toronto",
+    "category": "city-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Madrid",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Madrid"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Madrid"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "\n\n"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Madrid"
+     }
+    }
+   },
+   {
+    "name": "ex-city-capital-Lyon-Naples",
+    "category": "city-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Paris",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Paris"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Paris"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2029,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Paris"
+     }
+    }
+   },
+   {
+    "name": "ex-city-capital-Naples-Barcelona",
+    "category": "city-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Rome",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Rome"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Rome"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " R"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Rome"
+     }
+    }
+   },
+   {
+    "name": "ex-city-capital-Toronto-Lyon",
+    "category": "city-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Ottawa",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " the"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 43,
+      "greedy": " Taipei"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 515,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Ottawa"
+     }
+    }
+   },
+   {
+    "name": "ex-city-continent-Toronto-Lyon",
+    "category": "city-continent",
+    "baseline_correct": true,
+    "baseline_greedy": " North",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 59,
+      "greedy": " larger"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 125,
+      "greedy": " larger"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 85,
+      "greedy": " larger"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " not"
+     }
+    }
+   },
+   {
+    "name": "ex-city-currency-Toronto-Beijing",
+    "category": "city-currency",
+    "baseline_correct": true,
+    "baseline_greedy": " Canadian",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 15,
+      "greedy": " Japanese"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 32,
+      "greedy": " Japanese"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 1774,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Canadian"
+     }
+    }
+   },
+   {
+    "name": "ex-city-language-Lyon-Naples",
+    "category": "city-language",
+    "baseline_correct": true,
+    "baseline_greedy": " French",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " French"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " Italian"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 382,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " French"
+     }
+    }
+   },
+   {
+    "name": "ex-element-state-26-8",
+    "category": "element-state",
+    "baseline_correct": false,
+    "baseline_greedy": " a",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 30,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " solid"
+     }
+    }
+   },
+   {
+    "name": "ex-element-state-26-80",
+    "category": "element-state",
+    "baseline_correct": false,
+    "baseline_greedy": " a",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 30,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     }
+    }
+   },
+   {
+    "name": "ex-element-state-8-26",
+    "category": "element-state",
+    "baseline_correct": false,
+    "baseline_greedy": " a",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 148,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": " a"
+     }
+    }
+   },
+   {
+    "name": "ex-element-state-8-80",
+    "category": "element-state",
+    "baseline_correct": false,
+    "baseline_greedy": " a",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 148,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     }
+    }
+   },
+   {
+    "name": "ex-element-state-80-8",
+    "category": "element-state",
+    "baseline_correct": false,
+    "baseline_greedy": " a",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 4,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 242,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 6,
+      "greedy": " a"
+     }
+    }
+   },
+   {
+    "name": "ex-element-symbol-11-26",
+    "category": "element-symbol",
+    "baseline_correct": true,
+    "baseline_greedy": " Na",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Na"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 13,
+      "greedy": " A"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 290,
+      "greedy": " B"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Na"
+     }
+    }
+   },
+   {
+    "name": "ex-element-symbol-26-79",
+    "category": "element-symbol",
+    "baseline_correct": true,
+    "baseline_greedy": " Fe",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Fe"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " C"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 55,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 8,
+      "greedy": " the"
+     }
+    }
+   },
+   {
+    "name": "ex-planet-color-third-fourth",
+    "category": "planet-color",
+    "baseline_correct": false,
+    "baseline_greedy": " yellow",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 8,
+      "greedy": " yellow"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 12,
+      "greedy": " white"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 202,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " blue"
+     }
+    }
+   },
+   {
+    "name": "ex2-city-capital-Munich",
+    "category": "city-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Berlin",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " the"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " the"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 442,
+      "greedy": "\n\n"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Berlin"
+     }
+    }
+   },
+   {
+    "name": "ex2-city-capital-Osaka",
+    "category": "city-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Tokyo",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Tokyo"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Tokyo"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 48,
+      "greedy": "\n"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Tokyo"
+     }
+    }
+   },
+   {
+    "name": "ex2-city-continent-Lima",
+    "category": "city-continent",
+    "baseline_correct": true,
+    "baseline_greedy": " South",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 24,
+      "greedy": " the"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 21,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 142,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 15,
+      "greedy": " the"
+     }
+    }
+   },
+   {
+    "name": "ex2-city-continent-Sydney",
+    "category": "city-continent",
+    "baseline_correct": true,
+    "baseline_greedy": " Australia",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 27,
+      "greedy": " larger"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 83,
+      "greedy": " larger"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 21,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " larger"
+     }
+    }
+   },
+   {
+    "name": "ex2-city-language-Cairo",
+    "category": "city-language",
+    "baseline_correct": true,
+    "baseline_greedy": " Arabic",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Arabic"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " Japanese"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": " Egyptian"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Arabic"
+     }
+    }
+   },
+   {
+    "name": "ex2-city-language-Moscow",
+    "category": "city-language",
+    "baseline_correct": true,
+    "baseline_greedy": " Russian",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Russian"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " Japanese"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 70,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Russian"
+     }
+    }
+   },
+   {
+    "name": "ex2-language-capital-Greek",
+    "category": "language-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Athens",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Athens"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 13,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Athens"
+     }
+    }
+   },
+   {
+    "name": "ex2-language-capital-Hungarian",
+    "category": "language-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Budapest",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Budapest"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Budapest"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Budapest"
+     }
+    }
+   },
+   {
+    "name": "ex2-language-capital-Polish",
+    "category": "language-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Warsaw",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Warsaw"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Warsaw"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 14,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Warsaw"
+     }
+    }
+   },
+   {
+    "name": "ex2-language-capital-Swedish",
+    "category": "language-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " Stockholm",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Stockholm"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Stockholm"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Stockholm"
+     }
+    }
+   },
+   {
+    "name": "ex2-river-capital-Thames",
+    "category": "river-capital",
+    "baseline_correct": true,
+    "baseline_greedy": " London",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 15,
+      "greedy": " Washington"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 33,
+      "greedy": " Tokyo"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 413,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " London"
+     }
+    }
+   },
+   {
+    "name": "food-animal-butter",
+    "category": "food-animal",
+    "baseline_correct": true,
+    "baseline_greedy": " cow",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " cow"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " cow"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 509,
+      "greedy": " Asian"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " cow"
+     }
+    }
+   },
+   {
+    "name": "food-animal-honey",
+    "category": "food-animal",
+    "baseline_correct": false,
+    "baseline_greedy": " honey",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": " cic"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 14,
+      "greedy": " cic"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 198,
+      "greedy": " Asian"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " honey"
+     }
+    }
+   },
+   {
+    "name": "fruit-grows-grape",
+    "category": "fruit-grows",
+    "baseline_correct": true,
+    "baseline_greedy": " vine",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " vine"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " vine"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 22,
+      "greedy": " relative"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " vine"
+     }
+    }
+   },
+   {
+    "name": "func-filters-count",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": "2",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "2"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "2"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "2"
+     }
+    }
+   },
+   {
+    "name": "func-pumps-chambers",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "2",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "4"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "4"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "2"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": "2"
+     }
+    }
+   },
+   {
+    "name": "gem-color-ruby",
+    "category": "gem-color",
+    "baseline_correct": false,
+    "baseline_greedy": " blue",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 22,
+      "greedy": " green"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 29,
+      "greedy": " white"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2872,
+      "greedy": " very"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": " em"
+     }
+    }
+   },
+   {
+    "name": "greatwall-ocean",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "3",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 231,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 741,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 14432,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "holiday-month-christmas2",
+    "category": "holiday-month",
+    "baseline_correct": true,
+    "baseline_greedy": " December",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " December"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " January"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 1160,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " December"
+     }
+    }
+   },
+   {
+    "name": "instr-body-trumpet",
+    "category": "instr-played",
+    "baseline_correct": true,
+    "baseline_greedy": " lips",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " lips"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " mouth"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " lip"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " lips"
+     }
+    }
+   },
+   {
+    "name": "instr-hit-drums",
+    "category": "instr-played",
+    "baseline_correct": false,
+    "baseline_greedy": " a",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 8,
+      "greedy": " a"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 32,
+      "greedy": " a"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 850,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 12,
+      "greedy": " a"
+     }
+    }
+   },
+   {
+    "name": "mars-color",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "4",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 46,
+      "greedy": "umber"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 50,
+      "greedy": "iced"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 661,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 86,
+      "greedy": "4"
+     }
+    }
+   },
+   {
+    "name": "month-3-godof",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": " .\n",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 139,
+      "greedy": " .\n"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 33,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 67,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 34,
+      "greedy": " .\n"
+     }
+    }
+   },
+   {
+    "name": "organ-acid-stomach",
+    "category": "organ-function",
+    "baseline_correct": false,
+    "baseline_greedy": " gastric",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 241,
+      "greedy": " saliva"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 1272,
+      "greedy": " saliva"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 46102,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 13,
+      "greedy": " gastric"
+     }
+    }
+   },
+   {
+    "name": "organ-count-kidney2",
+    "category": "organ-count",
+    "baseline_correct": false,
+    "baseline_greedy": " one",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " two"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " two"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " one"
+     }
+    }
+   },
+   {
+    "name": "organ-location-heart",
+    "category": "organ-location",
+    "baseline_correct": true,
+    "baseline_greedy": " chest",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " chest"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " heart"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 48,
+      "greedy": "\n\n"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 9,
+      "greedy": " heart"
+     }
+    }
+   },
+   {
+    "name": "paper-continent",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 58,
+      "greedy": " quot"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 167,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 6398,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 82,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "person-country-napoleon",
+    "category": "person-country",
+    "baseline_correct": false,
+    "baseline_greedy": " the",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 16,
+      "greedy": " the"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 21,
+      "greedy": " located"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 463,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " not"
+     }
+    }
+   },
+   {
+    "name": "person-country-shakespeare",
+    "category": "person-country",
+    "baseline_correct": false,
+    "baseline_greedy": " Scotland",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 30,
+      "greedy": " now"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 38,
+      "greedy": " located"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 481,
+      "greedy": " a"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " England"
+     }
+    }
+   },
+   {
+    "name": "person-firstname-darwin",
+    "category": "person-firstname",
+    "baseline_correct": true,
+    "baseline_greedy": " Charles",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Charles"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Charles"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 114,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Charles"
+     }
+    }
+   },
+   {
+    "name": "person-firstname-einstein",
+    "category": "person-firstname",
+    "baseline_correct": true,
+    "baseline_greedy": " Albert",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Albert"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Albert"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 28,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Albert"
+     }
+    }
+   },
+   {
+    "name": "person-firstname-mozart",
+    "category": "person-firstname",
+    "baseline_correct": true,
+    "baseline_greedy": " Wolfgang",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Wolfgang"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " Mohammed"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 193,
+      "greedy": " Am"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Wolfgang"
+     }
+    }
+   },
+   {
+    "name": "person-firstname-newton",
+    "category": "person-firstname",
+    "baseline_correct": true,
+    "baseline_greedy": " Isaac",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Isaac"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Isaac"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 121,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " Isaac"
+     }
+    }
+   },
+   {
+    "name": "person-firstname-shakespeare",
+    "category": "person-firstname",
+    "baseline_correct": true,
+    "baseline_greedy": " William",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " William"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " William"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 36,
+      "greedy": " S"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": " not"
+     }
+    }
+   },
+   {
+    "name": "planet-3-moons",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "2",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "2"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 3,
+      "greedy": "2"
+     }
+    }
+   },
+   {
+    "name": "planet-rings-saturn2",
+    "category": "planet-feature",
+    "baseline_correct": true,
+    "baseline_greedy": " rings",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 19,
+      "greedy": " thick"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 38,
+      "greedy": " thick"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 44,
+      "greedy": " thick"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " rings"
+     }
+    }
+   },
+   {
+    "name": "rhyme-chair-flag",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 64,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 88,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 2313,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 69,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "rhyme-rain-neighbor",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "2",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 2911,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 9054,
+      "greedy": "2"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 30689,
+      "greedy": "1"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 61,
+      "greedy": "2"
+     }
+    }
+   },
+   {
+    "name": "rhyme-spoon-orbit",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "urs",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 165,
+      "greedy": "urs"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 358,
+      "greedy": "urs"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 1725,
+      "greedy": "\u0103"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 32,
+      "greedy": "urs"
+     }
+    }
+   },
+   {
+    "name": "season-next-winter",
+    "category": "season-next",
+    "baseline_correct": false,
+    "baseline_greedy": " the",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " the"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 10,
+      "greedy": " the"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 41,
+      "greedy": " the"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 5,
+      "greedy": " the"
+     }
+    }
+   },
+   {
+    "name": "spaceneedle-border",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "2",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 441,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 1136,
+      "greedy": "3"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 9579,
+      "greedy": "3"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 98,
+      "greedy": "2"
+     }
+    }
+   },
+   {
+    "name": "spider-legs",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": "8",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "8"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "8"
+     },
+     "jlens_heavy": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "8"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "8"
+     }
+    }
+   },
+   {
+    "name": "sport-equip-tennis",
+    "category": "sport-equip",
+    "baseline_correct": false,
+    "baseline_greedy": " tennis",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " racket"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " racket"
+     },
+     "jlens_heavy": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " racket"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 2,
+      "greedy": " tennis"
+     }
+    }
+   },
+   {
+    "name": "super-populous-capital",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": "1",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 473,
+      "greedy": "1"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 145,
+      "greedy": "1"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 1001,
+      "greedy": " quot"
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 1126,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "super-smallest-continent",
+    "category": "multihop",
+    "baseline_correct": false,
+    "baseline_greedy": " Africa",
+    "conditions": {
+     "jlens_light": {
+      "correct": false,
+      "answer_rank": 244,
+      "greedy": "\f"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 1268,
+      "greedy": " Alaska"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 19111,
+      "greedy": " "
+     },
+     "random_medium": {
+      "correct": false,
+      "answer_rank": 9,
+      "greedy": "1"
+     }
+    }
+   },
+   {
+    "name": "vehicle-power-bicycle",
+    "category": "vehicle-power",
+    "baseline_correct": true,
+    "baseline_greedy": " legs",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " legs"
+     },
+     "jlens_medium": {
+      "correct": false,
+      "answer_rank": 7,
+      "greedy": " arm"
+     },
+     "jlens_heavy": {
+      "correct": false,
+      "answer_rank": 12,
+      "greedy": " strong"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": " legs"
+     }
+    }
+   },
+   {
+    "name": "violin-strings",
+    "category": "multihop",
+    "baseline_correct": true,
+    "baseline_greedy": "4",
+    "conditions": {
+     "jlens_light": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "4"
+     },
+     "jlens_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "4"
+     },
+     "jlens_heavy": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "4"
+     },
+     "random_medium": {
+      "correct": true,
+      "answer_rank": 1,
+      "greedy": "4"
+     }
+    }
+   }
+  ]
+ },
+ "wikitext": {
+  "jlens_light": {
+   "hits": 7728,
+   "n": 11058,
+   "rate": 0.6988605534454694,
+   "wilson_95": [
+    0.690242092869454,
+    0.7073408918661076
+   ],
+   "underpowered": false,
+   "per_prompt_mean": 0.6989015865325928,
+   "per_prompt_min": 0.4954954981803894
+  },
+  "jlens_medium": {
+   "hits": 6575,
+   "n": 11058,
+   "rate": 0.594592150479291,
+   "wilson_95": [
+    0.5854097273798163,
+    0.6037088729082226
+   ],
+   "underpowered": false,
+   "per_prompt_mean": 0.5946559259295463,
+   "per_prompt_min": 0.36036035418510437
+  },
+  "jlens_heavy": {
+   "hits": 4728,
+   "n": 11058,
+   "rate": 0.427563754747694,
+   "wilson_95": [
+    0.41836939784802296,
+    0.4368084235375228
+   ],
+   "underpowered": false,
+   "per_prompt_mean": 0.42762691527605057,
+   "per_prompt_min": 0.171171173453331
+  },
+  "random_medium": {
+   "hits": 9021,
+   "n": 11058,
+   "rate": 0.8157894736842105,
+   "wilson_95": [
+    0.8084547916003668,
+    0.8229048185390515
+   ],
+   "underpowered": false,
+   "per_prompt_mean": 0.8157450574636459,
+   "per_prompt_min": 0.684684693813324
+  }
+ },
+ "would_gate": {
+  "legs": {
+   "i_heavy_drops_two_hop": {
+    "newcombe_clean_minus_heavy": [
+     0.9302325581395349,
+     0.7879032780996476,
+     0.9759888462080375
+    ],
+    "holds": true
+   },
+   "ii_wikitext_survives_above_retention": {
+    "newcombe_match_minus_retention": [
+     0.35779631288722885,
+     0.24110827359589249,
+     0.404477163338366
+    ],
+    "holds": true
+   },
+   "iii_random_disrupts_less_at_medium": {
+    "newcombe_random_minus_jlens_medium": [
+     0.3953488372093023,
+     0.18909702449826898,
+     0.5577791611290682
+    ],
+    "holds": true
+   }
+  },
+  "selectivity_consistent": true
+ },
+ "degeneracy_guard": {
+  "jlens_light": {
+   "attractor_token": "1",
+   "share": 0.14814814814814814,
+   "collapsed": false
+  },
+  "jlens_medium": {
+   "attractor_token": "1",
+   "share": 0.14814814814814814,
+   "collapsed": false
+  },
+  "jlens_heavy": {
+   "attractor_token": " a",
+   "share": 0.20987654320987653,
+   "collapsed": false
+  },
+  "random_medium": {
+   "attractor_token": "1",
+   "share": 0.13580246913580246,
+   "collapsed": false
+  }
+ },
+ "language": {
+  "cells": {
+   "explicit": {
+    "passages": 8,
+    "any_hit_passages": 8,
+    "pooled_positions": {
+     "hits": 27,
+     "n": 183,
+     "rate": 0.14754098360655737,
+     "wilson_95": [
+      0.10342152716176932,
+      0.2061540705637907
+     ],
+     "underpowered": false
+    },
+    "mean_position_rate": 0.14772727272727273,
+    "underpowered": true
+   },
+   "automatic": {
+    "passages": 8,
+    "any_hit_passages": 1,
+    "pooled_positions": {
+     "hits": 1,
+     "n": 111,
+     "rate": 0.009009009009009009,
+     "wilson_95": [
+      0.0015920445055909102,
+      0.04927454042530521
+     ],
+     "underpowered": false
+    },
+    "mean_position_rate": 0.008928571428571428,
+    "underpowered": true
+   }
+  },
+  "newcombe_explicit_minus_automatic_pooled": [
+   0.13853197459754837,
+   0.07880058036285562,
+   0.1976124732845192
+  ],
+  "records": [
+   {
+    "key": "fr1",
+    "category": "French",
+    "condition": "explicit",
+    "question_positions": 22,
+    "hit_positions": 4,
+    "hit_positions_top5": 4,
+    "any_hit": true,
+    "greedy": " C",
+    "best_author_rank": 165
+   },
+   {
+    "key": "fr1",
+    "category": "French",
+    "condition": "automatic",
+    "question_positions": 13,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " Et",
+    "best_author_rank": 1181
+   },
+   {
+    "key": "fr2",
+    "category": "French",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 4,
+    "hit_positions_top5": 4,
+    "any_hit": true,
+    "greedy": " C",
+    "best_author_rank": 149
+   },
+   {
+    "key": "fr2",
+    "category": "French",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " Et",
+    "best_author_rank": 855
+   },
+   {
+    "key": "de1",
+    "category": "German",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 3,
+    "hit_positions_top5": 2,
+    "any_hit": true,
+    "greedy": " Go",
+    "best_author_rank": 5
+   },
+   {
+    "key": "de1",
+    "category": "German",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " und",
+    "best_author_rank": 294
+   },
+   {
+    "key": "de2",
+    "category": "German",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 3,
+    "hit_positions_top5": 2,
+    "any_hit": true,
+    "greedy": " Go",
+    "best_author_rank": 9
+   },
+   {
+    "key": "de2",
+    "category": "German",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " Und",
+    "best_author_rank": 468
+   },
+   {
+    "key": "es1",
+    "category": "Spanish",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 3,
+    "hit_positions_top5": 3,
+    "any_hit": true,
+    "greedy": " C",
+    "best_author_rank": 11
+   },
+   {
+    "key": "es1",
+    "category": "Spanish",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " Mar\u00eda",
+    "best_author_rank": 1230
+   },
+   {
+    "key": "es2",
+    "category": "Spanish",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 3,
+    "hit_positions_top5": 2,
+    "any_hit": true,
+    "greedy": " C",
+    "best_author_rank": 21
+   },
+   {
+    "key": "es2",
+    "category": "Spanish",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " y",
+    "best_author_rank": 636
+   },
+   {
+    "key": "it1",
+    "category": "Italian",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 3,
+    "hit_positions_top5": 3,
+    "any_hit": true,
+    "greedy": " C",
+    "best_author_rank": 2
+   },
+   {
+    "key": "it1",
+    "category": "Italian",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " e",
+    "best_author_rank": 643
+   },
+   {
+    "key": "it2",
+    "category": "Italian",
+    "condition": "explicit",
+    "question_positions": 23,
+    "hit_positions": 4,
+    "hit_positions_top5": 4,
+    "any_hit": true,
+    "greedy": " Ch",
+    "best_author_rank": 9
+   },
+   {
+    "key": "it2",
+    "category": "Italian",
+    "condition": "automatic",
+    "question_positions": 14,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " E",
+    "best_author_rank": 379
+   }
+  ]
+ },
+ "linecount": {
+  "cells": {
+   "continue": {
+    "passages": 11,
+    "any_hit_passages": 2,
+    "pooled_positions": {
+     "hits": 4,
+     "n": 789,
+     "rate": 0.005069708491761723,
+     "wilson_95": [
+      0.001973192204294769,
+      0.012962451939503941
+     ],
+     "underpowered": false
+    },
+    "underpowered": true
+   },
+   "none": {
+    "passages": 11,
+    "any_hit_passages": 4,
+    "pooled_positions": {
+     "hits": 6,
+     "n": 503,
+     "rate": 0.011928429423459244,
+     "wilson_95": [
+      0.005477984427977475,
+      0.0257775399804373
+     ],
+     "underpowered": false
+    },
+    "underpowered": true
+   },
+   "direct": {
+    "passages": 11,
+    "any_hit_passages": 5,
+    "pooled_positions": {
+     "hits": 7,
+     "n": 602,
+     "rate": 0.011627906976744186,
+     "wilson_95": [
+      0.005643662154402032,
+      0.023805619638066496
+     ],
+     "underpowered": false
+    },
+    "underpowered": true
+   },
+   "letter": {
+    "passages": 11,
+    "any_hit_passages": 11,
+    "pooled_positions": {
+     "hits": 21,
+     "n": 756,
+     "rate": 0.027777777777777776,
+     "wilson_95": [
+      0.018238897891729607,
+      0.042091570984941526
+     ],
+     "underpowered": false
+    },
+    "underpowered": true
+   }
+  },
+  "records": [
+   {
+    "tag": "gettysburg",
+    "condition": "continue",
+    "truth": 34,
+    "positions": 69,
+    "hit_positions": 3,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": " Now",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "gettysburg",
+    "condition": "none",
+    "truth": 34,
+    "positions": 43,
+    "hit_positions": 2,
+    "hit_positions_top5": 2,
+    "any_hit": true,
+    "greedy": "\n",
+    "truth_rank": null,
+    "truth_first_token_rank": 6
+   },
+   {
+    "tag": "gettysburg",
+    "condition": "direct",
+    "truth": 34,
+    "positions": 52,
+    "hit_positions": 2,
+    "hit_positions_top5": 2,
+    "any_hit": true,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "gettysburg",
+    "condition": "letter",
+    "truth": 34,
+    "positions": 66,
+    "hit_positions": 3,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": " \"",
+    "truth_rank": 4,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "bridge",
+    "condition": "continue",
+    "truth": 20,
+    "positions": 66,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "bridge",
+    "condition": "none",
+    "truth": 20,
+    "positions": 40,
+    "hit_positions": 2,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": "\n",
+    "truth_rank": null,
+    "truth_first_token_rank": 2
+   },
+   {
+    "tag": "bridge",
+    "condition": "direct",
+    "truth": 20,
+    "positions": 49,
+    "hit_positions": 2,
+    "hit_positions_top5": 2,
+    "any_hit": true,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "bridge",
+    "condition": "letter",
+    "truth": 20,
+    "positions": 63,
+    "hit_positions": 3,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " \"",
+    "truth_rank": 6,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "garden",
+    "condition": "continue",
+    "truth": 28,
+    "positions": 63,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "garden",
+    "condition": "none",
+    "truth": 28,
+    "positions": 37,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " a",
+    "truth_rank": null,
+    "truth_first_token_rank": 2
+   },
+   {
+    "tag": "garden",
+    "condition": "direct",
+    "truth": 28,
+    "positions": 46,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "garden",
+    "condition": "letter",
+    "truth": 28,
+    "positions": 60,
+    "hit_positions": 2,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": ":\n\n",
+    "truth_rank": 5,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "library",
+    "condition": "continue",
+    "truth": 28,
+    "positions": 60,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "library",
+    "condition": "none",
+    "truth": 28,
+    "positions": 34,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": "\n",
+    "truth_rank": null,
+    "truth_first_token_rank": 3
+   },
+   {
+    "tag": "library",
+    "condition": "direct",
+    "truth": 28,
+    "positions": 43,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "library",
+    "condition": "letter",
+    "truth": 28,
+    "positions": 57,
+    "hit_positions": 2,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " \"",
+    "truth_rank": 5,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "bakery",
+    "condition": "continue",
+    "truth": 38,
+    "positions": 64,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " He",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "bakery",
+    "condition": "none",
+    "truth": 38,
+    "positions": 38,
+    "hit_positions": 1,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "bakery",
+    "condition": "direct",
+    "truth": 38,
+    "positions": 47,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "bakery",
+    "condition": "letter",
+    "truth": 38,
+    "positions": 61,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": ":\n\n",
+    "truth_rank": 24,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "harbor",
+    "condition": "continue",
+    "truth": 41,
+    "positions": 61,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "harbor",
+    "condition": "none",
+    "truth": 41,
+    "positions": 35,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": "\n",
+    "truth_rank": null,
+    "truth_first_token_rank": 4
+   },
+   {
+    "tag": "harbor",
+    "condition": "direct",
+    "truth": 41,
+    "positions": 44,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "harbor",
+    "condition": "letter",
+    "truth": 41,
+    "positions": 58,
+    "hit_positions": 2,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": ":\n\n",
+    "truth_rank": 18,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "trail",
+    "condition": "continue",
+    "truth": 43,
+    "positions": 59,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "trail",
+    "condition": "none",
+    "truth": 43,
+    "positions": 33,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " a",
+    "truth_rank": null,
+    "truth_first_token_rank": 2
+   },
+   {
+    "tag": "trail",
+    "condition": "direct",
+    "truth": 43,
+    "positions": 42,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "trail",
+    "condition": "letter",
+    "truth": 43,
+    "positions": 56,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " \"",
+    "truth_rank": 34,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "workshop",
+    "condition": "continue",
+    "truth": 48,
+    "positions": 64,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " Occasionally",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "workshop",
+    "condition": "none",
+    "truth": 48,
+    "positions": 38,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "workshop",
+    "condition": "direct",
+    "truth": 48,
+    "positions": 47,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "workshop",
+    "condition": "letter",
+    "truth": 48,
+    "positions": 61,
+    "hit_positions": 2,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " the",
+    "truth_rank": 25,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "concert",
+    "condition": "continue",
+    "truth": 47,
+    "positions": 90,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "concert",
+    "condition": "none",
+    "truth": 47,
+    "positions": 64,
+    "hit_positions": 1,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": " a",
+    "truth_rank": null,
+    "truth_first_token_rank": 19
+   },
+   {
+    "tag": "concert",
+    "condition": "direct",
+    "truth": 47,
+    "positions": 73,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "concert",
+    "condition": "letter",
+    "truth": 47,
+    "positions": 87,
+    "hit_positions": 2,
+    "hit_positions_top5": 1,
+    "any_hit": true,
+    "greedy": " '",
+    "truth_rank": 43,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "ferry",
+    "condition": "continue",
+    "truth": 53,
+    "positions": 98,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " The",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "ferry",
+    "condition": "none",
+    "truth": 53,
+    "positions": 72,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " a",
+    "truth_rank": null,
+    "truth_first_token_rank": 2
+   },
+   {
+    "tag": "ferry",
+    "condition": "direct",
+    "truth": 53,
+    "positions": 81,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "ferry",
+    "condition": "letter",
+    "truth": 53,
+    "positions": 95,
+    "hit_positions": 2,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " \\",
+    "truth_rank": 23,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "observatory",
+    "condition": "continue",
+    "truth": 60,
+    "positions": 95,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " Tonight",
+    "truth_rank": null,
+    "truth_first_token_rank": null
+   },
+   {
+    "tag": "observatory",
+    "condition": "none",
+    "truth": 60,
+    "positions": 69,
+    "hit_positions": 0,
+    "hit_positions_top5": 0,
+    "any_hit": false,
+    "greedy": " been",
+    "truth_rank": null,
+    "truth_first_token_rank": 6
+   },
+   {
+    "tag": "observatory",
+    "condition": "direct",
+    "truth": 60,
+    "positions": 78,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " ",
+    "truth_rank": null,
+    "truth_first_token_rank": 1
+   },
+   {
+    "tag": "observatory",
+    "condition": "letter",
+    "truth": 60,
+    "positions": 92,
+    "hit_positions": 1,
+    "hit_positions_top5": 0,
+    "any_hit": true,
+    "greedy": " '",
+    "truth_rank": 6,
+    "truth_first_token_rank": null
+   }
+  ]
+ }
+}

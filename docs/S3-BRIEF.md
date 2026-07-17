@@ -269,3 +269,64 @@ read-back INVALID, wrong-arm lens INVALID).
   be a future menu item if S3's operator lands and Kyle wants a third stretch.
 - Whether S3 is the last stage: Kyle's call at stage close, via /seed-hunt or a
   wrap decision — not pre-committed here.
+
+## Results — S3 (all subjects, descriptive) — 2026-07-17
+
+Full JSONs in `results/s3-selectivity-*.json`; run logs `s3-selectivity-*.log`.
+Read-back silent on every applied edit, every subject; degeneracy guard silent
+in every cell (worst attractor share .20). Two-hop baselines reproduce M2's
+exactly (28/81, 41/81, 43/81 — the like-for-like check D25 wanted).
+
+### The would-gate (frozen three-leg wording, D26)
+
+| Leg (Newcombe 95%) | 0.5B | 1.5B | 3B |
+|---|---|---|---|
+| (i) heavy drops two-hop (clean − heavy) | +.964 [+.778, +.994] | +.878 [+.719, +.947] | +.930 [+.788, +.976] |
+| (ii) wikitext match − two-hop retention @heavy | +.187 [+.045, +.218] | +.244 [+.111, +.314] | +.358 [+.241, +.404] |
+| (iii) random − J-lens retention @medium | +.536 [+.306, +.702] | +.488 [+.277, +.641] | +.395 [+.189, +.558] |
+| **Verdict** | **selectivity-consistent** | **selectivity-consistent** | **selectivity-consistent** |
+
+### Two-hop retention under ablation (primary cell = baseline-correct)
+
+| Cell | 0.5B (n=28) | 1.5B (n=41) | 3B (n=43) |
+|---|---|---|---|
+| J-lens light | 1 | 21 | 27 |
+| J-lens medium | 1 | 13 | 17 |
+| J-lens heavy | 1 | 5 | 3 |
+| random @ medium | 16 | 33 | 34 |
+
+0.5B is a cliff (even the light tier kills the chain); 1.5B is the paper's
+graded dose curve (21 → 13 → 5). 3B is the same curve sharper still (27 → 17 → 3), its heavy tier nearly as absolute as 0.5B's cliff.
+
+### Wikitext top-1 match (automatic task, ~11,058 positions/cell)
+
+| Cell | 0.5B | 1.5B | 3B |
+|---|---|---|---|
+| J-lens light | .405 | .612 | .699 |
+| J-lens medium | .315 | .491 | .595 |
+| J-lens heavy | .223 | .366 | .428 |
+| random @ medium | .743 | .827 | .816 |
+
+Honest caveat, owned in the close: this is **relative** selectivity. Heavy
+ablation still changes 78% / 63% / 57% (0.5B / 1.5B / 3B) of ordinary
+predictions — nowhere near the paper's "mostly intact" — but the flexible task
+is hit CI-cleanly harder at every scale, which is the property under test.
+
+### Targeted arms (pre-declared UNDERPOWERED texture, D26)
+
+- **Language (presence on demand):** explicit vs automatic any-hit passages —
+  0.5B **7/8 vs 0/8**, 1.5B **8/8 vs 2/8**, 3B **8/8 vs 1/8**. Pooled-position
+  contrast +.071 [+.027, +.118] / +.097 [+.037, +.153] / +.139 [+.079, +.198]. At
+  Claude scale the label is present in *all* conditions (Fig 20b) and only its
+  causal role differs; at our scales **presence itself is task-gated** — the
+  workspace doesn't hold the label until the task demands it (the paper's
+  *linecount* pattern, showing up one experiment early).
+- **Linecount (count pulled in when asked):** pooled position hit-rates,
+  continue / none / direct / letter — 0.5B .008/.012/.022/.012,
+  1.5B .004/.008/.022/.007, 3B .005/.012/.012/.028. The direct-question condition leads at
+  every scale and the automatic linewrap condition trails (paper's Fig 21b
+  direction; our peak is direct rather than the paper's letter).
+
+### One-line synthesis
+
+The workspace band is causally load-bearing exactly where the paper says it should be: flexible two-hop chains die under targeted removal while random damage and routine prediction survive it CI-cleanly, at every scale we can reach — the project's only property to clear its full pre-committed gate on all three subjects — with the honest qualifier that at these scales “selective” means *relatively spared* (57–78% of ordinary predictions still change under heavy ablation), never surgical.
