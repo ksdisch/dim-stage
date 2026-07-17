@@ -383,3 +383,24 @@ L21–24** — at the best-reporting α (and its `J=I` arm), 101 concepts each,
 at hobby scale; 3 configs is cheap and legible (a clean bar chart). Full
 single-layer resolution deferred unless a sub-band clearly dominates and the
 exact layer matters.
+
+**S1 outcomes (record, 2026-07-16).** All 101 concepts single-token-valid (0
+dropped); no subject collapsed at any α (degeneracy guard silent — the
+extended grid broke no model). Owned deviation: `default` prefill only (M1
+showed `word` tracks it; deviations row 5). **B (falsification):** the 1.5B
+dose–response is CI-cleanly a J-transport effect — J-lens − J=I CI-clean from
+α=1, peak **+.178 [+.067, +.286]** at α=8; J-lens ~2× the raw-unembedding arm
+(30–31/101 vs 12–14). The flagship finding's one missing arm is closed in the
+favorable direction — the project's first CI-clean J-transport advantage for
+*report*, matching the paper's specificity control. **A (saturation):** 1.5B
+J-lens plateaus ~30/101 from α=8 (30/30/29/31 across 8→24), MRR still climbing
+(.067→.125) — the paper's Figure-7 shape. **C (localization):** best
+non-collapsed α=24; the **middle third L16–20 alone recovers 29/101 ≈ the
+full band's 31** (full−mid +.020 [−.105, +.144], overlaps 0) — the paper's
+mid-layer "middle block"; J-transport advantage CI-clean mid (+.129
+[+.014, +.240]) and late (+.129 [+.041, +.219]), overlapping early (+.040).
+**Cross-scale bonus:** the extended grid exposed 3B reporting as *purely*
+J-transport (identity 0–1/101, J-lens →9/101, J−I CI-clean from α=8:
++.050 [+.003, +.111] up to +.089 [+.034, +.161]); 0.5B null both arms
+(J-lens immovable, attractor 1.00). S1 closed same-day: brief → freeze →
+runner → three subjects → spine.
