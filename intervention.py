@@ -25,6 +25,12 @@ The operators, verbatim from the paper (M1-BRIEF, "Design extraction"):
   scaled by the layer's mean residual norm (reference README convention), so
   strengths are in units of the layer's typical residual size. α = 0 is the
   control and an exact no-op; negative α is an ablation direction.
+- **Ablation** (S3, D24): `h ← h − V†-projection of h onto span{v_1..v_k}` —
+  remove the residual's component along a set of lens directions entirely,
+  leaving every selected direction's lens coordinate at exactly zero and the
+  orthogonal complement untouched. Selection (top-k by lens logit, clean
+  top-10 output exclusion) lives with the S3 runner; the operator is pure
+  geometry.
 
 Application point: edits replace a block's **output** residual — the same hook
 point `fitter._record_residuals` captures and the lens reads — so every later
@@ -43,6 +49,12 @@ from torch import nn
 #: degenerate there and the coordinates blow up. Distinct real tokens are
 #: nowhere near this (relative Gram determinant ~1 in practice).
 PARALLEL_TOLERANCE = 1e-6
+
+#: Relative residual floor for the ablation projection's Gram-Schmidt basis:
+#: a direction whose component orthogonal to the already-accepted basis falls
+#: below this fraction of its own norm is numerically inside their span and
+#: is dropped from the basis (its coordinate is removed by the others).
+RANK_TOLERANCE = 1e-10
 
 Edit = Callable[[torch.Tensor], torch.Tensor]
 
@@ -100,6 +112,51 @@ def swap(
 def steer(h: torch.Tensor, direction: torch.Tensor, alpha: float) -> torch.Tensor:
     """h + α·direction, at every leading position of h. α = 0 is an exact no-op."""
     return h + alpha * direction
+
+
+def ablate(h: torch.Tensor, directions: torch.Tensor) -> torch.Tensor:
+    """h minus its projection onto span{directions}: the S3 ablation operator
+    (D24). h is [..., d_model]; directions is [..., k, d_model] with matching
+    leading dims (each position carries its own direction set). Returns the
+    unique minimal-norm edit of h whose inner product with every direction is
+    zero — "zero out the residual stream's projection onto each" achieved
+    simultaneously, which one-at-a-time zeroing of non-orthogonal directions
+    would not do (S3-BRIEF, design extraction).
+
+    Computed by modified Gram-Schmidt with re-orthogonalization on CPU in
+    float64. Real top-k lens direction sets are brutally ill-conditioned —
+    near-duplicate tokens (including Qwen's untrained reserved vocab slots)
+    give nearly identical directions, where a least-squares solve blows up
+    and LAPACK's iterative SVD refuses to converge; S3's first smoke runs
+    tripped the runtime read-back / crashed on exactly those. MGS never
+    iterates: each direction is orthogonalized against the accepted basis
+    (twice — the classical fix for cancellation) and dropped if nothing new
+    survives, so numerically dependent directions land inside the kept span
+    and every selected direction's coordinate still ends at ~0. k = 0 is an
+    exact no-op.
+    """
+    if directions.shape[-2] == 0:
+        return h
+    # Move BEFORE casting: `.to("cpu", float64)` in one step silently corrupts
+    # values coming off MPS (float64 is cast device-side, unsupported there —
+    # measured 2026-07-17, max abs diff ~5 on unit-scale data).
+    v = directions.cpu().to(torch.float64)  # [..., k, d_model]
+    b = h.cpu().to(torch.float64)
+    basis: list[torch.Tensor] = []
+    for i in range(v.shape[-2]):
+        vec = v[..., i, :]
+        norm0 = vec.norm(dim=-1, keepdim=True)
+        for _ in range(2):
+            for q in basis:
+                vec = vec - (vec * q).sum(-1, keepdim=True) * q
+        norm = vec.norm(dim=-1, keepdim=True)
+        keep = norm > norm0 * RANK_TOLERANCE
+        basis.append(
+            torch.where(keep, vec / norm.clamp_min(torch.finfo(vec.dtype).tiny), 0.0)
+        )
+    for q in basis:
+        b = b - (b * q).sum(-1, keepdim=True) * q
+    return b.to(device=h.device, dtype=h.dtype)
 
 
 def steering_direction(
