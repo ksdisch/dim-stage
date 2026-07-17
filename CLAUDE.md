@@ -6,7 +6,8 @@ Project conventions and guardrails for working in this repo. Read this first eac
 
 Reproduce and measure, at hobby scale, whether the **global workspace** from Anthropic's
 workspace/J-lens paper (transformer-circuits.pub/2026/workspace — **no arXiv ID; cite the
-URL**) is readable in small local Qwen models (0.5B + 1.5B). Independently build the
+URL**) is readable in small local Qwen models (Qwen2.5 0.5B + 1.5B, escalated to 3B when
+both went null — KICKOFF decision 2's trigger). Independently build the
 Jacobian lens, cross-check it against the reference `anthropics/jacobian-lens`
 implementation (AGREE gate), then measure the core-three properties: **verbal report,
 two-hop swap, directed modulation**.
@@ -14,7 +15,8 @@ two-hop swap, directed modulation**.
 **Source of truth: `docs/KICKOFF.md`** — the approved kickoff brief (scope, phased plan,
 anchors, risks, decisions on record). Scope decisions there are settled; don't relitigate
 them. Headlines: **two subjects, both measured fully** (3B only if both null on
-readability); **generalization + selectivity are OUT of v1**; the paper's LLM-judge and
+readability); **generalization + selectivity are OUT of v1** (generalization later
+shipped as post-v1 stretch S2); the paper's LLM-judge and
 Claude-only sections are **never** in scope; the reference jlens is a **cross-check
 oracle only — pinned as a dev-dependency, never imported by harness code** (lossy-wall D1
 pattern).
@@ -24,27 +26,38 @@ narrow, measured slice.* Never "I invented this."
 
 ## Where we are
 
-**Current milestone: M0 — the fit pilot** (not started; fresh scaffold, 2026-07-15).
-Hour-one gate: MPS backward pass on Qwen-0.5B, wall-clock measured. Then the
-design-extraction rider (band-selection + fitting procedure, verbatim from paper/repo),
-the independent build → cross-check AGREE gate, the readability gate on both subjects
-(J-lens vs logit-lens `J=I` baseline on the six `lens-eval-*` distributions), and the
-single-token stimulus pre-filter.
+**v1 is CLOSED (2026-07-16) — M0–M3 plus two stretch stages (S1, S2) all complete.**
+Full status lives in `docs/ROADMAP.md`; per-stage detail in the `docs/*-BRIEF.md` files,
+`docs/DECISIONS.md` (D1–D22 frozen), and `docs/LEARNING.md`. The two pre-declared risks
+both resolved: the readability kill-risk **fired** (see M0 below), and MPS handled the
+backward pass at 0.5B/1.5B but not 3B (rented RTX 4090 fallback — owned deviation).
 
-**Riskiest assumptions — keep them front-of-mind:**
-1. **A readable workspace exists at small scale** — the thesis and the kill-risk in one.
-   A null is a headline (it answers the paper's stated open question) but decapitates
-   M1–M3, which re-scope to descriptive. Pre-declared, like ghost-patch's awareness leg.
-2. **The backward pass runs on MPS** — lens fitting is dominated by it. If it doesn't,
-   a ~$1 rented-GPU fallback is an *owned deviation row*, never a silent move (amended
-   bar entry 2).
+- **M0 — readability: triple NULL.** 0/6 distributions at Wilson LB ≥ 0.5 on 0.5B,
+  1.5B, *and* the 3B escalation. The kill-risk fired and held; everything downstream is
+  **descriptive characterization, never a reproduction claim** (the standing re-scope).
+- **M1 verbal report** — swaps don't move the report; but a *steered-in* thought becomes
+  reportable at 1.5B specifically (dose–response, exact-zero α=0 control).
+- **M2 two-hop swap** — mostly fails; where it works at all (3B) it works *only* through
+  the Jacobian transport (first CI-clean J-advantage for writing).
+- **M3 directed modulation** — "does not modulate" at the frozen gate, but a real,
+  dose-ordered, scale-growing focus signal on concrete category content.
+- **S1 (stretch)** — the 1.5B dose–response hardened: CI-cleanly a J-transport effect,
+  saturates like the paper's Figure 7, localizes to the mid-band (L16–20).
+- **S2 (stretch)** — generalization: "does not route" at anchor level, but a CI-clean
+  J-specific routing signal at α=1 on all three subjects, with the paper's category
+  ordering; the paper's α=2 rescue *inverts* here (overdose extinguishes routing).
+
+**Open decision (Kyle's, not a default): selectivity** — the last stretch candidate
+(J-space ablation, flexible-vs-automatic contrast; no paper anchor, needs a new
+projection operator) — or wrap the project. Nothing is scheduled until he picks.
 
 ## How to run
 
 - Anything: `uv run <script>` — `uv` (Python 3.12+) manages the venv. Application, not a
   package (`package = false`).
-- `uv run pytest` greens the stats ruler (`test_stats.py`). No harness code exists yet;
-  building starts at M0.
+- `uv run pytest` greens the full suite (stats ruler + per-stage invariant/gate tests).
+  Runners live at the repo root (`m0_*.py` … `s2_generalization.py`); fitted lenses in
+  `lenses/`, per-run JSONs in `results/`, run logs as `*.log` at root.
 - No API keys, no `.env` — everything is local. Models pull from HuggingFace on first use.
 
 ## Methodology guardrails (load-bearing — do not drift)
