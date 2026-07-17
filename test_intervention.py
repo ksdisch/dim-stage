@@ -168,6 +168,29 @@ def test_swap_with_itself_is_an_exact_noop():
     assert swap(h, v_s, v_s.clone()) is h  # short-circuit: bitwise by construction
 
 
+def test_swap_alpha_scales_the_correction():
+    # S2's frozen D21 reading of the paper's "double strength": the exchange is
+    # an involution, so α can only scale the correction — h + α·V(σ(c) − c).
+    # α = 1 must be the pre-S2 operator bit-for-bit; α = 0 exactly h; the s = t
+    # short-circuit holds at every α.
+    h, v_s, v_t = random_case()
+    V = torch.stack((v_s, v_t), dim=-1)
+    c = h @ torch.linalg.pinv(V).T
+    for alpha in (0.5, 2.0, 4.0, 8.0):
+        literal = h + alpha * ((c.flip(-1) - c) @ V.T)
+        assert torch.allclose(swap(h, v_s, v_t, alpha), literal, atol=1e-12)
+    assert torch.equal(swap(h, v_s, v_t, 1.0), swap(h, v_s, v_t))
+    assert torch.equal(swap(h, v_s, v_t, 0.0), h)
+    assert swap(h, v_s, v_s.clone(), 8.0) is h
+
+
+def test_swap_edits_pass_alpha_through():
+    h, v_s, v_t = random_case()
+    jac = {0: torch.eye(8, dtype=torch.float64)}  # J = I → v-vectors = the rows
+    edits = swap_edits(jac, [0], v_s, v_t, alpha=2.0)
+    assert torch.allclose(edits[0](h), swap(h, v_s, v_t, 2.0), atol=1e-12)
+
+
 def test_steer_at_alpha_zero_is_an_exact_noop():
     h, _, v_t = random_case()
     assert torch.equal(steer(h, v_t, 0.0), h)

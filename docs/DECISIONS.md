@@ -404,3 +404,77 @@ J-transport (identity 0–1/101, J-lens →9/101, J−I CI-clean from α=8:
 +.050 [+.003, +.111] up to +.089 [+.034, +.161]); 0.5B null both arms
 (J-lens immovable, attractor 1.00). S1 closed same-day: brief → freeze →
 runner → three subjects → spine.
+
+## S2 — flexible generalization (stretch): D19–D22 frozen 2026-07-16 (Kyle)
+
+*All four recommendations accepted (S2-BRIEF menu). Scope: the paper's
+16-template lens-coordinate swap experiment, verbatim item set from the
+reference repo's `flexible-generalization.json`. No new model, fit, or band;
+the one operator change is an α parameter on the existing swap, pinned by the
+involution argument (S2-BRIEF, "Design extraction") and invariant-gated.
+Framing stays descriptive (triple readability NULL holds).*
+
+**D19 (Kyle) — Verbatim item set + standing single-token filter.** Run the
+reference set as shipped; skip and count the 12 trials whose target answers
+have no single-token form (all in animals — savanna, arachnid, convocation,
+shiver; measured 2026-07-16 on the shared Qwen2.5 tokenizer). Pooled cell is
+**180 gradable trials** (countries 48, months 48, animals 36, numbers 48),
+reported beside the 192-trial anchor. *Why:* zero invented items — the same
+M0 pre-filter every prior milestone owned; substitution or dropping animals
+would trade verbatim extraction for tidiness.
+
+**D20 (Kyle) — Two arms, J-lens + `J = I`.** Every trial in both arms at
+every α: the J-lens coordinate swap and the standing falsification arm (same
+exchange with directions = raw unembedding rows); Newcombe 95% CI on (J − I)
+per α. *Why:* like-for-like with M2's Arm 2, where raw rows flipped nothing
+at 3B — if S2's swaps work only through the transport, this arm shows it.
+
+**D21 (Kyle) — α ∈ {1, 2, 4, 8} + degeneracy guard.** The two anchored
+points (76/192, 101/192) plus two doublings of headroom; guard adapted to
+greedy readouts: flag any α × arm cell where a single token is top-1 on
+≥ half of all trials (S1's `COLLAPSE_SHARE` convention — with 16 templates
+and ~60 distinct expected answers, no honest cell is half one token).
+*Why:* distinguishes "underdosed" (the paper's own reading of α=1 failures)
+from "no effect"; {4, 8} are owned convention rows, same footing as D17.
+
+**D22 (Kyle) — Three readouts from one run.** (i) **Unconditional** pooled +
+per-category success (the anchor frame); (ii) **baseline-conditioned** —
+trials where the model got both the source prompt and the target's own
+diagonal right unswapped (it provably knows f(source) and f(target); M2's
+conditioning lesson); (iii) **workspace loading** per argument (band-layer
+mean cosine between the unmodified residual and the argument's lens vector
+at argument + readout positions) against per-argument swap success — the
+paper's own Fig-19-right predictor. *Why:* anchor comparability, small-scale
+honesty, and the paper's predictor, at no extra forwards.
+
+**Convention note (pre-committed with the freeze, before any run):** the
+would-gate wording reuses M2's frozen floor — "routes" iff the α=2 pooled
+J-lens Wilson LB ≥ 0.5 (the anchor's own rate is .526, so this is the
+paper-level bar) — descriptive mode applies throughout. Swap rows take the
+prompt-position token form (the argument appears *in* these prompts, unlike
+M2's latent intermediates; owned departure from M2's bare-form default,
+deviations row 3). Per-template cells (N = 12) are pre-declared UNDERPOWERED
+texture.
+
+**S2 outcomes (record, 2026-07-16).** Plan exactly as frozen: 180 gradable /
+12 filtered; 6 variant fallbacks, all `animals/group` (the template pluralizes
+`{arg}s`, so the argument token never appears — falls back to M2's
+bare-preferred rows; owned in S2-BRIEF deviations row 3). The generalized D6
+read-back silent on every subject at every α; the degeneracy guard silent
+everywhere except **3B α=8**, where both arms collapse to a `!` attractor at
+share 1.00 (its first real catch — true junk collapse, with logits saturating
+into mass rank-1 ties; success grading is greedy-membership and unaffected).
+**Would-gate: "does not route" on all three subjects** (α=2 J-lens LB vs the
+frozen .5 floor: all ≈ 0). The structure inside: **a CI-clean J-transport
+routing signal at α=1 on all three subjects** (0.5B +.078 [+.031, +.131],
+1.5B +.061 [+.012, +.114], 3B +.078 [+.029, +.132]), extinguished from α=2
+on — the anchor's dose direction (76/192 → 101/192) **inverts** at our scales
+(17→1, 16→0, 18→1 of 180): at α=2 the greedy output becomes the swapped-in
+argument itself and the target answer falls out of the top ranks (vocab floor
+at 1.5B). 1.5B reproduces the paper's category order exactly; workspace
+loading reproduces the "numbers load lowest" tail at every scale and its top
+end comes into alignment at 3B (countries load highest and route best).
+Conditioned α=1 routing: 13/42 / 12/62 / 16/56 (~3–4× unconditional) — the
+numbers-category zero is a knowledge confound (0/16 diagonals on every
+subject; the models continue "Two times three equals" with " what", or bare
+whitespace at 3B).
