@@ -192,10 +192,31 @@ results + close). No new model, fit, or band.
 
 **Headline:** the paper's flexible-vs-automatic dissociation is present and CI-clean at all three scales — targeted removal of the top-10 lens directions kills two-hop chains (retention .04/.12/.07 at heavy) while matched random damage and ordinary WikiText prediction survive CI-cleanly above it — the only property in this project to clear its full pre-committed gate on every subject. Owned framing: *relative* selectivity (heavy ablation still changes 57–78% of ordinary predictions — not the paper's “mostly intact”). Texture: presence-on-demand in both targeted arms, and the paper's letter > direct ordering emerging at 3B (.028, 11/11 passages).
 
+## S4 — naming vs avoiding (stretch) — **COMPLETE 2026-07-17** (descriptive)
+
+Fourth stretch stage (Kyle's pick): the paper's Figure-69 inclusion/exclusion
+experiment — k = 1 ablation of an implied concept's lens direction at
+sub-band thirds, naming vs avoidance instructions. First **constructed** item
+set of the project (the reference ships none): 20 concepts × 3 clues from
+measured vocabularies, frozen pre-run, leakage test-guarded. Closed in two
+PRs (#25 brief, build PR D27–D30 freeze + items + runner + results + close).
+
+| Deliverable | Outcome |
+|---|---|
+| D27–D30 frozen | 2026-07-17, Kyle — all recommendations (`DECISIONS.md`) |
+| Competence gate (the first finding) | Only 1.5B reliably does exclusion: gates 5 / **22** / 8 of 60 (0.5B and 3B blurt the forbidden concept unablated on 17 and 13 items) — the M1/S1 subject again |
+| Would-gate | **NOT shown on all three subjects** — early primed ablation raises avoidance failure nowhere (0/22 at 1.5B; CIs straddle 0 everywhere); the pre-declared null leg (naming spared) holds everywhere; primed > control fails everywhere |
+| Late-band texture | The paper's "output intention" half reproduces as a **hard switch at every scale**: late-third k=1 ablation → naming 0/n, concept mass ≈ .000 (no matched late control — owned as texture, not a claim) |
+
+**Headline:** at these scales the concept's late-band lens direction is a
+clean output off-switch, but the paper's early-band *suppression copy* does
+not appear — where small models can do the exclusion task at all, they do it
+without that machinery. A pre-registered NOT-shown, reported as such.
+
 ## Remaining stretch — none scheduled
 
-All paper properties within scope are measured: readability (M0), report (M1),
+All in-scope paper properties are measured: readability (M0), report (M1),
 two-hop (M2), modulation (M3), introspection dose–response (S1), broadcast
-(S2), selectivity (S3). What remains is Kyle's wrap decision (/seed-hunt or
-further stretch — e.g. the Figure 69 avoidance experiment now that the
-ablation operator exists). Nothing is scheduled until he picks.
+(S2), selectivity (S3), naming-vs-avoiding (S4). What remains is Kyle's wrap
+decision (/seed-hunt or a targeted follow-up such as a late-tier specificity
+control for S4's switch texture). Nothing is scheduled until he picks.
