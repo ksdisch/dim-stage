@@ -171,8 +171,31 @@ magnitude below the anchor, extinguished (not amplified) by the paper's own
 double-strength dose, and gated by whether the model knew the facts at all.
 All framing descriptive per the standing re-scope.
 
-## Remaining stretch (gated, un-scheduled) — selectivity
+## S3 — selectivity (stretch) — **COMPLETE 2026-07-17** (descriptive)
 
-Generalization is done. Selectivity (J-space ablation, flexible-vs-automatic
-contrast; no paper anchor, needs a new projection operator) remains a **new
-scope decision for Kyle, not a default**. Nothing is scheduled until he picks.
+Third stretch stage (Kyle's pick). The paper's **selectivity** test, both
+halves: the two shipped targeted reading contrasts (language, linecount —
+verbatim item sets, pre-declared UNDERPOWERED texture) and the **J-space
+ablation** — a new projection-removal operator (top-10 lens directions per
+band layer × position, clean-top-10 output exclusion, span projected out),
+invariant-gated in place of AGREE (the reference ships no ablation code).
+Closed in two PRs (#23 brief, build PR D23–D26 freeze + operator + runner +
+results + close). No new model, fit, or band.
+
+| Deliverable | Outcome |
+|---|---|
+| D23–D26 frozen | 2026-07-17, Kyle — all recommendations (`DECISIONS.md`) |
+| Ablation operator + invariant gates | Modified Gram-Schmidt projection after the runtime read-back caught a least-squares blow-up and an SVD non-convergence on real direction sets — plus a **silent MPS `.to("cpu", float64)` corruption** found and fixed (project memory). 16 pre-committed gates; read-back silent on every real edit |
+| Would-gate, all three subjects | **Selectivity-consistent on all three subjects — the project's first would-gate to HOLD everywhere** — all three frozen legs (heavy kills two-hop; wikitext survives above retention; random control far gentler) |
+| The structure inside | 0.5B: cliff (1/28 at every tier). 1.5B: the paper's graded dose curve (21 → 13 → 5 of 41). 3B: sharper still (27 → 17 → 3 of 43). Random control retains 16/28 / 33/41 / 34/43 |
+| Targeted texture | Language label present-on-demand (explicit 7/8, 8/8, 8/8 passages vs automatic 0/8, 2/8, 1/8); linecount count-presence peaks at the direct question, trails under automatic linewrap, every scale |
+
+**Headline:** the paper's flexible-vs-automatic dissociation is present and CI-clean at all three scales — targeted removal of the top-10 lens directions kills two-hop chains (retention .04/.12/.07 at heavy) while matched random damage and ordinary WikiText prediction survive CI-cleanly above it — the only property in this project to clear its full pre-committed gate on every subject. Owned framing: *relative* selectivity (heavy ablation still changes 57–78% of ordinary predictions — not the paper's “mostly intact”). Texture: presence-on-demand in both targeted arms, and the paper's letter > direct ordering emerging at 3B (.028, 11/11 passages).
+
+## Remaining stretch — none scheduled
+
+All paper properties within scope are measured: readability (M0), report (M1),
+two-hop (M2), modulation (M3), introspection dose–response (S1), broadcast
+(S2), selectivity (S3). What remains is Kyle's wrap decision (/seed-hunt or
+further stretch — e.g. the Figure 69 avoidance experiment now that the
+ablation operator exists). Nothing is scheduled until he picks.

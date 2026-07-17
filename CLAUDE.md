@@ -46,10 +46,14 @@ backward pass at 0.5B/1.5B but not 3B (rented RTX 4090 fallback — owned deviat
 - **S2 (stretch)** — generalization: "does not route" at anchor level, but a CI-clean
   J-specific routing signal at α=1 on all three subjects, with the paper's category
   ordering; the paper's α=2 rescue *inverts* here (overdose extinguishes routing).
+- **S3 (stretch)** — selectivity: **the only would-gate to HOLD on all three
+  subjects** — J-space ablation kills two-hop chains while random damage and
+  ordinary WikiText prediction survive CI-cleanly above them (relative selectivity,
+  owned as such); presence-on-demand texture in both targeted arms.
 
-**Open decision (Kyle's, not a default): selectivity** — the last stretch candidate
-(J-space ablation, flexible-vs-automatic contrast; no paper anchor, needs a new
-projection operator) — or wrap the project. Nothing is scheduled until he picks.
+**Open decision (Kyle's, not a default):** wrap the project (/seed-hunt) or a
+further stretch (e.g. the paper's Figure-69 avoidance experiment, now cheap since
+the ablation operator exists). Nothing is scheduled until he picks.
 
 ## How to run
 

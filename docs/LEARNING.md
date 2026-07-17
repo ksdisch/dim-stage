@@ -446,3 +446,78 @@ three equals" unswapped — they all continue "… what").
     that *not* evidence that small Qwen models can't route number concepts —
     and which two S2 readouts (one from the diagonals, one from the paper's
     own predictor) tell the fuller story?
+
+## S3 — selectivity (stretch) (2026-07-17)
+
+### The one-paragraph story
+
+The last unmeasured workspace property is the converse of all the others: not
+"does the workspace deliver when needed" but "**what runs fine without it**."
+The paper's strongest form is the ablation experiment — at every position, find
+the ten most active lens directions and surgically delete the residual stream's
+component along them (a *projection removal*: subtract exactly the part of the
+activation vector pointing along those directions, leave everything
+perpendicular untouched), then watch which behaviors survive. The prediction:
+flexible reasoning (two-hop chains) should die while routine prediction
+(continuing ordinary text) should coast. At our scales it does — with margins:
+all three subjects clear all three pre-committed gate legs. Two-hop
+retention collapses under J-ablation (0.5B to 1/28 at *every* tier; 1.5B down
+the paper's graded curve 21 → 13 → 5 of 41; 3B sharper still, 27 → 17 → 3 of 43) while matched-count
+random directions barely dent it, and ordinary WikiText prediction under the
+same heavy ablation stays CI-cleanly above the two-hop wreckage at every scale.
+The two tiny targeted experiments add the reading-side texture: the passage's
+language enters the lens almost only when the task needs it (7/8 and 8/8
+passages explicit vs 0/8 and 2/8 automatic at 0.5B/1.5B), and line-length
+counts surface most when directly asked for, least under the automatic
+linewrap task — presence on demand, the paper's own selectivity signature.
+
+### What was learned
+
+29. **A pre-committed runtime gate can catch what tests cannot.** The 16
+    analytic invariants all passed — on constructed data. The first *real*
+    smoke run tripped the D6-style read-back immediately: genuine top-k lens
+    direction sets are brutally ill-conditioned (near-duplicate tokens, Qwen's
+    untrained reserved vocab slots), and the textbook least-squares projection
+    silently exploded, then LAPACK's iterative SVD refused to converge. The
+    shipped operator is modified Gram-Schmidt with re-orthogonalization —
+    orthogonalize each direction against the accepted basis (twice, the
+    classical fix for floating-point cancellation), drop directions with
+    nothing new to add. Real activations are the adversarial test suite.
+30. **Silent corruption exists one abstraction below your math.**
+    `tensor.to("cpu", torch.float64)` in a single call garbles values coming
+    off MPS — the cast happens device-side where float64 isn't supported, no
+    exception raised, ~unit-scale errors. Move first, cast second
+    (`.cpu().to(float64)`). Without the read-back gate this would have shipped
+    plausible-looking garbage as a stage result; it's now in project memory as
+    a standing hazard.
+31. **"Selective" is a comparison, not an absolute.** The paper's ablated
+    Claude keeps most ordinary prediction intact; our ablated subjects lose
+    78% / 63% / 57% (0.5B / 1.5B / 3B) of next-token predictions under
+    the heavy tier. What survives is the *contrast*: at every scale the
+    flexible task is hit CI-cleanly harder than the automatic one (leg ii),
+    and targeted directions hit CI-cleanly harder than random ones (leg iii).
+    A small model's workspace band is a third of its whole depth — deleting
+    ten directions per layer there is major surgery, and the honest claim is
+    relative selectivity, not surgical precision.
+32. **Presence itself can be the small-scale signature.** At Claude scale the
+    language label sits in the lens under *every* task and only its causal
+    role separates flexible from automatic (Fig 20b/c). Our subjects show the
+    dissociation one level earlier: the label mostly isn't *in* the lens until
+    the task demands it. Same selectivity story, expressed in loading rather
+    than causation — consistent with M0's finding that these workspaces are
+    weakly readable at rest.
+
+### Recall questions (answers in this repo's docs)
+
+22. The ablation operator went through three implementations (least-squares,
+    SVD, modified Gram-Schmidt). What property of real top-k lens direction
+    sets broke the first two, and which pre-committed piece of S3 machinery
+    caught the failure before any result was recorded?
+23. Gate leg (iii) compares J-lens ablation to a random-direction control at
+    the medium tier. If that leg had *failed* — random hurting two-hop as much
+    as targeted removal — what would the honest headline have been, and why
+    does leg (i) alone not establish selectivity?
+24. The wikitext top-1 match under heavy ablation is only .22–.37 across
+    subjects, far from the paper's "mostly intact." Why does the would-gate
+    still hold, and what exactly is the claim S3 makes (and refuses to make)
+    about small-model selectivity?

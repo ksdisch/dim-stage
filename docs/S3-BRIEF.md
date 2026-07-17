@@ -207,6 +207,8 @@ Frozen before any real run; dry-run with rigged inputs must exit INVALID first.
 | Two-hop set stands in for the battery's multihop | paper Fig 22/24 | In-project baselines exist (M2); like-for-like deltas |
 | Invariants replace AGREE for the ablation operator | lineage bar | Reference ships no ablation code (M1-D6 precedent) |
 | Repo's 2-condition language contrast vs paper's 4 | paper Fig 20 | Verbatim shipped item set (D19 precedent) |
+| Linecount target set = number-words only (30 ids) | repo README | Qwen tokenizes multi-digit numbers digit-by-digit — the "two-digit token" half is empty on this tokenizer; single digits excluded (would swamp the readout) |
+| Per-position clean-top-10 exclusion | paper §ablation | The paper's "top-10 tokens of a clean forward pass" read per position — the reading that scales to teacher-forced scoring |
 
 ## Wall-clock plan (forward passes only — no new fits, models, or bands)
 
@@ -216,6 +218,46 @@ Ablation: 81 two-hop items × (3 tiers + 1 random control + 1 clean re-check) ×
 subjects, plus ~100 wikitext prompts × (3 tiers + control + clean) × 3 subjects —
 comfortably an evening on MPS at M2/S2 per-forward rates, 3B included (local
 forwards were fine throughout M2–S2; only *fitting* 3B needed the rented GPU).
+
+## Frozen decisions (2026-07-17, Kyle — all recommendations)
+
+- **D23** — both bundles: targeted reading contrasts + the ablation arms.
+- **D24** — k=10 + clean-top-10 exclusion verbatim (per-position reading,
+  owned); ablation = span-projection removal; start-anchored tiers (light =
+  first third of the frozen band, medium = first two-thirds, heavy = full);
+  random-direction control at medium, frozen seed 20260717. Selection per band
+  layer × position by M0's lens-readout logits; directions by M1's raw-row
+  convention.
+- **D25** — flexible task = M2's two-hop items verbatim (81 gradable, plan-
+  checked at startup); automatic task = fresh WikiText records 101–200 under
+  the D3 rule, with a startup proof that the streamed first 100 still equal
+  the recorded fit corpus (disjointness is checked, not assumed).
+- **D26** — targeted cells verbatim + pre-declared UNDERPOWERED; presence =
+  target token in lens top-10 at any band layer; only ablation cells carry
+  CI-gated statements, per the three-leg would-gate above.
+
+Full rationale in `DECISIONS.md`. Implementation: `intervention.ablate` +
+`s3_selectivity.py`; pre-committed gates in `test_selectivity.py` (16 checks:
+analytic-oracle projection invariants, exclusion honoring, rigged-operator
+read-back INVALID, wrong-arm lens INVALID).
+
+### Build-phase discoveries (before any result — owned in the table below)
+
+- **Real lens direction sets defeated two textbook projections.** The top-10
+  lens tokens at a (layer, position) can include near-duplicate and untrained
+  reserved vocab tokens whose J-lens directions are numerically identical: a
+  least-squares projection exploded (the runtime read-back caught it — its
+  first catch), and LAPACK's iterative SVD then refused to converge outright.
+  The shipped operator uses modified Gram-Schmidt with re-orthogonalization,
+  which cannot fail either way; the read-back stayed on for every real run.
+- **A silent MPS transfer bug.** `tensor.to("cpu", torch.float64)` in one
+  step silently corrupts values coming off MPS (measured ~5 abs error on
+  unit-scale data, no exception). Fixed as move-then-cast; recorded in
+  project memory for every future stage.
+- **Qwen digit tokenization empties half the linecount target set.** The
+  README's "any two-digit token" half is vacuous on Qwen (multi-digit numbers
+  tokenize digit-by-digit); the tracked set is number-words only (30 ids).
+  Answer texture for the direct condition falls back to first-sub-token rank.
 
 ## What S3 does NOT decide
 
@@ -227,3 +269,64 @@ forwards were fine throughout M2–S2; only *fitting* 3B needed the rented GPU).
   be a future menu item if S3's operator lands and Kyle wants a third stretch.
 - Whether S3 is the last stage: Kyle's call at stage close, via /seed-hunt or a
   wrap decision — not pre-committed here.
+
+## Results — S3 (all subjects, descriptive) — 2026-07-17
+
+Full JSONs in `results/s3-selectivity-*.json`; run logs `s3-selectivity-*.log`.
+Read-back silent on every applied edit, every subject; degeneracy guard silent
+in every cell (worst attractor share .20). Two-hop baselines reproduce M2's
+exactly (28/81, 41/81, 43/81 — the like-for-like check D25 wanted).
+
+### The would-gate (frozen three-leg wording, D26)
+
+| Leg (Newcombe 95%) | 0.5B | 1.5B | 3B |
+|---|---|---|---|
+| (i) heavy drops two-hop (clean − heavy) | +.964 [+.778, +.994] | +.878 [+.719, +.947] | +.930 [+.788, +.976] |
+| (ii) wikitext match − two-hop retention @heavy | +.187 [+.045, +.218] | +.244 [+.111, +.314] | +.358 [+.241, +.404] |
+| (iii) random − J-lens retention @medium | +.536 [+.306, +.702] | +.488 [+.277, +.641] | +.395 [+.189, +.558] |
+| **Verdict** | **selectivity-consistent** | **selectivity-consistent** | **selectivity-consistent** |
+
+### Two-hop retention under ablation (primary cell = baseline-correct)
+
+| Cell | 0.5B (n=28) | 1.5B (n=41) | 3B (n=43) |
+|---|---|---|---|
+| J-lens light | 1 | 21 | 27 |
+| J-lens medium | 1 | 13 | 17 |
+| J-lens heavy | 1 | 5 | 3 |
+| random @ medium | 16 | 33 | 34 |
+
+0.5B is a cliff (even the light tier kills the chain); 1.5B is the paper's
+graded dose curve (21 → 13 → 5). 3B is the same curve sharper still (27 → 17 → 3), its heavy tier nearly as absolute as 0.5B's cliff.
+
+### Wikitext top-1 match (automatic task, ~11,058 positions/cell)
+
+| Cell | 0.5B | 1.5B | 3B |
+|---|---|---|---|
+| J-lens light | .405 | .612 | .699 |
+| J-lens medium | .315 | .491 | .595 |
+| J-lens heavy | .223 | .366 | .428 |
+| random @ medium | .743 | .827 | .816 |
+
+Honest caveat, owned in the close: this is **relative** selectivity. Heavy
+ablation still changes 78% / 63% / 57% (0.5B / 1.5B / 3B) of ordinary
+predictions — nowhere near the paper's "mostly intact" — but the flexible task
+is hit CI-cleanly harder at every scale, which is the property under test.
+
+### Targeted arms (pre-declared UNDERPOWERED texture, D26)
+
+- **Language (presence on demand):** explicit vs automatic any-hit passages —
+  0.5B **7/8 vs 0/8**, 1.5B **8/8 vs 2/8**, 3B **8/8 vs 1/8**. Pooled-position
+  contrast +.071 [+.027, +.118] / +.097 [+.037, +.153] / +.139 [+.079, +.198]. At
+  Claude scale the label is present in *all* conditions (Fig 20b) and only its
+  causal role differs; at our scales **presence itself is task-gated** — the
+  workspace doesn't hold the label until the task demands it (the paper's
+  *linecount* pattern, showing up one experiment early).
+- **Linecount (count pulled in when asked):** pooled position hit-rates,
+  continue / none / direct / letter — 0.5B .008/.012/.022/.012,
+  1.5B .004/.008/.022/.007, 3B .005/.012/.012/.028. The direct-question condition leads at
+  every scale and the automatic linewrap condition trails (paper's Fig 21b
+  direction; our peak is direct rather than the paper's letter).
+
+### One-line synthesis
+
+The workspace band is causally load-bearing exactly where the paper says it should be: flexible two-hop chains die under targeted removal while random damage and routine prediction survive it CI-cleanly, at every scale we can reach — the project's only property to clear its full pre-committed gate on all three subjects — with the honest qualifier that at these scales “selective” means *relatively spared* (57–78% of ordinary predictions still change under heavy ablation), never surgical.
