@@ -50,10 +50,14 @@ backward pass at 0.5B/1.5B but not 3B (rented RTX 4090 fallback — owned deviat
   subjects** — J-space ablation kills two-hop chains while random damage and
   ordinary WikiText prediction survive CI-cleanly above them (relative selectivity,
   owned as such); presence-on-demand texture in both targeted arms.
+- **S4 (stretch)** — naming vs avoiding (Fig 69): **NOT shown** — the late-band
+  concept direction is a hard output off-switch at every scale, but the paper's
+  early-band suppression copy is absent; only 1.5B can even do the exclusion task
+  (gate 22/60 vs 5 and 8). First constructed item set, frozen pre-run.
 
 **Open decision (Kyle's, not a default):** wrap the project (/seed-hunt) or a
-further stretch (e.g. the paper's Figure-69 avoidance experiment, now cheap since
-the ablation operator exists). Nothing is scheduled until he picks.
+targeted follow-up (e.g. a late-tier specificity control for S4's switch
+texture). Nothing is scheduled until he picks.
 
 ## How to run
 

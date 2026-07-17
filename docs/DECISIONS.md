@@ -604,3 +604,18 @@ NO CI-clean drop vs unablated — a pre-declared null leg; (3) early primed
 ablation raises avoidance failure CI-cleanly more than the early control
 ablation. Late-layer suppression is descriptive texture, not gated. INVALID
 on wrong-arm inputs; `--dry-run` validates and stops; `--limit` is smoke.
+
+**S4 outcomes (record, 2026-07-17).** Items 60/60 gradable; read-back and
+degeneracy guard silent. **Would-gate: NOT shown on all three subjects** —
+leg 1 (early breaks avoidance) fails everywhere (0.5B +.400 [−.118, +.769]
+n=5 UNDERPOWERED; 1.5B +.000 [−.149, +.149] n=22; 3B +.000 n=8 UNDERPOWERED);
+leg 2 (early spares naming, the pre-declared null leg) holds everywhere; leg
+3 (primed > control) fails everywhere. The competence gate is itself the
+first finding: clean naming 20/28/21 of 60, clean avoidance blurts 17/6/13 —
+only 1.5B reliably does exclusion (the M1/S1 subject again). The late half of
+Figure 69 reproduces as a hard switch: late-third k=1 ablation → naming 0/n
+and concept mass ≈ .000 on every subject (no matched late control — D28
+scoped the control to early; owned texture, not a claim). Sub-threshold mass
+rise under early ablation at 0.5B/3B (texture). Greedy-first-token naming
+grading undercounts prefixed answers ("The …") — owned readout caveat on the
+competence numbers.

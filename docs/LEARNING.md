@@ -521,3 +521,65 @@ linewrap task — presence on demand, the paper's own selectivity signature.
     subjects, far from the paper's "mostly intact." Why does the would-gate
     still hold, and what exactly is the claim S3 makes (and refuses to make)
     about small-model selectivity?
+
+## S4 — naming vs avoiding (stretch) (2026-07-17)
+
+### The one-paragraph story
+
+The paper's Figure-69 appendix experiment is the sharpest within-task version
+of selectivity: *not* saying a word should take workspace machinery that
+saying it doesn't (the inclusion/exclusion paradigm — resisting a primed
+response as the mark of deliberate processing). A clue implies a concept
+("croissants, the Louvre, the famous iron tower"), and you either name it or
+name-something-else; deleting the concept's single lens direction early in
+the band should break only the avoiding. At our scales the experiment
+returned a clean split verdict. The **late**-band copy of the concept is a
+hard output switch on every subject: remove that one direction and the model
+cannot say the word at all (naming 0/n, concept probability ≈ .000). But the
+**early**-band suppression machinery — the paper's actual claim — is absent:
+the models that can do the exclusion task at all (mostly just 1.5B, 22/60
+gated items) keep avoiding the concept perfectly with its early copy deleted
+(0/22 failures). And upstream of all of it sits the project's most human
+finding: small models largely *can't do the task* — 0.5B and 3B blurt the
+forbidden concept unablated on 17 and 13 of 60 items. The frozen gate said
+NOT shown, and NOT shown is the verdict.
+
+### What was learned
+
+33. **When you must construct items, the gate is the experiment.** S4 is the
+    project's first invented item set (the reference ships nothing), made
+    honest the same way the paper's own constructed items were: a pre-declared
+    competence gate filters to items each subject can demonstrably do. The
+    gate then delivered the headline before any ablation ran — the exclusion
+    *task itself* is mostly beyond these models, and where it isn't (1.5B,
+    again the M1/S1 subject) the workspace story gets its real test cell.
+34. **A dissociation's two halves can scale apart.** Figure 69 is one claim
+    with two prongs: late = intention-to-say (ablate → can't say it), early =
+    suppression copy (ablate → can't NOT say it). At 0.5B–3B the late prong
+    reproduces as an exact zero on every subject, while the early prong never
+    clears any CI. Small models have the output switch; they lack — or don't
+    need — the deliberate-suppression copy. A reproduction that treats "the
+    dissociation" as one atomic finding would have missed that the halves
+    separate.
+35. **A null leg is only credible because it was pre-declared.** Leg 2
+    ("naming is spared") *holds* everywhere — a claim of no-effect that
+    would be unfalsifiable hand-waving if invented after the data, but was
+    frozen in D30 before any run, with its own CI condition. The lineage
+    lesson: gates should encode the *shape* of the predicted result,
+    including the legs where the prediction is "nothing happens."
+
+### Recall questions (answers in this repo's docs)
+
+25. S4's items were constructed, not shipped — the project's first. What two
+    frozen mechanisms made a constructed set honest, and which one produced
+    the stage's headline before a single ablation ran?
+26. Describe the split verdict: which half of Figure 69 reproduced at every
+    scale, what exactly happens to naming and concept mass under late-third
+    ablation, and why is that half still only "texture" rather than a gated
+    claim in our records?
+27. At 1.5B, 22 items passed the gate and early ablation produced 0/22
+    avoidance failures. Why does that number, on its own, not distinguish
+    "small models lack the early suppression copy" from "small models avoid
+    by a different mechanism" — and which auxiliary readout (recorded in the
+    results JSON) gives the sub-threshold hint that something early still
+    moves?

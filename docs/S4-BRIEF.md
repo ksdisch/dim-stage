@@ -138,3 +138,51 @@ total, all local.
 
 - No new model, fit, band, or operator; no re-litigation of the re-scope.
 - Whether S4 is the last stage: Kyle's call at close (/seed-hunt or wrap).
+
+## Results — S4 (all subjects, descriptive) — 2026-07-17
+
+Full JSONs in `results/s4-avoidance-*.json`; logs `s4-avoidance-*.log`. All 60
+items gradable (no single-token drops); read-back and degeneracy guard silent
+throughout.
+
+### The would-gate: **NOT shown on all three subjects**
+
+| Leg (Newcombe 95%, gated cell) | 0.5B (n=5, UNDERPOWERED) | 1.5B (n=22) | 3B (n=8, UNDERPOWERED) |
+|---|---|---|---|
+| (1) early breaks avoidance | +.400 [−.118, +.769] fails | +.000 [−.149, +.149] fails | +.000 fails |
+| (2) early spares naming (null leg) | holds (5/5) | holds (18/22; +.182 [−.002, +.385]) | holds (8/8) |
+| (3) primed > control | +.200, fails | −.045, fails | +.000, fails |
+
+### What actually happened, cell by cell
+
+- **The competence gate is the first finding.** Clean naming succeeds on only
+  20/28/21 of 60 items (greedy-first-token grading; models that answer "The
+  …" are counted misses — owned readout caveat), and clean avoidance *fails*
+  (concept blurted) on 17/6/13 of 60. Only 1.5B can reliably do the exclusion
+  task — the same subject where M1/S1's introspection lives. Gates: 5 / 22 /
+  8 items (verbatim-P .85/.15 would keep 1 / 15 / 6).
+- **The late half of Figure 69 reproduces as a hard switch.** k = 1 ablation
+  of the concept's vector at the late third drives naming to **0/5, 0/22,
+  0/8** and mean concept mass to **.000 / .003 / .000** — on every subject,
+  removing one direction at the late band third erases the model's ability to
+  say that word. (Caveat, owned: D28 scoped the specificity control to the
+  early tier, so the late switch has no matched late-control cell; a
+  late-control is the obvious follow-up if this texture ever needs to be a
+  claim.)
+- **The early half — the suppression machinery — is absent.** Avoidance
+  failure under early primed ablation: 2/5 (directional, CI straddles 0),
+  **0/22**, **0/8**. The models that *can* avoid the concept keep avoiding it
+  with the early workspace copy deleted. Naming under early ablation is
+  spared everywhere (leg 2 holds), including the mild 18/22 at 1.5B.
+- **Mass texture:** avoidance-condition concept mass ticks up under early
+  ablation at 0.5B (.061 → .147) and 3B (.025 → .070) without flipping the
+  greedy token — a sub-threshold trace of the paper's effect, texture only.
+
+### One-line synthesis
+
+At our scales the concept's late-band lens direction is a clean output
+switch — delete it and the word cannot be said — but the paper's deeper
+claim, an *early* workspace copy used to deliberately suppress the concept,
+does not appear: where small models can do the exclusion task at all, they do
+it without that machinery. Descriptive throughout; the gate said NOT shown
+and that is the reported verdict.

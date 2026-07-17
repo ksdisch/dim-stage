@@ -1,0 +1,4113 @@
+{
+ "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+ "lens": "lenses/qwen2.5-1.5b-instruct-n100.pt",
+ "lens_n_prompts": 100,
+ "band": [
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24
+ ],
+ "thirds": {
+  "early": [
+   11,
+   12,
+   13,
+   14
+  ],
+  "middle": [
+   15,
+   16,
+   17,
+   18
+  ],
+  "late": [
+   19,
+   20,
+   21,
+   22,
+   23,
+   24
+  ]
+ },
+ "mode": "descriptive",
+ "protocol": {
+  "instructions": {
+   "naming": "Consider this sentence: \"{clue}\"\n\nWhich {noun} is the sentence describing? Answer with just the name.",
+   "avoidance": "Consider this sentence: \"{clue}\"\n\nName a {noun} that the sentence is NOT describing. Answer with just the name."
+  },
+  "conditions": [
+   "clean",
+   "primed_early",
+   "primed_middle",
+   "primed_late",
+   "control_early"
+  ],
+  "gate": "greedy-based (D29); verbatim P .85/.15 reported alongside",
+  "readback_tol": 0.0001,
+  "min_n": 20,
+  "collapse_share": 0.5
+ },
+ "dropped_single_token_prefilter": [],
+ "competence": {
+  "items_run": 60,
+  "gate_greedy": 22,
+  "gate_verbatim_p": 15,
+  "naming_clean_all_items": 28,
+  "avoid_clean_fail_all_items": 6
+ },
+ "items": [
+  {
+   "name": "france-1",
+   "category": "countries",
+   "concept": "France",
+   "control": "Canada",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.998620331287384
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9487622380256653
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.6225314140319824
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 3.230934453313239e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9969739317893982
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Australia",
+      "concept_mass": 0.018489310517907143
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.007711629383265972
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.005389920901507139
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Tai",
+      "concept_mass": 2.2353635813487926e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.04851705580949783
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "france-2",
+   "category": "countries",
+   "concept": "France",
+   "control": "Canada",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9997367262840271
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9975192546844482
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9770573973655701
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 4.904863817500882e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9995307326316833
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "R",
+      "concept_mass": 0.0005473652854561806
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "R",
+      "concept_mass": 4.8072954086819664e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Los",
+      "concept_mass": 8.793239203441772e-07
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 5.13978282157268e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "R",
+      "concept_mass": 0.0007648736354894936
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "france-3",
+   "category": "countries",
+   "concept": "France",
+   "control": "Canada",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9998978972434998
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9997660517692566
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9994386434555054
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.00012107457587262616
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "France",
+      "concept_mass": 0.9998649954795837
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.001552368514239788
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.00038164551369845867
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Ut",
+      "concept_mass": 0.0001254329108633101
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ut",
+      "concept_mass": 5.4574510244265184e-08
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0023082508705556393
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "china-1",
+   "category": "countries",
+   "concept": "China",
+   "control": "Egypt",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9994626045227051
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9933467507362366
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.973831832408905
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "United",
+      "concept_mass": 3.925684666228335e-08
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9992793202400208
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Brazil",
+      "concept_mass": 0.022873062640428543
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 0.0022514215670526028
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Brazil",
+      "concept_mass": 0.002443276811391115
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Spain",
+      "concept_mass": 1.9224600578127138e-08
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.02437540702521801
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "china-2",
+   "category": "countries",
+   "concept": "China",
+   "control": "Egypt",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9981134533882141
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9977619051933289
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9979821443557739
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 2.2049848666938487e-06
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9979292154312134
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0010174905182793736
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Fin",
+      "concept_mass": 0.00014558681868948042
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "France",
+      "concept_mass": 0.00011142244329676032
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "France",
+      "concept_mass": 9.06471342432269e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0009044793550856411
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "china-3",
+   "category": "countries",
+   "concept": "China",
+   "control": "Egypt",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.999541163444519
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.999398410320282
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9991341233253479
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "USA",
+      "concept_mass": 9.994066374474642e-08
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "China",
+      "concept_mass": 0.9993597865104675
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Brazil",
+      "concept_mass": 0.001760574639774859
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 0.0002568927884567529
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 0.0005969398189336061
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "New",
+      "concept_mass": 2.9690266245552266e-08
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0016541006043553352
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "egypt-1",
+   "category": "countries",
+   "concept": "Egypt",
+   "control": "France",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9998878240585327
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.972844660282135
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9801841974258423
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 4.913064913125709e-06
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9998103976249695
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.20878875255584717
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.003862933721393347
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Australia",
+      "concept_mass": 0.010214117355644703
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 2.816947244355106e-07
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.3259190618991852
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "egypt-2",
+   "category": "countries",
+   "concept": "Egypt",
+   "control": "France",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9973569512367249
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9244712591171265
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.935326099395752
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Sw",
+      "concept_mass": 7.458927484549349e-06
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9905863404273987
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Ken",
+      "concept_mass": 0.033635713160037994
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0004429642576724291
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0009971196996048093
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 1.3429867351533176e-07
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Ken",
+      "concept_mass": 0.01736314222216606
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "egypt-3",
+   "category": "countries",
+   "concept": "Egypt",
+   "control": "France",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9986509680747986
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.997111976146698
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.9924485683441162
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 0.00242529041133821
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.997806191444397
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.13547566533088684
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Australia",
+      "concept_mass": 0.010520389303565025
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Australia",
+      "concept_mass": 0.009413693100214005
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Canada",
+      "concept_mass": 8.283589636448596e-07
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Egypt",
+      "concept_mass": 0.31885820627212524
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "canada-1",
+   "category": "countries",
+   "concept": "Canada",
+   "control": "China",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9656476974487305
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.8551948070526123
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.748674750328064
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "China",
+      "concept_mass": 6.66958512738347e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9540619254112244
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.12565527856349945
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.01743222028017044
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.029298899695277214
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 7.562727842014283e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.2251502424478531
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "canada-2",
+   "category": "countries",
+   "concept": "Canada",
+   "control": "China",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.99196457862854
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9621492624282837
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9225893616676331
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.005489550065249205
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.9888052940368652
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.27182620763778687
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.0883105993270874
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Japan",
+      "concept_mass": 0.04373294860124588
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Rio",
+      "concept_mass": 9.839613994699903e-06
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.7448221445083618
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "canada-3",
+   "category": "countries",
+   "concept": "Canada",
+   "control": "China",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.7926137447357178
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "United",
+      "concept_mass": 0.0057724337093532085
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "United",
+      "concept_mass": 0.005160026717931032
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "USA",
+      "concept_mass": 2.534049201585731e-07
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.7019811868667603
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.6274725198745728
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "China",
+      "concept_mass": 0.11409588903188705
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.2710185647010803
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Th",
+      "concept_mass": 4.336394795245724e-06
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "Canada",
+      "concept_mass": 0.8723726868629456
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "february-1",
+   "category": "months",
+   "concept": "February",
+   "control": "July",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.22742228209972382
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.10654930025339127
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.1198187991976738
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.00022405727941077203
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.2297210842370987
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.043881483376026154
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.011875608004629612
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.017248423770070076
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 1.9091085050604306e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.06415200233459473
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "february-2",
+   "category": "months",
+   "concept": "February",
+   "control": "July",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9974251985549927
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9786776304244995
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9723461866378784
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Spring",
+      "concept_mass": 0.0002022413827944547
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.9977260828018188
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.06142103672027588
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "September",
+      "concept_mass": 0.017842138186097145
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "September",
+      "concept_mass": 0.019383452832698822
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "September",
+      "concept_mass": 3.065800774493255e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.060141418129205704
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "february-3",
+   "category": "months",
+   "concept": "February",
+   "control": "July",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.7788563370704651
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "April",
+      "concept_mass": 0.27164095640182495
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "April",
+      "concept_mass": 0.2435329109430313
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.00011349398118909448
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.7947485446929932
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.5253058671951294
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.2536170482635498
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.26060330867767334
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "September",
+      "concept_mass": 0.00038523596595041454
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "February",
+      "concept_mass": 0.5737205147743225
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "july-1",
+   "category": "months",
+   "concept": "July",
+   "control": "October",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9996631741523743
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9964384436607361
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9980374574661255
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.0036536273546516895
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.9993404150009155
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.015510584227740765
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.006428370252251625
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.010944776237010956
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 2.232057568107848e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.016581842675805092
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "july-2",
+   "category": "months",
+   "concept": "July",
+   "control": "October",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "August",
+      "concept_mass": 0.2052091360092163
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "August",
+      "concept_mass": 0.14840878546237946
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "August",
+      "concept_mass": 0.1292257010936737
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 4.396472650114447e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "August",
+      "concept_mass": 0.24892303347587585
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.013725663535296917
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.0029750706162303686
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.004973601549863815
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 3.6857326790595835e-07
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.01375296525657177
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "july-3",
+   "category": "months",
+   "concept": "July",
+   "control": "October",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.8224051594734192
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.7430829405784607
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.7658404111862183
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "June",
+      "concept_mass": 0.0012756123906001449
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "July",
+      "concept_mass": 0.8710016012191772
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.013867707923054695
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00887439213693142
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00887905340641737
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 3.755052830456407e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.018489759415388107
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "october-1",
+   "category": "months",
+   "concept": "October",
+   "control": "February",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.95606529712677
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9013146758079529
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9206526875495911
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "H",
+      "concept_mass": 0.0024922138545662165
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9592990875244141
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.06559973955154419
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.027308348566293716
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.032928358763456345
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Spring",
+      "concept_mass": 3.141421984764747e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.07947774231433868
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "october-2",
+   "category": "months",
+   "concept": "October",
+   "control": "February",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9690700173377991
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9507552981376648
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9288535118103027
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.006200423464179039
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9846409559249878
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.011596005409955978
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.003598671406507492
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.0073962281458079815
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 3.0372424589586444e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.01459422241896391
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "october-3",
+   "category": "months",
+   "concept": "October",
+   "control": "February",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9972806572914124
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9975809454917908
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9912610650062561
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.0515282079577446
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "October",
+      "concept_mass": 0.9963285326957703
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.0617152564227581
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.038387905806303024
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.04691663756966591
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "February",
+      "concept_mass": 0.0001497679331805557
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "April",
+      "concept_mass": 0.10764847695827484
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "april-1",
+   "category": "months",
+   "concept": "April",
+   "control": "October",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 0.0018776864744722843
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 0.0031731550116091967
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 0.002792053623124957
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 9.797519851417746e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "May",
+      "concept_mass": 0.006402662489563227
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.017466813325881958
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.008060870692133904
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.006564858835190535
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Winter",
+      "concept_mass": 6.617339749936946e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.03262779861688614
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "april-2",
+   "category": "months",
+   "concept": "April",
+   "control": "October",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.026755232363939285
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.010236391797661781
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.010047364979982376
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 1.0409770766273141e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "January",
+      "concept_mass": 0.018471213057637215
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.035682521760463715
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.011482379399240017
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.014490454457700253
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 1.0406464753032196e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.04004664346575737
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "april-3",
+   "category": "months",
+   "concept": "April",
+   "control": "October",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9083670973777771
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9054147601127625
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.6890953183174133
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.0009472605306655169
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "April",
+      "concept_mass": 0.9703813195228577
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00021442501747515053
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00017002050299197435
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.00027130148373544216
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 2.304195731994696e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "December",
+      "concept_mass": 0.0004486742545850575
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": true
+  },
+  {
+   "name": "lion-1",
+   "category": "animals",
+   "concept": "lion",
+   "control": "shark",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "lion",
+      "concept_mass": 0.28372958302497864
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "T",
+      "concept_mass": 0.0629698634147644
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "T",
+      "concept_mass": 0.09683451056480408
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.0008048573508858681
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "lion",
+      "concept_mass": 0.3374751806259155
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.003835842479020357
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.0004738519783131778
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.002011694246903062
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 6.159355052659521e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.004779506009072065
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "lion-2",
+   "category": "animals",
+   "concept": "lion",
+   "control": "shark",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "lion",
+      "concept_mass": 0.1781482845544815
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "H",
+      "concept_mass": 0.01714394986629486
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "H",
+      "concept_mass": 0.02060096338391304
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "H",
+      "concept_mass": 1.8550588720245287e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "lion",
+      "concept_mass": 0.1910734921693802
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.00204311846755445
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.00010781871969811618
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.00033581475145183504
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 3.860633114527445e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.002004053443670273
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "lion-3",
+   "category": "animals",
+   "concept": "lion",
+   "control": "shark",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.1645902693271637
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.09930785745382309
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.11937981843948364
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ele",
+      "concept_mass": 0.001764184795320034
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 0.20013388991355896
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.012342903763055801
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.0004603839188348502
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.0017018822254613042
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 8.981760402093641e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.009978866204619408
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "eagle-1",
+   "category": "animals",
+   "concept": "eagle",
+   "control": "lion",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "e",
+      "concept_mass": 0.0012079125735908747
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "R",
+      "concept_mass": 0.00016266971942968667
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "e",
+      "concept_mass": 0.00031596500775776803
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 3.8371394950331705e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "e",
+      "concept_mass": 0.0016206027939915657
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 2.3176322429208085e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 3.060186486436578e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.7967837493415573e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.15239695563929e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 2.2739799533155747e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "eagle-2",
+   "category": "animals",
+   "concept": "eagle",
+   "control": "lion",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.0015209561679512262
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 1.212200277223019e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 5.124859308125451e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 1.7108311989311176e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 0.001389566925354302
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.0388155260443455e-06
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 2.6784585216432788e-08
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.9310532195504493e-07
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 7.911996613430006e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 6.204002716003743e-07
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "eagle-3",
+   "category": "animals",
+   "concept": "eagle",
+   "control": "lion",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "bird",
+      "concept_mass": 1.538678952783812e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 5.363139621294977e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "bird",
+      "concept_mass": 4.53340533113078e-07
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Bird",
+      "concept_mass": 2.030259640961596e-12
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "bird",
+      "concept_mass": 1.3625740393763408e-05
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "duck",
+      "concept_mass": 5.1101551434840076e-06
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 6.281163678067969e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "duck",
+      "concept_mass": 1.5759444522700505e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 6.809046659839169e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "duck",
+      "concept_mass": 4.766272468259558e-06
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "shark-1",
+   "category": "animals",
+   "concept": "shark",
+   "control": "spider",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Sh",
+      "concept_mass": 0.001842806930653751
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "orca",
+      "concept_mass": 0.0010490667773410678
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "orca",
+      "concept_mass": 0.0004335359553806484
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 3.443412888159969e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "orca",
+      "concept_mass": 0.0007500355131924152
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 1.8480955986888148e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 3.693209464472602e-06
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.4493912203761283e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 7.50089768075668e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 7.815555363777094e-06
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "shark-2",
+   "category": "animals",
+   "concept": "shark",
+   "control": "spider",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "T",
+      "concept_mass": 0.00332777202129364
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "d",
+      "concept_mass": 0.002255596686154604
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "T",
+      "concept_mass": 0.0009990613907575607
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 4.598637914909887e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "T",
+      "concept_mass": 0.0010421941988170147
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "ele",
+      "concept_mass": 2.988099083722773e-07
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "ele",
+      "concept_mass": 1.5424492971760628e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 3.973710605009728e-08
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "R",
+      "concept_mass": 3.490844766029788e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "ele",
+      "concept_mass": 1.7656965667356417e-07
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "shark-3",
+   "category": "animals",
+   "concept": "shark",
+   "control": "spider",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 0.0013423531781882048
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 0.00015257457562256604
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 1.8296679627383128e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 4.469554934494191e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Fish",
+      "concept_mass": 0.0012171091511845589
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.7485424905316904e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 6.935869805602124e-06
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 2.468703542035655e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 8.121425199014709e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 5.6127505558833946e-06
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "spider-1",
+   "category": "animals",
+   "concept": "spider",
+   "control": "eagle",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.0074515873566269875
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.0003363229043316096
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.0010457017924636602
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 2.558972145294547e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.01241818256676197
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.7517755622975528e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 2.3661164050281513e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 3.158969548167079e-07
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 7.03161010320863e-12
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 7.180386455729604e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "spider-2",
+   "category": "animals",
+   "concept": "spider",
+   "control": "eagle",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 3.6264671507524326e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 1.6599816490270314e-06
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 1.072110194400011e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 2.9003244250702664e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 9.814094664761797e-05
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 6.343642780848313e-06
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 1.612255857708078e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 1.2576467156577564e-07
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.3598745393639255e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 7.1896365625434555e-06
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "spider-3",
+   "category": "animals",
+   "concept": "spider",
+   "control": "eagle",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.0032457527704536915
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Ar",
+      "concept_mass": 0.00017352223221678287
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Ar",
+      "concept_mass": 0.0005855982890352607
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "R",
+      "concept_mass": 1.077241490454739e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Spider",
+      "concept_mass": 0.006383122876286507
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 4.102021648577647e-06
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 2.636471307937427e-08
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 6.4407341682226615e-09
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.6807929830928159e-12
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 1.9238004824728705e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "mars-1",
+   "category": "planets",
+   "concept": "Mars",
+   "control": "Saturn",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.005996659863740206
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.020712414756417274
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.054862167686223984
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "planet",
+      "concept_mass": 5.135469294259565e-08
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.018122954294085503
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 6.272729660850018e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 8.110894850688055e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00013640809629578143
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 2.996618064798895e-08
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.0007242923602461815
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "mars-2",
+   "category": "planets",
+   "concept": "Mars",
+   "control": "Saturn",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0019418122246861458
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0007408408564515412
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0011689952807500958
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 8.131226802987612e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.003368927165865898
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 0.00014499202370643616
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 7.160442328313366e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 0.00014053774066269398
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 7.570775117926587e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 0.000276703794952482
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "mars-3",
+   "category": "planets",
+   "concept": "Mars",
+   "control": "Saturn",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0026461733505129814
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.002684418112039566
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.004537975415587425
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "planet",
+      "concept_mass": 3.856279739977708e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 0.0029520171228796244
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00015428832557518035
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00013618839147966355
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 0.00020482840773183852
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Sat",
+      "concept_mass": 9.673227552298158e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "V",
+      "concept_mass": 0.0004319295403547585
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "saturn-1",
+   "category": "planets",
+   "concept": "Saturn",
+   "control": "Venus",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 2.7452157155494206e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 1.4527684470522217e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 1.2189530934847426e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "planet",
+      "concept_mass": 2.0477150530773258e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 2.4560707970522344e-05
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00018589799583423883
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00013439821486826986
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00010385142377344891
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "M",
+      "concept_mass": 6.325788226568818e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.0002510265330784023
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "saturn-2",
+   "category": "planets",
+   "concept": "Saturn",
+   "control": "Venus",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.004027895629405975
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.00040873937541618943
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.0006227207486517727
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 4.248323026700973e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 0.0013727382756769657
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 9.387934483129357e-07
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 6.483614924945869e-07
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 4.544073703982576e-07
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Earth",
+      "concept_mass": 1.6233479838145826e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 3.004974473697075e-07
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "saturn-3",
+   "category": "planets",
+   "concept": "Saturn",
+   "control": "Venus",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 1.6991625670925714e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 1.0994937156283413e-06
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 1.19123876629601e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 6.697595950067026e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "J",
+      "concept_mass": 7.4408862928976305e-06
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 5.686238000635058e-05
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 2.6938803785014898e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 2.567330011515878e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 9.846821136250128e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Mer",
+      "concept_mass": 3.4636264899745584e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "piano-1",
+   "category": "musical instruments",
+   "concept": "piano",
+   "control": "guitar",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.05205659195780754
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.06756316870450974
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Keyboard",
+      "concept_mass": 0.045017603784799576
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Keyboard",
+      "concept_mass": 5.17618614637172e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.050402168184518814
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0012879796558991075
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.00013833444972988218
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 8.893681660993025e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 1.1972767222090397e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0018245629034936428
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "piano-2",
+   "category": "musical instruments",
+   "concept": "piano",
+   "control": "guitar",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.008955419063568115
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.0007824641070328653
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.00040730147156864405
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 8.954089553148137e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.007352808024734259
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "p",
+      "concept_mass": 0.0005860463716089725
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "p",
+      "concept_mass": 4.1587405576137826e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 3.062723408220336e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Th",
+      "concept_mass": 2.9955739277998106e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "p",
+      "concept_mass": 0.00040958469617180526
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "piano-3",
+   "category": "musical instruments",
+   "concept": "piano",
+   "control": "guitar",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.0014561148127540946
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 7.5495468081498984e-06
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 6.268492143135518e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 3.77763098580175e-11
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0008306431118398905
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.00016092139412648976
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dr",
+      "concept_mass": 1.3276255685923388e-06
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dr",
+      "concept_mass": 1.3993626453157049e-06
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Th",
+      "concept_mass": 3.1962175961464112e-12
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "dr",
+      "concept_mass": 4.651616472983733e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "guitar-1",
+   "category": "musical instruments",
+   "concept": "guitar",
+   "control": "piano",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.0002580959117040038
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.0004486186953727156
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.0002705331426113844
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 3.773289680708558e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 2.94825185847003e-05
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.00013744186435360461
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 4.4128461013315246e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 2.019507701334078e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 1.6236224587018455e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 6.307320290943608e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "guitar-2",
+   "category": "musical instruments",
+   "concept": "guitar",
+   "control": "piano",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Electric",
+      "concept_mass": 0.0006684781983494759
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "g",
+      "concept_mass": 0.007518810220062733
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.008890914730727673
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "The",
+      "concept_mass": 6.327099733027808e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.00018802049453370273
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "tr",
+      "concept_mass": 0.00015147589147090912
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "dr",
+      "concept_mass": 3.4240139939356595e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "dr",
+      "concept_mass": 1.624920878384728e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "a",
+      "concept_mass": 3.6532372682529513e-09
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "dr",
+      "concept_mass": 4.8057016101665795e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "guitar-3",
+   "category": "musical instruments",
+   "concept": "guitar",
+   "control": "piano",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Ban",
+      "concept_mass": 0.0026207570917904377
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.00027603012858889997
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.00019100337522104383
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "String",
+      "concept_mass": 6.44501174651424e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "G",
+      "concept_mass": 0.0003333631611894816
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Viol",
+      "concept_mass": 0.00016166830027941614
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "dr",
+      "concept_mass": 4.4010663259541616e-05
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Dr",
+      "concept_mass": 1.628938116482459e-05
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "D",
+      "concept_mass": 3.5378822094145335e-10
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Dr",
+      "concept_mass": 3.6772889870917425e-05
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "diamond-1",
+   "category": "gemstones",
+   "concept": "diamond",
+   "control": "ruby",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "diamond",
+      "concept_mass": 0.8492282032966614
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "diamond",
+      "concept_mass": 0.5212250351905823
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Ruby",
+      "concept_mass": 0.1979522705078125
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "S",
+      "concept_mass": 1.7320569895673543e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "diamond",
+      "concept_mass": 0.5940598249435425
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.01904878579080105
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.006547683384269476
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.0056151594035327435
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Glass",
+      "concept_mass": 3.534644008595933e-07
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.005609226878732443
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "diamond-2",
+   "category": "gemstones",
+   "concept": "diamond",
+   "control": "ruby",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.30061909556388855
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.142593115568161
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.050414279103279114
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Obs",
+      "concept_mass": 5.813443931401707e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Diamond",
+      "concept_mass": 0.20761500298976898
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.01606278494000435
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.004758734256029129
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.00192629499360919
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "L",
+      "concept_mass": 7.368860792666965e-07
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Op",
+      "concept_mass": 0.003432363737374544
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "diamond-3",
+   "category": "gemstones",
+   "concept": "diamond",
+   "control": "ruby",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "diamond",
+      "concept_mass": 0.1850127875804901
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Ruby",
+      "concept_mass": 0.03709382191300392
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Ruby",
+      "concept_mass": 0.015090230852365494
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ruby",
+      "concept_mass": 9.611518407837139e-07
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "diamond",
+      "concept_mass": 0.11819719523191452
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "qu",
+      "concept_mass": 0.04555853456258774
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "qu",
+      "concept_mass": 0.017562136054039
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "qu",
+      "concept_mass": 0.011744147166609764
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ruby",
+      "concept_mass": 3.1388915431307396e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Qu",
+      "concept_mass": 0.015415824949741364
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "gold-1",
+   "category": "precious metals",
+   "concept": "gold",
+   "control": "silver",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.2040448933839798
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.18599627912044525
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.14815784990787506
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Iron",
+      "concept_mass": 8.136932592606172e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.23687110841274261
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "tin",
+      "concept_mass": 0.07272674888372421
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "tin",
+      "concept_mass": 0.03614141792058945
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "tin",
+      "concept_mass": 0.04999230429530144
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Iron",
+      "concept_mass": 0.0001592327025718987
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "tin",
+      "concept_mass": 0.06653611361980438
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "gold-2",
+   "category": "precious metals",
+   "concept": "gold",
+   "control": "silver",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "silver",
+      "concept_mass": 0.030736789107322693
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Bron",
+      "concept_mass": 0.011628564447164536
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Bron",
+      "concept_mass": 0.005557649303227663
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Bron",
+      "concept_mass": 2.556111837748176e-07
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "silver",
+      "concept_mass": 0.03814057260751724
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "pl",
+      "concept_mass": 0.04046911373734474
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "pl",
+      "concept_mass": 0.013184755109250546
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "pl",
+      "concept_mass": 0.016326360404491425
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "pl",
+      "concept_mass": 4.663025902118534e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "pl",
+      "concept_mass": 0.03232063353061676
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "gold-3",
+   "category": "precious metals",
+   "concept": "gold",
+   "control": "silver",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.3627256155014038
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.3347104489803314
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.29847022891044617
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Iron",
+      "concept_mass": 0.0008625235059298575
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Gold",
+      "concept_mass": 0.34887054562568665
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Silver",
+      "concept_mass": 0.003997227177023888
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Silver",
+      "concept_mass": 0.00136343645863235
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Silver",
+      "concept_mass": 0.002114655217155814
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Steel",
+      "concept_mass": 1.4782376638322603e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Silver",
+      "concept_mass": 0.0034532141871750355
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "cow-1",
+   "category": "farm animals",
+   "concept": "cow",
+   "control": "pig",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.770075261592865
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.48764538764953613
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.6391859650611877
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "D",
+      "concept_mass": 3.9285398088395596e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.720025360584259
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "duck",
+      "concept_mass": 0.11628443002700806
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "dog",
+      "concept_mass": 0.012872652150690556
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "dog",
+      "concept_mass": 0.025569435209035873
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 6.423588274628855e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "dog",
+      "concept_mass": 0.04686815291643143
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "cow-2",
+   "category": "farm animals",
+   "concept": "cow",
+   "control": "pig",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.5445612072944641
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "C",
+      "concept_mass": 0.1896115392446518
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "C",
+      "concept_mass": 0.2601868808269501
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "H",
+      "concept_mass": 0.0002697657619137317
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.4551278054714203
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.6234667897224426
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 0.12063281238079071
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.21589131653308868
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Dog",
+      "concept_mass": 5.298450560076162e-06
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.45470091700553894
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "cow-3",
+   "category": "farm animals",
+   "concept": "cow",
+   "control": "pig",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.7062357068061829
+     },
+     "primed_early": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.4642029404640198
+     },
+     "primed_middle": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.5681259036064148
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "She",
+      "concept_mass": 7.138431101338938e-05
+     },
+     "control_early": {
+      "produced": true,
+      "greedy": "cow",
+      "concept_mass": 0.6468430757522583
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "go",
+      "concept_mass": 0.008550681173801422
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 0.0014767898246645927
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "ch",
+      "concept_mass": 0.0023993910290300846
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "P",
+      "concept_mass": 9.710361155157443e-06
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "go",
+      "concept_mass": 0.011908983811736107
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "bee-1",
+   "category": "insects",
+   "concept": "bee",
+   "control": "ant",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.11560937017202377
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.009876465424895287
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.039045773446559906
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.0003944674681406468
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.016474120318889618
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 0.014299399219453335
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Dragon",
+      "concept_mass": 0.000724726589396596
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.002607733476907015
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.0001391350815538317
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.010985204018652439
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "bee-2",
+   "category": "insects",
+   "concept": "bee",
+   "control": "ant",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": true,
+      "greedy": "bee",
+      "concept_mass": 0.4329790771007538
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.08694416284561157
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.27496957778930664
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.0032568497117608786
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "B",
+      "concept_mass": 0.027328526601195335
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.03871092200279236
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Sc",
+      "concept_mass": 0.001371129066683352
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.006178908981382847
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.00030917610274627805
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.03691013529896736
+     }
+    }
+   },
+   "gate_greedy": true,
+   "gate_verbatim_p": false
+  },
+  {
+   "name": "bee-3",
+   "category": "insects",
+   "concept": "bee",
+   "control": "ant",
+   "instructions": {
+    "naming": {
+     "clean": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.2669006586074829
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.032525669783353806
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.12558652460575104
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.0005542078870348632
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Be",
+      "concept_mass": 0.05972978472709656
+     }
+    },
+    "avoidance": {
+     "clean": {
+      "produced": false,
+      "greedy": "sp",
+      "concept_mass": 0.006929339841008186
+     },
+     "primed_early": {
+      "produced": false,
+      "greedy": "cr",
+      "concept_mass": 0.00047229044139385223
+     },
+     "primed_middle": {
+      "produced": false,
+      "greedy": "cr",
+      "concept_mass": 0.001308743841946125
+     },
+     "primed_late": {
+      "produced": false,
+      "greedy": "cr",
+      "concept_mass": 8.596517727710307e-05
+     },
+     "control_early": {
+      "produced": false,
+      "greedy": "Ant",
+      "concept_mass": 0.012291940860450268
+     }
+    }
+   },
+   "gate_greedy": false,
+   "gate_verbatim_p": false
+  }
+ ],
+ "naming_success_gated": {
+  "clean": {
+   "hits": 22,
+   "n": 22,
+   "rate": 1.0,
+   "wilson_95": [
+    0.8513404742740388,
+    1.0
+   ],
+   "underpowered": false
+  },
+  "primed_early": {
+   "hits": 18,
+   "n": 22,
+   "rate": 0.8181818181818182,
+   "wilson_95": [
+    0.6148297802336213,
+    0.9269323397589488
+   ],
+   "underpowered": false
+  },
+  "primed_middle": {
+   "hits": 17,
+   "n": 22,
+   "rate": 0.7727272727272727,
+   "wilson_95": [
+    0.5655964393704065,
+    0.8987710920517964
+   ],
+   "underpowered": false
+  },
+  "primed_late": {
+   "hits": 0,
+   "n": 22,
+   "rate": 0.0,
+   "wilson_95": [
+    1.3877787807814457e-17,
+    0.14865952572596125
+   ],
+   "underpowered": false
+  },
+  "control_early": {
+   "hits": 21,
+   "n": 22,
+   "rate": 0.9545454545454546,
+   "wilson_95": [
+    0.7820151050048196,
+    0.9919307806988522
+   ],
+   "underpowered": false
+  }
+ },
+ "avoidance_failure_gated": {
+  "clean": {
+   "hits": 0,
+   "n": 22,
+   "rate": 0.0,
+   "wilson_95": [
+    1.3877787807814457e-17,
+    0.14865952572596125
+   ],
+   "underpowered": false
+  },
+  "primed_early": {
+   "hits": 0,
+   "n": 22,
+   "rate": 0.0,
+   "wilson_95": [
+    1.3877787807814457e-17,
+    0.14865952572596125
+   ],
+   "underpowered": false
+  },
+  "primed_middle": {
+   "hits": 0,
+   "n": 22,
+   "rate": 0.0,
+   "wilson_95": [
+    1.3877787807814457e-17,
+    0.14865952572596125
+   ],
+   "underpowered": false
+  },
+  "primed_late": {
+   "hits": 0,
+   "n": 22,
+   "rate": 0.0,
+   "wilson_95": [
+    1.3877787807814457e-17,
+    0.14865952572596125
+   ],
+   "underpowered": false
+  },
+  "control_early": {
+   "hits": 1,
+   "n": 22,
+   "rate": 0.045454545454545456,
+   "wilson_95": [
+    0.008069219301147859,
+    0.21798489499518053
+   ],
+   "underpowered": false
+  }
+ },
+ "mean_concept_mass_gated": {
+  "naming": {
+   "clean": 0.8203211636705832,
+   "primed_early": 0.7276648955250328,
+   "primed_middle": 0.7080271037464793,
+   "primed_late": 0.003324832822599433,
+   "control_early": 0.7906841438432987
+  },
+  "avoidance": {
+   "clean": 0.03087766456288095,
+   "primed_early": 0.00749002321010101,
+   "primed_middle": 0.009075138374385006,
+   "primed_late": 2.693827285783389e-05,
+   "control_early": 0.03798288796679117
+  }
+ },
+ "would_gate": {
+  "legs": {
+   "1_early_breaks_avoidance": {
+    "newcombe_early_minus_clean_failure": [
+     0.0,
+     -0.14865952572596125,
+     0.14865952572596125
+    ],
+    "holds": false
+   },
+   "2_early_spares_naming_null_leg": {
+    "newcombe_clean_minus_early_naming": [
+     0.18181818181818177,
+     -0.002372834608694141,
+     0.38517021976637866
+    ],
+    "holds": true
+   },
+   "3_primed_beats_control": {
+    "newcombe_primed_minus_control_failure": [
+     -0.045454545454545456,
+     -0.21798489499518053,
+     0.10783380113665388
+    ],
+    "holds": false
+   }
+  },
+  "underpowered": false,
+  "avoidance_dissociation_consistent": false
+ },
+ "degeneracy_guard": {
+  "naming_clean": {
+   "attractor_token": "France",
+   "share": 0.05,
+   "collapsed": false
+  },
+  "naming_primed_early": {
+   "attractor_token": "France",
+   "share": 0.05,
+   "collapsed": false
+  },
+  "naming_primed_middle": {
+   "attractor_token": "France",
+   "share": 0.05,
+   "collapsed": false
+  },
+  "naming_primed_late": {
+   "attractor_token": "The",
+   "share": 0.26666666666666666,
+   "collapsed": false
+  },
+  "naming_control_early": {
+   "attractor_token": "France",
+   "share": 0.05,
+   "collapsed": false
+  },
+  "avoidance_clean": {
+   "attractor_token": "December",
+   "share": 0.16666666666666666,
+   "collapsed": false
+  },
+  "avoidance_primed_early": {
+   "attractor_token": "Dog",
+   "share": 0.18333333333333332,
+   "collapsed": false
+  },
+  "avoidance_primed_middle": {
+   "attractor_token": "December",
+   "share": 0.15,
+   "collapsed": false
+  },
+  "avoidance_primed_late": {
+   "attractor_token": "Dog",
+   "share": 0.2,
+   "collapsed": false
+  },
+  "avoidance_control_early": {
+   "attractor_token": "December",
+   "share": 0.16666666666666666,
+   "collapsed": false
+  }
+ }
+}
