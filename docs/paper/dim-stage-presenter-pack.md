@@ -42,7 +42,7 @@ We rebuilt Anthropic's Jacobian lens from its published spec, proved our build b
 | S4b specificity | 1.5B +.727 [+.471,+.868]; 3B +1.000 [+.541,+1.000] (UNDERPOWERED); 0.5B not shown | same files (`late_switch_specificity`); `docs/S4-BRIEF.md` |
 | $0.83 / 3B rescue | RTX 4090, ~57 min, 34.5 s/prompt, sha256-verified | `docs/DECISIONS.md` ("3B rescue") |
 
-Note: the repo records per-trial JSONs, not rendered figures — if asked for a plot, offer to open the JSON and read the cell live; that is the stronger move anyway.
+Note: the paper's five figures are rendered from these same per-trial JSONs by `docs/paper/make_figures.py` (a plotting script — no model runs, no recomputed statistics). If a figure is questioned, the strongest move is to open the source JSON and read the cell live.
 
 ## Anticipated questions
 

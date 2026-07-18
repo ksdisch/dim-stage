@@ -66,7 +66,7 @@ The reference ships no intervention or ablation code, so no AGREE-style diff was
 
 **Stimuli.** All item sets are the paper's own, shipped in the reference repository — with one disclosed exception: S4's naming-versus-avoiding items do not ship, so a 60-item set (20 concepts × 3 clues) was **constructed** — the project's first — under frozen rules (concepts only from vocabularies already measured in earlier stages; no clue contains its concept or a derivative, test-guarded), committed before any run. A mechanical single-token pre-filter under Qwen's tokenizer drops stimuli whose targets have no single-token form; every drop is counted (94–100% of intermediates survive in M0; 9/90 items in M2; 12/192 in S2; 0 in M1-introspection, M3, S4).
 
-**Figures.** The repository records per-trial JSON files rather than rendered figures; all results below are tabulated directly from those files and the stage briefs that hand-transcribe them.
+**Figures.** The five figures below are rendered directly from the recorded per-trial JSONs in `results/` by `docs/paper/make_figures.py` — a plotting script only: no model is loaded, no lens refit, no statistic recomputed. The tables carry the same numbers.
 
 ## 5 Results
 
@@ -99,6 +99,10 @@ J-lens pass@10 per distribution (hits/N):
 | multilingual | 149/414 (36.0%) | 155/414 (37.4%) | 148/414 (35.7%) |
 | order-ops | 36/109 (33.0%) | 39/109 (35.8%) | 50/109 (45.9%) |
 | typo | 47/96 (49.0%) | 17/96 (17.7%) | 20/96 (20.8%) |
+
+![M0 readability: J-lens pass@10 per distribution and scale](figures/fig1-m0-readability.png)
+
+*Figure 1 — J-lens pass@10 per evaluation distribution with Wilson 95% intervals (N per cell 94–414). The dashed line marks the frozen READS criterion, which applies to the Wilson **lower** bound: 1.5B multihop's point estimate (54.3%) crosses the line but its lower bound (.442) does not. Rendered from `results/readability-*.json`.*
 
 The null has structure. The two abstract-content distributions — association (an evoked, unnamed concept) and poetry (a planned rhyme word) — are hard zeros at every scale; these are precisely the most "workspace-like" contents. Surface-adjacent content is partially readable but sub-bar and *non-monotone in scale*: multihop peaks at 1.5B (54.3%) and regresses at 3B (39.4%); the closest any cell comes to the bar is order-ops at 3B, whose Wilson interval [.368, .552] crosses 0.5 only at its upper bound — it does not READ.
 
@@ -153,6 +157,10 @@ The kickoff-cited anchor reproduces: the no-instruction baseline is 0/46 pooled 
 
 The 1.5B introspection curve was the project's only headline finding without a falsification arm. S1 gave it three tests. **(B) Transport specificity:** re-running the whole curve with J = I (steering along the raw unembedding row), the J-lens beats it CI-cleanly from α = 1 (+.109 [+.024, +.197]), peaking at α = 8 (**+.178 [+.067, +.286]**); at the plateau the transport roughly doubles reporting (30–31/101 vs 12–14/101). The curve is a J-transport effect, matching the paper's own specificity control. **(A) Saturation:** extending the α grid to {12, 16, 24}, the rank-1 rate plateaus at ~30/101 (30/30/29/31 across α = 8→24) while mean reciprocal rank keeps tightening (.067 → .125) — the paper's Figure-7 rise-then-saturate shape, with the degeneracy guard silent throughout (no model broke). **(C) Localization:** steering sub-band thirds separately, the middle five layers **L16–20 alone recover 29/101** against the full 14-layer band's 31/101 (full − mid +.020 [−.105, +.144], overlapping zero) — the paper's mid-layer "middle block", found at hobby scale. The extended grid also revealed that 3B's small reporting signal (→ 9/101) is *purely* transport-specific: its identity arm is essentially dead (0–1/101), J − I CI-clean from α = 8 (+.050 [+.003, +.111] to +.089 [+.034, +.161]). 0.5B is null on both arms.
 
+![S1: 1.5B dose–response with falsification arm, and sub-band localization](figures/fig2-s1-dose-response.png)
+
+*Figure 2 — Left: 1.5B report rate versus steering strength for the J-lens arm and the J = I falsification arm (n = 101 per cell; shading = Wilson 95% intervals). Right: localization at α = 24 (orange = J-lens, purple = J = I) — the middle third L16–20 alone recovers 29/101 against the full band's 31/101. Rendered from `results/s1-introspection-qwen2.5-1.5b-instruct.json`.*
+
 ### 5.6 S2 — flexible generalization ("broadcast")
 
 The paper's boldest property: one identical lens-coordinate swap of a function's argument, clamped at every position, consumed correctly by sixteen different downstream computations (anchor: 76/192 at α = 1, rising to 101/192 at α = 2). On the verbatim item set (180 of 192 trials gradable under the standing single-token filter):
@@ -166,6 +174,10 @@ The paper's boldest property: one identical lens-coordinate swap of a function's
 
 The frozen would-gate ("routes" iff the α=2 pooled Wilson LB ≥ .5) reads **"does not route" on all three subjects.** But a routing signal exists and is CI-cleanly transport-specific at α = 1 on every subject — and then the paper's dose direction *inverts*. At α = 2, hits collapse (17→1, 16→0, 18→1): the greedy output becomes the swapped-in **argument itself** (" France", " China") rather than the function's answer, and the true target answer is anti-ranked toward the vocabulary floor (median rank over the 1.5B α=1 hits: 151,844.5 of 151,936). Overdose converts an argument-to-compute-with into an output-to-say. Category structure reproduces where it can: 1.5B matches the paper's order exactly (countries 10/48 > months 4/48 > animals 2/36 > numbers 0/48), and the paper's own predictor — workspace loading — puts numbers lowest at every scale and aligns at the top by 3B. A conditioned frame (both facts provably known unswapped) lifts routing to 13/42, 12/62, 16/56 — roughly 3–4× the unconditional rate — and exposes the numbers zero as a knowledge/pragmatics confound (0/16 unswapped diagonals on every subject).
 
+![S2: swap success versus dose, all subjects, with the paper's anchor](figures/fig3-s2-alpha-cliff.png)
+
+*Figure 3 — Pooled swap success versus dose (n = 180 gradable trials per subject; shading = Wilson 95% intervals). The paper's anchor (gray) rises from α=1 to α=2 (76/192 → 101/192); all three subjects instead collapse from a small α=1 signal to ≈ 0. Anchor points are the recorded Claude-scale values plotted without intervals — the paper's own CIs are not recorded in this repository. Rendered from `results/s2-generalization-*.json`.*
+
 ### 5.7 S3 — selectivity: the gate that held
 
 The converse property: what runs fine *without* the workspace? At every position, ablate the residual stream's projection onto the ten most active lens directions per band layer (a projection removal, with a clean-top-10 exclusion rule verbatim from the paper), and compare a flexible task (M2's two-hop chains) against an automatic one (ordinary WikiText next-token prediction), with a matched-count random-direction control. The pre-committed three-leg gate holds on **all three subjects** — the only property in the project to clear its full gate everywhere:
@@ -176,7 +188,11 @@ The converse property: what runs fine *without* the workspace? At every position
 | (ii) WikiText survives above two-hop retention | +.187 [+.045, +.218] | +.244 [+.111, +.314] | +.358 [+.241, +.404] |
 | (iii) random hurts less than targeted (medium tier) | +.536 [+.306, +.702] | +.488 [+.277, +.641] | +.395 [+.189, +.558] |
 
-Two-hop retention traces the paper's graded dose curve at 1.5B (21 → 13 → 5 of 41 across light/medium/heavy) and sharper at 3B (27 → 17 → 3 of 43); 0.5B is a cliff (1/28 at every tier); random control retains 16/28, 33/41, 34/43. The owned qualifier: this is **relative** selectivity. Heavy ablation still changes 78%/63%/57% of ordinary next-token predictions (WikiText top-1 match .223/.366/.428) — nowhere near the paper's "mostly intact" — but the flexible task is hit CI-cleanly harder at every scale, which is the property under test. The two shipped targeted reading contrasts (8 and 11 passages, pre-declared UNDERPOWERED texture) add a small-scale signature: the passage's language enters the lens almost only when the task demands it (explicit 7/8, 8/8, 8/8 passages vs automatic 0/8, 2/8, 1/8) — presence itself is task-gated, where at Claude scale presence is constant and only causal role differs.
+Two-hop retention traces the paper's graded dose curve at 1.5B (21 → 13 → 5 of 41 across light/medium/heavy) and sharper at 3B (27 → 17 → 3 of 43); 0.5B is a cliff (1/28 at every tier); random control retains 16/28, 33/41, 34/43.
+
+![S3: flexible vs automatic tasks under J-space ablation](figures/fig4-s3-selectivity.png)
+
+*Figure 4 — Two-hop retention on the primary cell (baseline-correct chains, n = 28/41/43; the unablated reference is 1.0 by construction) and WikiText top-1 match (~11,058 positions per cell) under the same ablation tiers, with Wilson 95% intervals. The flexible task collapses under targeted removal while the automatic task degrades gradually and the random control spares both. Rendered from `results/s3-selectivity-*.json`.* The owned qualifier: this is **relative** selectivity. Heavy ablation still changes 78%/63%/57% of ordinary next-token predictions (WikiText top-1 match .223/.366/.428) — nowhere near the paper's "mostly intact" — but the flexible task is hit CI-cleanly harder at every scale, which is the property under test. The two shipped targeted reading contrasts (8 and 11 passages, pre-declared UNDERPOWERED texture) add a small-scale signature: the passage's language enters the lens almost only when the task demands it (explicit 7/8, 8/8, 8/8 passages vs automatic 0/8, 2/8, 1/8) — presence itself is task-gated, where at Claude scale presence is constant and only causal role differs.
 
 ### 5.8 S4/S4b — naming versus avoiding
 
@@ -185,6 +201,10 @@ The paper's Figure-69 paradigm: a clue implies a concept; the model must name it
 The competence gate is itself the first finding: only 1.5B reliably does the exclusion task (gated items 5 / **22** / 8 of 60; 0.5B and 3B blurt the forbidden concept unablated on 17 and 13 items). On the gated cells, the frozen would-gate reads **NOT shown on all three subjects**: early primed ablation raises avoidance failure nowhere (1.5B: +.000 [−.149, +.149]; the underpowered 0.5B and 3B cells also fail their legs), the pre-declared null leg (naming spared under early ablation) holds everywhere, and primed-beats-control fails everywhere. The early suppression machinery — the paper's actual claim — does not appear at these scales.
 
 The late prong, by contrast, reproduces as a **hard switch**: late-third ablation of the one concept direction drives naming to 0/5, 0/22, 0/8 with concept probability mass ≈ .000/.003/.000. S4 owned this as uncontrolled texture (no matched late control existed); S4b added the matched same-category control at the middle and late tiers, with a pre-committed specificity gate, and re-ran all three subjects — every shared cell reproduced bit-for-bit. Result: on the powered subject the switch is **concept-specific, CI-clean** (1.5B: control-late naming 16/22 vs primed-late 0/22; +.727 [+.471, +.868]); 3B is concept-specific too (8/8 vs 0/8, +1.000 [+.541, +1.000]) but carries its UNDERPOWERED tag (n=8); 0.5B is NOT shown (+.200 [−.264, +.624], n=5) — at that scale *any* single late-tier removal wrecks output (control survives 1/5). Specificity emerges with scale: 3B's control cell is untouched (concept mass .924 vs clean .886).
+
+![S4b: the late-band off-switch and its matched control](figures/fig5-s4b-late-switch.png)
+
+*Figure 5 — Naming success on the competence-gated cell (n = 5/22/8; the 0.5B and 3B cells carry their pre-declared UNDERPOWERED tags), with Wilson 95% intervals. Ablating the concept's own late-band direction silences naming on every subject (primed late: 0/n); the matched same-category control separates a per-concept switch (1.5B, 3B) from any-direction output damage (0.5B). Rendered from `results/s4-avoidance-*.json`.*
 
 ## 6 Discussion
 
