@@ -3,9 +3,10 @@
 *dim-stage — a hobby-scale reproduction and measurement study. All numbers in this
 paper are lifted verbatim from the repository's committed result files
 (`results/*.json`) and stage records (`docs/*-BRIEF.md`, `docs/DECISIONS.md`,
-`docs/ROADMAP.md`); nothing was re-run or re-derived for the write-up. This paper
-contains no figures — the repository records results as per-trial JSON and tables, so
-the paper is tables-only by construction.*
+`docs/ROADMAP.md`); nothing was re-run or re-derived for the write-up. The four
+figures are rendered deterministically from the committed result JSONs by
+`docs/paper/figures.py` (`uv run --with matplotlib docs/paper/figures.py`); every
+plotted value is a count or rate already recorded in those files.*
 
 ## Abstract
 
@@ -274,7 +275,9 @@ owned convention.)
 | 4 | 0/101 | 26/101 | 4/101 |
 | 8 | 0/101 | **30/101 = .297 [.217, .392]** | 5/101 = .050 [.021, .111] |
 
-*Source: `results/introspection-qwen2.5-*.json`.*
+*Source: `results/introspection-qwen2.5-*.json`; the median steered ranks quoted
+below are recomputed from the per-concept ranks in `results/derived-contrasts.json`
+(original record: `docs/DECISIONS.md` / `docs/M1-BRIEF.md`).*
 
 The control is exactly 0/101 on every subject — no steered word is ever the model's
 unprompted answer, so the 1.5B curve cannot be the prompt begging for concept words.
@@ -325,7 +328,9 @@ families.
 | 1.5B | 6/110 | 0/132 | 0/286 | 0/46 | **+.055 [+.022, +.114]** | **+.055 [+.014, +.114]** |
 | 3B | 9/110 | 0/132 | 0/286 | 0/46 | **+.082 [+.041, +.148]** | **+.082 [+.034, +.148]** |
 
-*Source: `results/directed-modulation-qwen2.5-*.json`.*
+*Source: `results/directed-modulation-qwen2.5-*.json`; the cross-scale focus
+contrast quoted below is recomputed in `results/derived-contrasts.json` (original
+record: `docs/DECISIONS.md`, M3 outcomes).*
 
 The paper's cited anchor reproduces: the no-instruction baseline is ≈ 0 on every
 subject, both arms (pooled 0/46, upper bound .077 ≤ the pre-declared .10). On
@@ -357,6 +362,14 @@ separately. No subject collapsed at any α (the degeneracy guard never fired).
 | 16 | 29/101 | 14/101 | +.149 [+.035, +.258] |
 | 24 | 31/101 | 14/101 | +.168 [+.054, +.278] |
 
+![Introspection report rate vs steering strength, three subjects, J-lens vs J = I](figures/fig-s1-dose-response.png)
+
+*Figure 1 — Introspection dose–response: rank-1 report rate (hits / 101) vs steering
+strength α over the full 9-point grid {0, 0.5, 1, 2, 4, 8, 12, 16, 24}, J-lens vs
+J = I arms, n = 101 concepts per cell. Plotted values are the recorded
+`report_hits`/n counts, no smoothing; α ticks are equally spaced for legibility.
+Source: `results/s1-introspection-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
+
 | Sub-band (1.5B, α = 24) | J-lens | J = I | J − I |
 |---|---|---|---|
 | L11–15 (early) | 17/101 | 13/101 | +.040 [−.060, +.139] |
@@ -365,7 +378,15 @@ separately. No subject collapsed at any α (the degeneracy guard never fired).
 | full band L11–24 | 31/101 | 14/101 | +.168 [+.054, +.278] |
 
 *Source: `results/s1-introspection-qwen2.5-*.json`; sub-band difference intervals as
-recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md`.*
+recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md` and recomputed in
+`results/derived-contrasts.json`.*
+
+![Sub-band localization at 1.5B: report hits per steered sub-band, J-lens vs J = I](figures/fig-s1-localization.png)
+
+*Figure 2 — S1 localization: report hits (of n = 101) when steering only L11–15,
+L16–20, L21–24, or the full band L11–24, at α = 24 on 1.5B, J-lens vs J = I arms.
+Plotted values are the recorded `report_hits` counts. Source:
+`results/s1-introspection-qwen2.5-1.5b-instruct.json`, `localization` block.*
 
 Three findings. **(1) The curve is a transport effect:** J-lens beats the raw-
 unembedding arm CI-cleanly from α = 1, roughly doubling the report rate at the
@@ -401,11 +422,19 @@ floor).
 
 *Source: `results/s2-generalization-qwen2.5-*.json`.*
 
+![S2 alpha cliff: pooled swap successes vs alpha, three subjects, J-lens vs J = I](figures/fig-s2-alpha-cliff.png)
+
+*Figure 3 — The S2 α-cliff: pooled swap successes (of n = 180 gradable trials) at
+α ∈ {1, 2, 4, 8}, J-lens vs J = I arms, per subject. Plotted values are the recorded
+pooled `successes` counts. Source:
+`results/s2-generalization-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
+
 A routing signal exists and is CI-cleanly transport-specific at α = 1 on all three
 subjects — an order of magnitude below the anchor. The paper's dose direction
 *inverts*: at α = 2 the greedy output becomes the swapped-in argument itself
 (" France", " China") and the target answer falls out of the top ranks (at 1.5B to
-the vocabulary floor — median rank ~151,844 of 151,936 over the α = 1 hits). Overdose
+the vocabulary floor — median rank 151,844.5 of 151,936 over the α = 1 hits;
+recomputed in `results/derived-contrasts.json`). Overdose
 converts an argument-to-compute-with into an output-to-say. The degeneracy guard
 separates this behavioral blurting (real words; guard silent) from its one true
 catch: 3B α = 8, where both arms collapse to a `!` attractor at share 1.00. Category
@@ -447,6 +476,15 @@ all three frozen legs hold everywhere.
 | random @ medium | .743 | .827 | .816 |
 
 *Source: `results/s3-selectivity-qwen2.5-*.json`.*
+
+![S3 two-hop retention vs ablation tier, per subject, with random control and unablated baseline](figures/fig-s3-retention.png)
+
+*Figure 4 — S3 selectivity: two-hop retention (hits / n) vs ablation tier per
+subject, over the primary cell (chains answered correctly unablated; n = 28 / 41 /
+43 — so the unablated baseline is 1.0 by construction, dotted line). Open diamonds:
+the matched random-direction control at the medium tier (16/28, 33/41, 34/43).
+Plotted values are the recorded `hits`/n counts. Source:
+`results/s3-selectivity-qwen2.5-{0.5b,1.5b,3b}-instruct.json`, `two_hop.primary`.*
 
 The paper's flexible-vs-automatic dissociation is present and CI-clean at every
 scale: targeted removal kills two-hop chains while matched random damage and ordinary

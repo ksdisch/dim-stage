@@ -50,12 +50,12 @@ workspace does not appear below 3B, and I can show you exactly what does.
 | Dose–response at 1.5B | 0/7/16/23/26/30 of 101 across α; control 0/101 | `results/introspection-qwen2.5-*.json` |
 | Two-hop: 3B J-transport advantage | 5/43 vs 0/43; +.116 [+.011, +.245] | `results/two-hop-qwen2.5-3b-instruct.json` |
 | Modulation gate + structure | gate false; focus 2/6/9 of 110; baseline 0/46 UB .077 | `results/directed-modulation-qwen2.5-*.json` |
-| Modulation grows with scale | 3B−0.5B +.064 [+.004, +.131] | `docs/DECISIONS.md` (M3 outcomes) |
+| Modulation grows with scale | 3B−0.5B +.064 [+.004, +.131] | `results/derived-contrasts.json` (recomputed via `stats.py`); original record `docs/DECISIONS.md` (M3 outcomes) |
 | 3B reads modulation better without J | 19/110 logit vs 9/110 J; −.091 [−.181, −.002] | `results/directed-modulation-qwen2.5-3b-instruct.json` |
 | S1 transport specificity + saturation | J−I +.178 [+.067, +.286] at α=8; 30/30/29/31 plateau | `results/s1-introspection-qwen2.5-1.5b-instruct.json` |
-| S1 mid-band localization | L16–20: 29/101 vs full band 31/101; full−mid +.020 [−.105, +.144] | same file; CIs in `docs/S1-BRIEF.md` |
+| S1 mid-band localization | L16–20: 29/101 vs full band 31/101; full−mid +.020 [−.105, +.144] | same file; CIs recomputed in `results/derived-contrasts.json`, original record `docs/S1-BRIEF.md` |
 | S2 routing signal + cliff | α=1: 17/16/18 of 180, J−I all CI-clean; α=2: 1/0/1 | `results/s2-generalization-qwen2.5-*.json` |
-| S2 α=2 failure mode | target answer median rank ~151,844 of 151,936 (1.5B) | `docs/ROADMAP.md` / `docs/LEARNING.md` (S2); per-trial ranks in the S2 JSON |
+| S2 α=2 failure mode | target answer median rank 151,844.5 of 151,936 (1.5B) | `results/derived-contrasts.json` (median over the per-trial ranks in the S2 JSON); original records `docs/ROADMAP.md` / `docs/LEARNING.md` (S2), erratum in `docs/S2-BRIEF.md` |
 | S3 full gate pass | legs (i) +.964/+.878/+.930, (ii) +.187/+.244/+.358, (iii) +.536/+.488/+.395 | `results/s3-selectivity-qwen2.5-*.json` |
 | S3 honest qualifier | heavy ablation still changes 78%/63%/57% of wikitext predictions | same files (match .223/.366/.428); `docs/S3-BRIEF.md` |
 | S4 competence gate is the finding | gated 5/22/8 of 60; clean avoidance blurts 17/6/13 | `results/s4-avoidance-qwen2.5-*.json` |

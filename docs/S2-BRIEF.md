@@ -284,6 +284,12 @@ and 1 → ~151,845 (1.5B, the vocab floor). The paper's "double strength rescues
 near-misses" reading inverts at these scales: overdose converts an
 argument-to-compute-with into an output-to-say.
 
+**Erratum (2026-07-17):** the raw 1.5B median is **151,844.5** of 151,936 (median
+over the 16 α=1 J-lens hits' α=2 target-answer ranks; recomputed in
+`results/derived-contrasts.json`). The "~151,845" above rounds up;
+`docs/ROADMAP.md` / `docs/LEARNING.md`'s "~151,844" rounds down. The original
+sentence is unchanged.
+
 Two regimes past the cliff, cleanly separated by the guard: the α=2 blurting
 is **behavioral** (outputs are real words; guard silent), while **3B α=8 is
 true junk collapse** — both arms greedy `!` on 180/180 trials (attractor share
