@@ -158,7 +158,7 @@ The per-milestone tables live in the briefs; the ones that matter most:
 git clone https://github.com/ksdisch/dim-stage && cd dim-stage
 git clone https://github.com/anthropics/jacobian-lens refs/jacobian-lens  # stimuli + eval data (gitignored)
 
-uv run pytest                     # 86 analytic tests — no model downloads, no fitted lenses needed
+uv run pytest                     # 118 analytic tests — no model downloads, no fitted lenses needed
 
 # Fit a lens (0.5B ≈ 71 min on M-series MPS; 1.5B ≈ 6 h; 3B needs a CUDA GPU — see remote-fit-3b.sh)
 uv run fitter.py --model-id Qwen/Qwen2.5-0.5B-Instruct --out lenses/qwen2.5-0.5b-instruct-n100.pt

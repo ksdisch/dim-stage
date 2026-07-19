@@ -1,0 +1,176 @@
+{
+ "derived_by": "docs/paper/derived_contrasts.py \u2014 stats.py (newcombe_diff) and statistics.median over counts/ranks parsed from results/*.json",
+ "notes": [
+  "Every value below was asserted equal to its prose-recorded form (at the recorded precision) before this file was written.",
+  "M1 introspection medians use the 'default' prefill arm of results/introspection-*.json (concepts[].ranks.default) \u2014 the arm whose medians match the recorded 3747\u21921322 / 4430\u219215 / 3791\u2192382 exactly.",
+  "The '151,936' in the S2 median-rank sentence is the tokenizer vocabulary size (the worst possible rank) \u2014 prose-recorded context, not recomputed here."
+ ],
+ "contrasts": {
+  "m3_focus_scale_growth_3b_minus_0.5b": {
+   "counts": {
+    "base_0.5b": [
+     2,
+     110
+    ],
+    "mech_3b": [
+     9,
+     110
+    ]
+   },
+   "interval": {
+    "d": 0.06363636363636363,
+    "newcombe_95": [
+     0.004087929641925801,
+     0.13133331700166212
+    ]
+   },
+   "derived_by": "stats.newcombe_diff",
+   "matches_prose_source": "docs/DECISIONS.md (M3 outcomes): +.064 [+.004, +.131]"
+  },
+  "s1_1.5b_localization_j_minus_i_L11-15": {
+   "counts": {
+    "base_identity": [
+     13,
+     101
+    ],
+    "mech_jlens": [
+     17,
+     101
+    ]
+   },
+   "interval": {
+    "d": 0.03960396039603961,
+    "newcombe_95": [
+     -0.06000284314183736,
+     0.13903680007601663
+    ]
+   },
+   "derived_by": "stats.newcombe_diff",
+   "matches_prose_source": "docs/S1-BRIEF.md (results): +.040 [-.060, +.139]"
+  },
+  "s1_1.5b_localization_j_minus_i_L16-20": {
+   "counts": {
+    "base_identity": [
+     16,
+     101
+    ],
+    "mech_jlens": [
+     29,
+     101
+    ]
+   },
+   "interval": {
+    "d": 0.1287128712871287,
+    "newcombe_95": [
+     0.01364259390336768,
+     0.24006467189709038
+    ]
+   },
+   "derived_by": "stats.newcombe_diff",
+   "matches_prose_source": "docs/S1-BRIEF.md (results): +.129 [+.014, +.240]"
+  },
+  "s1_1.5b_localization_j_minus_i_L21-24": {
+   "counts": {
+    "base_identity": [
+     5,
+     101
+    ],
+    "mech_jlens": [
+     18,
+     101
+    ]
+   },
+   "interval": {
+    "d": 0.12871287128712872,
+    "newcombe_95": [
+     0.04131104040460967,
+     0.21920114706837726
+    ]
+   },
+   "derived_by": "stats.newcombe_diff",
+   "matches_prose_source": "docs/S1-BRIEF.md (results): +.129 [+.041, +.219]"
+  },
+  "s1_1.5b_localization_full_minus_mid_jlens": {
+   "counts": {
+    "base_mid_L16-20": [
+     29,
+     101
+    ],
+    "mech_full_L11-24": [
+     31,
+     101
+    ]
+   },
+   "interval": {
+    "d": 0.01980198019801982,
+    "newcombe_95": [
+     -0.10517722895997145,
+     0.14395181116080313
+    ]
+   },
+   "derived_by": "stats.newcombe_diff",
+   "matches_prose_source": "docs/S1-BRIEF.md (results): +.020 [-.105, +.144]"
+  },
+  "s2_1.5b_a2_target_rank_median_over_a1_jlens_hits": {
+   "counts": {
+    "n_a1_jlens_hits": 16,
+    "ranks": [
+     4,
+     14,
+     3154,
+     79003,
+     103978,
+     124395,
+     151783,
+     151839,
+     151850,
+     151899,
+     151919,
+     151925,
+     151925,
+     151929,
+     151932,
+     151933
+    ]
+   },
+   "interval": {
+    "median": 151844.5
+   },
+   "derived_by": "statistics.median over trials[].swaps.jlens_a2.rank where trials[].swaps.jlens_a1.success",
+   "matches_prose_source": "docs/S2-BRIEF.md '~151,845' (rounds up) and docs/ROADMAP.md / docs/LEARNING.md '~151,844' (round down); raw median 151844.5 \u2014 see the dated erratum in docs/S2-BRIEF.md"
+  },
+  "m1_0.5b_median_steered_rank_control_to_a8": {
+   "counts": {
+    "n_concepts": 101
+   },
+   "interval": {
+    "median_rank_a0": 3747,
+    "median_rank_a8": 1322
+   },
+   "derived_by": "statistics.median over concepts[].ranks.default at \u03b1 = 0 and \u03b1 = 8",
+   "matches_prose_source": "docs/DECISIONS.md / docs/M1-BRIEF.md: 3747 \u2192 1322"
+  },
+  "m1_1.5b_median_steered_rank_control_to_a8": {
+   "counts": {
+    "n_concepts": 101
+   },
+   "interval": {
+    "median_rank_a0": 4430,
+    "median_rank_a8": 15
+   },
+   "derived_by": "statistics.median over concepts[].ranks.default at \u03b1 = 0 and \u03b1 = 8",
+   "matches_prose_source": "docs/DECISIONS.md / docs/M1-BRIEF.md: 4430 \u2192 15"
+  },
+  "m1_3b_median_steered_rank_control_to_a8": {
+   "counts": {
+    "n_concepts": 101
+   },
+   "interval": {
+    "median_rank_a0": 3791,
+    "median_rank_a8": 382
+   },
+   "derived_by": "statistics.median over concepts[].ranks.default at \u03b1 = 0 and \u03b1 = 8",
+   "matches_prose_source": "docs/DECISIONS.md / docs/M1-BRIEF.md: 3791 \u2192 382"
+  }
+ }
+}
