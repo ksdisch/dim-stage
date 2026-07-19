@@ -3,7 +3,7 @@
 > - **Authors:** none listed in the paper itself; it is the write-up of the dim-stage project (`github.com/ksdisch/dim-stage`)
 > - **Source:** `docs/paper/dim-stage-paper.md` in this repository
 > - **Generated:** 2026-07-19
-> - **What this is:** a plain-English rewrite that mirrors the original 1:1 — same headings, same paragraphs in the same order; nothing summarized, merged, dropped, or reordered. Tables, the equation, the code block, and the References section are kept verbatim, each followed by an italic *"In plain words"* note; the six figure images are kept (paths adjusted to point at `docs/paper/figures/`), with their captions rewritten. Only the language has changed.
+> - **What this is:** a plain-English rewrite that mirrors the original 1:1 — same headings, same paragraphs in the same order; nothing summarized, merged, dropped, or reordered. Tables, the equation, the code block, and the References section are kept verbatim, each followed by an italic *"In plain words"* note; the six figure images are kept (referenced from the sibling `figures/` folder), with their captions rewritten. Only the language has changed.
 
 ---
 
@@ -325,7 +325,7 @@ negative differences).*
 *Source: `results/readability-qwen2.5-{0.5b,1.5b,3b}-instruct.json`; tables in
 `docs/M0-BRIEF.md`.*
 
-![M0 readability: J-lens pass@10 per distribution and subject vs the frozen READS bar](../paper/figures/fig-m0-readability.png)
+![M0 readability: J-lens pass@10 per distribution and subject vs the frozen READS bar](figures/fig-m0-readability.png)
 
 *Figure 1 — The headline null: the J-lens's top-10 hit rate per evaluation
 distribution with its recorded Wilson 95% error bars (each cell holds 94–414 items),
@@ -516,7 +516,7 @@ has degenerated into repetitive junk, never fired.
 injected concept roughly twice as often as the no-conversion control arm, and every
 difference's error bar sits fully above zero.*
 
-![Introspection report rate vs steering strength, three subjects, J-lens vs J = I](../paper/figures/fig-s1-dose-response.png)
+![Introspection report rate vs steering strength, three subjects, J-lens vs J = I](figures/fig-s1-dose-response.png)
 
 *Figure 2 — The introspection dose–response: how often the injected concept becomes
 the #1-ranked report (hits / 101) versus steering strength α, over the full 9-point
@@ -539,7 +539,7 @@ Source: `results/s1-introspection-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
 recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md` and recomputed in
 `results/derived-contrasts.json`.*
 
-![Sub-band localization at 1.5B: report hits per steered sub-band, J-lens vs J = I](../paper/figures/fig-s1-localization.png)
+![Sub-band localization at 1.5B: report hits per steered sub-band, J-lens vs J = I](figures/fig-s1-localization.png)
 
 *Figure 3 — S1 localization: report hits (of n = 101) when steering only layers
 11–15, only 16–20, only 21–24, or the full band 11–24, at α = 24 on 1.5B, J-lens
@@ -589,7 +589,7 @@ both facts involved.*
 
 *Source: `results/s2-generalization-qwen2.5-*.json`.*
 
-![S2 alpha cliff: pooled swap successes vs alpha, three subjects, J-lens vs J = I](../paper/figures/fig-s2-alpha-cliff.png)
+![S2 alpha cliff: pooled swap successes vs alpha, three subjects, J-lens vs J = I](figures/fig-s2-alpha-cliff.png)
 
 *Figure 4 — The S2 α-cliff: pooled swap successes (of n = 180 gradable trials) at
 strengths α ∈ {1, 2, 4, 8}, J-lens versus J = I arms, per subject. Plotted values are
@@ -666,7 +666,7 @@ damage barely dents it (.74–.83).*
 
 *Source: `results/s3-selectivity-qwen2.5-*.json`.*
 
-![S3 two-hop retention vs ablation tier, per subject, with random control and unablated baseline](../paper/figures/fig-s3-retention.png)
+![S3 two-hop retention vs ablation tier, per subject, with random control and unablated baseline](figures/fig-s3-retention.png)
 
 *Figure 5 — S3 selectivity: the fraction of two-hop chains retained (hits / n) versus
 ablation tier, per subject, over the primary cell (chains answered correctly
@@ -742,7 +742,7 @@ late-tier direction wrecks output (the control survives 1/5, mass .204 vs a clea
 .661), while at 3B the control is untouched (8/8, mass .924 ≈ the clean-run .886).
 Middle-tier removals are benign for both vectors everywhere.
 
-![S4b naming success on the gated cell: clean vs primed-late vs control-late](../paper/figures/fig-s4b-late-switch.png)
+![S4b naming success on the gated cell: clean vs primed-late vs control-late](figures/fig-s4b-late-switch.png)
 
 *Figure 6 — The late-band off-switch and its matched control: naming success on the
 competence-gated cell, with the recorded Wilson 95% error bars (n = 5/22/8; the 0.5B
