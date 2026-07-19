@@ -3,7 +3,7 @@
 *dim-stage — a hobby-scale reproduction and measurement study. All numbers in this
 paper are lifted verbatim from the repository's committed result files
 (`results/*.json`) and stage records (`docs/*-BRIEF.md`, `docs/DECISIONS.md`,
-`docs/ROADMAP.md`); nothing was re-run or re-derived for the write-up. The four
+`docs/ROADMAP.md`); nothing was re-run or re-derived for the write-up. The six
 figures are rendered deterministically from the committed result JSONs by
 `docs/paper/figures.py` (`uv run --with matplotlib docs/paper/figures.py`); every
 plotted value is a count or rate already recorded in those files.*
@@ -229,6 +229,15 @@ pre-registered 3B escalation: no emergence point exists in the reachable range.
 *Source: `results/readability-qwen2.5-{0.5b,1.5b,3b}-instruct.json`; tables in
 `docs/M0-BRIEF.md`.*
 
+![M0 readability: J-lens pass@10 per distribution and subject vs the frozen READS bar](figures/fig-m0-readability.png)
+
+*Figure 1 — The headline null: J-lens pass@10 per evaluation distribution with the
+recorded Wilson 95% intervals (N per cell 94–414), three subjects. The dashed line
+marks the frozen READS criterion, which applies to the Wilson **lower** bound —
+1.5B multihop's point estimate (54.3%) crosses the line but its lower bound (.442)
+does not. Plotted values and intervals are read verbatim from
+`results/readability-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
+
 Structure inside the null: the two abstract-content distributions (association — an
 evoked, unnamed concept; poetry — a planned rhyme word) are hard zeros at all three
 scales — precisely the most workspace-like content. Surface-adjacent content is
@@ -364,7 +373,7 @@ separately. No subject collapsed at any α (the degeneracy guard never fired).
 
 ![Introspection report rate vs steering strength, three subjects, J-lens vs J = I](figures/fig-s1-dose-response.png)
 
-*Figure 1 — Introspection dose–response: rank-1 report rate (hits / 101) vs steering
+*Figure 2 — Introspection dose–response: rank-1 report rate (hits / 101) vs steering
 strength α over the full 9-point grid {0, 0.5, 1, 2, 4, 8, 12, 16, 24}, J-lens vs
 J = I arms, n = 101 concepts per cell. Plotted values are the recorded
 `report_hits`/n counts, no smoothing; α ticks are equally spaced for legibility.
@@ -383,7 +392,7 @@ recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md` and recomputed in
 
 ![Sub-band localization at 1.5B: report hits per steered sub-band, J-lens vs J = I](figures/fig-s1-localization.png)
 
-*Figure 2 — S1 localization: report hits (of n = 101) when steering only L11–15,
+*Figure 3 — S1 localization: report hits (of n = 101) when steering only L11–15,
 L16–20, L21–24, or the full band L11–24, at α = 24 on 1.5B, J-lens vs J = I arms.
 Plotted values are the recorded `report_hits` counts. Source:
 `results/s1-introspection-qwen2.5-1.5b-instruct.json`, `localization` block.*
@@ -424,7 +433,7 @@ floor).
 
 ![S2 alpha cliff: pooled swap successes vs alpha, three subjects, J-lens vs J = I](figures/fig-s2-alpha-cliff.png)
 
-*Figure 3 — The S2 α-cliff: pooled swap successes (of n = 180 gradable trials) at
+*Figure 4 — The S2 α-cliff: pooled swap successes (of n = 180 gradable trials) at
 α ∈ {1, 2, 4, 8}, J-lens vs J = I arms, per subject. Plotted values are the recorded
 pooled `successes` counts. Source:
 `results/s2-generalization-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
@@ -479,7 +488,7 @@ all three frozen legs hold everywhere.
 
 ![S3 two-hop retention vs ablation tier, per subject, with random control and unablated baseline](figures/fig-s3-retention.png)
 
-*Figure 4 — S3 selectivity: two-hop retention (hits / n) vs ablation tier per
+*Figure 5 — S3 selectivity: two-hop retention (hits / n) vs ablation tier per
 subject, over the primary cell (chains answered correctly unablated; n = 28 / 41 /
 43 — so the unablated baseline is 1.0 by construction, dotted line). Open diamonds:
 the matched random-direction control at the medium tier (16/28, 33/41, 34/43).
@@ -537,6 +546,16 @@ subject the switch is concept-specific and CI-clean; the specificity emerges wit
 scale — at 0.5B any late-tier single-direction removal wrecks output (control
 survives 1/5, mass .204 vs clean .661), at 3B the control is untouched (8/8, mass
 .924 ≈ clean .886). Middle-tier removals are benign for both vectors everywhere.
+
+![S4b naming success on the gated cell: clean vs primed-late vs control-late](figures/fig-s4b-late-switch.png)
+
+*Figure 6 — The late-band off-switch and its matched control: naming success on the
+competence-gated cell with the recorded Wilson 95% intervals (n = 5/22/8; the 0.5B
+and 3B cells carry their pre-declared UNDERPOWERED tags). Ablating the concept's own
+late direction silences naming on every subject (primed late, 0/n); the same-category
+control separates a per-concept switch (1.5B, 3B) from any-direction output damage
+(0.5B). Plotted values and intervals are read verbatim from
+`results/s4-avoidance-qwen2.5-{0.5b,1.5b,3b}-instruct.json`, `naming_success_gated`.*
 
 ### 4.10 Three findings that cut across stages
 

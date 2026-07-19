@@ -9,10 +9,13 @@ matplotlib is injected for this run only, so pyproject.toml stays untouched.
 Reads ONLY the committed per-run result files (results/*.json) — no models, no
 lenses, no re-measurement. Every plotted value is a count or rate already recorded
 in those files; nothing is smoothed, interpolated, or derived beyond hits/n.
-Re-running this script on the committed JSONs regenerates the four PNGs in
+Re-running this script on the committed JSONs regenerates the six PNGs in
 docs/paper/figures/ bit-for-bit-equivalent (same data in, same pixels out).
 
 Figures:
+  fig-m0-readability.png    — M0 J-lens pass@10 per evaluation distribution with the
+                              recorded Wilson 95% intervals, three subjects, against
+                              the frozen READS bar (Wilson LB ≥ .5).
   fig-s1-dose-response.png  — M1/S1 introspection report rate vs steering strength α
                               (9-point grid), J-lens vs J = I, one panel per subject.
   fig-s1-localization.png   — S1 sub-band localization at 1.5B: report hits of 101
@@ -22,6 +25,9 @@ Figures:
                               unablated baseline marked.
   fig-s2-alpha-cliff.png    — S2 pooled swap successes of 180 at α ∈ {1, 2, 4, 8},
                               J-lens vs J = I, one panel per subject.
+  fig-s4b-late-switch.png   — S4b naming success on the competence-gated cell:
+                              clean vs primed-late vs control-late, with the
+                              recorded Wilson 95% intervals, per subject.
 
 The script prints every plotted number so a reviewer can eyeball them against the
 paper's tables without opening the PNGs.
@@ -49,6 +55,83 @@ def load(stem: str, subject: str) -> dict:
     path = RESULTS / f"{stem}-qwen2.5-{subject}-instruct.json"
     with open(path) as f:
         return json.load(f)
+
+
+def fig_m0_readability() -> None:
+    """M0 J-lens pass@10 per distribution, three subjects, vs the frozen READS bar.
+
+    Data: results/readability-*.json, distributions.{name}.arm1: pass_at_10 and the
+    recorded wilson_95 interval (error bars are read from the file, not recomputed).
+    The dashed line marks the gate criterion, which applies to the Wilson LOWER
+    bound — a point estimate crossing the line (1.5B multihop) does not pass.
+    """
+    dists = ["association", "poetry", "multihop", "multilingual", "order-ops", "typo"]
+    width = 0.26
+    fig, ax = plt.subplots(figsize=(9.0, 3.4))
+    for si, subject in enumerate(SUBJECTS):
+        d = load("readability", subject)["distributions"]
+        xs, rates, lo_err, hi_err = [], [], [], []
+        for di, dist in enumerate(dists):
+            arm1 = d[dist]["arm1"]
+            r, (lo, hi) = arm1["pass_at_10"], arm1["wilson_95"]
+            print(f"m0 readability {subject} {dist}: pass@10 {r:.3f} wilson [{lo:.3f}, {hi:.3f}]")
+            xs.append(di + (si - 1) * width)
+            rates.append(r)
+            lo_err.append(max(0.0, r - lo))  # zero-hit cells store LB ~1e-17 above 0.0
+            hi_err.append(max(0.0, hi - r))
+        ax.bar(xs, rates, width * 0.92, label=LABELS[subject])
+        ax.errorbar(xs, rates, yerr=[lo_err, hi_err], fmt="none", ecolor="black",
+                    elinewidth=0.9, capsize=2)
+    ax.axhline(0.5, color="crimson", linestyle="--", linewidth=1)
+    ax.text(len(dists) - 0.45, 0.515, "READS bar (Wilson LB ≥ .5)", color="crimson",
+            fontsize=8, ha="right", va="bottom")
+    ax.set_xticks(range(len(dists)))
+    ax.set_xticklabels(dists, fontsize=9)
+    ax.set_ylabel("J-lens pass@10", fontsize=9)
+    ax.set_ylim(0, 1)
+    ax.set_title("M0 readability: 0/6 distributions reach the frozen bar at any scale", fontsize=10)
+    ax.legend(fontsize=8)
+    ax.grid(True, axis="y", alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig-m0-readability.png", dpi=300)
+    plt.close(fig)
+
+
+def fig_s4b_late_switch() -> None:
+    """S4b naming success on the gated cell: clean / primed_late / control_late.
+
+    Data: results/s4-avoidance-*.json, naming_success_gated.{condition}: rate and
+    the recorded wilson_95 interval, over the competence-gated cell (n = 5/22/8;
+    0.5B and 3B carry their pre-declared UNDERPOWERED tags).
+    """
+    conds = ["clean", "primed_late", "control_late"]
+    names = ["clean", "primed late\n(concept's own direction)", "control late\n(same-category alternative)"]
+    width = 0.26
+    fig, ax = plt.subplots(figsize=(7.2, 3.4))
+    for si, subject in enumerate(SUBJECTS):
+        d = load("s4-avoidance", subject)["naming_success_gated"]
+        n = d["clean"]["n"]
+        xs, rates, lo_err, hi_err = [], [], [], []
+        for ci, cond in enumerate(conds):
+            c = d[cond]
+            r, (lo, hi) = c["rate"], c["wilson_95"]
+            print(f"s4b late-switch {subject} {cond}: {c['hits']}/{c['n']} wilson [{lo:.3f}, {hi:.3f}]")
+            xs.append(ci + (si - 1) * width)
+            rates.append(r)
+            lo_err.append(max(0.0, r - lo))
+            hi_err.append(max(0.0, hi - r))
+        ax.bar(xs, rates, width * 0.92, label=f"{LABELS[subject]} (n = {n})")
+        ax.errorbar(xs, rates, yerr=[lo_err, hi_err], fmt="none", ecolor="black",
+                    elinewidth=0.9, capsize=2)
+    ax.set_xticks(range(len(names)))
+    ax.set_xticklabels(names, fontsize=8)
+    ax.set_ylabel("naming success (gated cell)", fontsize=9)
+    ax.set_title("S4b: the late-band off-switch and its matched control", fontsize=10)
+    ax.legend(fontsize=8)
+    ax.grid(True, axis="y", alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(OUT / "fig-s4b-late-switch.png", dpi=300)
+    plt.close(fig)
 
 
 def fig_s1_dose_response() -> None:
@@ -179,11 +262,13 @@ def fig_s2_alpha_cliff() -> None:
 
 def main() -> None:
     OUT.mkdir(exist_ok=True)
+    fig_m0_readability()
     fig_s1_dose_response()
     fig_s1_localization()
     fig_s3_retention()
     fig_s2_alpha_cliff()
-    print(f"wrote 4 figures to {OUT}")
+    fig_s4b_late_switch()
+    print(f"wrote 6 figures to {OUT}")
 
 
 if __name__ == "__main__":
