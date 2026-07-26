@@ -190,3 +190,7 @@ Fitted lenses (`lenses/*.pt`) are gitignored — refit to reproduce; the shipped
 Repro #5: forge-gap → decay-pin → lossy-wall → ghost-patch → **dim-stage**.
 First internals/interpretability project in the line — activations and gradients instead
 of API text.
+
+---
+
+📚 **Project wiki:** [PROJECT.md](PROJECT.md) — status, scope, and next actions · [Wiki/_index.md](Wiki/_index.md) — topic pages and history
