@@ -165,6 +165,19 @@ Global commands (`.claude/commands/`) and skills (`.claude/skills/`) vendored fr
 
 To vendor more global tooling or brainstorm repo-specific automations, run `/claudify-repo`.
 
+## Project Wiki
+
+This project uses the project-wiki skill. When integrating new sources, recording decisions, or pausing work:
+- Update `PROJECT.md` status and next actions
+- Update `HANDOFF.md` with what changed and what's next
+- Add durable understanding to `Wiki/` topic pages
+- Record decisions in `docs/DECISIONS.md` (this project's append-only decision log — no root `Decisions.md`)
+- Keep `Wiki/_index.md` current
+
+(`Wiki/` and topic pages are created on first need — templates live in the skill. `Sources.md` exists at the root.)
+
+Invoke the `project-wiki` skill when wiki updates are needed.
+
 ## Operating Constraints
 
 @.claude/operating-constraints.md
