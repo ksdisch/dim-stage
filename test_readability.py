@@ -158,6 +158,45 @@ def test_frozen_bands_table_is_the_d2_rule():
         assert band == readability.proportional_band(n_layers)
 
 
+def test_depth_percent_spans_the_network():
+    # The paper's reindexing: layer 0 is 0% deep, the final layer is 100%.
+    for n_layers in (24, 28, 36):
+        assert readability.depth_percent(0, n_layers) == 0.0
+        assert readability.depth_percent(n_layers - 1, n_layers) == 100.0
+
+
+def test_depth_percent_agrees_with_the_d2_band():
+    # Percentages and band membership share one denominator, so every band layer
+    # must land inside 38-92% and every layer just outside it must land outside.
+    for n_layers in (24, 28, 36):
+        band = readability.proportional_band(n_layers)
+        for l in band:
+            assert 38.0 <= readability.depth_percent(l, n_layers) <= 92.0
+        for l in (band[0] - 1, band[-1] + 1):
+            assert not 38.0 <= readability.depth_percent(l, n_layers) <= 92.0
+
+
+def test_depth_span_label_reads_as_percentages():
+    # 1.5B, 28 layers: L16 = 16/27 = 59.3%, L20 = 20/27 = 74.1%.
+    assert readability.depth_span_label([16, 17, 18, 19, 20], 28) == "59–74%"
+    # The three frozen bands are the same nominal 38-92% span, but integer
+    # layers round differently at each depth — the realized spans differ.
+    assert readability.depth_span_label(readability.proportional_band(24), 24) == "39–91%"
+    assert readability.depth_span_label(readability.proportional_band(28), 28) == "41–89%"
+    assert readability.depth_span_label(readability.proportional_band(36), 36) == "40–91%"
+
+
+def test_n_layers_for_band_round_trips():
+    # results/*.json records `band` but not `n_layers`; the depth is recoverable
+    # from the D2 rule alone, so plotting needs no second source of truth.
+    for n_layers in (24, 28, 36):
+        band = readability.proportional_band(n_layers)
+        assert readability.n_layers_for_band(band) == n_layers
+    # No depth can produce a band containing layer 0 — 0% is never >= 38%.
+    with pytest.raises(ValueError, match="no layer count"):
+        readability.n_layers_for_band([0, 1, 2])
+
+
 def test_expected_counts_guard(tmp_path):
     import json
 

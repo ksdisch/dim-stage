@@ -604,3 +604,55 @@ NOT shown, and NOT shown is the verdict.
     word" not be distinguished from "any late-tier removal breaks output" —
     and after S4b, at which scale is each of those two descriptions actually
     the correct one?
+
+## Reporting — percentage-depth layer convention (2026-07-27)
+
+### The one-paragraph story
+
+Every model has a different number of layers — 24 in the 0.5B, 28 in the 1.5B,
+36 in the 3B — so "layer 16" is a different place in each one, the way "page
+200" is a different place in three books of different lengths. The workspace
+paper's fix is to relabel layers as **percentages of depth**: layer 0 is 0%,
+the last layer is 100%, and everything in between is `100 × l / (n_layers − 1)`.
+Now "59% of the way through" means the same thing in every model, and curves
+from different sizes can be laid on the same axis. dim-stage had already taken
+half of this on board without quite noticing: the D2 band rule *is* a
+percentage (38–92% of depth), which is exactly why the three subjects ended up
+with three different-looking layer ranges — L9–21, L11–24, L14–32 — that all
+mean the same thing. But every figure and table then printed the raw layer
+numbers, so a reader comparing subjects saw three unrelated ranges. This
+change carries the percentage through to what gets *reported*, keeping the raw
+indices next to it so any bar in a figure can still be traced back to the
+frozen numbers in `results/`. Nothing was re-measured; one figure was
+re-drawn, and its counts came out identical.
+
+### What was learned
+
+37. **A convention that only lives in the code isn't really adopted.** The
+    percentage-depth rule had been in `proportional_band` since M0, doing real
+    work — it is *why* the three bands differ. But because it never reached a
+    figure axis or a table row, every reported layer number was still
+    scale-locked, and the shared span the rule guarantees was invisible.
+    Two ways of saying this generalize past this repo. First, a rule enforced
+    only where it is computed will silently fail to constrain everything
+    downstream of it — the fix was to derive the display from the same
+    `l/(n_layers−1)` expression rather than write the percentages out by hand,
+    so a band edge and its label cannot disagree. Second, converting a
+    quantity to the units that make it comparable is itself a measurement act,
+    and it can surface facts: doing it here showed that the three bands are
+    the same *nominal* 38–92% but land on *realized* spans of 39–91%, 41–89%
+    and 40–91%, because layers are whole numbers and both cuts fall between
+    them at every depth. Up to ~3 percentage points of band edge, hiding in
+    plain sight behind the integers. It moves no result, but it is a
+    deviation, and deviations get owned rather than discovered later by a
+    reader. The discipline that made this safe to do on a closed v1: the
+    change touches only presentation, so the existing layer-indexing tests had
+    to stay green **unedited** — if any of them had needed changing, the
+    change would have leaked into measurement code.
+
+### Recall question (reporting convention)
+
+29. dim-stage deliberately did *not* adopt the paper's other layer rule —
+    reporting on 25 evenly spaced layers. Given that the subjects have 24, 28
+    and 36 layers, what would that rule have done to the 0.5B specifically,
+    and why is that worse than simply having fewer points on the axis?

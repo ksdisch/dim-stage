@@ -223,6 +223,22 @@ tier breaks under any single-direction removal; 3B's control is untouched,
 mass .924 ≈ clean). Middle-tier cells benign everywhere. Closed in PR #27
 (brief) + the S4b build PR.
 
+## Reporting — percentage-depth layer convention — **COMPLETE 2026-07-27**
+
+**D32 (Kyle) — layer numbers now carry their percentage depth.** The paper
+reports layers reindexed to 0–100 so they read as percentages; dim-stage had
+adopted that for the *band rule* (D2 is a depth fraction — which is why the
+three subjects carry three different absolute ranges) but not for reporting,
+where raw indices made `L16–20` incomparable across scales. Figures, paper
+tables and prose now print percentage depth alongside the absolute indices,
+from one helper trio in `readability.py` that reuses `proportional_band`'s
+denominator. Presentation only: no re-measurement, `results/*.json` untouched,
+one figure re-rendered with identical counts. The paper's companion
+25-evenly-spaced-layers rule was **explicitly not adopted** — at 24/28/36
+layers it would upsample the 0.5B. Surfaced en route: the three bands are the
+same nominal 38–92% span but land on realized spans of 39–91% / 41–89% /
+40–91%, integer-layer rounding the absolute indices had been hiding.
+
 ## Remaining stretch — none scheduled
 
 All in-scope paper properties are measured: readability (M0), report (M1),

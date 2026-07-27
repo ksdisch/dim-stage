@@ -242,7 +242,12 @@ readability. They did, and it was.
 it onto each subject proportionally — same percentage range, converted to each model's
 own layer numbers — and registered the result per subject in advance: layers 9–21 on
 0.5B, layers 11–24 on 1.5B, layers 14–32 on 3B. The 3B band was frozen and merged into
-the repository before its fit had produced a single readout.
+the repository before its fit had produced a single readout. Following the paper, we
+report every layer number with its percentage depth alongside, so a result from one
+subject can be read against another. Doing so surfaces something the raw layer numbers
+hid: the three bands aren't quite the same span. Layers are whole numbers, so the 38%
+and 92% cuts land between layers at every depth and the bands actually cover 39–91%,
+41–89% and 40–91%. A few percentage points at each edge — small, but now visible.
 
 **Lens fits.** The fit corpus is the first 100 records of WikiText-103 (a standard
 public dataset of Wikipedia articles) that are at least 600 characters long, streamed
@@ -527,13 +532,14 @@ Source: `results/s1-introspection-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
 
 | Sub-band (1.5B, α = 24) | J-lens | J = I | J − I |
 |---|---|---|---|
-| L11–15 (early) | 17/101 | 13/101 | +.040 [−.060, +.139] |
-| **L16–20 (middle)** | **29/101** | 16/101 | **+.129 [+.014, +.240]** |
-| L21–24 (late) | 18/101 | 5/101 | **+.129 [+.041, +.219]** |
-| full band L11–24 | 31/101 | 14/101 | +.168 [+.054, +.278] |
+| L11–15 (early, 41–56%) | 17/101 | 13/101 | +.040 [−.060, +.139] |
+| **L16–20 (middle, 59–74%)** | **29/101** | 16/101 | **+.129 [+.014, +.240]** |
+| L21–24 (late, 78–89%) | 18/101 | 5/101 | **+.129 [+.041, +.219]** |
+| full band L11–24 (41–89%) | 31/101 | 14/101 | +.168 [+.054, +.278] |
 
-*In plain words: steering only the middle third of the band (layers 16–20) recovers
-29 of the full band's 31 reports; the early third adds little beyond the control.*
+*In plain words: steering only the middle third of the band (layers 16–20, or 59–74%
+of the way through the network) recovers 29 of the full band's 31 reports; the early
+third adds little beyond the control.*
 
 *Source: `results/s1-introspection-qwen2.5-*.json`; sub-band difference intervals as
 recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md` and recomputed in
@@ -554,8 +560,8 @@ shape of the paper's Figure 7:** the rank-1 report rate levels off at ~30/101 fr
 α = 8 (30/30/29/31 across strengths 8→24) while the median reciprocal rank — take
 1/rank per concept and look at the median; higher means the concept sits nearer the
 top — keeps tightening (.067 → .125); genuine saturation, not collapse. **(3) It
-localizes to the middle of the band:** steering only L16–20 recovers 29/101,
-essentially the full band's 31/101 (full − mid +.020 [−.105, +.144], straddling
+localizes to the middle of the band:** steering only L16–20 — 59–74% of depth —
+recovers 29/101, essentially the full band's 31/101 (full − mid +.020 [−.105, +.144], straddling
 zero) — the paper's mid-layer "middle block" at hobby scale. A cross-scale bonus from
 the extended grid: 3B's small reporting signal (up to 9/101 at α = 16–24) is *purely*
 conversion-specific — its identity arm is essentially dead (0–1/101; J − I CI-clean

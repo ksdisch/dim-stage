@@ -198,3 +198,44 @@ def proportional_band(n_layers: int) -> list[int]:
     return [
         l for l in range(n_layers) if 0.38 <= l / (n_layers - 1) <= 0.92
     ]
+
+
+def depth_percent(layer: int, n_layers: int) -> float:
+    """Layer index as percentage depth, 0.0 at the embedding and 100.0 at the
+    final layer.
+
+    The paper reindexes layers to [0, 100] so layer numbers read as percentages
+    (M0-BRIEF, "Load-bearing discovery"); this is the same l/(n_layers-1)
+    denominator proportional_band uses, so a band edge and its percentage can
+    never disagree. Absolute indices differ across subjects (0.5B L9-21, 1.5B
+    L11-24, 3B L14-32) precisely because the percentage is what is held fixed.
+    """
+    return 100.0 * layer / (n_layers - 1)
+
+
+def depth_span_label(layers: list[int], n_layers: int) -> str:
+    """Percentage-depth span of a layer range, e.g. [11..15] of 28 -> '41-56%'.
+
+    Reporting convention (D32): percentages accompany absolute layer numbers so
+    figures and tables from different-depth subjects are directly comparable.
+    Rounded to whole percent — the depth grid is coarser than 1% at these sizes.
+    """
+    lo = round(depth_percent(min(layers), n_layers))
+    hi = round(depth_percent(max(layers), n_layers))
+    return f"{lo}–{hi}%"
+
+
+def n_layers_for_band(band: list[int]) -> int:
+    """Recover a subject's depth from a recorded band.
+
+    results/*.json stores `band` (the layer indices) but never `n_layers`, so a
+    plot that wants percentages has to get the depth from somewhere. Inverting
+    the D2 rule beats a model-name lookup table for the same reason the frozen
+    table never overrides the rule: there is one definition to drift from, not
+    two. Returns the shallowest depth reproducing the band — unique for the
+    three subject bands (test-pinned); raises if no depth reproduces it.
+    """
+    for n in range(2, 4 * len(band) + 8):
+        if proportional_band(n) == band:
+            return n
+    raise ValueError(f"no layer count reproduces the D2 band {band}")

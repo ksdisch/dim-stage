@@ -165,7 +165,14 @@ subjects came back null on readability. They did, and it was.
 
 **Bands.** The paper's 38–92% depth band, transplanted proportionally and
 pre-registered per subject: 0.5B layers 9–21, 1.5B layers 11–24, 3B layers 14–32. The
-3B band was frozen and merged before its fit produced any readout.
+3B band was frozen and merged before its fit produced any readout. Following the
+paper, layer numbers throughout are reported with their percentage depth
+(`100 × l / (n_layers − 1)`) so results from different-sized subjects are directly
+comparable; the three bands above are the same nominal span but land on *realized*
+spans of 39–91%, 41–89% and 40–91% respectively, because layers are integers and the
+38% and 92% cuts fall between them at every depth. That rounding — up to ~3
+percentage points of band edge — is a small deviation the absolute indices had been
+hiding.
 
 **Lens fits.** Fit corpus: the first 100 WikiText-103 records with ≥ 600 characters,
 streamed in order via the reference's own loader convention — deterministic and
@@ -381,10 +388,10 @@ Source: `results/s1-introspection-qwen2.5-{0.5b,1.5b,3b}-instruct.json`.*
 
 | Sub-band (1.5B, α = 24) | J-lens | J = I | J − I |
 |---|---|---|---|
-| L11–15 (early) | 17/101 | 13/101 | +.040 [−.060, +.139] |
-| **L16–20 (middle)** | **29/101** | 16/101 | **+.129 [+.014, +.240]** |
-| L21–24 (late) | 18/101 | 5/101 | **+.129 [+.041, +.219]** |
-| full band L11–24 | 31/101 | 14/101 | +.168 [+.054, +.278] |
+| L11–15 (early, 41–56%) | 17/101 | 13/101 | +.040 [−.060, +.139] |
+| **L16–20 (middle, 59–74%)** | **29/101** | 16/101 | **+.129 [+.014, +.240]** |
+| L21–24 (late, 78–89%) | 18/101 | 5/101 | **+.129 [+.041, +.219]** |
+| full band L11–24 (41–89%) | 31/101 | 14/101 | +.168 [+.054, +.278] |
 
 *Source: `results/s1-introspection-qwen2.5-*.json`; sub-band difference intervals as
 recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md` and recomputed in
@@ -392,10 +399,12 @@ recorded in `docs/S1-BRIEF.md` / `docs/DECISIONS.md` and recomputed in
 
 ![Sub-band localization at 1.5B: report hits per steered sub-band, J-lens vs J = I](figures/fig-s1-localization.png)
 
-*Figure 3 — S1 localization: report hits (of n = 101) when steering only L11–15,
-L16–20, L21–24, or the full band L11–24, at α = 24 on 1.5B, J-lens vs J = I arms.
-Plotted values are the recorded `report_hits` counts. Source:
-`results/s1-introspection-qwen2.5-1.5b-instruct.json`, `localization` block.*
+*Figure 3 — S1 localization: report hits (of n = 101) when steering only L11–15
+(41–56% depth), L16–20 (59–74%), L21–24 (78–89%), or the full band L11–24 (41–89%),
+at α = 24 on 1.5B, J-lens vs J = I arms. Plotted values are the recorded
+`report_hits` counts; each tick carries its percentage depth beneath the absolute
+range. Source: `results/s1-introspection-qwen2.5-1.5b-instruct.json`, `localization`
+block.*
 
 Three findings. **(1) The curve is a transport effect:** J-lens beats the raw-
 unembedding arm CI-cleanly from α = 1, roughly doubling the report rate at the
@@ -404,9 +413,9 @@ project's first CI-clean J-transport advantage for *report*. **(2) It saturates,
 paper's Figure-7 shape:** the rank-1 rate plateaus at ~30/101 from α = 8
 (30/30/29/31 across 8→24) while median reciprocal rank keeps tightening
 (.067 → .125); genuine saturation, not collapse. **(3) It localizes to the middle of
-the band:** steering only L16–20 recovers 29/101 ≈ the full band's 31/101
-(full − mid +.020 [−.105, +.144], overlapping zero) — the paper's mid-layer "middle
-block" at hobby scale. A cross-scale bonus from the extended grid: 3B's small
+the band:** steering only L16–20 — 59–74% of depth — recovers 29/101 ≈ the full
+band's 31/101 (full − mid +.020 [−.105, +.144], overlapping zero) — the paper's
+mid-layer "middle block" at hobby scale. A cross-scale bonus from the extended grid: 3B's small
 reporting signal (up to 9/101 at α = 16–24) is *purely* transport-specific — its
 identity arm is essentially dead (0–1/101; J − I CI-clean from α = 8, +.050
 [+.003, +.111], up to +.089 [+.034, +.161]) — while 0.5B is null on both arms.

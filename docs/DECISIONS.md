@@ -644,3 +644,44 @@ removal wrecks output (control mass .204 vs clean .661); at 3B the control is
 untouched (.924 ≈ clean .886). Middle-tier cells benign for both vectors on
 every subject. The S4 late-switch texture is now a gated, controlled claim on
 the powered subject.
+
+## Reporting — percentage-depth layer convention: D32 frozen 2026-07-27 (Kyle)
+
+**D32 (Kyle) — Layer numbers are reported with their percentage depth.**
+Wherever a layer or layer range reaches a figure axis, a table row, or prose,
+it now carries its depth as a percentage of the network
+(`100 × l / (n_layers − 1)`) **alongside** the absolute indices, not instead of
+them — the S1 localization figure's ticks read `L16–20` over `59–74%`, the
+sub-band table reads `L16–20 (middle, 59–74%)`. One helper trio in
+`readability.py` (`depth_percent`, `depth_span_label`, `n_layers_for_band`)
+sits directly under `proportional_band` and reuses its `l/(n_layers−1)`
+denominator, so a band edge and its percentage cannot drift apart; depth is
+recovered from the `band` each result file already records rather than from a
+model-name lookup table, for the same reason the frozen table never overrides
+the D2 rule. **`results/*.json` is untouched** — this is a presentation change
+only, no re-measurement, no gate re-run, every recorded number stands. The
+paper's companion rule — report on **25 evenly spaced layers** — is
+**explicitly not adopted**: with 24 / 28 / 36-layer subjects it would
+*upsample* the 0.5B, interpolating layers that do not exist, and thin the 3B
+by almost nothing; it earns its keep on 27B-scale models, not here. *Why:* the
+percentage rule was already half-adopted — D2 defines the band by depth
+fraction, which is exactly why the three subjects carry three different
+absolute ranges — but everything downstream reported raw indices, so `L16–20`
+meant nothing next to a 0.5B or 3B layer number and the three bands read as
+three unrelated ranges instead of one shared span. Carrying the convention
+through to reporting is what makes cross-scale curves comparable at all, and
+keeping the absolute indices next to the percentages preserves the trace from
+any plotted bar back to the frozen evidence.
+
+**D32 outcomes (record, 2026-07-27).** One figure re-rendered
+(`fig-s1-localization.png`); its counts printed identical to the committed run
+(J-lens 17/29/18/31, J = I 13/16/5/14 of n = 101) — labels moved, data did
+not. Newly surfaced texture: the three bands are the same *nominal* 38–92%
+span but land on **realized** spans of 39–91% (0.5B), 41–89% (1.5B) and
+40–91% (3B), because layers are integers and both cuts fall between them at
+every depth — up to ~3 percentage points of band edge that the absolute
+indices had been hiding. Small, and it does not move any recorded result, but
+it is now stated in the paper's Bands paragraph rather than latent in the
+rule. The hard-coded 1.5B tick strings in `docs/paper/figures.py` are gone —
+sub-band names are read from the result file, so the figure would render
+correctly for another subject.

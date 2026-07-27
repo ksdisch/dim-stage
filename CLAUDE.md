@@ -28,7 +28,7 @@ narrow, measured slice.* Never "I invented this."
 
 **v1 is CLOSED (2026-07-16) — M0–M3 plus two stretch stages (S1, S2) all complete.**
 Full status lives in `docs/ROADMAP.md`; per-stage detail in the `docs/*-BRIEF.md` files,
-`docs/DECISIONS.md` (D1–D22 frozen), and `docs/LEARNING.md`. The two pre-declared risks
+`docs/DECISIONS.md` (D1–D32 frozen), and `docs/LEARNING.md`. The two pre-declared risks
 both resolved: the readability kill-risk **fired** (see M0 below), and MPS handled the
 backward pass at 0.5B/1.5B but not 3B (rented RTX 4090 fallback — owned deviation).
 

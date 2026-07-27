@@ -12,6 +12,15 @@ in those files; nothing is smoothed, interpolated, or derived beyond hits/n.
 Re-running this script on the committed JSONs regenerates the six PNGs in
 docs/paper/figures/ bit-for-bit-equivalent (same data in, same pixels out).
 
+Layer numbers follow the D32 reporting convention: wherever a layer range
+reaches an axis or a caption it carries its percentage depth alongside the
+absolute indices, so 0.5B / 1.5B / 3B results are directly comparable. The
+percentages come from readability.depth_span_label — the same l/(n_layers-1)
+rule that defines the band — and the depth itself is recovered from the `band`
+recorded in each result file, so nothing here is a second source of truth.
+Importing those two helpers is the script's only repo import; it loads no
+model, lens, or tensor, and the read-only contract above is unchanged.
+
 Figures:
   fig-m0-readability.png    — M0 J-lens pass@10 per evaluation distribution with the
                               recorded Wilson 95% intervals, three subjects, against
@@ -35,6 +44,7 @@ paper's tables without opening the PNGs.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -44,6 +54,13 @@ import matplotlib.pyplot as plt
 
 HERE = Path(__file__).resolve().parent          # docs/paper/
 REPO = HERE.parents[1]                          # repo root
+sys.path.insert(0, str(REPO))
+
+from readability import (  # noqa: E402  (path set up above)
+    depth_span_label,
+    n_layers_for_band,
+)
+
 RESULTS = REPO / "results"
 OUT = HERE / "figures"
 
@@ -103,13 +120,21 @@ def fig_s4b_late_switch() -> None:
     Data: results/s4-avoidance-*.json, naming_success_gated.{condition}: rate and
     the recorded wilson_95 interval, over the competence-gated cell (n = 5/22/8;
     0.5B and 3B carry their pre-declared UNDERPOWERED tags).
+
+    "late" is the last third of each subject's own band, so as in fig_s3_retention
+    the axis stays in condition names and the per-subject percentage depths (D32)
+    are printed below instead.
     """
     conds = ["clean", "primed_late", "control_late"]
     names = ["clean", "primed late\n(concept's own direction)", "control late\n(same-category alternative)"]
     width = 0.26
     fig, ax = plt.subplots(figsize=(7.2, 3.4))
     for si, subject in enumerate(SUBJECTS):
-        d = load("s4-avoidance", subject)["naming_success_gated"]
+        run = load("s4-avoidance", subject)
+        late = run["thirds"]["late"]
+        print(f"s4b late-switch {subject}: late third = L{late[0]}–L{late[-1]} "
+              f"({depth_span_label(late, n_layers_for_band(run['band']))})")
+        d = run["naming_success_gated"]
         n = d["clean"]["n"]
         xs, rates, lo_err, hi_err = [], [], [], []
         for ci, cond in enumerate(conds):
@@ -171,11 +196,29 @@ def fig_s1_localization() -> None:
     Data: results/s1-introspection-qwen2.5-1.5b-instruct.json, localization block:
     report_hits of n = 101 when steering only L11–15 / L16–20 / L21–24, plus the
     full band L11–24, J-lens vs J = I arms.
+
+    Sub-band names are read from the file rather than hard-coded, and each tick
+    carries its percentage depth under the absolute range (D32): L11–15 = 41–56%,
+    L16–20 = 59–74%, L21–24 = 78–89%, full band = 41–89% of 1.5B's 28 layers.
     """
     d = load("s1-introspection", "1.5b")
     loc = d["localization"]
-    bands = ["L11-15", "L16-20", "L21-24"]
-    groups = [(b, loc["sub_bands"][b]) for b in bands] + [("L11-24 (full)", loc["full_band"])]
+    band = d["band"]
+    n_layers = n_layers_for_band(band)
+
+    def tick(name: str, layers: list[int]) -> str:
+        """Absolute range on top, its percentage depth beneath."""
+        return f"{name}\n{depth_span_label(layers, n_layers)}"
+
+    # Keys are "L{first}-{last}" strings written by s1_introspection_localize;
+    # parse the indices back out so the percentages track the recorded band.
+    sub_bands = sorted(
+        loc["sub_bands"].items(), key=lambda kv: int(kv[0].lstrip("L").split("-")[0])
+    )
+    groups = [
+        (tick(name.replace("-", "–"), [int(v) for v in name.lstrip("L").split("-")]), cell)
+        for name, cell in sub_bands
+    ] + [(tick(f"L{band[0]}–{band[-1]} (full)", band), loc["full_band"])]
     x = list(range(len(groups)))
     width = 0.35
     fig, ax = plt.subplots(figsize=(5.5, 3.2))
@@ -202,6 +245,10 @@ def fig_s3_retention() -> None:
     the primary cell (chains the subject answered correctly unablated, so the
     unablated baseline is n/n = 1.0 by construction; n = 28/41/43). The matched
     random-direction control at the medium tier is plotted as an open marker.
+
+    The x-axis stays in tier names: a tier is a fraction of each subject's own
+    band, so the three subjects share this axis while spanning different depths.
+    Per-subject percentage depths (D32) are printed below rather than ticked.
     """
     tiers = ["light", "medium", "heavy"]
     x = list(range(len(tiers)))
@@ -213,7 +260,10 @@ def fig_s3_retention() -> None:
         hits = [prim[f"jlens_{t}"]["hits"] for t in tiers]
         rates = [h / n for h in hits]
         rnd = prim["random_medium"]
+        n_layers = n_layers_for_band(d["band"])
+        spans = ", ".join(f"{t} {depth_span_label(d['tiers'][t], n_layers)}" for t in tiers)
         print(f"s3 retention {subject}: jlens {hits} of n={n}; random@medium {rnd['hits']}/{rnd['n']}")
+        print(f"s3 retention {subject} tier depths: {spans}")
         (line,) = ax.plot(x, rates, "o-", label=f"{LABELS[subject]} J-lens (n = {n})")
         ax.plot(1, rnd["hits"] / rnd["n"], "D", mfc="none", color=line.get_color(),
                 markersize=8, label=f"{LABELS[subject]} random @ medium")
