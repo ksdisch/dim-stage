@@ -1,0 +1,30 @@
+# Runs every offline test suite (test_*.py) on push to main and on PRs.
+# The suites need no API key and make no paid calls — that's by design;
+# they gate everything that does spend (see README "How to re-run").
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  offline-suites:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v8.3.0  # no floating v8 major tag exists
+        with:
+          enable-cache: true
+      - name: Run all offline test suites
+        run: |
+          rc=0
+          for f in test_*.py; do
+            echo "::group::$f"
+            if ! uv run "$f"; then
+              echo "FAILED: $f"
+              rc=1
+            fi
+            echo "::endgroup::"
+          done
+          exit $rc

@@ -1,5 +1,7 @@
 # dim-stage
 
+[![CI](https://github.com/ksdisch/dim-stage/actions/workflows/ci.yml/badge.svg)](https://github.com/ksdisch/dim-stage/actions/workflows/ci.yml)
+
 **Is the global workspace readable in small language models?**
 
 **Measured answer, at the pre-registered bar: no.** Three model scales, six evaluation
