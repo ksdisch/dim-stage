@@ -10,6 +10,7 @@ operator. Wrong-arm inputs must exit INVALID before any trial runs.
 from __future__ import annotations
 
 import json
+import os
 
 import pytest
 import torch
@@ -124,8 +125,6 @@ def test_load_language_guards_against_drift(tmp_path):
         s3.load_language(str(bad))
     with pytest.raises(FileNotFoundError, match="refetch"):
         s3.load_language(str(tmp_path / "missing.json"))
-    real = s3.load_language()  # the shipped file passes its own guard
-    assert len(real["passages"]) == 8
 
 
 def test_load_linecount_guards_against_drift(tmp_path):
@@ -133,8 +132,6 @@ def test_load_linecount_guards_against_drift(tmp_path):
     bad.write_text(json.dumps({"passages": []}))
     with pytest.raises(ValueError, match="drifted"):
         s3.load_linecount(str(bad))
-    real = s3.load_linecount()
-    assert [p["width"] for p in real["passages"]][0] == 40  # gettysburg
 
 
 # --- selection + read-back through the edit (the D6-replacement gates) -----------
@@ -220,3 +217,28 @@ def test_validate_rejects_a_mismatched_lens():
     with pytest.raises(SystemExit) as exc:
         s3.validate(Args(), artifact, FakeSubject())
     assert exc.value.code == 2
+
+
+# --- the shipped reference files, when the clone is present -------------------
+#
+# `refs/jacobian-lens/` is the AGREE-gate oracle the README tells you to clone;
+# it is gitignored, so a CI checkout does not have it. These two assertions are
+# the only part of this suite that reads it, and they skip rather than fail when
+# it is absent — the synthetic drift guards above still run everywhere.
+
+_needs_refs = pytest.mark.skipif(
+    not os.path.exists(s3.LANGUAGE_PATH) or not os.path.exists(s3.LINECOUNT_PATH),
+    reason="reference clone absent (git clone anthropics/jacobian-lens refs/jacobian-lens)",
+)
+
+
+@_needs_refs
+def test_shipped_language_file_passes_its_own_guard():
+    real = s3.load_language()
+    assert len(real["passages"]) == 8
+
+
+@_needs_refs
+def test_shipped_linecount_file_passes_its_own_guard():
+    real = s3.load_linecount()
+    assert [p["width"] for p in real["passages"]][0] == 40  # gettysburg

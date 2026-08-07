@@ -38,11 +38,12 @@ jobs:
 
       # The tripwire that makes the vacuous mode unreachable rather than merely
       # fixed: assert the suite still collects at least the count the README and
-      # the portfolio card advertise. A silent drop to zero collected — the exact
+      # the portfolio card advertise (88 collected; 2 of them skip without the
+      # gitignored reference clone). A silent drop to zero collected — the exact
       # shape of the original bug — now fails the build instead of passing it.
       - name: Guard the advertised test count
         run: |
-          FLOOR=86
+          FLOOR=88
           n=$(uv run pytest --collect-only -q | tail -1 | grep -oE '^[0-9]+')
           echo "collected: $n (floor: $FLOOR)"
           if [ -z "$n" ] || [ "$n" -lt "$FLOOR" ]; then
