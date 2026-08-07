@@ -30,4 +30,4 @@ jobs:
       # separate --collect-only count cannot make.
       - name: Guard — the suites actually ran, and still have their tests
         if: always()
-        run: python3 .github/ci/guard.py junit.xml 88
+        run: python3 .github/ci/guard.py junit.xml 88 86
