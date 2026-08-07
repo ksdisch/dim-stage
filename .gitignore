@@ -26,3 +26,4 @@ refs/
 
 # Prefetched D3 prompt dump (deterministic, rebuildable — see fitter.py --prompts-file)
 wikitext-n100-prompts.json
+junit.xml
