@@ -226,19 +226,33 @@ def test_validate_rejects_a_mismatched_lens():
 # the only part of this suite that reads it, and they skip rather than fail when
 # it is absent — the synthetic drift guards above still run everywhere.
 
-_needs_refs = pytest.mark.skipif(
-    not os.path.exists(s3.LANGUAGE_PATH) or not os.path.exists(s3.LINECOUNT_PATH),
+# Resolved against this file's directory, not the CWD: the paths in s3 are
+# repo-relative, and `pytest` run from anywhere else would otherwise decide the
+# clone is missing (skip) or present (fail) for the wrong reason.
+_REPO = os.path.dirname(os.path.abspath(__file__))
+
+
+def _has_refs(*paths: str) -> bool:
+    return all(os.path.exists(os.path.join(_REPO, p)) for p in paths)
+
+
+_needs_language = pytest.mark.skipif(
+    not _has_refs(s3.LANGUAGE_PATH),
+    reason="reference clone absent (git clone anthropics/jacobian-lens refs/jacobian-lens)",
+)
+_needs_linecount = pytest.mark.skipif(
+    not _has_refs(s3.LINECOUNT_PATH),
     reason="reference clone absent (git clone anthropics/jacobian-lens refs/jacobian-lens)",
 )
 
 
-@_needs_refs
+@_needs_language
 def test_shipped_language_file_passes_its_own_guard():
     real = s3.load_language()
     assert len(real["passages"]) == 8
 
 
-@_needs_refs
+@_needs_linecount
 def test_shipped_linecount_file_passes_its_own_guard():
     real = s3.load_linecount()
     assert [p["width"] for p in real["passages"]][0] == 40  # gettysburg

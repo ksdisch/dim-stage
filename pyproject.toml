@@ -33,4 +33,7 @@ jlens = { git = "https://github.com/anthropics/jacobian-lens", rev = "581d398613
 # inflated the advertised test count from 86 to 118 in every tree that followed
 # the README, while CI (which has no `refs/`) would have seen 86. One number,
 # same everywhere, is the point.
-norecursedirs = ["refs"]
+# NOTE: this *replaces* pytest's default exclusion list rather than extending
+# it, so the defaults are restated here. Dropping them would start collecting
+# build/, dist/, node_modules/ and friends.
+norecursedirs = ["refs", "*.egg", ".*", "_darcs", "build", "CVS", "dist", "node_modules", "venv", "{arch}"]
