@@ -25,3 +25,15 @@ package = false
 
 [tool.uv.sources]
 jlens = { git = "https://github.com/anthropics/jacobian-lens", rev = "581d398613e5602a5af361e1c34d3a92ea82ba8e" }
+
+[tool.pytest.ini_options]
+# Collect only *this project's* suites. The README's setup step clones
+# anthropics/jacobian-lens into `refs/` (gitignored) as the AGREE-gate oracle,
+# and its tests are the paper authors' work — never dim-stage's. Counting them
+# inflated the advertised test count from 86 to 118 in every tree that followed
+# the README, while CI (which has no `refs/`) would have seen 86. One number,
+# same everywhere, is the point.
+# NOTE: this *replaces* pytest's default exclusion list rather than extending
+# it, so the defaults are restated here. Dropping them would start collecting
+# build/, dist/, node_modules/ and friends.
+norecursedirs = ["refs", "*.egg", ".*", "_darcs", "build", "CVS", "dist", "node_modules", "venv", "{arch}"]
